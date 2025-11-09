@@ -1729,7 +1729,215 @@ for (krit in validitaetskriterien) {
 
 dev.off()
 
-cat("✓ Subgruppenanalysen und Plots gespeichert (3 demographische Variablen × 6 Korrelationen)\n\n")
+cat("✓ Subgruppenanalysen und Plots gespeichert (4 demographische Variablen × 6 Korrelationen)\n\n")
+
+# ===== 7.4 VALIDITÄT NACH BESCHÄFTIGUNG =====
+
+cat("### 7.4 Validität nach Beschäftigung\n\n")
+
+# Gruppiere Beschäftigung: Die häufigsten Kategorien
+beschaeftigung_freq <- table(data$Beschäftigung)
+beschaeftigung_freq <- beschaeftigung_freq[beschaeftigung_freq >= 20] # Mindestens 20 Personen pro Gruppe
+
+# Erstelle Gruppierung basierend auf den häufigsten Kategorien
+data$Beschäftigung_gruppiert <- ifelse(data$Beschäftigung %in% names(beschaeftigung_freq),
+  data$Beschäftigung, "Andere"
+)
+
+data_beschaeftigung <- subset(data, Beschäftigung_gruppiert != "Andere" & !is.na(Beschäftigung_gruppiert))
+beschaeftigung_gruppen <- unique(data_beschaeftigung$Beschäftigung_gruppiert)
+beschaeftigung_gruppen <- beschaeftigung_gruppen[!is.na(beschaeftigung_gruppen)]
+
+# Berechne Gruppengrößen
+for (gruppe in beschaeftigung_gruppen) {
+  n <- sum(data_beschaeftigung$Beschäftigung_gruppiert == gruppe)
+  cat(paste0("  ", gruppe, ": n = ", n, "\n"))
+}
+cat("\n")
+
+# Speichere Beschäftigungs-Ergebnisse
+beschaeftigung_results <- list()
+
+for (skala in skalen) {
+  cat(paste0("#### ", ifelse(skala == "Stressbelastung_kurz", "Stressbelastung", "Stresssymptome"), ":\n\n"))
+
+  for (krit in validitaetskriterien) {
+    cat(paste0(krit, ":\n"))
+
+    # Berechne Korrelationen für alle Beschäftigungsgruppen
+    cors <- list()
+    for (gruppe in beschaeftigung_gruppen) {
+      subset_data <- data_beschaeftigung[data_beschaeftigung$Beschäftigung_gruppiert == gruppe, ]
+      if (nrow(subset_data) >= 10) { # Mindestens 10 Personen für Korrelation
+        cor_result <- cor.test(subset_data[[skala]], subset_data[[krit]])
+        cors[[gruppe]] <- cor_result
+        cat(paste0(
+          "  ", gruppe, ": r = ", round(cor_result$estimate, 3),
+          ", p = ", format.pval(cor_result$p.value, digits = 3), "\n"
+        ))
+      }
+    }
+
+    # Paarweise Fisher's Z-Tests zwischen den ersten beiden größten Gruppen
+    if (length(cors) >= 2) {
+      gruppe1 <- names(cors)[1]
+      gruppe2 <- names(cors)[2]
+      n1 <- sum(data_beschaeftigung$Beschäftigung_gruppiert == gruppe1)
+      n2 <- sum(data_beschaeftigung$Beschäftigung_gruppiert == gruppe2)
+
+      fisher <- fisher_z_test(cors[[gruppe1]]$estimate, n1, cors[[gruppe2]]$estimate, n2)
+      cat(paste0(
+        "  ", gruppe1, " vs. ", gruppe2, ": z = ", round(fisher$z, 3),
+        ", p = ", format.pval(fisher$p, digits = 3),
+        ifelse(fisher$p < 0.05, " *", ""), "\n"
+      ))
+    }
+    cat("\n")
+
+    # Speichere für Plots - berechne auch Fisher's Z für größte Gruppen
+    key <- paste(skala, krit, sep = "_")
+    if (length(cors) >= 2) {
+      gruppe1 <- names(cors)[1]
+      gruppe2 <- names(cors)[2]
+      n1 <- sum(data_beschaeftigung$Beschäftigung_gruppiert == gruppe1)
+      n2 <- sum(data_beschaeftigung$Beschäftigung_gruppiert == gruppe2)
+      fisher <- fisher_z_test(cors[[gruppe1]]$estimate, n1, cors[[gruppe2]]$estimate, n2)
+
+      beschaeftigung_results[[key]] <- list(
+        cors = cors,
+        fisher_z = fisher$z,
+        fisher_p = fisher$p,
+        gruppe1 = gruppe1,
+        gruppe2 = gruppe2
+      )
+    } else {
+      beschaeftigung_results[[key]] <- list(cors = cors)
+    }
+  }
+}
+
+# PLOT 20: Validität nach Beschäftigung
+png("plots/20_validitaet_nach_beschaeftigung.png", width = 2400, height = 1600, res = 150)
+par(mfrow = c(2, 3), mar = c(6, 4, 3, 1))
+
+# Definiere feste RGB-Farben für Beschäftigungsgruppen (wie bei anderen Plots)
+beschaeftigung_colors <- c(
+  rgb(1, 0.3, 0.3), # Rot
+  rgb(0.3, 0.3, 1), # Blau
+  rgb(0.3, 1, 0.3), # Grün
+  rgb(1, 0.3, 1), # Magenta
+  rgb(1, 1, 0.3), # Gelb
+  rgb(0.3, 1, 1) # Cyan
+)
+names(beschaeftigung_colors) <- beschaeftigung_gruppen[1:min(length(beschaeftigung_gruppen), 6)]
+
+# Stressbelastung
+for (krit in validitaetskriterien) {
+  key <- paste("Stressbelastung_kurz", krit, sep = "_")
+  res <- beschaeftigung_results[[key]]
+
+  plot(NA,
+    xlim = range(data_beschaeftigung$Stressbelastung_kurz, na.rm = TRUE),
+    ylim = range(data_beschaeftigung[[krit]], na.rm = TRUE),
+    xlab = "Stressbelastung",
+    ylab = krit,
+    main = paste0("Stressbelastung × ", krit)
+  )
+
+  legend_items <- c()
+  legend_colors <- c()
+
+  for (i in 1:length(beschaeftigung_gruppen)) {
+    gruppe <- beschaeftigung_gruppen[i]
+    subset_data <- data_beschaeftigung[data_beschaeftigung$Beschäftigung_gruppiert == gruppe, ]
+    color <- beschaeftigung_colors[gruppe]
+
+    points(subset_data$Stressbelastung_kurz, subset_data[[krit]],
+      pch = 19, col = paste0(color, "66") # Transparenz wie bei anderen Plots
+    )
+
+    if (nrow(subset_data) >= 10) {
+      lm_temp <- lm(subset_data[[krit]] ~ subset_data$Stressbelastung_kurz)
+      abline(lm_temp, col = color, lwd = 2)
+
+      cor_val <- cor(subset_data$Stressbelastung_kurz, subset_data[[krit]], use = "complete.obs")
+      legend_items <- c(legend_items, paste0(gruppe, ": r = ", round(cor_val, 3)))
+      legend_colors <- c(legend_colors, color)
+    }
+  }
+
+  # Fisher's Z mit Signifikanz hinzufügen
+  if (!is.null(res$fisher_z)) {
+    sig_symbol <- ifelse(res$fisher_p < 0.001, "***",
+      ifelse(res$fisher_p < 0.01, "**",
+        ifelse(res$fisher_p < 0.05, "*", "ns")
+      )
+    )
+    legend_items <- c(legend_items, paste0("z = ", round(res$fisher_z, 3), " ", sig_symbol))
+    legend_colors <- c(legend_colors, "black")
+  }
+
+  legend("topright",
+    legend = legend_items, col = legend_colors, lwd = c(rep(2, length(beschaeftigung_gruppen)), NA),
+    pch = c(rep(19, length(beschaeftigung_gruppen)), NA), bty = "n", cex = 0.7
+  )
+}
+
+# Stresssymptome
+for (krit in validitaetskriterien) {
+  key <- paste("Stresssymptome_kurz", krit, sep = "_")
+  res <- beschaeftigung_results[[key]]
+
+  plot(NA,
+    xlim = range(data_beschaeftigung$Stresssymptome_kurz, na.rm = TRUE),
+    ylim = range(data_beschaeftigung[[krit]], na.rm = TRUE),
+    xlab = "Stresssymptome",
+    ylab = krit,
+    main = paste0("Stresssymptome × ", krit)
+  )
+
+  legend_items <- c()
+  legend_colors <- c()
+
+  for (i in 1:length(beschaeftigung_gruppen)) {
+    gruppe <- beschaeftigung_gruppen[i]
+    subset_data <- data_beschaeftigung[data_beschaeftigung$Beschäftigung_gruppiert == gruppe, ]
+    color <- beschaeftigung_colors[gruppe]
+
+    points(subset_data$Stresssymptome_kurz, subset_data[[krit]],
+      pch = 19, col = paste0(color, "66") # Transparenz wie bei anderen Plots
+    )
+
+    if (nrow(subset_data) >= 10) {
+      lm_temp <- lm(subset_data[[krit]] ~ subset_data$Stresssymptome_kurz)
+      abline(lm_temp, col = color, lwd = 2)
+
+      cor_val <- cor(subset_data$Stresssymptome_kurz, subset_data[[krit]], use = "complete.obs")
+      legend_items <- c(legend_items, paste0(gruppe, ": r = ", round(cor_val, 3)))
+      legend_colors <- c(legend_colors, color)
+    }
+  }
+
+  # Fisher's Z mit Signifikanz hinzufügen
+  if (!is.null(res$fisher_z)) {
+    sig_symbol <- ifelse(res$fisher_p < 0.001, "***",
+      ifelse(res$fisher_p < 0.01, "**",
+        ifelse(res$fisher_p < 0.05, "*", "ns")
+      )
+    )
+    legend_items <- c(legend_items, paste0("z = ", round(res$fisher_z, 3), " ", sig_symbol))
+    legend_colors <- c(legend_colors, "black")
+  }
+
+  legend("topright",
+    legend = legend_items, col = legend_colors, lwd = c(rep(2, length(beschaeftigung_gruppen)), NA),
+    pch = c(rep(19, length(beschaeftigung_gruppen)), NA), bty = "n", cex = 0.7
+  )
+}
+
+dev.off()
+
+cat("✓ Validitätsanalyse nach Beschäftigung abgeschlossen\n\n")
 
 
 # ==============================================================================

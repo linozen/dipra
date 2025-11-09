@@ -459,7 +459,50 @@ null device
           1 
 null device 
           1 
-✓ Subgruppenanalysen und Plots gespeichert (3 demographische Variablen × 6 Korrelationen)
+✓ Subgruppenanalysen und Plots gespeichert (4 demographische Variablen × 6 Korrelationen)
+
+### 7.4 Validität nach Beschäftigung
+
+  4: n = 83
+  3: n = 44
+
+#### Stressbelastung:
+
+Zufriedenheit:
+  4: r = -0.397, p = 0.000206
+  3: r = -0.431, p = 0.00347
+  4 vs. 3: z = 0.218, p = 0.827
+
+Neurotizismus:
+  4: r = 0.567, p = 2.35e-08
+  3: r = 0.413, p = 0.0053
+  4 vs. 3: z = 1.057, p = 0.29
+
+Resilienz:
+  4: r = -0.419, p = 8e-05
+  3: r = -0.558, p = 8.22e-05
+  4 vs. 3: z = 0.956, p = 0.339
+
+#### Stresssymptome:
+
+Zufriedenheit:
+  4: r = -0.603, p = 1.65e-09
+  3: r = -0.563, p = 6.91e-05
+  4 vs. 3: z = -0.313, p = 0.754
+
+Neurotizismus:
+  4: r = 0.541, p = 1.26e-07
+  3: r = 0.604, p = 1.44e-05
+  4 vs. 3: z = -0.482, p = 0.63
+
+Resilienz:
+  4: r = -0.446, p = 2.39e-05
+  3: r = -0.526, p = 0.000246
+  4 vs. 3: z = 0.546, p = 0.585
+
+null device 
+          1 
+✓ Validitätsanalyse nach Beschäftigung abgeschlossen
 
 
 ================================================================================ 
