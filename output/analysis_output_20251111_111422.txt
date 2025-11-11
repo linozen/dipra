@@ -1,0 +1,522 @@
+
+================================================================================ 
+STICHPROBENBESCHREIBUNG 
+================================================================================ 
+
+Anzahl Teilnehmer (≥18 Jahre, vor Aufmerksamkeitstest): 161 
+Ausgeschlossen (Aufmerksamkeitstest nicht bestanden): 24 
+Finale Stichprobe: 137 
+
+Durchschnittsalter: 28.11 Jahre
+Standardabweichung Alter: 10.59 Jahre
+
+Geschlechterverteilung:
+
+  1   2   3 
+ 26 107   4 
+
+Beschäftigungsverteilung:
+
+                 Andere Angestellte   Studenten 
+          1           9          44          83 
+
+✓ Generiere deskriptive Plots...
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+✓ Deskriptive Plots gespeichert in plots/
+
+-------------------------------------------------------------------------------- 
+SKALENKONSTRUKTION 
+-------------------------------------------------------------------------------- 
+
+✓ Alle Skalen erfolgreich konstruiert
+
+================================================================================ 
+TEIL I: RELIABILITÄTSANALYSEN 
+================================================================================ 
+
+In diesem Abschnitt wird die Reliabilität (Messgenauigkeit) der Skalen geprüft.
+Verwendet werden:
+  - Cronbachs Alpha (interne Konsistenz)
+  - Konfirmatorische Faktorenanalyse (CFA, Faktorstruktur)
+
+
+-------------------------------------------------------------------------------- 
+1. RELIABILITÄT: STRESSBELASTUNG 
+-------------------------------------------------------------------------------- 
+
+### 1.1 Cronbachs Alpha: Stressbelastung Kurzskala (5 Items)
+
+Cronbachs Alpha: 0.688 
+Interpretation: Problematisch 
+
+### 1.2 Cronbachs Alpha: Stressbelastung Gesamtskala (16 Items)
+
+Cronbachs Alpha: 0.838 
+Interpretation: Gut 
+
+### 1.3 CFA: Stressbelastung Kurzskala
+
+Fit-Indizes:
+  χ² = 11.17 , df = 5 , p = 0.048 
+  CFI = 0.941  (Akzeptabel) 
+  TLI = 0.882  (Problematisch) 
+  RMSEA = 0.095 (Problematisch)
+  SRMR = 0.056  (Gut) 
+
+Fazit Stressbelastung:
+  - Kurzskala hat problematische interne Konsistenz
+  - Faktorstruktur ist akzeptabel bis gut 
+
+null device 
+          1 
+null device 
+          1 
+✓ Reliabilitäts-Plots für Stressbelastung gespeichert
+
+
+-------------------------------------------------------------------------------- 
+2. RELIABILITÄT: STRESSSYMPTOME 
+-------------------------------------------------------------------------------- 
+
+### 2.1 Cronbachs Alpha: Stresssymptome Kurzskala (5 Items)
+
+Cronbachs Alpha: 0.8 
+Interpretation: Akzeptabel 
+
+### 2.2 Cronbachs Alpha: Stresssymptome Gesamtskala (18 Items)
+
+Cronbachs Alpha: 0.916 
+Interpretation: Gut 
+
+### 2.3 CFA: Stresssymptome Kurzskala
+
+Fit-Indizes:
+  χ² = 15.69 , df = 5 , p = 0.008 
+  CFI = 0.948  (Akzeptabel) 
+  TLI = 0.896  (Problematisch) 
+  RMSEA = 0.125 (Problematisch)
+  SRMR = 0.05  (Gut) 
+
+Fazit Stresssymptome:
+  - Kurzskala hat akzeptable bis gute interne Konsistenz
+  - Faktorstruktur ist akzeptabel bis gut 
+
+null device 
+          1 
+null device 
+          1 
+✓ Reliabilitäts-Plots für Stresssymptome gespeichert
+
+
+-------------------------------------------------------------------------------- 
+3. RELIABILITÄT: COPING-SKALEN 
+-------------------------------------------------------------------------------- 
+
+### Aktives Coping 
+
+  Cronbachs Alpha: 0.773 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 7.72 , df = 2 , p = 0.021 
+    CFI = 0.963  (Sehr gut) 
+    TLI = 0.889  (Problematisch) 
+    RMSEA = 0.145 (Problematisch)
+    SRMR = 0.046  (Gut) 
+
+### Drogen-Coping 
+
+  Cronbachs Alpha: 0.812 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 44.28 , df = 5 , p = 0 
+    CFI = 0.881  (Problematisch) 
+    TLI = 0.762  (Problematisch) 
+    RMSEA = 0.239 (Problematisch)
+    SRMR = 0.072  (Gut) 
+
+### Positive Neubewertung 
+
+  Cronbachs Alpha: 0.661 - Problematisch 
+
+  CFA Fit-Indizes:
+    χ² = 5.78 , df = 2 , p = 0.056 
+    CFI = 0.966  (Sehr gut) 
+    TLI = 0.898  (Problematisch) 
+    RMSEA = 0.117 (Problematisch)
+    SRMR = 0.049  (Gut) 
+
+### Soziales Coping 
+
+  Cronbachs Alpha: 0.908 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 12.34 , df = 5 , p = 0.03 
+    CFI = 0.985  (Sehr gut) 
+    TLI = 0.971  (Sehr gut) 
+    RMSEA = 0.104 (Problematisch)
+    SRMR = 0.024  (Gut) 
+
+### Religiöses Coping 
+
+  Cronbachs Alpha: 0.769 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 4.21 , df = 2 , p = 0.122 
+    CFI = 0.99  (Sehr gut) 
+    TLI = 0.97  (Sehr gut) 
+    RMSEA = 0.09 (Problematisch)
+    SRMR = 0.037  (Gut) 
+
+null device 
+          1 
+✓ Reliabilitäts-Plot für alle Skalen gespeichert
+
+null device 
+          1 
+✓ Itemstatistiken für Coping-Skalen gespeichert
+
+null device 
+          1 
+✓ Reliabilitäts-Plots für Coping-Skalen gespeichert
+
+
+================================================================================ 
+TEIL II: VALIDITÄTSANALYSEN (KONVERGENTE VALIDITÄT) 
+================================================================================ 
+
+In diesem Abschnitt wird die Validität der Skalen geprüft.
+Konvergente Validität: Korrelationen mit theoretisch verwandten Konstrukten
+
+Erwartete Zusammenhänge:
+  - Stressbelastung/Stresssymptome → negativ mit Zufriedenheit
+  - Stressbelastung/Stresssymptome → positiv mit Neurotizismus
+  - Stressbelastung/Stresssymptome → negativ mit Resilienz
+  - Coping-Strategien → unterschiedliche Muster je nach Adaptivität
+
+
+-------------------------------------------------------------------------------- 
+4. KONVERGENTE VALIDITÄT: STRESSBELASTUNG 
+-------------------------------------------------------------------------------- 
+
+### 4.1 Korrelationen mit Zufriedenheit
+
+  Kurzskala:    r = -0.372 , p = 7.79e-06 
+  Langskala:    r = -0.405 , p = 9.46e-07 
+  Gesamtskala:  r = -0.404 , p = 9.82e-07 
+
+### 4.2 Korrelationen mit Neurotizismus
+
+  Kurzskala:    r = 0.498 , p = 6.06e-10 
+  Langskala:    r = 0.41 , p = 6.5e-07 
+  Gesamtskala:  r = 0.474 , p = 4.77e-09 
+
+### 4.3 Korrelationen mit Resilienz
+
+  Kurzskala:    r = -0.405 , p = 9.44e-07 
+  Langskala:    r = -0.438 , p = 8.55e-08 
+  Gesamtskala:  r = -0.449 , p = 3.82e-08 
+
+Fazit:
+  - Kurzskala korreliert substanziell mit Validitätskriterien
+  - Konvergente Validität ist gegeben 
+
+null device 
+          1 
+✓ Validitäts-Plots für Stressbelastung gespeichert
+
+
+-------------------------------------------------------------------------------- 
+5. KONVERGENTE VALIDITÄT: STRESSSYMPTOME 
+-------------------------------------------------------------------------------- 
+
+### 5.1 Korrelationen mit Zufriedenheit
+
+  Kurzskala:    r = -0.586 , p = 5.2e-14 
+  Langskala:    r = -0.549 , p = 3.79e-12 
+  Gesamtskala:  r = -0.578 , p = 1.45e-13 
+
+### 5.2 Korrelationen mit Neurotizismus
+
+  Kurzskala:    r = 0.579 , p = 1.28e-13 
+  Langskala:    r = 0.537 , p = 1.4e-11 
+  Gesamtskala:  r = 0.567 , p = 5.35e-13 
+
+### 5.3 Korrelationen mit Resilienz
+
+  Kurzskala:    r = -0.496 , p = 6.92e-10 
+  Langskala:    r = -0.463 , p = 1.23e-08 
+  Gesamtskala:  r = -0.488 , p = 1.48e-09 
+
+null device 
+          1 
+✓ Validitäts-Plots für Stresssymptome gespeichert
+
+
+-------------------------------------------------------------------------------- 
+6. KONVERGENTE VALIDITÄT: COPING-STRATEGIEN 
+-------------------------------------------------------------------------------- 
+
+### Coping aktiv 
+
+  mit Zufriedenheit : r = 0.151 , p = 0.0775 
+  mit Neurotizismus : r = -0.3 , p = 0.000374 
+  mit Resilienz : r = 0.242 , p = 0.00439 
+
+### Coping Drogen 
+
+  mit Zufriedenheit : r = -0.039 , p = 0.647 
+  mit Neurotizismus : r = -0.011 , p = 0.898 
+  mit Resilienz : r = -0.035 , p = 0.682 
+
+### Coping positiv 
+
+  mit Zufriedenheit : r = 0.362 , p = 1.39e-05 
+  mit Neurotizismus : r = -0.625 , p = 3.37e-16 
+  mit Resilienz : r = 0.495 , p = 7.89e-10 
+
+### Coping sozial 
+
+  mit Zufriedenheit : r = 0.387 , p = 3.03e-06 
+  mit Neurotizismus : r = -0.231 , p = 0.00659 
+  mit Resilienz : r = 0.13 , p = 0.13 
+
+### Coping rel 
+
+  mit Zufriedenheit : r = 0.08 , p = 0.354 
+  mit Neurotizismus : r = -0.078 , p = 0.363 
+  mit Resilienz : r = 0.061 , p = 0.477 
+
+null device 
+          1 
+✓ Validitäts-Plots für Coping-Strategien gespeichert
+
+null device 
+          1 
+✓ Zusätzliche Heatmap für NI07-Items gespeichert
+
+
+-------------------------------------------------------------------------------- 
+7. KONVERGENTE VALIDITÄT NACH SUBGRUPPEN 
+-------------------------------------------------------------------------------- 
+
+Analyse der konvergenten Validität in demographischen Subgruppen
+Geprüft werden Unterschiede nach Geschlecht, Bildungsniveau und Alter
+
+### 7.1 Validität nach Geschlecht
+
+#### Stressbelastung:
+
+Zufriedenheit:
+  Männlich:  r = -0.356, p = 0.0739
+  Weiblich:  r = -0.387, p = 3.77e-05
+  Unterschied: z = 0.156, p = 0.876
+
+Neurotizismus:
+  Männlich:  r = 0.474, p = 0.0143
+  Weiblich:  r = 0.492, p = 7.23e-08
+  Unterschied: z = -0.101, p = 0.919
+
+Resilienz:
+  Männlich:  r = -0.508, p = 0.008
+  Weiblich:  r = -0.366, p = 0.000106
+  Unterschied: z = -0.767, p = 0.443
+
+#### Stresssymptome:
+
+Zufriedenheit:
+  Männlich:  r = -0.689, p = 9.79e-05
+  Weiblich:  r = -0.558, p = 4.22e-10
+  Unterschied: z = -0.941, p = 0.347
+
+Neurotizismus:
+  Männlich:  r = 0.643, p = 0.000396
+  Weiblich:  r = 0.541, p = 1.85e-09
+  Unterschied: z = 0.687, p = 0.492
+
+Resilienz:
+  Männlich:  r = -0.582, p = 0.0018
+  Weiblich:  r = -0.446, p = 1.46e-06
+  Unterschied: z = -0.808, p = 0.419
+
+### 7.2 Validität nach Bildungsniveau
+
+#### Stressbelastung:
+
+Zufriedenheit:
+  Niedrig: r = -0.202, p = 0.471
+  Mittel:  r = -0.439, p = 0.000143
+  Hoch:    r = -0.34, p = 0.0208
+  Niedrig vs. Mittel: z = 0.851, p = 0.395
+  Niedrig vs. Hoch:   z = 0.459, p = 0.646
+  Mittel vs. Hoch:    z = -0.599, p = 0.549
+
+Neurotizismus:
+  Niedrig: r = -0.143, p = 0.611
+  Mittel:  r = 0.621, p = 9.54e-09
+  Hoch:    r = 0.491, p = 0.000527
+  Niedrig vs. Mittel: z = -2.779, p = 0.00546 *
+  Niedrig vs. Hoch:   z = -2.088, p = 0.0368 *
+  Mittel vs. Hoch:    z = 0.969, p = 0.332
+
+Resilienz:
+  Niedrig: r = -0.024, p = 0.934
+  Mittel:  r = -0.431, p = 0.000195
+  Hoch:    r = -0.558, p = 5.51e-05
+  Niedrig vs. Mittel: z = 1.396, p = 0.163
+  Niedrig vs. Hoch:   z = 1.859, p = 0.063
+  Mittel vs. Hoch:    z = 0.866, p = 0.386
+
+#### Stresssymptome:
+
+Zufriedenheit:
+  Niedrig: r = -0.691, p = 0.00431
+  Mittel:  r = -0.568, p = 2.85e-07
+  Hoch:    r = -0.562, p = 4.78e-05
+  Niedrig vs. Mittel: z = -0.655, p = 0.513
+  Niedrig vs. Hoch:   z = -0.657, p = 0.511
+  Mittel vs. Hoch:    z = -0.047, p = 0.963
+
+Neurotizismus:
+  Niedrig: r = 0.549, p = 0.034
+  Mittel:  r = 0.604, p = 3.05e-08
+  Hoch:    r = 0.536, p = 0.000125
+  Niedrig vs. Mittel: z = -0.263, p = 0.792
+  Niedrig vs. Hoch:   z = 0.058, p = 0.953
+  Mittel vs. Hoch:    z = 0.52, p = 0.603
+
+Resilienz:
+  Niedrig: r = -0.655, p = 0.0081
+  Mittel:  r = -0.448, p = 9.95e-05
+  Hoch:    r = -0.516, p = 0.00024
+  Niedrig vs. Mittel: z = -0.959, p = 0.337
+  Niedrig vs. Hoch:   z = -0.649, p = 0.516
+  Mittel vs. Hoch:    z = 0.454, p = 0.65
+
+### 7.3 Validität nach Alter
+
+#### Stressbelastung:
+
+Zufriedenheit:
+  Jung (<30):   r = -0.305, p = 0.00146
+  Mittel (30-45): r = -0.552, p = 0.0142
+  Alt (>45):    r = -0.539, p = 0.0707
+  Jung vs. Mittel: z = 1.14, p = 0.254
+  Jung vs. Alt:    z = 0.826, p = 0.409
+  Mittel vs. Alt:  z = -0.047, p = 0.963
+
+Neurotizismus:
+  Jung (<30):   r = 0.436, p = 3.03e-06
+  Mittel (30-45): r = 0.676, p = 0.0015
+  Alt (>45):    r = 0.67, p = 0.017
+  Jung vs. Mittel: z = -1.318, p = 0.188
+  Jung vs. Alt:    z = -0.991, p = 0.322
+  Mittel vs. Alt:  z = 0.023, p = 0.982
+
+Resilienz:
+  Jung (<30):   r = -0.391, p = 3.43e-05
+  Mittel (30-45): r = -0.617, p = 0.00489
+  Alt (>45):    r = -0.217, p = 0.498
+  Jung vs. Mittel: z = 1.143, p = 0.253
+  Jung vs. Alt:    z = -0.553, p = 0.58
+  Mittel vs. Alt:  z = -1.199, p = 0.231
+
+#### Stresssymptome:
+
+Zufriedenheit:
+  Jung (<30):   r = -0.584, p = 5.01e-11
+  Mittel (30-45): r = -0.569, p = 0.0109
+  Alt (>45):    r = -0.682, p = 0.0146
+  Jung vs. Mittel: z = -0.081, p = 0.936
+  Jung vs. Alt:    z = 0.473, p = 0.636
+  Mittel vs. Alt:  z = 0.446, p = 0.655
+
+Neurotizismus:
+  Jung (<30):   r = 0.549, p = 1.1e-09
+  Mittel (30-45): r = 0.62, p = 0.00465
+  Alt (>45):    r = 0.646, p = 0.0233
+  Jung vs. Mittel: z = -0.401, p = 0.689
+  Jung vs. Alt:    z = -0.435, p = 0.664
+  Mittel vs. Alt:  z = -0.104, p = 0.917
+
+Resilienz:
+  Jung (<30):   r = -0.469, p = 4.03e-07
+  Mittel (30-45): r = -0.712, p = 0.000629
+  Alt (>45):    r = -0.422, p = 0.172
+  Jung vs. Mittel: z = 1.424, p = 0.155
+  Jung vs. Alt:    z = -0.169, p = 0.866
+  Mittel vs. Alt:  z = -1.059, p = 0.29
+
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+✓ Subgruppenanalysen und Plots gespeichert (4 demographische Variablen × 6 Korrelationen)
+
+### 7.4 Validität nach Beschäftigung
+
+  4: n = 83
+  3: n = 44
+
+#### Stressbelastung:
+
+Zufriedenheit:
+  4: r = -0.397, p = 0.000206
+  3: r = -0.431, p = 0.00347
+  4 vs. 3: z = 0.218, p = 0.827
+
+Neurotizismus:
+  4: r = 0.567, p = 2.35e-08
+  3: r = 0.413, p = 0.0053
+  4 vs. 3: z = 1.057, p = 0.29
+
+Resilienz:
+  4: r = -0.419, p = 8e-05
+  3: r = -0.558, p = 8.22e-05
+  4 vs. 3: z = 0.956, p = 0.339
+
+#### Stresssymptome:
+
+Zufriedenheit:
+  4: r = -0.603, p = 1.65e-09
+  3: r = -0.563, p = 6.91e-05
+  4 vs. 3: z = -0.313, p = 0.754
+
+Neurotizismus:
+  4: r = 0.541, p = 1.26e-07
+  3: r = 0.604, p = 1.44e-05
+  4 vs. 3: z = -0.482, p = 0.63
+
+Resilienz:
+  4: r = -0.446, p = 2.39e-05
+  3: r = -0.526, p = 0.000246
+  4 vs. 3: z = 0.546, p = 0.585
+
+null device 
+          1 
+✓ Validitätsanalyse nach Beschäftigung abgeschlossen
+
+
+================================================================================ 
+ZUSAMMENFASSUNG DER ERGEBNISSE 
+================================================================================ 
+
+RELIABILITÄT:
+  ✓ Stressbelastung Kurzskala: α = 0.688 
+  ✓ Stresssymptome Kurzskala:  α = 0.8 
+
+VALIDITÄT:
+  ✓ Stressbelastung korreliert erwartungsgemäß mit Validitätskriterien
+  ✓ Stresssymptome korreliert erwartungsgemäß mit Validitätskriterien
+
+Analyse abgeschlossen.
+Für detaillierte Ergebnisse siehe Ausgabe oben.
+
