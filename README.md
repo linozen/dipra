@@ -97,7 +97,8 @@ source("run_all.R")
 ### 04_validity_main.R
 - Tests convergent validity with Zufriedenheit, Neurotizismus, Resilienz
 - Analyzes stress, symptoms, and all coping scales
-- **Plots**: 13-16 (scatter plots, correlation heatmaps)
+- Performs 5-factor CFA to confirm coping scale structure
+- **Plots**: 13-18 (scatter plots, correlation heatmaps, CFA path diagram, factor loadings)
 
 ### 05_validity_subgroups_stress.R
 - Subgroup validity analysis for stress scales
@@ -216,10 +217,12 @@ After filtering (age ≥ 18, attention check):
 
 ## Output
 
-### Plots (35 total)
+### Plots (37 total)
 - **01-04**: Descriptive statistics (age, gender, occupation, education)
 - **06-12**: Factor loadings and reliability (stress, symptoms, 5 coping scales)
 - **13-16**: Main validity analyses (scatter plots, correlation heatmaps)
+- **17**: CFA path diagram (5-factor coping model)
+- **18**: CFA factor loadings heatmap (5-factor coping model)
 - **17a-e**: Gender subgroups
   - 17a: Stressbelastung × 3 validity criteria
   - 17b: Stresssymptome × 3 validity criteria

@@ -16,7 +16,7 @@
 # ==============================================================================
 
 # Konfiguration
-input_file <- "data/data_stressskala_2025-11-09_17-36.csv"
+input_file <- "data/data_stressskala_2025-11-20_12-13.csv"
 output_file <- "data/data.csv"
 input_encoding <- "ISO-8859-1"
 output_encoding <- "UTF-8"
@@ -26,7 +26,7 @@ output_encoding <- "UTF-8"
 clean_occupation <- function(value) {
   # Leere oder ungültige Werte
   if (is.na(value) || value == "" || value %in% c("-", "/", "1", "DE07_01")) {
-    ""
+    return("")
   }
 
   val_lower <- tolower(value)
@@ -34,7 +34,7 @@ clean_occupation <- function(value) {
   # STUDENTEN: Alle Studierenden
   studenten_keywords <- c("student", "studium", "studier")
   if (any(grepl(paste(studenten_keywords, collapse = "|"), val_lower))) {
-    "Studenten"
+    return("Studenten")
   }
 
   # ANGESTELLTE: Alle Erwerbstätigen
@@ -51,7 +51,7 @@ clean_occupation <- function(value) {
     "technischer", "selbst", "freelance", "privatier", "beamt"
   )
   if (any(grepl(paste(angestellte_keywords, collapse = "|"), val_lower))) {
-    "Angestellte"
+    return("Angestellte")
   }
 
   # ANDERE: Arbeitslose, Rentner, Schüler, Auszubildende
@@ -61,11 +61,11 @@ clean_occupation <- function(value) {
     "früh", "schule"
   )
   if (any(grepl(paste(andere_keywords, collapse = "|"), val_lower))) {
-    "Andere"
+    return("Andere")
   }
 
   # Fallback - alle unbekannten Werte werden als "Andere" kategorisiert
-  "Andere"
+  return("Andere")
 }
 
 
@@ -104,6 +104,22 @@ main <- function() {
   if (nrow(data) == 0) {
     cat("FEHLER: Input-Datei ist leer!\n")
     quit(status = 1)
+  }
+
+  # Filtere nur QUESTNNR = A1 (ursprüngliche Tests, keine Retests)
+  if (!"QUESTNNR" %in% colnames(data)) {
+    cat("WARNUNG: Spalte 'QUESTNNR' nicht gefunden!\n")
+    cat("Alle Daten werden behalten (kein Filter angewendet).\n\n")
+  } else {
+    n_vor_filter <- nrow(data)
+    data <- data[data$QUESTNNR == "A1", ]
+    n_nach_filter <- nrow(data)
+    n_retest_entfernt <- n_vor_filter - n_nach_filter
+
+    cat(sprintf("✓ QUESTNNR-Filter angewendet:\n"))
+    cat(sprintf("  - Vor Filter: %d Zeilen\n", n_vor_filter))
+    cat(sprintf("  - Nach Filter (nur QUESTNNR=A1): %d Zeilen\n", n_nach_filter))
+    cat(sprintf("  - Entfernte Retest-Fälle (QUESTNNR=B): %d\n\n", n_retest_entfernt))
   }
 
   # Prüfe ob Spalte DE07_01 existiert

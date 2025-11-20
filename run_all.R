@@ -91,7 +91,7 @@ cat("---------------------------------------------------------------------------
 
 source("04_validity_main.R")
 
-cat("\n✓ Schritt 4 abgeschlossen (Plots 13-16)\n\n")
+cat("\n✓ Schritt 4 abgeschlossen (Plots 13-19)\n\n")
 
 # ==============================================================================
 # SCHRITT 5: SUBGRUPPENANALYSEN - STRESSBELASTUNG
@@ -139,7 +139,7 @@ cat("---------------------------------------------------------------------------
 
 source("08_create_subgroup_plots.R")
 
-cat("\n✓ Schritt 8 abgeschlossen (Plots 17-20)\n\n")
+cat("\n✓ Schritt 8 abgeschlossen (Plots 20-23)\n\n")
 
 # ==============================================================================
 # ABSCHLUSS
@@ -159,15 +159,17 @@ cat("  ✓ Datenbereinigung durchgeführt\n")
 cat("  ✓ Alle Skalen konstruiert\n")
 cat("  ✓ Deskriptive Statistiken erstellt (Plots 01-04)\n")
 cat("  ✓ Reliabilitätsanalysen abgeschlossen (Plots 06-12)\n")
-cat("  ✓ Hauptvaliditätsanalysen abgeschlossen (Plots 13-16)\n")
+cat("  ✓ Hauptvaliditätsanalysen abgeschlossen (Plots 13-19)\n")
+cat("    - Validitätskorrelationen (13-16)\n")
+cat("    - CFA 7-Faktoren-Modell (17-19)\n")
 cat("  ✓ Subgruppenanalysen abgeschlossen:\n")
 cat("    - Stressbelastung\n")
 cat("    - Stresssymptome\n")
 cat("    - Coping-Skalen (NEU - 5 Skalen × 4 Subgruppen)\n")
-cat("  ✓ Subgruppen-Visualisierungen erstellt (Plots 17-20)\n\n")
+cat("  ✓ Subgruppen-Visualisierungen erstellt (Plots 20-23)\n\n")
 
 cat("ERGEBNIS:\n")
-cat("  - Insgesamt 20 Plots erstellt\n")
+cat("  - Insgesamt 23 Plots erstellt\n")
 cat("  - Alle Analysen dokumentiert\n")
 cat("  - Workspace verfügbar: data/01_scales.RData\n\n")
 

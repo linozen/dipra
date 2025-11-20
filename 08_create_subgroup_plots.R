@@ -160,7 +160,7 @@ plots_17a <- create_stress_plots(
   colors = gender_colors
 )
 
-png("plots/17a_geschlecht_stress.png", width = 1800, height = 600, res = 150)
+png("plots/23a_geschlecht_stress.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_17a, ncol = 3,
   top = grid::textGrob("Stressbelastung × Validität nach Geschlecht",
@@ -180,7 +180,7 @@ plots_17b <- create_stress_plots(
   colors = gender_colors
 )
 
-png("plots/17b_geschlecht_symptome.png", width = 1800, height = 600, res = 150)
+png("plots/23b_geschlecht_symptome.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_17b, ncol = 3,
   top = grid::textGrob("Stresssymptome × Validität nach Geschlecht",
@@ -201,7 +201,7 @@ plots_17c <- create_coping_plots(
   colors = gender_colors
 )
 
-png("plots/17c_geschlecht_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
+png("plots/23c_geschlecht_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_17c, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Zufriedenheit nach Geschlecht",
@@ -222,7 +222,7 @@ plots_17d <- create_coping_plots(
   colors = gender_colors
 )
 
-png("plots/17d_geschlecht_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
+png("plots/23d_geschlecht_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_17d, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Neurotizismus nach Geschlecht",
@@ -243,7 +243,7 @@ plots_17e <- create_coping_plots(
   colors = gender_colors
 )
 
-png("plots/17e_geschlecht_coping_resilienz.png", width = 1800, height = 1200, res = 150)
+png("plots/23e_geschlecht_coping_resilienz.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_17e, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Resilienz nach Geschlecht",
@@ -286,7 +286,7 @@ plots_18a <- create_stress_plots(
   colors = bildung_colors
 )
 
-png("plots/18a_bildung_stress.png", width = 1800, height = 600, res = 150)
+png("plots/21a_bildung_stress.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_18a, ncol = 3,
   top = grid::textGrob("Stressbelastung × Validität nach Bildungsniveau",
@@ -306,7 +306,7 @@ plots_18b <- create_stress_plots(
   colors = bildung_colors
 )
 
-png("plots/18b_bildung_symptome.png", width = 1800, height = 600, res = 150)
+png("plots/21b_bildung_symptome.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_18b, ncol = 3,
   top = grid::textGrob("Stresssymptome × Validität nach Bildungsniveau",
@@ -322,7 +322,7 @@ plots_18c <- create_coping_plots(
   group_var = "Bildung_gruppiert", group_label = "Bildung", colors = bildung_colors
 )
 
-png("plots/18c_bildung_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
+png("plots/21c_bildung_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_18c, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Zufriedenheit nach Bildungsniveau",
@@ -337,7 +337,7 @@ plots_18d <- create_coping_plots(
   group_var = "Bildung_gruppiert", group_label = "Bildung", colors = bildung_colors
 )
 
-png("plots/18d_bildung_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
+png("plots/21d_bildung_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_18d, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Neurotizismus nach Bildungsniveau",
@@ -352,7 +352,7 @@ plots_18e <- create_coping_plots(
   group_var = "Bildung_gruppiert", group_label = "Bildung", colors = bildung_colors
 )
 
-png("plots/18e_bildung_coping_resilienz.png", width = 1800, height = 1200, res = 150)
+png("plots/21e_bildung_coping_resilienz.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_18e, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Resilienz nach Bildungsniveau",
@@ -399,7 +399,7 @@ plots_19a <- create_stress_plots(
   colors = alter_colors
 )
 
-png("plots/19a_alter_stress.png", width = 1800, height = 600, res = 150)
+png("plots/22a_alter_stress.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_19a, ncol = 3,
   top = grid::textGrob("Stressbelastung × Validität nach Altersgruppe",
@@ -419,7 +419,7 @@ plots_19b <- create_stress_plots(
   colors = alter_colors
 )
 
-png("plots/19b_alter_symptome.png", width = 1800, height = 600, res = 150)
+png("plots/22b_alter_symptome.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_19b, ncol = 3,
   top = grid::textGrob("Stresssymptome × Validität nach Altersgruppe",
@@ -435,7 +435,7 @@ plots_19c <- create_coping_plots(
   group_var = "Alter_gruppiert", group_label = "Altersgruppe", colors = alter_colors
 )
 
-png("plots/19c_alter_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
+png("plots/22c_alter_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_19c, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Zufriedenheit nach Altersgruppe",
@@ -450,7 +450,7 @@ plots_19d <- create_coping_plots(
   group_var = "Alter_gruppiert", group_label = "Altersgruppe", colors = alter_colors
 )
 
-png("plots/19d_alter_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
+png("plots/22d_alter_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_19d, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Neurotizismus nach Altersgruppe",
@@ -465,7 +465,7 @@ plots_19e <- create_coping_plots(
   group_var = "Alter_gruppiert", group_label = "Altersgruppe", colors = alter_colors
 )
 
-png("plots/19e_alter_coping_resilienz.png", width = 1800, height = 1200, res = 150)
+png("plots/22e_alter_coping_resilienz.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_19e, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Resilienz nach Altersgruppe",
@@ -520,7 +520,7 @@ plots_20a <- create_stress_plots(
   colors = beschaeftigung_colors
 )
 
-png("plots/20a_beschaeftigung_stress.png", width = 1800, height = 600, res = 150)
+png("plots/23a_beschaeftigung_stress.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_20a, ncol = 3,
   top = grid::textGrob("Stressbelastung × Validität nach Beschäftigung",
@@ -540,7 +540,7 @@ plots_20b <- create_stress_plots(
   colors = beschaeftigung_colors
 )
 
-png("plots/20b_beschaeftigung_symptome.png", width = 1800, height = 600, res = 150)
+png("plots/23b_beschaeftigung_symptome.png", width = 1800, height = 600, res = 150)
 grid.arrange(
   grobs = plots_20b, ncol = 3,
   top = grid::textGrob("Stresssymptome × Validität nach Beschäftigung",
@@ -556,7 +556,7 @@ plots_20c <- create_coping_plots(
   group_var = "Beschäftigung_gruppiert", group_label = "Beschäftigung", colors = beschaeftigung_colors
 )
 
-png("plots/20c_beschaeftigung_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
+png("plots/23c_beschaeftigung_coping_zufriedenheit.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_20c, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Zufriedenheit nach Beschäftigung",
@@ -571,7 +571,7 @@ plots_20d <- create_coping_plots(
   group_var = "Beschäftigung_gruppiert", group_label = "Beschäftigung", colors = beschaeftigung_colors
 )
 
-png("plots/20d_beschaeftigung_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
+png("plots/23d_beschaeftigung_coping_neurotizismus.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_20d, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Neurotizismus nach Beschäftigung",
@@ -586,7 +586,7 @@ plots_20e <- create_coping_plots(
   group_var = "Beschäftigung_gruppiert", group_label = "Beschäftigung", colors = beschaeftigung_colors
 )
 
-png("plots/20e_beschaeftigung_coping_resilienz.png", width = 1800, height = 1200, res = 150)
+png("plots/23e_beschaeftigung_coping_resilienz.png", width = 1800, height = 1200, res = 150)
 grid.arrange(
   grobs = plots_20e, ncol = 3,
   top = grid::textGrob("Coping-Skalen × Resilienz nach Beschäftigung",
