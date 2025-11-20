@@ -67,7 +67,7 @@ cat("---------------------------------------------------------------------------
 
 source("02_descriptive_plots.R")
 
-cat("\n✓ Schritt 2 abgeschlossen (Plots 01-04)\n\n")
+cat("\n✓ Schritt 2 abgeschlossen (Plots 01-04: Deskriptive Statistiken)\n\n")
 
 # ==============================================================================
 # SCHRITT 3: RELIABILITÄTSANALYSEN
@@ -79,7 +79,7 @@ cat("---------------------------------------------------------------------------
 
 source("03_reliability.R")
 
-cat("\n✓ Schritt 3 abgeschlossen (Plots 06-12)\n\n")
+cat("\n✓ Schritt 3 abgeschlossen (Plots 05-12: Reliabilitätsanalysen)\n\n")
 
 # ==============================================================================
 # SCHRITT 4: HAUPTVALIDITÄTSANALYSEN
@@ -91,7 +91,7 @@ cat("---------------------------------------------------------------------------
 
 source("04_validity_main.R")
 
-cat("\n✓ Schritt 4 abgeschlossen (Plots 13-19)\n\n")
+cat("\n✓ Schritt 4 abgeschlossen (Plots 13-19: Validitätsanalysen)\n\n")
 
 # ==============================================================================
 # SCHRITT 5: SUBGRUPPENANALYSEN - STRESSBELASTUNG
@@ -139,7 +139,7 @@ cat("---------------------------------------------------------------------------
 
 source("08_create_subgroup_plots.R")
 
-cat("\n✓ Schritt 8 abgeschlossen (Plots 20-23)\n\n")
+cat("\n✓ Schritt 8 abgeschlossen (Plots 20-39: Subgruppen-Visualisierungen)\n\n")
 
 # ==============================================================================
 # ABSCHLUSS
@@ -158,18 +158,22 @@ cat("ZUSAMMENFASSUNG:\n")
 cat("  ✓ Datenbereinigung durchgeführt\n")
 cat("  ✓ Alle Skalen konstruiert\n")
 cat("  ✓ Deskriptive Statistiken erstellt (Plots 01-04)\n")
-cat("  ✓ Reliabilitätsanalysen abgeschlossen (Plots 06-12)\n")
+cat("  ✓ Reliabilitätsanalysen abgeschlossen (Plots 05-12)\n")
 cat("  ✓ Hauptvaliditätsanalysen abgeschlossen (Plots 13-19)\n")
 cat("    - Validitätskorrelationen (13-16)\n")
 cat("    - CFA 7-Faktoren-Modell (17-19)\n")
 cat("  ✓ Subgruppenanalysen abgeschlossen:\n")
 cat("    - Stressbelastung\n")
 cat("    - Stresssymptome\n")
-cat("    - Coping-Skalen (NEU - 5 Skalen × 4 Subgruppen)\n")
-cat("  ✓ Subgruppen-Visualisierungen erstellt (Plots 20-23)\n\n")
+cat("    - Coping-Skalen (5 Skalen × 4 Subgruppen)\n")
+cat("  ✓ Subgruppen-Visualisierungen erstellt (Plots 20-39)\n")
+cat("    - Geschlecht: Plots 20-24\n")
+cat("    - Bildung: Plots 25-29\n")
+cat("    - Alter: Plots 30-34\n")
+cat("    - Beschäftigung: Plots 35-39\n\n")
 
 cat("ERGEBNIS:\n")
-cat("  - Insgesamt 23 Plots erstellt\n")
+cat("  - Insgesamt 39 Plots erstellt (sequential numbering)\n")
 cat("  - Alle Analysen dokumentiert\n")
 cat("  - Workspace verfügbar: data/01_scales.RData\n\n")
 

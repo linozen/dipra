@@ -1,0 +1,2170 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+
+================================================================================
+STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
+================================================================================
+
+Start: 2025-11-20 15:27:40 
+
+--------------------------------------------------------------------------------
+SCHRITT 0: Datenbereinigung
+--------------------------------------------------------------------------------
+
+Starte Datenbereinigung...
+Input:  data/data_stressskala_2025-11-20_12-13.csv (ISO-8859-1)
+Output: data/data.csv (UTF-8)
+
+✓ QUESTNNR-Filter angewendet:
+  - Vor Filter: 227 Zeilen
+  - Nach Filter (nur QUESTNNR=A1): 211 Zeilen
+  - Entfernte Retest-Fälle (QUESTNNR=B): 16
+
+✓ Bereinigung erfolgreich abgeschlossen!
+
+Statistiken:
+  - Zeilen verarbeitet: 211
+  - Beschäftigungen bereinigt: 207
+
+  Beschäftigungsverteilung:
+    - Studenten: 121
+    - Angestellte: 71
+    - Andere: 16
+    - (leer): NA
+
+✓ Datei gespeichert als: data/data.csv
+
+✓ Schritt 0 abgeschlossen
+
+--------------------------------------------------------------------------------
+SCHRITT 1: Setup und Skalenkonstruktion
+--------------------------------------------------------------------------------
+
+Lade Pakete...
+
+================================================================================ 
+DATEN EINLESEN 
+================================================================================ 
+
+✓ Daten geladen: 211 Zeilen
+
+-------------------------------------------------------------------------------- 
+DATENBEREINIGUNG 
+-------------------------------------------------------------------------------- 
+
+✓ Datenbereinigung abgeschlossen
+  - Alter ≥18 Jahre
+  - Aufmerksamkeitstest bestanden (SO02_14 == 4)
+
+
+================================================================================ 
+STICHPROBENBESCHREIBUNG 
+================================================================================ 
+
+Anzahl Teilnehmer (≥18 Jahre, vor Aufmerksamkeitstest): 209 
+Ausgeschlossen (Aufmerksamkeitstest nicht bestanden): 29 
+Finale Stichprobe: 180 
+
+Durchschnittsalter: 27.62 Jahre
+Standardabweichung Alter: 9.9 Jahre
+
+Geschlechterverteilung:
+
+  1   2   3 
+ 36 140   4 
+
+Beschäftigungsverteilung:
+
+                 Andere Angestellte   Studenten 
+          1          14          49         116 
+
+================================================================================ 
+VARIANZANALYSE DER ITEMS 
+================================================================================ 
+
+Identifiziere alle Items für die Varianzanalyse...
+
+Anzahl analysierter Items: 65 
+Verteilung nach Skalen:
+  Big Five (Neurotizismus)      :  2 Items
+  Resilienz                     :  6 Items
+  Stressbelastung (kurz)        :  5 Items
+  Stressbelastung (lang)        : 11 Items
+  Stresssymptome (kurz)         :  5 Items
+  Stresssymptome (lang)         : 13 Items
+  Coping (Items)                : 22 Items
+  Zufriedenheit                 :  1 Items
+
+
+-------------------------------------------------------------------------------- 
+Varianzstatistiken pro Item 
+-------------------------------------------------------------------------------- 
+
+Berechne Varianzstatistiken für alle Items...
+
+
+-------------------------------------------------------------------------------- 
+Identifikation problematischer Items 
+-------------------------------------------------------------------------------- 
+
+ZUSAMMENFASSUNG DER PROBLEMATISCHEN ITEMS:
+================================================================================ 
+
+Items mit SD < 0.50:                     0 (0.0%)
+Items mit Range < 3:                     0 (0.0%)
+Items mit Deckeneffekt (>15%):          14 (21.5%)
+Items mit Bodeneffekt (>15%):           28 (43.1%)
+
+Gesamt problematische Items:            42 (64.6%)
+Items ohne Probleme:                    23 (35.4%)
+
+-------------------------------------------------------------------------------- 
+Details zu problematischen Items 
+-------------------------------------------------------------------------------- 
+
+Die folgenden Items zeigen Auffälligkeiten bei der Varianzanalyse:
+
+Item: BF01_01 (Big Five (Neurotizismus))
+  M = 2.52, SD = 1.10, Range = 4.0 [1.0 - 5.0]
+  Probleme:
+    - Bodeneffekt (17.8% wählen Minimum)
+
+Item: BF01_02 (Big Five (Neurotizismus))
+  M = 3.46, SD = 1.18, Range = 4.0 [1.0 - 5.0]
+  Probleme:
+    - Deckeneffekt (20.6% wählen Maximum)
+
+Item: NI06_01 (Stressbelastung (kurz))
+  M = 4.24, SD = 1.28, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (17.8% wählen Maximum)
+
+Item: NI06_04 (Stressbelastung (kurz))
+  M = 4.52, SD = 1.36, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (28.9% wählen Maximum)
+
+Item: SO01_01 (Stressbelastung (lang))
+  M = 2.55, SD = 1.55, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (33.3% wählen Minimum)
+
+Item: SO01_02 (Stressbelastung (lang))
+  M = 3.96, SD = 1.60, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (20.6% wählen Maximum)
+
+Item: SO01_03 (Stressbelastung (lang))
+  M = 2.67, SD = 1.51, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (30.0% wählen Minimum)
+
+Item: SO01_04 (Stressbelastung (lang))
+  M = 3.17, SD = 1.45, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (18.3% wählen Minimum)
+
+Item: SO01_05 (Stressbelastung (lang))
+  M = 2.81, SD = 1.65, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (30.6% wählen Minimum)
+
+Item: SO01_07 (Stressbelastung (lang))
+  M = 2.66, SD = 1.53, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (30.0% wählen Minimum)
+
+Item: SO01_08 (Stressbelastung (lang))
+  M = 4.36, SD = 1.42, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (25.6% wählen Maximum)
+
+Item: SO01_09 (Stressbelastung (lang))
+  M = 2.16, SD = 1.36, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (45.0% wählen Minimum)
+
+Item: SO01_10 (Stressbelastung (lang))
+  M = 3.13, SD = 1.54, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (20.0% wählen Minimum)
+
+Item: SO01_11 (Stressbelastung (lang))
+  M = 4.66, SD = 1.29, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (32.8% wählen Maximum)
+
+Item: NI13_03 (Stresssymptome (kurz))
+  M = 3.24, SD = 1.52, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (17.2% wählen Minimum)
+
+Item: NI13_04 (Stresssymptome (kurz))
+  M = 3.28, SD = 1.58, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (17.2% wählen Minimum)
+
+Item: NI13_05 (Stresssymptome (kurz))
+  M = 3.28, SD = 1.52, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (18.3% wählen Minimum)
+
+Item: SO02_01 (Stresssymptome (lang))
+  M = 3.32, SD = 1.62, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (17.2% wählen Minimum)
+
+Item: SO02_02 (Stresssymptome (lang))
+  M = 2.71, SD = 1.55, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (29.4% wählen Minimum)
+
+Item: SO02_03 (Stresssymptome (lang))
+  M = 2.28, SD = 1.31, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (38.9% wählen Minimum)
+
+Item: SO02_04 (Stresssymptome (lang))
+  M = 3.13, SD = 1.61, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (21.1% wählen Minimum)
+
+Item: SO02_05 (Stresssymptome (lang))
+  M = 4.00, SD = 1.50, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (15.6% wählen Maximum)
+
+Item: SO02_07 (Stresssymptome (lang))
+  M = 3.07, SD = 1.56, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (22.8% wählen Minimum)
+
+Item: SO02_08 (Stresssymptome (lang))
+  M = 2.34, SD = 1.48, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (40.6% wählen Minimum)
+
+Item: SO02_09 (Stresssymptome (lang))
+  M = 2.72, SD = 1.49, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (26.7% wählen Minimum)
+
+Item: SO02_10 (Stresssymptome (lang))
+  M = 2.68, SD = 1.41, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (27.2% wählen Minimum)
+
+Item: SO02_11 (Stresssymptome (lang))
+  M = 2.01, SD = 1.35, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (53.3% wählen Minimum)
+
+Item: SO02_13 (Stresssymptome (lang))
+  M = 2.42, SD = 1.45, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (37.8% wählen Minimum)
+
+Item: NI07_01 (Coping (Items))
+  M = 1.91, SD = 1.36, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (60.0% wählen Minimum)
+
+Item: NI07_03 (Coping (Items))
+  M = 4.73, SD = 1.19, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (30.6% wählen Maximum)
+
+Item: SO23_02 (Coping (Items))
+  M = 1.57, SD = 1.06, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (70.0% wählen Minimum)
+
+Item: SO23_04 (Coping (Items))
+  M = 4.49, SD = 1.30, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (26.1% wählen Maximum)
+
+Item: SO23_05 (Coping (Items))
+  M = 4.68, SD = 1.22, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (30.0% wählen Maximum)
+
+Item: SO23_06 (Coping (Items))
+  M = 1.93, SD = 1.42, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (60.0% wählen Minimum)
+
+Item: SO23_07 (Coping (Items))
+  M = 1.55, SD = 1.36, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (82.8% wählen Minimum)
+
+Item: SO23_09 (Coping (Items))
+  M = 4.33, SD = 1.57, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (27.2% wählen Maximum)
+
+Item: SO23_12 (Coping (Items))
+  M = 1.76, SD = 1.38, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (70.6% wählen Minimum)
+
+Item: SO23_13 (Coping (Items))
+  M = 4.28, SD = 1.83, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (40.6% wählen Maximum)
+
+Item: SO23_15 (Coping (Items))
+  M = 4.18, SD = 1.35, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (16.1% wählen Maximum)
+
+Item: SO23_16 (Coping (Items))
+  M = 2.17, SD = 1.47, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (50.6% wählen Minimum)
+
+Item: SO23_17 (Coping (Items))
+  M = 1.43, SD = 0.98, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Bodeneffekt (78.3% wählen Minimum)
+
+Item: SO23_18 (Coping (Items))
+  M = 4.72, SD = 1.15, Range = 5.0 [1.0 - 6.0]
+  Probleme:
+    - Deckeneffekt (28.3% wählen Maximum)
+
+
+-------------------------------------------------------------------------------- 
+Varianzstatistiken gruppiert nach Skalen 
+-------------------------------------------------------------------------------- 
+
+
+Big Five (Neurotizismus) (2 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.14
+  Durchschnittliche Range: 4.00
+  Problematische Items:    2 von 2
+  Betroffene Items: BF01_01, BF01_02
+
+Resilienz (6 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.15
+  Durchschnittliche Range: 5.67
+  Problematische Items:    0 von 6
+
+Stressbelastung (kurz) (5 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.39
+  Durchschnittliche Range: 5.00
+  Problematische Items:    2 von 5
+  Betroffene Items: NI06_01, NI06_04
+
+Stressbelastung (lang) (11 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.48
+  Durchschnittliche Range: 5.00
+  Problematische Items:    10 von 11
+  Betroffene Items: SO01_01, SO01_02, SO01_03, SO01_04, SO01_05, SO01_07, SO01_08, SO01_09, SO01_10, SO01_11
+
+Stresssymptome (kurz) (5 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.49
+  Durchschnittliche Range: 5.00
+  Problematische Items:    3 von 5
+  Betroffene Items: NI13_03, NI13_04, NI13_05
+
+Stresssymptome (lang) (13 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.49
+  Durchschnittliche Range: 5.00
+  Problematische Items:    11 von 13
+  Betroffene Items: SO02_01, SO02_02, SO02_03, SO02_04, SO02_05, SO02_07, SO02_08, SO02_09, SO02_10, SO02_11, SO02_13
+
+Coping (Items) (22 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    1.30
+  Durchschnittliche Range: 5.00
+  Problematische Items:    14 von 22
+  Betroffene Items: NI07_01, NI07_03, SO23_02, SO23_04, SO23_05, SO23_06, SO23_07, SO23_09, SO23_12, SO23_13, SO23_15, SO23_16, SO23_17, SO23_18
+
+Zufriedenheit (0 Items):
+-------------------------------------------------------------------------------- 
+  Durchschnittliche SD:    NaN
+  Durchschnittliche Range: NaN
+  Problematische Items:    0 von 0
+
+-------------------------------------------------------------------------------- 
+Empfehlungen für den Umgang mit Varianzproblemen 
+-------------------------------------------------------------------------------- 
+
+Die Varianzanalyse hat Items mit unzureichender Streuung identifiziert.
+
+WICHTIGE HINWEISE:
+1. Items wurden NICHT automatisch entfernt
+2. Geringe Varianz kann theoretisch bedeutsam sein (z.B. bei Extremgruppen)
+3. Die Entscheidung sollte theoriegeleitet und transparent erfolgen
+
+MÖGLICHE VORGEHENSWEISEN:
+a) BEHALTEN: Wenn geringe Varianz theoretisch erwartet/bedeutsam ist
+b) ENTFERNEN: Wenn Items keine Differenzierung ermöglichen
+c) ZUSAMMENFASSEN: Items mit ähnlichen Problemen zu Subskalen kombinieren
+d) SENSITIVITÄT: Reliabilitätsanalysen mit/ohne problematische Items
+
+EMPFEHLUNG FÜR DIESE ANALYSE:
+- 42 von 65 Items (64.6%) zeigen Varianzprobleme
+- Prüfen Sie bei Reliabilitätsanalysen (03_reliability.R), ob diese Items
+  niedrige Trennschärfen aufweisen
+- Items mit geringer Varianz UND geringer Trennschärfe sollten entfernt werden
+- Dokumentieren Sie Ihre Entscheidung transparent im Methodenteil
+
+✓ Varianzanalyse abgeschlossen
+
+================================================================================ 
+SKALENKONSTRUKTION 
+================================================================================ 
+
+✓ Neurotizismus konstruiert
+✓ Resilienz konstruiert
+✓ Stressbelastung (kurz, lang, gesamt) konstruiert
+✓ Stresssymptome (kurz, lang, gesamt) konstruiert
+✓ Coping-Skalen (aktiv, Drogen, positiv, sozial, religiös) konstruiert
+
+✓ Alle Skalen erfolgreich konstruiert
+
+================================================================================ 
+AUSREISSER-ANALYSE 
+================================================================================ 
+
+Analysierte Variablen: 15 
+Variablen: Alter, Neurotizismus, Resilienz, Stressbelastung_gesamt, Stressbelastung_kurz, Stressbelastung_lang, Stresssymptome_gesamt, Stresssymptome_kurz, Stresssymptome_lang, Coping_aktiv, Coping_Drogen, Coping_positiv, Coping_sozial, Coping_rel, Zufriedenheit 
+
+
+-------------------------------------------------------------------------------- 
+2.1 Z-Score-Methode (|z| > 3.29) 
+-------------------------------------------------------------------------------- 
+
+Methode: Z-Score-Transformation
+Schwellenwert: |z| > 3.29 
+Interpretation: Werte, die mehr als 3.29 Standardabweichungen vom
+               Mittelwert entfernt liegen
+
+Univariate Ausreisser pro Variable:
+-------------------------------------------------------------------------------- 
+Alter                         :  3 Ausreisser (max |z| = 3.98)
+Neurotizismus                 :  0 Ausreisser
+Resilienz                     :  0 Ausreisser
+Stressbelastung_gesamt        :  0 Ausreisser
+Stressbelastung_kurz          :  0 Ausreisser
+Stressbelastung_lang          :  0 Ausreisser
+Stresssymptome_gesamt         :  0 Ausreisser
+Stresssymptome_kurz           :  0 Ausreisser
+Stresssymptome_lang           :  0 Ausreisser
+Coping_aktiv                  :  0 Ausreisser
+Coping_Drogen                 :  3 Ausreisser (max |z| = 3.40)
+Coping_positiv                :  0 Ausreisser
+Coping_sozial                 :  0 Ausreisser
+Coping_rel                    :  1 Ausreisser (max |z| = 3.46)
+Zufriedenheit                 :  0 Ausreisser
+
+Gesamtanzahl Personen mit mindestens einem Z-Score-Ausreisser: 7 (3.9%)
+
+-------------------------------------------------------------------------------- 
+2.2 IQR-Methode (Interquartilsabstand) 
+-------------------------------------------------------------------------------- 
+
+Methode: Interquartilsabstand (IQR = Q3 - Q1)
+Schwellenwert: Werte < Q1 - 1.5*IQR oder > Q3 + 1.5*IQR
+Interpretation: Werte ausserhalb der 'Whiskers' eines Boxplots
+
+Univariate Ausreisser pro Variable:
+-------------------------------------------------------------------------------- 
+Alter                         : 24 Ausreisser [13.00, 37.00]
+Neurotizismus                 :  0 Ausreisser
+Resilienz                     :  0 Ausreisser
+Stressbelastung_gesamt        :  1 Ausreisser [1.16, 5.91]
+Stressbelastung_kurz          :  0 Ausreisser
+Stressbelastung_lang          :  1 Ausreisser [1.20, 5.20]
+Stresssymptome_gesamt         :  0 Ausreisser
+Stresssymptome_kurz           :  0 Ausreisser
+Stresssymptome_lang           :  0 Ausreisser
+Coping_aktiv                  :  1 Ausreisser [1.12, 6.12]
+Coping_Drogen                 :  7 Ausreisser [-0.80, 4.00]
+Coping_positiv                :  8 Ausreisser [1.34, 5.59]
+Coping_sozial                 :  5 Ausreisser [1.90, 7.50]
+Coping_rel                    :  5 Ausreisser [-0.47, 4.78]
+Zufriedenheit                 :  0 Ausreisser
+
+Gesamtanzahl Personen mit mindestens einem IQR-Ausreisser: 48 (26.7%)
+
+-------------------------------------------------------------------------------- 
+2.3 Mahalanobis-Distanz (multivariat) 
+-------------------------------------------------------------------------------- 
+
+Methode: Mahalanobis-Distanz (berücksichtigt Korrelationen)
+Schwellenwert: Chi²-Verteilung mit df = Anzahl Variablen, p < .001
+Interpretation: Ungewöhnliche Kombination von Werten über Variablen hinweg
+Hinweis: Verwendet nur Hauptskalen um Multikollinearität zu vermeiden
+
+Verwendete Variablen: 11 
+Vollständige Fälle für multivariate Analyse: 180 
+Ausgeschlossene Fälle (fehlende Werte): 0 
+
+Freiheitsgrade (df): 11 
+Chi²-Schwellenwert (p < .001): 31.26 
+
+Anzahl multivariater Ausreisser: 0 (0.0%)
+
+-------------------------------------------------------------------------------- 
+2.4 Zusammenfassung der Ausreisser-Identifikation 
+-------------------------------------------------------------------------------- 
+
+Übersicht der Ausreisser-Identifikation:
+-------------------------------------------------------------------------------- 
+Z-Score-Methode                         :   7 (3.9%)
+IQR-Methode                             :  48 (26.7%)
+Mahalanobis-Distanz                     :   0 (0.0%)
+
+Konsistenz der Ausreisser-Identifikation:
+-------------------------------------------------------------------------------- 
+Von 0 Methode(n) als Ausreisser identifiziert: 132 (73.3%)
+Von 1 Methode(n) als Ausreisser identifiziert:  41 (22.8%)
+Von 2 Methode(n) als Ausreisser identifiziert:   7 (3.9%)
+Von 3 Methode(n) als Ausreisser identifiziert:   0 (0.0%)
+
+Konsistente Ausreisser (≥2 Methoden): 7 (3.9%)
+
+-------------------------------------------------------------------------------- 
+2.5 Detaillierte Ausreisser-Liste 
+-------------------------------------------------------------------------------- 
+
+Anzahl Fälle mit mindestens einer Ausreisser-Identifikation: 48 
+
+Hinweis: Die vollständige Liste wird nicht ausgegeben,
+         aber die Ausreisser-Variablen sind im Dataframe gespeichert:
+         - Z_Ausreisser (logisch)
+         - IQR_Ausreisser (logisch)
+         - Mahalanobis_Ausreisser (logisch)
+         - Mahalanobis_Distanz (numerisch)
+         - Anzahl_Ausreisser_Methoden (0-3)
+         - Konsistenter_Ausreisser (logisch, ≥2 Methoden)
+
+Beispiel: Erste 5 konsistente Ausreisser (identifiziert von ≥2 Methoden):
+-------------------------------------------------------------------------------- 
+ VPN_Code Alter Z_Ausreisser IQR_Ausreisser Mahalanobis_Ausreisser
+   Mowu62    62         TRUE           TRUE                  FALSE
+   AICA03    22         TRUE           TRUE                  FALSE
+   jnul98    27         TRUE           TRUE                  FALSE
+   JaIn03    22         TRUE           TRUE                  FALSE
+   AiGe19    61         TRUE           TRUE                  FALSE
+ Anzahl_Ausreisser_Methoden
+                          2
+                          2
+                          2
+                          2
+                          2
+
+-------------------------------------------------------------------------------- 
+2.6 Empfehlungen für den Umgang mit Ausreissern 
+-------------------------------------------------------------------------------- 
+
+Die Ausreisser-Analyse hat potenzielle Ausreisser identifiziert.
+
+WICHTIGE HINWEISE:
+1. Ausreisser wurden NICHT automatisch entfernt
+2. Die Entscheidung über den Umgang mit Ausreissern sollte
+   theoriegeleitet und transparent dokumentiert werden
+
+MÖGLICHE VORGEHENSWEISEN:
+a) BEHALTEN: Wenn Ausreisser valide Messungen extremer Ausprägungen sind
+b) WINSORISIEREN: Extreme Werte auf einen bestimmten Perzentilwert setzen
+c) TRANSFORMIEREN: Log- oder andere Transformationen anwenden
+d) ROBUSTE METHODEN: Robuste statistische Verfahren verwenden
+e) ENTFERNEN: Nur wenn klare Hinweise auf Messfehler vorliegen
+
+EMPFEHLUNG FÜR DIESE ANALYSE:
+- Prüfen Sie konsistente Ausreisser (≥2 Methoden) genauer
+- Führen Sie Sensitivitätsanalysen durch (mit/ohne Ausreisser)
+- Berichten Sie transparent über gefundene Ausreisser
+- Dokumentieren Sie Ihre Entscheidung im Methodenteil
+
+NÄCHSTE SCHRITTE:
+- Verwenden Sie 'data[data$Konsistenter_Ausreisser == FALSE, ]'
+  um Analysen ohne konsistente Ausreisser durchzuführen
+- Vergleichen Sie Ergebnisse mit und ohne Ausreisser
+
+✓ Ausreisser-Analyse abgeschlossen
+✓ Ausreisser-Variablen im Dataframe 'data' gespeichert
+
+================================================================================ 
+WORKSPACE SPEICHERN 
+================================================================================ 
+
+✓ Workspace gespeichert als: data/01_scales.RData
+
+Dieser Workspace wird von allen nachfolgenden Skripten geladen.
+Führen Sie als nächstes aus:
+  - 02_descriptive_plots.R
+  - 03_reliability.R
+  - 04_validity_main.R
+  - 05_validity_subgroups.R
+
+
+✓ Schritt 1 abgeschlossen
+
+--------------------------------------------------------------------------------
+SCHRITT 2: Deskriptive Plots
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+DESKRIPTIVE PLOTS 
+================================================================================ 
+
+Generiere deskriptive Plots...
+
+✓ Plot 01: Altersverteilung
+✓ Plot 02: Geschlechterverteilung
+✓ Plot 03: Beschäftigungsverteilung
+✓ Plot 04: Bildungsverteilung
+
+================================================================================ 
+FERTIG 
+================================================================================ 
+
+Alle deskriptiven Plots wurden erfolgreich erstellt und in plots/ gespeichert.
+
+Führen Sie als nächstes aus: 03_reliability.R
+
+
+✓ Schritt 2 abgeschlossen (Plots 01-04: Deskriptive Statistiken)
+
+--------------------------------------------------------------------------------
+SCHRITT 3: Reliabilitätsanalysen
+--------------------------------------------------------------------------------
+
+Lade Pakete...
+✓ Pakete geladen
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+TEIL I: RELIABILITÄTSANALYSEN 
+================================================================================ 
+
+In diesem Abschnitt wird die Reliabilität (Messgenauigkeit) der Skalen geprüft.
+Verwendet werden:
+  - Cronbachs Alpha (interne Konsistenz)
+  - Konfirmatorische Faktorenanalyse (CFA, Faktorstruktur)
+
+
+-------------------------------------------------------------------------------- 
+1. RELIABILITÄT: STRESSBELASTUNG 
+-------------------------------------------------------------------------------- 
+
+### 1.1 Cronbachs Alpha: Stressbelastung Kurzskala (5 Items)
+
+Cronbachs Alpha: 0.71 
+Interpretation: Akzeptabel 
+
+### 1.2 Cronbachs Alpha: Stressbelastung Gesamtskala (16 Items)
+
+Cronbachs Alpha: 0.847 
+Interpretation: Gut 
+
+### 1.3 CFA: Stressbelastung Kurzskala
+
+Fit-Indizes:
+  χ² = 16.47 , df = 5 , p = 0.006 
+  CFI = 0.926  (Akzeptabel) 
+  TLI = 0.851  (Problematisch) 
+  RMSEA = 0.113 (Problematisch)
+  SRMR = 0.053  (Gut) 
+
+Fazit Stressbelastung:
+  - Kurzskala hat akzeptable bis gute interne Konsistenz
+  - Faktorstruktur ist akzeptabel bis gut 
+
+✓ Reliabilitäts-Plots für Stressbelastung gespeichert
+
+
+-------------------------------------------------------------------------------- 
+2. RELIABILITÄT: STRESSSYMPTOME 
+-------------------------------------------------------------------------------- 
+
+### 2.1 Cronbachs Alpha: Stresssymptome Kurzskala (5 Items)
+
+Cronbachs Alpha: 0.812 
+Interpretation: Gut 
+
+### 2.2 Cronbachs Alpha: Stresssymptome Gesamtskala (18 Items)
+
+Cronbachs Alpha: 0.919 
+Interpretation: Gut 
+
+### 2.3 CFA: Stresssymptome Kurzskala
+
+Fit-Indizes:
+  χ² = 18.17 , df = 5 , p = 0.003 
+  CFI = 0.956  (Sehr gut) 
+  TLI = 0.912  (Akzeptabel) 
+  RMSEA = 0.121 (Problematisch)
+  SRMR = 0.048  (Gut) 
+
+Fazit Stresssymptome:
+  - Kurzskala hat akzeptable bis gute interne Konsistenz
+  - Faktorstruktur ist akzeptabel bis gut 
+
+✓ Reliabilitäts-Plots für Stresssymptome gespeichert
+
+
+-------------------------------------------------------------------------------- 
+3. RELIABILITÄT: COPING-SKALEN 
+-------------------------------------------------------------------------------- 
+
+### Aktives Coping 
+
+  Cronbachs Alpha: 0.782 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 7.7 , df = 2 , p = 0.021 
+    CFI = 0.973  (Sehr gut) 
+    TLI = 0.918  (Akzeptabel) 
+    RMSEA = 0.126 (Problematisch)
+    SRMR = 0.039  (Gut) 
+
+### Drogen-Coping 
+
+  Cronbachs Alpha: 0.834 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 38.8 , df = 5 , p = 0 
+    CFI = 0.925  (Akzeptabel) 
+    TLI = 0.85  (Problematisch) 
+    RMSEA = 0.194 (Problematisch)
+    SRMR = 0.056  (Gut) 
+
+### Positive Neubewertung 
+
+  Cronbachs Alpha: 0.707 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 6.47 , df = 2 , p = 0.039 
+    CFI = 0.973  (Sehr gut) 
+    TLI = 0.92  (Akzeptabel) 
+    RMSEA = 0.111 (Problematisch)
+    SRMR = 0.04  (Gut) 
+
+### Soziales Coping 
+
+  Cronbachs Alpha: 0.904 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 25.71 , df = 5 , p = 0 
+    CFI = 0.969  (Sehr gut) 
+    TLI = 0.938  (Akzeptabel) 
+    RMSEA = 0.152 (Problematisch)
+    SRMR = 0.035  (Gut) 
+
+### Religiöses Coping 
+
+  Cronbachs Alpha: 0.774 - Akzeptabel bis gut 
+
+  CFA Fit-Indizes:
+    χ² = 3.5 , df = 2 , p = 0.174 
+    CFI = 0.995  (Sehr gut) 
+    TLI = 0.984  (Sehr gut) 
+    RMSEA = 0.065 (Akzeptabel)
+    SRMR = 0.027  (Gut) 
+
+✓ Reliabilitäts-Plot für alle Skalen gespeichert
+
+✓ Itemstatistiken für Coping-Skalen gespeichert
+
+✓ Reliabilitäts-Plots für Coping-Skalen gespeichert
+
+
+================================================================================ 
+TEIL II: RETEST-RELIABILITÄT 
+================================================================================ 
+
+In diesem Abschnitt wird die Retest-Reliabilität (Stabilität) der Skalen geprüft.
+Verwendet werden 16 Teilnehmer, die den Fragebogen zweimal ausgefüllt haben.
+
+HINWEIS: stringdist Paket nicht verfügbar - verwende eigene Levenshtein-Implementierung
+
+
+-------------------------------------------------------------------------------- 
+1. RETEST-DATEN LADEN 
+-------------------------------------------------------------------------------- 
+
+Lade Rohdaten inklusive Retest-Fälle...
+✓ Rohdaten geladen: 227 Zeilen
+
+Original-Tests (QUESTNNR=A1): 211 
+Retest-Tests (QUESTNNR=B): 16 
+
+
+-------------------------------------------------------------------------------- 
+2. RETEST-PAARE MATCHEN 
+-------------------------------------------------------------------------------- 
+
+Matching-Strategie: Zwei-Stufen-Matching
+  1. Exakte Übereinstimmung (case-insensitive, ohne Leerzeichen)
+  2. Fuzzy Matching (Levenshtein-Distanz ≤ 2) für ungematchte Fälle
+
+STUFE 1: Exakte Übereinstimmung...
+✓ Exakte Übereinstimmungen: 11
+
+STUFE 2: Fuzzy Matching für ungematchte Fälle...
+  Ungematchte Retest-Fälle: 5
+  Ungematchte Original-Fälle: 200
+  Fuzzy Match: JlKö00 <-> JlKo00 (Distanz: 1)
+  Fuzzy Match: AiHa04 <-> AIHE04 (Distanz: 1)
+  Fuzzy Match: DIOF04 <-> DLOF04 (Distanz: 1)
+  Fuzzy Match: AOCA03 <-> AICA03 (Distanz: 1)
+  Fuzzy Match: anlo02 <-> AaLo02 (Distanz: 1)
+
+✓ Fuzzy Matches: 5
+✓ Gesamt-Matches: 16 von 16 Retest-Fällen
+✓ Ungematchte Retest-Fälle: 0
+
+Gematchte Retest-Paare:
+-------------------------------------------------------------------------------- 
+ 1. OiOS01 = OiOs01 (exact, d=0)
+ 2. FaWr78 = FaWr78 (exact, d=0)
+ 3. ANBE04 = ANBE04 (exact, d=0)
+ 4. MHBO03 = MHBO03 (exact, d=0)
+ 5. AXXX83 = AXXX83  (exact, d=0)
+ 6. AeHe98 = AeHe98 (exact, d=0)
+ 7. ORFR83 = OrFr83 (exact, d=0)
+ 8. JaSc66 = Jasc66 (exact, d=0)
+ 9. AaTü04 = AaTü04 (exact, d=0)
+10. AnKa05 = AnKa05 (exact, d=0)
+11. MhSp05 = MhSp05 (exact, d=0)
+12. JlKo00 ~ JlKö00 (fuzzy, d=1)
+13. AIHE04 ~ AiHa04 (fuzzy, d=1)
+14. DLOF04 ~ DIOF04 (fuzzy, d=1)
+15. AICA03 ~ AOCA03 (fuzzy, d=1)
+16. AaLo02 ~ anlo02 (fuzzy, d=1)
+
+
+-------------------------------------------------------------------------------- 
+3. SKALEN FÜR RETEST-PAARE BERECHNEN 
+-------------------------------------------------------------------------------- 
+
+Berechne Skalenwerte für Original- und Retest-Daten...
+
+✓ Skalen für Original-Tests berechnet
+✓ Skalen für Retest-Tests berechnet
+
+
+-------------------------------------------------------------------------------- 
+4. RETEST-RELIABILITÄT (Test-Retest-Korrelationen) 
+-------------------------------------------------------------------------------- 
+
+Methode: Pearson-Korrelation zwischen Test und Retest
+Interpretation:
+  r > .80: Exzellent
+  r > .70: Gut
+  r > .60: Akzeptabel
+  r < .60: Problematisch
+
+Retest-Reliabilitäten (N = 16 ):
+================================================================================ 
+
+Neurotizismus                 : r = 0.882*** [0.687, 0.959] (N = 16) - Exzellent
+Resilienz                     : r = 0.857*** [0.628, 0.949] (N = 16) - Exzellent
+Stressbelastung_kurz          : r = 0.777*** [0.458, 0.919] (N = 16) - Gut
+Stressbelastung_lang          : r = 0.810*** [0.525, 0.932] (N = 16) - Exzellent
+Stressbelastung_gesamt        : r = 0.812*** [0.529, 0.932] (N = 16) - Exzellent
+Stresssymptome_kurz           : r = 0.794*** [0.492, 0.925] (N = 16) - Gut
+Stresssymptome_lang           : r = 0.693** [0.301, 0.885] (N = 16) - Akzeptabel
+Stresssymptome_gesamt         : r = 0.770*** [0.443, 0.916] (N = 16) - Gut
+Coping_aktiv                  : r = 0.703** [0.318, 0.889] (N = 16) - Gut
+Coping_Drogen                 : r = 0.934*** [0.817, 0.977] (N = 16) - Exzellent
+Coping_positiv                : r = 0.844*** [0.599, 0.944] (N = 16) - Exzellent
+Coping_sozial                 : r = 0.906*** [0.744, 0.967] (N = 16) - Exzellent
+Coping_rel                    : r = 0.973*** [0.923, 0.991] (N = 16) - Exzellent
+
+Signifikanzniveaus: *** p<.001, ** p<.01, * p<.05
+
+
+-------------------------------------------------------------------------------- 
+4.1. ITEM-LEVEL RETEST-RELIABILITÄT 
+-------------------------------------------------------------------------------- 
+
+Retest-Reliabilitäten auf Item-Ebene (nach Skala geordnet)
+
+### Big Five (Neurotizismus)
+  BF01_01   : r = 0.689**  [Akz]
+  BF01_02   : r = 0.848*** [Exz]
+  → Durchschnitt: r = 0.768
+
+### Resilienz
+  RE01_01   : r = 0.798*** [Gut]
+  RE01_02   : r = 0.765*** [Gut]
+  RE01_03   : r = 0.154ns  [Pro]
+  RE01_04   : r = 0.587*   [Pro]
+  RE01_05   : r = 0.530*   [Pro]
+  RE01_06   : r = 0.799*** [Gut]
+  → Durchschnitt: r = 0.606
+
+### Stressbelastung (kurz)
+  NI06_01   : r = 0.685**  [Akz]
+  NI06_02   : r = 0.759*** [Gut]
+  NI06_03   : r = 0.658**  [Akz]
+  NI06_04   : r = 0.769*** [Gut]
+  NI06_05   : r = 0.659**  [Akz]
+  → Durchschnitt: r = 0.706
+
+### Stressbelastung (lang)
+  SO01_01   : r = 0.387ns  [Pro]
+  SO01_02   : r = 0.456ns  [Pro]
+  SO01_03   : r = 0.624**  [Akz]
+  SO01_04   : r = 0.197ns  [Pro]
+  SO01_05   : r = 0.716**  [Gut]
+  SO01_06   : r = 0.742*** [Gut]
+  SO01_07   : r = 0.734**  [Gut]
+  SO01_08   : r = 0.727**  [Gut]
+  SO01_09   : r = 0.666**  [Akz]
+  SO01_10   : r = 0.702**  [Gut]
+  SO01_11   : r = 0.870*** [Exz]
+  → Durchschnitt: r = 0.620
+
+### Stresssymptome (kurz)
+  NI13_01   : r = 0.810*** [Exz]
+  NI13_02   : r = 0.858*** [Exz]
+  NI13_03   : r = 0.611*   [Akz]
+  NI13_04   : r = 0.825*** [Exz]
+  NI13_05   : r = 0.520*   [Pro]
+  → Durchschnitt: r = 0.725
+
+### Stresssymptome (lang)
+  SO02_01   : r = 0.715**  [Gut]
+  SO02_02   : r = 0.481ns  [Pro]
+  SO02_03   : r = 0.396ns  [Pro]
+  SO02_04   : r = 0.888*** [Exz]
+  SO02_05   : r = 0.867*** [Exz]
+  SO02_06   : r = 0.672**  [Akz]
+  SO02_07   : r = 0.666**  [Akz]
+  SO02_08   : r = 0.893*** [Exz]
+  SO02_09   : r = 0.538*   [Pro]
+  SO02_10   : r = 0.640**  [Akz]
+  SO02_11   : r = 0.807*** [Exz]
+  SO02_12   : r = 0.672**  [Akz]
+  SO02_13   : r = 0.437ns  [Pro]
+  → Durchschnitt: r = 0.667
+
+### Coping: Aktiv
+  SO23_01   : r = 0.771*** [Gut]
+  SO23_20   : r = 0.614*   [Akz]
+  SO23_14   : r = 0.564*   [Pro]
+  NI07_05   : r = 0.488ns  [Pro]
+  → Durchschnitt: r = 0.609
+
+### Coping: Drogen
+  NI07_01   : r = 0.889*** [Exz]
+  SO23_02   : r = 0.890*** [Exz]
+  SO23_07   : r = 0.983*** [Exz]
+  SO23_13   : r = 0.661**  [Akz]
+  SO23_17   : r = 0.997*** [Exz]
+  → Durchschnitt: r = 0.884
+
+### Coping: Positive Neubewertung
+  SO23_11   : r = 0.773*** [Gut]
+  SO23_10   : r = 0.715**  [Gut]
+  SO23_15   : r = 0.883*** [Exz]
+  NI07_04   : r = 0.781*** [Gut]
+  → Durchschnitt: r = 0.788
+
+### Coping: Sozial
+  NI07_03   : r = 0.925*** [Exz]
+  SO23_04   : r = 0.760*** [Gut]
+  SO23_05   : r = 0.835*** [Exz]
+  SO23_09   : r = 0.823*** [Exz]
+  SO23_18   : r = 0.839*** [Exz]
+  → Durchschnitt: r = 0.836
+
+### Coping: Religiös
+  NI07_02   : r = 0.759*** [Gut]
+  SO23_06   : r = 0.961*** [Exz]
+  SO23_12   : r = 0.979*** [Exz]
+  SO23_16   : r = 0.955*** [Exz]
+  → Durchschnitt: r = 0.913
+
+Abkürzungen: Exz=Exzellent (>.80), Gut (>.70), Akz=Akzeptabel (>.60), Pro=Problematisch (<.60)
+Signifikanz: *** p<.001, ** p<.01, * p<.05, ns=nicht signifikant
+
+
+-------------------------------------------------------------------------------- 
+5. RETEST-RELIABILITÄT VISUALISIERUNG 
+-------------------------------------------------------------------------------- 
+
+✓ Item-Level Retest-Reliabilitäts-Plot gespeichert (Plot 12)
+
+
+-------------------------------------------------------------------------------- 
+6. FAZIT RETEST-RELIABILITÄT 
+-------------------------------------------------------------------------------- 
+
+ZUSAMMENFASSUNG RETEST-RELIABILITÄT:
+================================================================================ 
+
+Anzahl Retest-Paare: 16
+Zeitabstand zwischen Test und Retest: ~2 Wochen
+
+Durchschnittliche Retest-Reliabilität: r = 0.827
+Median Retest-Reliabilität: r = 0.812
+
+Verteilung der Reliabilitäten:
+  - Exzellent (r > .80):      8 (61.5%)
+  - Gut (r > .70):            4 (30.8%)
+  - Akzeptabel (r > .60):     1 (7.7%)
+  - Problematisch (r < .60):  0 (0.0%)
+
+INTERPRETATION: Die Skalen zeigen insgesamt gute bis exzellente Retest-Reliabilitäten.
+                Die Messungen sind über die Zeit stabil.
+
+✓ Retest-Reliabilitätsanalyse abgeschlossen
+
+
+================================================================================ 
+FERTIG 
+================================================================================ 
+
+Alle Reliabilitätsanalysen wurden erfolgreich durchgeführt.
+
+Plots gespeichert: 05-12
+
+Führen Sie als nächstes aus: 04_validity_main.R
+
+
+✓ Schritt 3 abgeschlossen (Plots 05-12: Reliabilitätsanalysen)
+
+--------------------------------------------------------------------------------
+SCHRITT 4: Hauptvaliditätsanalysen
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+TEIL II: VALIDITÄTSANALYSEN (KONVERGENTE VALIDITÄT) 
+================================================================================ 
+
+In diesem Abschnitt wird die Validität der Skalen geprüft.
+Konvergente Validität: Korrelationen mit theoretisch verwandten Konstrukten
+
+Erwartete Zusammenhänge:
+  - Stressbelastung/Stresssymptome → negativ mit Zufriedenheit
+  - Stressbelastung/Stresssymptome → positiv mit Neurotizismus
+  - Stressbelastung/Stresssymptome → negativ mit Resilienz
+  - Coping-Strategien → unterschiedliche Muster je nach Adaptivität
+
+
+-------------------------------------------------------------------------------- 
+4. KONVERGENTE VALIDITÄT: STRESSBELASTUNG 
+-------------------------------------------------------------------------------- 
+
+### 4.1 Korrelationen mit Zufriedenheit
+
+  Kurzskala:    r = -0.439 , p = 7.39e-10 
+  Langskala:    r = -0.446 , p = 3.41e-10 
+  Gesamtskala:  r = -0.458 , p = 1.04e-10 
+
+### 4.2 Korrelationen mit Neurotizismus
+
+  Kurzskala:    r = 0.513 , p = 1.76e-13 
+  Langskala:    r = 0.454 , p = 1.62e-10 
+  Gesamtskala:  r = 0.505 , p = 4.69e-13 
+
+### 4.3 Korrelationen mit Resilienz
+
+  Kurzskala:    r = -0.428 , p = 2.09e-09 
+  Langskala:    r = -0.443 , p = 4.98e-10 
+  Gesamtskala:  r = -0.459 , p = 8.72e-11 
+
+Fazit:
+  - Kurzskala korreliert substanziell mit Validitätskriterien
+  - Konvergente Validität ist gegeben 
+
+✓ Validitäts-Plots für Stressbelastung gespeichert
+
+
+-------------------------------------------------------------------------------- 
+5. KONVERGENTE VALIDITÄT: STRESSSYMPTOME 
+-------------------------------------------------------------------------------- 
+
+### 5.1 Korrelationen mit Zufriedenheit
+
+  Kurzskala:    r = -0.612 , p = <2e-16 
+  Langskala:    r = -0.597 , p = <2e-16 
+  Gesamtskala:  r = -0.619 , p = <2e-16 
+
+### 5.2 Korrelationen mit Neurotizismus
+
+  Kurzskala:    r = 0.596 , p = <2e-16 
+  Langskala:    r = 0.546 , p = 2.16e-15 
+  Gesamtskala:  r = 0.578 , p = <2e-16 
+
+### 5.3 Korrelationen mit Resilienz
+
+  Kurzskala:    r = -0.541 , p = 4.74e-15 
+  Langskala:    r = -0.504 , p = 5.77e-13 
+  Gesamtskala:  r = -0.53 , p = 1.94e-14 
+
+✓ Validitäts-Plots für Stresssymptome gespeichert
+
+
+-------------------------------------------------------------------------------- 
+6. KONVERGENTE VALIDITÄT: COPING-STRATEGIEN 
+-------------------------------------------------------------------------------- 
+
+### Coping aktiv 
+
+  mit Zufriedenheit : r = 0.141 , p = 0.0581 
+  mit Neurotizismus : r = -0.238 , p = 0.00132 
+  mit Resilienz : r = 0.209 , p = 0.0048 
+
+### Coping Drogen 
+
+  mit Zufriedenheit : r = -0.089 , p = 0.237 
+  mit Neurotizismus : r = 0.033 , p = 0.665 
+  mit Resilienz : r = -0.068 , p = 0.368 
+
+### Coping positiv 
+
+  mit Zufriedenheit : r = 0.408 , p = 1.28e-08 
+  mit Neurotizismus : r = -0.595 , p = <2e-16 
+  mit Resilienz : r = 0.533 , p = 1.25e-14 
+
+### Coping sozial 
+
+  mit Zufriedenheit : r = 0.437 , p = 8.69e-10 
+  mit Neurotizismus : r = -0.244 , p = 0.000953 
+  mit Resilienz : r = 0.15 , p = 0.045 
+
+### Coping rel 
+
+  mit Zufriedenheit : r = 0.102 , p = 0.175 
+  mit Neurotizismus : r = -0.097 , p = 0.196 
+  mit Resilienz : r = 0.025 , p = 0.741 
+
+✓ Validitäts-Plots für Coping-Strategien gespeichert
+
+✓ Zusätzliche Heatmap für NI07-Items gespeichert
+
+
+-------------------------------------------------------------------------------- 
+7. KONFIRMATORISCHE FAKTORENANALYSE: 7-FAKTOREN-MODELL 
+-------------------------------------------------------------------------------- 
+
+In diesem Abschnitt wird die theoretisch angenommene 7-Faktoren-Struktur
+mittels CFA überprüft.
+
+Erwartete Faktoren:
+  1. Stressbelastung (5 Items - Kurzskala)
+  2. Stresssymptome (5 Items - Kurzskala)
+  3. Aktives Coping (4 Items)
+  4. Drogen-Coping (5 Items)
+  5. Positives Coping (4 Items)
+  6. Soziales Coping (5 Items)
+  7. Religiöses Coping (4 Items)
+
+### 7.1 CFA-Modell fitten
+
+Modell-Zusammenfassung:
+
+
+### 7.2 Fit-Indices interpretieren
+
+Chi-Quadrat:       χ² = 782.65 , df = 443 , p = <2e-16 
+CFI:               0.871 (problematisch) 
+TLI:               0.856 (problematisch) 
+RMSEA:            0.065 [0.058, 0.073](akzeptabel)
+SRMR:              0.079 (akzeptabel) 
+
+Interpretation der Fit-Indices:
+  - CFI/TLI ≥ 0.95: ausgezeichneter Fit, ≥ 0.90: akzeptabel
+  - RMSEA ≤ 0.05: ausgezeichneter Fit, ≤ 0.08: akzeptabel
+  - SRMR ≤ 0.05: ausgezeichneter Fit, ≤ 0.08: akzeptabel
+
+Fazit:
+  - Der Modellfit ist verbesserungswürdig 
+  - Die 7-Faktoren-Struktur wird nicht vollständig bestätigt 
+
+### 7.3 Faktorladungen extrahieren
+
+Standardisierte Faktorladungen:
+
+       lhs     rhs est.std pvalue
+    Stress NI06_01   0.662  0.000
+    Stress NI06_02   0.628  0.000
+    Stress NI06_03   0.544  0.000
+    Stress NI06_04   0.536  0.000
+    Stress NI06_05   0.515  0.000
+  Symptome NI13_01   0.578  0.000
+  Symptome NI13_02   0.839  0.000
+  Symptome NI13_03   0.793  0.000
+  Symptome NI13_04   0.648  0.000
+  Symptome NI13_05   0.556  0.000
+     Aktiv SO23_01   0.815  0.000
+     Aktiv SO23_20   0.661  0.000
+     Aktiv SO23_14   0.759  0.000
+     Aktiv NI07_05   0.533  0.000
+    Drogen NI07_01   0.926  0.000
+    Drogen SO23_02   0.778  0.000
+    Drogen SO23_07   0.593  0.000
+    Drogen SO23_13   0.635  0.000
+    Drogen SO23_17   0.779  0.000
+   Positiv SO23_11   0.761  0.000
+   Positiv SO23_10   0.824  0.000
+   Positiv SO23_15   0.325  0.001
+   Positiv NI07_04   0.587  0.000
+    Sozial NI07_03   0.824  0.000
+    Sozial SO23_04   0.837  0.000
+    Sozial SO23_05   0.872  0.000
+    Sozial SO23_09   0.641  0.000
+    Sozial SO23_18   0.937  0.000
+ Religioes NI07_02   0.234  0.007
+ Religioes SO23_06   0.876  0.000
+ Religioes SO23_12   0.887  0.000
+ Religioes SO23_16   0.728  0.000
+
+Interpretation:
+  - Faktorladungen > 0.40 gelten als substanziell
+  - Faktorladungen > 0.70 gelten als stark
+
+⚠ Schwache Faktorladungen (< 0.40):
+       lhs     rhs est.std
+   Positiv SO23_15   0.325
+ Religioes NI07_02   0.234
+
+### 7.4 Faktor-Korrelationen
+
+Korrelationen zwischen den Faktoren:
+
+      lhs       rhs est.std pvalue
+   Stress  Symptome   0.817  0.000
+   Stress     Aktiv  -0.239  0.022
+   Stress    Drogen   0.190  0.033
+   Stress   Positiv  -0.486  0.000
+   Stress    Sozial  -0.290  0.002
+   Stress Religioes   0.015  0.888
+ Symptome     Aktiv  -0.197  0.073
+ Symptome    Drogen   0.207  0.008
+ Symptome   Positiv  -0.449  0.000
+ Symptome    Sozial  -0.401  0.000
+ Symptome Religioes  -0.078  0.363
+    Aktiv    Drogen  -0.125  0.195
+    Aktiv   Positiv   0.315  0.038
+    Aktiv    Sozial   0.065  0.435
+    Aktiv Religioes   0.105  0.185
+   Drogen   Positiv  -0.113  0.295
+   Drogen    Sozial  -0.136  0.057
+   Drogen Religioes  -0.056  0.403
+  Positiv    Sozial   0.213  0.021
+  Positiv Religioes   0.220  0.007
+   Sozial Religioes  -0.073  0.397
+
+Interpretation:
+  - Moderate Korrelationen (0.30-0.70) zeigen verwandte aber distinkte Faktoren
+  - Hohe Korrelationen (> 0.85) deuten auf mangelnde Diskriminanz hin
+
+✓ Faktoren sind hinreichend distinkt (alle Korrelationen < 0.85)
+
+### 7.5 Reliabilität der Faktoren
+
+Composite Reliability (CR) und Average Variance Extracted (AVE):
+
+    Faktor        CR       AVE
+    Stress 0.7148592 0.3361551
+  Symptome 0.8171813 0.4788490
+     Aktiv 0.7898802 0.4903969
+    Drogen 0.8635834 0.5649227
+   Positiv 0.7312530 0.4270891
+    Sozial 0.9148500 0.6855205
+ Religioes 0.7995020 0.5346177
+
+Interpretation:
+  - CR > 0.70: gute Reliabilität
+  - AVE > 0.50: ausreichende konvergente Validität
+  - AVE > r²: diskriminante Validität gegeben
+
+⚠ Faktoren mit niedriger konvergenter Validität (AVE < 0.50):
+[1] "Stress"   "Symptome" "Aktiv"    "Positiv" 
+
+### 7.6 Visualisierung
+
+Erstelle Plot 1: Verbesserte Faktorladungen-Heatmap...
+✓ Plot 17 gespeichert: Faktorladungen-Heatmap
+
+Erstelle Plot 2: CR & AVE Vergleich...
+✓ Plot 18 gespeichert: CR & AVE Vergleich
+
+Erstelle Plot 3: Faktor-Korrelations-Netzwerk...
+✓ Plot 19 gespeichert: Faktor-Korrelations-Netzwerk
+
+### 7.7 Fazit CFA
+
+Die konfirmatorische Faktorenanalyse zeigt:
+  - Modellfit: verbesserungswürdig 
+  - Faktorladungen: teilweise schwach 
+  - Faktoren-Diskriminanz: gegeben 
+  - Reliabilität: gut 
+
+✓ CFA abgeschlossen
+
+
+================================================================================ 
+FERTIG 
+================================================================================ 
+
+Alle Hauptvaliditätsanalysen wurden erfolgreich durchgeführt.
+
+Plots gespeichert: 13-19
+  - 13-16: Validitätskorrelationen
+  - 17: CFA Faktorladungen-Heatmap
+  - 18: CFA CR & AVE Vergleich
+  - 19: CFA Faktor-Korrelations-Netzwerk
+
+Führen Sie als nächstes aus: 05_validity_subgroups.R
+
+
+✓ Schritt 4 abgeschlossen (Plots 13-19: Validitätsanalysen)
+
+--------------------------------------------------------------------------------
+SCHRITT 5: Subgruppenanalysen - Stressbelastung
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+SUBGRUPPENANALYSEN: STRESSBELASTUNG 
+================================================================================ 
+
+Analysiere Stressbelastung über demographische Subgruppen
+
+### Validität nach Geschlecht
+
+Stressbelastung:
+
+Zufriedenheit:
+  Männlich:  r = -0.395, p = 0.017
+  Weiblich:  r = -0.463, p = 8.49e-09
+  Unterschied: z = 0.426, p = 0.67
+
+Neurotizismus:
+  Männlich:  r = 0.483, p = 0.00288
+  Weiblich:  r = 0.507, p = 1.69e-10
+  Unterschied: z = -0.165, p = 0.869
+
+Resilienz:
+  Männlich:  r = -0.502, p = 0.0018
+  Weiblich:  r = -0.395, p = 1.41e-06
+  Unterschied: z = -0.697, p = 0.486
+
+
+### Validität nach Bildungsniveau
+
+Stressbelastung:
+
+Zufriedenheit:
+  Niedrig: r = -0.287, p = 0.281
+  Mittel:  r = -0.502, p = 5.33e-07
+  Hoch:    r = -0.411, p = 0.000447
+  Niedrig vs. Mittel: z = 0.863, p = 0.388
+  Niedrig vs. Hoch:   z = 0.467, p = 0.64
+  Mittel vs. Hoch:    z = -0.703, p = 0.482
+
+Neurotizismus:
+  Niedrig: r = -0.164, p = 0.545
+  Mittel:  r = 0.608, p = 2.56e-10
+  Hoch:    r = 0.523, p = 4.03e-06
+  Niedrig vs. Mittel: z = -2.928, p = 0.00341 *
+  Niedrig vs. Hoch:   z = -2.456, p = 0.014 *
+  Mittel vs. Hoch:    z = 0.769, p = 0.442
+
+Resilienz:
+  Niedrig: r = 0.024, p = 0.929
+  Mittel:  r = -0.449, p = 1e-05
+  Hoch:    r = -0.552, p = 8.98e-07
+  Niedrig vs. Mittel: z = 1.707, p = 0.0879
+  Niedrig vs. Hoch:   z = 2.125, p = 0.0336 *
+  Mittel vs. Hoch:    z = 0.837, p = 0.403
+
+
+### Validität nach Alter
+
+Stressbelastung:
+
+Zufriedenheit:
+  Jung (<30):     r = -0.415, p = 1.93e-07
+  Mittel (30-45): r = -0.551, p = 0.0096
+  Alt (>45):      r = -0.551, p = 0.0507
+  Jung vs. Mittel: z = 0.714, p = 0.475
+  Jung vs. Alt:    z = 0.547, p = 0.584
+  Mittel vs. Alt:  z = 0.001, p = 0.999
+
+Neurotizismus:
+  Jung (<30):     r = 0.493, p = 2.68e-10
+  Mittel (30-45): r = 0.6, p = 0.004
+  Alt (>45):      r = 0.636, p = 0.0194
+  Jung vs. Mittel: z = -0.617, p = 0.537
+  Jung vs. Alt:    z = -0.648, p = 0.517
+  Mittel vs. Alt:  z = -0.147, p = 0.883
+
+Resilienz:
+  Jung (<30):     r = -0.434, p = 4.29e-08
+  Mittel (30-45): r = -0.56, p = 0.00834
+  Alt (>45):      r = -0.172, p = 0.573
+  Jung vs. Mittel: z = 0.668, p = 0.504
+  Jung vs. Alt:    z = -0.89, p = 0.373
+  Mittel vs. Alt:  z = -1.162, p = 0.245
+
+
+### Validität nach Beschäftigung
+
+  4: n = 116
+  3: n = 49
+
+Stressbelastung:
+
+Zufriedenheit:
+  4: r = -0.485, p = 3.34e-08
+  3: r = -0.453, p = 0.00108
+  4 vs. 3: z = -0.238, p = 0.812
+
+Neurotizismus:
+  4: r = 0.57, p = 2.38e-11
+  3: r = 0.461, p = 0.00085
+  4 vs. 3: z = 0.851, p = 0.395
+
+Resilienz:
+  4: r = -0.438, p = 8.57e-07
+  3: r = -0.55, p = 4.21e-05
+  4 vs. 3: z = 0.849, p = 0.396
+
+
+✓ Subgruppenanalysen für Stressbelastung abgeschlossen
+  Plots werden in 08_create_subgroup_plots.R erstellt
+
+Führen Sie als nächstes aus: 06_validity_subgroups_symptoms.R
+
+
+✓ Schritt 5 abgeschlossen
+
+--------------------------------------------------------------------------------
+SCHRITT 6: Subgruppenanalysen - Stresssymptome
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+SUBGRUPPENANALYSEN: STRESSSYMPTOME 
+================================================================================ 
+
+Analysiere Stresssymptome über demographische Subgruppen
+
+### Validität nach Geschlecht
+
+Stresssymptome:
+
+Zufriedenheit:
+  Männlich:  r = -0.671, p = 7.38e-06
+  Weiblich:  r = -0.602, p = 3.83e-15
+  Unterschied: z = -0.607, p = 0.544
+
+Neurotizismus:
+  Männlich:  r = 0.616, p = 6.34e-05
+  Weiblich:  r = 0.573, p = 1.41e-13
+  Unterschied: z = 0.345, p = 0.73
+
+Resilienz:
+  Männlich:  r = -0.563, p = 0.000348
+  Weiblich:  r = -0.512, p = 9.79e-11
+  Unterschied: z = -0.37, p = 0.711
+
+
+### Validität nach Bildungsniveau
+
+Stresssymptome:
+
+Zufriedenheit:
+  Niedrig: r = -0.716, p = 0.00179
+  Mittel:  r = -0.597, p = 6.81e-10
+  Hoch:    r = -0.596, p = 6.45e-08
+  Niedrig vs. Mittel: z = -0.714, p = 0.476
+  Niedrig vs. Hoch:   z = -0.702, p = 0.483
+  Mittel vs. Hoch:    z = -0.004, p = 0.997
+
+Neurotizismus:
+  Niedrig: r = 0.452, p = 0.0786
+  Mittel:  r = 0.608, p = 2.72e-10
+  Hoch:    r = 0.586, p = 1.23e-07
+  Niedrig vs. Mittel: z = -0.731, p = 0.465
+  Niedrig vs. Hoch:   z = -0.606, p = 0.544
+  Mittel vs. Hoch:    z = 0.205, p = 0.837
+
+Resilienz:
+  Niedrig: r = -0.531, p = 0.0345
+  Mittel:  r = -0.509, p = 3.53e-07
+  Hoch:    r = -0.571, p = 2.98e-07
+  Niedrig vs. Mittel: z = -0.1, p = 0.92
+  Niedrig vs. Hoch:   z = 0.192, p = 0.848
+  Mittel vs. Hoch:    z = 0.537, p = 0.591
+
+
+### Validität nach Alter
+
+Stresssymptome:
+
+Zufriedenheit:
+  Jung (<30):     r = -0.618, p = <2e-16
+  Mittel (30-45): r = -0.57, p = 0.00696
+  Alt (>45):      r = -0.694, p = 0.00848
+  Jung vs. Mittel: z = -0.299, p = 0.765
+  Jung vs. Alt:    z = 0.408, p = 0.683
+  Mittel vs. Alt:  z = 0.528, p = 0.598
+
+Neurotizismus:
+  Jung (<30):     r = 0.591, p = 4e-15
+  Mittel (30-45): r = 0.574, p = 0.00648
+  Alt (>45):      r = 0.565, p = 0.0441
+  Jung vs. Mittel: z = 0.102, p = 0.918
+  Jung vs. Alt:    z = 0.119, p = 0.906
+  Mittel vs. Alt:  z = 0.034, p = 0.973
+
+Resilienz:
+  Jung (<30):     r = -0.54, p = 1.99e-12
+  Mittel (30-45): r = -0.672, p = 0.000839
+  Alt (>45):      r = -0.314, p = 0.295
+  Jung vs. Mittel: z = 0.843, p = 0.399
+  Jung vs. Alt:    z = -0.852, p = 0.394
+  Mittel vs. Alt:  z = -1.242, p = 0.214
+
+
+### Validität nach Beschäftigung
+
+  4: n = 116
+  3: n = 49
+
+Stresssymptome:
+
+Zufriedenheit:
+  4: r = -0.639, p = 1.18e-14
+  3: r = -0.571, p = 1.86e-05
+  4 vs. 3: z = -0.618, p = 0.537
+
+Neurotizismus:
+  4: r = 0.59, p = 3.09e-12
+  3: r = 0.605, p = 4.04e-06
+  4 vs. 3: z = -0.135, p = 0.893
+
+Resilienz:
+  4: r = -0.532, p = 8.13e-10
+  3: r = -0.528, p = 9.56e-05
+  4 vs. 3: z = -0.028, p = 0.978
+
+
+✓ Subgruppenanalysen für Stresssymptome abgeschlossen
+  Plots werden in 08_create_subgroup_plots.R erstellt
+
+Führen Sie als nächstes aus: 07_validity_subgroups_coping.R
+
+
+✓ Schritt 6 abgeschlossen
+
+--------------------------------------------------------------------------------
+SCHRITT 7: Subgruppenanalysen - Coping-Skalen (NEU!)
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+SUBGRUPPENANALYSEN: COPING-SKALEN (NEU) 
+================================================================================ 
+
+HINWEIS: Diese Analysen erweitern das Original-Skript!
+Alle 5 Coping-Skalen werden über demographische Gruppen analysiert.
+
+### Validität nach Geschlecht
+
+#### Aktives Coping:
+
+Zufriedenheit:
+  Männlich:  r = 0.112, p = 0.516
+  Weiblich:  r = 0.184, p = 0.0298
+  Unterschied: z = -0.38, p = 0.704
+
+Neurotizismus:
+  Männlich:  r = -0.322, p = 0.0551
+  Weiblich:  r = -0.227, p = 0.00709
+  Unterschied: z = -0.535, p = 0.593
+
+Resilienz:
+  Männlich:  r = 0.163, p = 0.343
+  Weiblich:  r = 0.241, p = 0.0041
+  Unterschied: z = -0.423, p = 0.673
+
+#### Drogen-Coping:
+
+Zufriedenheit:
+  Männlich:  r = 0.169, p = 0.323
+  Weiblich:  r = -0.195, p = 0.0213
+  Unterschied: z = 1.898, p = 0.0577
+
+Neurotizismus:
+  Männlich:  r = 0.083, p = 0.632
+  Weiblich:  r = 0.062, p = 0.467
+  Unterschied: z = 0.107, p = 0.915
+
+Resilienz:
+  Männlich:  r = -0.124, p = 0.472
+  Weiblich:  r = -0.097, p = 0.252
+  Unterschied: z = -0.137, p = 0.891
+
+#### Positive Neubewertung:
+
+Zufriedenheit:
+  Männlich:  r = 0.444, p = 0.00674
+  Weiblich:  r = 0.363, p = 1.03e-05
+  Unterschied: z = 0.495, p = 0.62
+
+Neurotizismus:
+  Männlich:  r = -0.659, p = 1.24e-05
+  Weiblich:  r = -0.567, p = 2.86e-13
+  Unterschied: z = -0.764, p = 0.445
+
+Resilienz:
+  Männlich:  r = 0.639, p = 2.72e-05
+  Weiblich:  r = 0.483, p = 1.52e-09
+  Unterschied: z = 1.186, p = 0.236
+
+#### Soziales Coping:
+
+Zufriedenheit:
+  Männlich:  r = 0.475, p = 0.00344
+  Weiblich:  r = 0.407, p = 6.07e-07
+  Unterschied: z = 0.435, p = 0.664
+
+Neurotizismus:
+  Männlich:  r = -0.328, p = 0.0511
+  Weiblich:  r = -0.188, p = 0.0259
+  Unterschied: z = -0.772, p = 0.44
+
+Resilienz:
+  Männlich:  r = -0.023, p = 0.894
+  Weiblich:  r = 0.158, p = 0.0623
+  Unterschied: z = -0.94, p = 0.347
+
+#### Religiöses Coping:
+
+Zufriedenheit:
+  Männlich:  r = 0.285, p = 0.0922
+  Weiblich:  r = 0.041, p = 0.632
+  Unterschied: z = 1.3, p = 0.194
+
+Neurotizismus:
+  Männlich:  r = -0.149, p = 0.385
+  Weiblich:  r = -0.123, p = 0.146
+  Unterschied: z = -0.136, p = 0.892
+
+Resilienz:
+  Männlich:  r = 0.051, p = 0.768
+  Weiblich:  r = 0.031, p = 0.719
+  Unterschied: z = 0.104, p = 0.917
+
+
+### Validität nach Bildungsniveau
+
+#### Aktives Coping:
+
+Zufriedenheit:
+  Niedrig: r = 0.516, p = 0.0408
+  Mittel:  r = 0.04, p = 0.712
+  Hoch:    r = 0.252, p = 0.0366
+  Niedrig vs. Mittel: z = 1.784, p = 0.0744
+  Niedrig vs. Hoch:   z = 1.031, p = 0.302
+  Mittel vs. Hoch:    z = -1.332, p = 0.183
+
+Neurotizismus:
+  Niedrig: r = -0.164, p = 0.544
+  Mittel:  r = -0.129, p = 0.23
+  Hoch:    r = -0.425, p = 0.000269
+  Niedrig vs. Mittel: z = -0.121, p = 0.903
+  Niedrig vs. Hoch:   z = 0.952, p = 0.341
+  Mittel vs. Hoch:    z = 1.986, p = 0.0471 *
+
+Resilienz:
+  Niedrig: r = 0.263, p = 0.324
+  Mittel:  r = 0.102, p = 0.341
+  Hoch:    r = 0.372, p = 0.00163
+  Niedrig vs. Mittel: z = 0.562, p = 0.574
+  Niedrig vs. Hoch:   z = -0.4, p = 0.689
+  Mittel vs. Hoch:    z = -1.764, p = 0.0778
+
+#### Drogen-Coping:
+
+Zufriedenheit:
+  Niedrig: r = -0.461, p = 0.0724
+  Mittel:  r = 0.009, p = 0.93
+  Hoch:    r = -0.213, p = 0.079
+  Niedrig vs. Mittel: z = -1.707, p = 0.0879
+  Niedrig vs. Hoch:   z = -0.93, p = 0.352
+  Mittel vs. Hoch:    z = 1.379, p = 0.168
+
+Neurotizismus:
+  Niedrig: r = 0.372, p = 0.156
+  Mittel:  r = 0.007, p = 0.946
+  Hoch:    r = 0.07, p = 0.569
+  Niedrig vs. Mittel: z = 1.29, p = 0.197
+  Niedrig vs. Hoch:   z = 1.059, p = 0.29
+  Mittel vs. Hoch:    z = -0.382, p = 0.703
+
+Resilienz:
+  Niedrig: r = -0.46, p = 0.0731
+  Mittel:  r = 0.023, p = 0.829
+  Hoch:    r = -0.166, p = 0.172
+  Niedrig vs. Mittel: z = -1.749, p = 0.0803
+  Niedrig vs. Hoch:   z = -1.085, p = 0.278
+  Mittel vs. Hoch:    z = 1.169, p = 0.242
+
+#### Positive Neubewertung:
+
+Zufriedenheit:
+  Niedrig: r = 0.376, p = 0.151
+  Mittel:  r = 0.433, p = 2.29e-05
+  Hoch:    r = 0.37, p = 0.00173
+  Niedrig vs. Mittel: z = -0.228, p = 0.82
+  Niedrig vs. Hoch:   z = 0.021, p = 0.983
+  Mittel vs. Hoch:    z = 0.454, p = 0.65
+
+Neurotizismus:
+  Niedrig: r = -0.493, p = 0.0521
+  Mittel:  r = -0.524, p = 1.38e-07
+  Hoch:    r = -0.696, p = 3.06e-11
+  Niedrig vs. Mittel: z = 0.138, p = 0.89
+  Niedrig vs. Hoch:   z = 1.054, p = 0.292
+  Mittel vs. Hoch:    z = 1.702, p = 0.0887
+
+Resilienz:
+  Niedrig: r = 0.444, p = 0.0851
+  Mittel:  r = 0.493, p = 9.08e-07
+  Hoch:    r = 0.58, p = 1.72e-07
+  Niedrig vs. Mittel: z = -0.213, p = 0.831
+  Niedrig vs. Hoch:   z = -0.614, p = 0.54
+  Mittel vs. Hoch:    z = -0.75, p = 0.453
+
+#### Soziales Coping:
+
+Zufriedenheit:
+  Niedrig: r = 0.303, p = 0.255
+  Mittel:  r = 0.471, p = 3.16e-06
+  Hoch:    r = 0.385, p = 0.00108
+  Niedrig vs. Mittel: z = -0.67, p = 0.503
+  Niedrig vs. Hoch:   z = -0.31, p = 0.757
+  Mittel vs. Hoch:    z = 0.643, p = 0.52
+
+Neurotizismus:
+  Niedrig: r = -0.286, p = 0.284
+  Mittel:  r = -0.262, p = 0.0132
+  Hoch:    r = -0.162, p = 0.183
+  Niedrig vs. Mittel: z = -0.086, p = 0.931
+  Niedrig vs. Hoch:   z = -0.429, p = 0.668
+  Mittel vs. Hoch:    z = -0.639, p = 0.523
+
+Resilienz:
+  Niedrig: r = 0.016, p = 0.953
+  Mittel:  r = 0.054, p = 0.616
+  Hoch:    r = 0.231, p = 0.0558
+  Niedrig vs. Mittel: z = -0.128, p = 0.898
+  Niedrig vs. Hoch:   z = -0.724, p = 0.469
+  Mittel vs. Hoch:    z = -1.11, p = 0.267
+
+#### Religiöses Coping:
+
+Zufriedenheit:
+  Niedrig: r = 0.251, p = 0.349
+  Mittel:  r = 0.161, p = 0.133
+  Hoch:    r = -0.071, p = 0.56
+  Niedrig vs. Mittel: z = 0.317, p = 0.751
+  Niedrig vs. Hoch:   z = 1.08, p = 0.28
+  Mittel vs. Hoch:    z = 1.427, p = 0.154
+
+Neurotizismus:
+  Niedrig: r = -0.048, p = 0.86
+  Mittel:  r = -0.215, p = 0.043
+  Hoch:    r = 0.057, p = 0.64
+  Niedrig vs. Mittel: z = 0.573, p = 0.567
+  Niedrig vs. Hoch:   z = -0.347, p = 0.728
+  Mittel vs. Hoch:    z = -1.685, p = 0.092
+
+Resilienz:
+  Niedrig: r = 0.122, p = 0.652
+  Mittel:  r = 0.07, p = 0.517
+  Hoch:    r = -0.069, p = 0.574
+  Niedrig vs. Mittel: z = 0.179, p = 0.858
+  Niedrig vs. Hoch:   z = 0.632, p = 0.527
+  Mittel vs. Hoch:    z = 0.847, p = 0.397
+
+
+### Validität nach Alter
+
+#### Aktives Coping:
+
+Zufriedenheit:
+  Jung (<30):     r = 0.154, p = 0.0635
+  Mittel (30-45): r = 0.112, p = 0.628
+  Alt (>45):      r = 0.055, p = 0.859
+  Jung vs. Mittel: z = 0.17, p = 0.865
+  Jung vs. Alt:    z = 0.307, p = 0.759
+  Mittel vs. Alt:  z = 0.147, p = 0.883
+
+Neurotizismus:
+  Jung (<30):     r = -0.256, p = 0.0018
+  Mittel (30-45): r = -0.291, p = 0.201
+  Alt (>45):      r = 0.259, p = 0.392
+  Jung vs. Mittel: z = 0.15, p = 0.881
+  Jung vs. Alt:    z = -1.612, p = 0.107
+  Mittel vs. Alt:  z = -1.432, p = 0.152
+
+Resilienz:
+  Jung (<30):     r = 0.206, p = 0.0125
+  Mittel (30-45): r = 0.181, p = 0.433
+  Alt (>45):      r = 0.3, p = 0.32
+  Jung vs. Mittel: z = 0.106, p = 0.915
+  Jung vs. Alt:    z = -0.306, p = 0.759
+  Mittel vs. Alt:  z = -0.321, p = 0.748
+
+#### Drogen-Coping:
+
+Zufriedenheit:
+  Jung (<30):     r = -0.102, p = 0.219
+  Mittel (30-45): r = -0.072, p = 0.756
+  Alt (>45):      r = -0.004, p = 0.991
+  Jung vs. Mittel: z = -0.122, p = 0.903
+  Jung vs. Alt:    z = -0.303, p = 0.762
+  Mittel vs. Alt:  z = -0.174, p = 0.862
+
+Neurotizismus:
+  Jung (<30):     r = 0.016, p = 0.845
+  Mittel (30-45): r = 0.105, p = 0.651
+  Alt (>45):      r = 0.101, p = 0.742
+  Jung vs. Mittel: z = -0.356, p = 0.722
+  Jung vs. Alt:    z = -0.26, p = 0.795
+  Mittel vs. Alt:  z = 0.01, p = 0.992
+
+Resilienz:
+  Jung (<30):     r = -0.013, p = 0.88
+  Mittel (30-45): r = -0.296, p = 0.193
+  Alt (>45):      r = -0.639, p = 0.0186
+  Jung vs. Mittel: z = 1.168, p = 0.243
+  Jung vs. Alt:    z = 2.277, p = 0.0228 *
+  Mittel vs. Alt:  z = 1.147, p = 0.251
+
+#### Positive Neubewertung:
+
+Zufriedenheit:
+  Jung (<30):     r = 0.414, p = 2.04e-07
+  Mittel (30-45): r = 0.349, p = 0.121
+  Alt (>45):      r = 0.487, p = 0.0915
+  Jung vs. Mittel: z = 0.304, p = 0.761
+  Jung vs. Alt:    z = -0.279, p = 0.78
+  Mittel vs. Alt:  z = -0.424, p = 0.671
+
+Neurotizismus:
+  Jung (<30):     r = -0.589, p = 5.28e-15
+  Mittel (30-45): r = -0.708, p = 0.000333
+  Alt (>45):      r = -0.487, p = 0.0911
+  Jung vs. Mittel: z = 0.825, p = 0.41
+  Jung vs. Alt:    z = -0.439, p = 0.661
+  Mittel vs. Alt:  z = -0.887, p = 0.375
+
+Resilienz:
+  Jung (<30):     r = 0.552, p = 5.01e-13
+  Mittel (30-45): r = 0.451, p = 0.0401
+  Alt (>45):      r = 0.443, p = 0.129
+  Jung vs. Mittel: z = 0.541, p = 0.588
+  Jung vs. Alt:    z = 0.444, p = 0.657
+  Mittel vs. Alt:  z = 0.025, p = 0.98
+
+#### Soziales Coping:
+
+Zufriedenheit:
+  Jung (<30):     r = 0.445, p = 1.78e-08
+  Mittel (30-45): r = 0.365, p = 0.104
+  Alt (>45):      r = 0.601, p = 0.0297
+  Jung vs. Mittel: z = 0.384, p = 0.701
+  Jung vs. Alt:    z = -0.661, p = 0.509
+  Mittel vs. Alt:  z = -0.792, p = 0.429
+
+Neurotizismus:
+  Jung (<30):     r = -0.244, p = 0.00304
+  Mittel (30-45): r = -0.253, p = 0.268
+  Alt (>45):      r = -0.465, p = 0.11
+  Jung vs. Mittel: z = 0.04, p = 0.968
+  Jung vs. Alt:    z = 0.779, p = 0.436
+  Mittel vs. Alt:  z = 0.62, p = 0.535
+
+Resilienz:
+  Jung (<30):     r = 0.119, p = 0.151
+  Mittel (30-45): r = 0.218, p = 0.343
+  Alt (>45):      r = 0.419, p = 0.154
+  Jung vs. Mittel: z = -0.406, p = 0.685
+  Jung vs. Alt:    z = -0.999, p = 0.318
+  Mittel vs. Alt:  z = -0.571, p = 0.568
+
+#### Religiöses Coping:
+
+Zufriedenheit:
+  Jung (<30):     r = 0.068, p = 0.413
+  Mittel (30-45): r = 0.384, p = 0.0855
+  Alt (>45):      r = 0.062, p = 0.841
+  Jung vs. Mittel: z = -1.346, p = 0.178
+  Jung vs. Alt:    z = 0.019, p = 0.985
+  Mittel vs. Alt:  z = 0.87, p = 0.385
+
+Neurotizismus:
+  Jung (<30):     r = -0.151, p = 0.0694
+  Mittel (30-45): r = 0.176, p = 0.446
+  Alt (>45):      r = 0.143, p = 0.641
+  Jung vs. Mittel: z = -1.317, p = 0.188
+  Jung vs. Alt:    z = -0.904, p = 0.366
+  Mittel vs. Alt:  z = 0.085, p = 0.932
+
+Resilienz:
+  Jung (<30):     r = 0.071, p = 0.397
+  Mittel (30-45): r = -0.232, p = 0.311
+  Alt (>45):      r = -0.222, p = 0.466
+  Jung vs. Mittel: z = 1.229, p = 0.219
+  Jung vs. Alt:    z = 0.906, p = 0.365
+  Mittel vs. Alt:  z = -0.028, p = 0.978
+
+
+### Validität nach Beschäftigung
+
+Beschäftigungsgruppen:
+  4: n = 116
+  3: n = 49
+
+#### Aktives Coping:
+
+Zufriedenheit:
+  4: r = 0.128, p = 0.172
+  3: r = 0.237, p = 0.1
+  4 vs. 3: z = -0.65, p = 0.516
+
+Neurotizismus:
+  4: r = -0.229, p = 0.0132
+  3: r = -0.326, p = 0.0223
+  4 vs. 3: z = 0.598, p = 0.55
+
+Resilienz:
+  4: r = 0.221, p = 0.0173
+  3: r = 0.263, p = 0.0679
+  4 vs. 3: z = -0.257, p = 0.797
+
+#### Drogen-Coping:
+
+Zufriedenheit:
+  4: r = -0.108, p = 0.247
+  3: r = -0.114, p = 0.436
+  4 vs. 3: z = 0.032, p = 0.974
+
+Neurotizismus:
+  4: r = 0.066, p = 0.484
+  3: r = 0.039, p = 0.791
+  4 vs. 3: z = 0.153, p = 0.879
+
+Resilienz:
+  4: r = -0.017, p = 0.854
+  3: r = -0.171, p = 0.239
+  4 vs. 3: z = 0.891, p = 0.373
+
+#### Positive Neubewertung:
+
+Zufriedenheit:
+  4: r = 0.35, p = 0.00012
+  3: r = 0.434, p = 0.00184
+  4 vs. 3: z = -0.571, p = 0.568
+
+Neurotizismus:
+  4: r = -0.589, p = 3.58e-12
+  3: r = -0.592, p = 7.35e-06
+  4 vs. 3: z = 0.03, p = 0.976
+
+Resilienz:
+  4: r = 0.516, p = 3.08e-09
+  3: r = 0.523, p = 0.000116
+  4 vs. 3: z = -0.055, p = 0.956
+
+#### Soziales Coping:
+
+Zufriedenheit:
+  4: r = 0.414, p = 3.79e-06
+  3: r = 0.328, p = 0.0215
+  4 vs. 3: z = 0.574, p = 0.566
+
+Neurotizismus:
+  4: r = -0.239, p = 0.00967
+  3: r = -0.143, p = 0.326
+  4 vs. 3: z = -0.57, p = 0.569
+
+Resilienz:
+  4: r = 0.096, p = 0.307
+  3: r = 0.036, p = 0.804
+  4 vs. 3: z = 0.341, p = 0.733
+
+#### Religiöses Coping:
+
+Zufriedenheit:
+  4: r = 0.085, p = 0.362
+  3: r = 0.097, p = 0.509
+  4 vs. 3: z = -0.064, p = 0.949
+
+Neurotizismus:
+  4: r = -0.175, p = 0.06
+  3: r = 0.135, p = 0.354
+  4 vs. 3: z = -1.79, p = 0.0734
+
+Resilienz:
+  4: r = 0.078, p = 0.403
+  3: r = -0.153, p = 0.293
+  4 vs. 3: z = 1.332, p = 0.183
+
+
+
+================================================================================ 
+FERTIG 
+================================================================================ 
+
+✓ Subgruppenanalysen für ALLE 5 Coping-Skalen abgeschlossen!
+
+Diese umfangreichen Analysen waren im Original-Skript nicht enthalten.
+Plots werden in 08_create_subgroup_plots.R erstellt.
+
+Führen Sie als nächstes aus: 08_create_subgroup_plots.R
+
+
+✓ Schritt 7 abgeschlossen
+
+--------------------------------------------------------------------------------
+SCHRITT 8: Subgruppen-Plots erstellen
+--------------------------------------------------------------------------------
+
+Lade Workspace von 01_setup_and_scales.R...
+✓ Workspace geladen
+
+
+================================================================================ 
+SUBGRUPPEN-VISUALISIERUNGEN 
+================================================================================ 
+
+Erstelle Plots 20-24: Korrelationen nach Geschlecht...
+✓ Plots 20-24 gespeichert
+
+Erstelle Plots 25-29: Korrelationen nach Bildung...
+✓ Plots 25-29 gespeichert
+
+Erstelle Plots 30-34: Korrelationen nach Alter...
+✓ Plots 30-34 gespeichert
+
+Erstelle Plots 35-39: Korrelationen nach Beschäftigung...
+✓ Plots 35-39 gespeichert
+
+
+
+================================================================================ 
+SUBGRUPPEN-PLOTS ABGESCHLOSSEN 
+================================================================================ 
+
+✓ Alle Subgruppen-Visualisierungen erstellt!
+
+Gespeicherte Plots (20 Plots total):
+
+  GESCHLECHT (20-24):
+    - 20: Stressbelastung × 3 Validitätskriterien
+    - 21: Stresssymptome × 3 Validitätskriterien
+    - 22: 5 Coping-Skalen × Zufriedenheit
+    - 23: 5 Coping-Skalen × Neurotizismus
+    - 24: 5 Coping-Skalen × Resilienz
+
+  BILDUNG (25-29):
+    - 25: Stressbelastung × 3 Validitätskriterien
+    - 26: Stresssymptome × 3 Validitätskriterien
+    - 27: 5 Coping-Skalen × Zufriedenheit
+    - 28: 5 Coping-Skalen × Neurotizismus
+    - 29: 5 Coping-Skalen × Resilienz
+
+  ALTER (30-34):
+    - 30: Stressbelastung × 3 Validitätskriterien
+    - 31: Stresssymptome × 3 Validitätskriterien
+    - 32: 5 Coping-Skalen × Zufriedenheit
+    - 33: 5 Coping-Skalen × Neurotizismus
+    - 34: 5 Coping-Skalen × Resilienz
+
+  BESCHÄFTIGUNG (35-39):
+    - 35: Stressbelastung × 3 Validitätskriterien
+    - 36: Stresssymptome × 3 Validitätskriterien
+    - 37: 5 Coping-Skalen × Zufriedenheit
+    - 38: 5 Coping-Skalen × Neurotizismus
+    - 39: 5 Coping-Skalen × Resilienz
+
+Format:
+  - Scatter-Plots mit Regressionslinien für jede Subgruppe
+  - 95%-Konfidenzintervalle als Bänder um Regressionslinien
+  - Größere, klarere Darstellung durch Aufteilung nach Validitätskriterium
+
+
+✓ Schritt 8 abgeschlossen (Plots 20-39: Subgruppen-Visualisierungen)
+
+================================================================================
+ANALYSE ABGESCHLOSSEN
+================================================================================
+
+Ende: 2025-11-20 15:27:50 
+Dauer: 0.18 Minuten
+
+ZUSAMMENFASSUNG:
+  ✓ Datenbereinigung durchgeführt
+  ✓ Alle Skalen konstruiert
+  ✓ Deskriptive Statistiken erstellt (Plots 01-04)
+  ✓ Reliabilitätsanalysen abgeschlossen (Plots 05-12)
+  ✓ Hauptvaliditätsanalysen abgeschlossen (Plots 13-19)
+    - Validitätskorrelationen (13-16)
+    - CFA 7-Faktoren-Modell (17-19)
+  ✓ Subgruppenanalysen abgeschlossen:
+    - Stressbelastung
+    - Stresssymptome
+    - Coping-Skalen (5 Skalen × 4 Subgruppen)
+  ✓ Subgruppen-Visualisierungen erstellt (Plots 20-39)
+    - Geschlecht: Plots 20-24
+    - Bildung: Plots 25-29
+    - Alter: Plots 30-34
+    - Beschäftigung: Plots 35-39
+
+ERGEBNIS:
+  - Insgesamt 39 Plots erstellt (sequential numbering)
+  - Alle Analysen dokumentiert
+  - Workspace verfügbar: data/01_scales.RData
+
+NÄCHSTE SCHRITTE:
+  1. Überprüfen Sie alle Plots im Ordner plots/
+  2. Interpretieren Sie die Subgruppenunterschiede
+  3. Nutzen Sie den Workspace für weitere Analysen
+
+================================================================================
+

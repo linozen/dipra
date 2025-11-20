@@ -12,7 +12,7 @@
 # 2. Stresssymptome (kurz, gesamt)
 # 3. Coping-Skalen (5 Skalen)
 #
-# Plots: 06-12
+# Plots: 05-12
 #
 # Voraussetzung: 01_setup_and_scales.R wurde ausgeführt
 #
@@ -137,7 +137,7 @@ cat(
 )
 
 # RELIABILITÄTS-PLOT: Stressbelastung
-png("plots/06_reliabilitaet_stress_itemstatistik.png", width = 1600, height = 800, res = 150)
+png("plots/05_reliabilitaet_stress_itemstatistik.png", width = 1600, height = 800, res = 150)
 par(mfrow = c(1, 2))
 
 # Item-Total-Korrelationen - Gesamtskala
@@ -174,7 +174,7 @@ legend("topright", legend = "Mindestkriterium (r = 0.3)", col = "red", lty = 2, 
 dev.off()
 
 # Verteilungsplot der Stressskalen
-png("plots/07_reliabilitaet_stress_verteilung.png", width = 1600, height = 600, res = 150)
+png("plots/06_reliabilitaet_stress_verteilung.png", width = 1600, height = 600, res = 150)
 par(mfrow = c(1, 3))
 hist(data$Stressbelastung_kurz,
   breaks = 20, col = "steelblue",
@@ -281,7 +281,7 @@ cat(
 )
 
 # RELIABILITÄTS-PLOT: Stresssymptome
-png("plots/08_reliabilitaet_symptome_itemstatistik.png", width = 1600, height = 800, res = 150)
+png("plots/07_reliabilitaet_symptome_itemstatistik.png", width = 1600, height = 800, res = 150)
 par(mfrow = c(1, 2))
 
 # Item-Total-Korrelationen - Gesamtskala
@@ -318,7 +318,7 @@ legend("topright", legend = "Mindestkriterium (r = 0.3)", col = "red", lty = 2, 
 dev.off()
 
 # Verteilungsplot der Symptomskalen
-png("plots/09_reliabilitaet_symptome_verteilung.png", width = 1600, height = 600, res = 150)
+png("plots/08_reliabilitaet_symptome_verteilung.png", width = 1600, height = 600, res = 150)
 par(mfrow = c(1, 3))
 hist(data$Stresssymptome_kurz,
   breaks = 20, col = "steelblue",
@@ -427,7 +427,7 @@ for (skala_name in names(coping_skalen)) {
 }
 
 # RELIABILITÄTS-PLOT: Alle Skalen Cronbachs Alpha
-png("plots/10_reliabilitaet_alle_alphas.png", width = 1600, height = 900, res = 150)
+png("plots/09_reliabilitaet_alle_alphas.png", width = 1600, height = 900, res = 150)
 par(mar = c(10, 4, 4, 8), xpd = TRUE) # Mehr Platz rechts für Legende
 
 # Kombiniere alle Alpha-Werte
@@ -459,7 +459,7 @@ dev.off()
 cat("✓ Reliabilitäts-Plot für alle Skalen gespeichert\n\n")
 
 # RELIABILITÄTS-PLOT: Itemstatistiken für alle Coping-Skalen
-png("plots/11_reliabilitaet_coping_itemstatistiken.png", width = 2000, height = 1200, res = 150)
+png("plots/10_reliabilitaet_coping_itemstatistiken.png", width = 2000, height = 1200, res = 150)
 par(mfrow = c(2, 3), mar = c(8, 4, 4, 2))
 
 for (i in seq_along(coping_skalen)) {
@@ -499,7 +499,7 @@ dev.off()
 cat("✓ Itemstatistiken für Coping-Skalen gespeichert\n\n")
 
 # Verteilungen der Coping-Skalen
-png("plots/12_reliabilitaet_coping_verteilungen.png", width = 1600, height = 1000, res = 150)
+png("plots/11_reliabilitaet_coping_verteilungen.png", width = 1600, height = 1000, res = 150)
 par(mfrow = c(2, 3))
 hist(data$Coping_aktiv,
   breaks = 15, col = "steelblue",
@@ -1029,8 +1029,101 @@ cat("Signifikanz: *** p<.001, ** p<.01, * p<.05, ns=nicht signifikant\n\n")
 
 print_section("5. RETEST-RELIABILITÄT VISUALISIERUNG", 2)
 
-# HINWEIS: Plots wurden vorübergehend entfernt
-cat("(Plots vorübergehend deaktiviert)\n\n")
+# Sammle alle Item-Korrelationen für Plot
+all_item_cors <- c()
+all_item_names <- c()
+all_item_groups <- c()
+
+for (gruppe_name in names(item_gruppen)) {
+  items <- item_gruppen[[gruppe_name]]
+
+  for (item in items) {
+    if (item %in% colnames(original_tests) && item %in% colnames(retest_tests)) {
+      test_values <- original_tests[retest_matches$idx_original, item]
+      retest_values <- retest_tests[retest_matches$idx_retest, item]
+
+      valid_pairs <- !is.na(test_values) & !is.na(retest_values)
+      test_values <- test_values[valid_pairs]
+      retest_values <- retest_values[valid_pairs]
+
+      if (length(test_values) >= 3) {
+        cor_result <- tryCatch({
+          cor.test(test_values, retest_values, method = "pearson")
+        }, error = function(e) NULL)
+
+        if (!is.null(cor_result)) {
+          all_item_cors <- c(all_item_cors, cor_result$estimate)
+          all_item_names <- c(all_item_names, item)
+          all_item_groups <- c(all_item_groups, gruppe_name)
+        }
+      }
+    }
+  }
+}
+
+# Plot: Item-Level Retest-Reliabilitäten
+png("plots/12_retest_item_reliabilitaet.png", width = 2000, height = 1000, res = 150)
+par(mar = c(8, 4, 8, 2), xpd = TRUE)
+
+# Filtere Big Five und Resilienz Items aus
+keep_idx <- !(all_item_groups %in% c("Big Five (Neurotizismus)", "Resilienz"))
+filtered_cors <- all_item_cors[keep_idx]
+filtered_names <- all_item_names[keep_idx]
+filtered_groups <- all_item_groups[keep_idx]
+
+# Sortiere Items nach Gruppe (Skala), dann nach Item-Name
+sort_idx <- order(filtered_groups, filtered_names)
+item_cors_sorted <- filtered_cors[sort_idx]
+item_names_sorted <- filtered_names[sort_idx]
+item_groups_sorted <- filtered_groups[sort_idx]
+
+# Farben basierend auf Gruppe (Skala) - wie im CFA-Netzwerk-Plot
+# Rottöne für Belastung und Symptome, Blautöne für Coping-Skalen
+gruppe_colors <- c(
+  "Stressbelastung (kurz)" = "#8B0000",  # Dunkelrot
+  "Stressbelastung (lang)" = "#B22222",  # Feuerrot
+  "Stresssymptome (kurz)" = "#DC143C",   # Crimson
+  "Stresssymptome (lang)" = "#FF6347",   # Tomatenrot
+  "Coping: Aktiv" = "#08306B",           # Dunkelblau
+  "Coping: Drogen" = "#2171B5",          # Mittelblau
+  "Coping: Positive Neubewertung" = "#4292C6",  # Helleres Blau
+  "Coping: Sozial" = "#6BAED6",          # Noch helleres Blau
+  "Coping: Religiös" = "#9ECAE1"         # Hellblau
+)
+
+item_colors <- gruppe_colors[item_groups_sorted]
+
+barplot(item_cors_sorted,
+  main = "Item-Level Retest-Reliabilitäten (nach Skala sortiert)",
+  ylab = "Korrelation (r)",
+  names.arg = item_names_sorted,
+  col = item_colors,
+  las = 2,
+  ylim = c(0, 1),
+  cex.names = 0.6
+)
+
+# Referenzlinien (alle grau)
+abline(h = 0.80, col = "grey50", lty = 2, lwd = 1.5)
+abline(h = 0.70, col = "grey50", lty = 2, lwd = 1.5)
+abline(h = 0.60, col = "grey50", lty = 2, lwd = 1.5)
+
+# Legende mit Skalen-Namen (oberhalb des Plots)
+legend("top", inset = c(0, -0.15),
+  legend = c("Stressbelastung (kurz)", "Stressbelastung (lang)",
+             "Stresssymptome (kurz)", "Stresssymptome (lang)",
+             "Coping: Aktiv", "Coping: Drogen",
+             "Coping: Positive Neubewertung", "Coping: Sozial", "Coping: Religiös"),
+  fill = c("#8B0000", "#B22222", "#DC143C", "#FF6347",
+           "#08306B", "#2171B5", "#4292C6", "#6BAED6", "#9ECAE1"),
+  bty = "n",
+  cex = 0.7,
+  ncol = 3
+)
+
+dev.off()
+
+cat("✓ Item-Level Retest-Reliabilitäts-Plot gespeichert (Plot 12)\n\n")
 
 # ==============================================================================
 # 6. FAZIT RETEST-RELIABILITÄT
@@ -1087,5 +1180,5 @@ cat("\n✓ Retest-Reliabilitätsanalyse abgeschlossen\n\n")
 print_section("FERTIG")
 
 cat("Alle Reliabilitätsanalysen wurden erfolgreich durchgeführt.\n\n")
-cat("Plots gespeichert: 06-12\n\n")
+cat("Plots gespeichert: 05-12\n\n")
 cat("Führen Sie als nächstes aus: 04_validity_main.R\n\n")
