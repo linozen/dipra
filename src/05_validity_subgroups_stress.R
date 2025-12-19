@@ -1,13 +1,13 @@
 #!/usr/bin/env Rscript
 # ==============================================================================
-# VALIDITÄTSANALYSEN: SUBGRUPPEN - STRESSSYMPTOME
+# VALIDITÄTSANALYSEN: SUBGRUPPEN - STRESSBELASTUNG
 # ==============================================================================
 #
-# Demographische Subgruppenanalysen für Stresssymptome:
-# - Nach Geschlecht (Plot 17, Teil 2)
-# - Nach Bildung (Plot 18, Teil 2)
-# - Nach Alter (Plot 19, Teil 2)
-# - Nach Beschäftigung (Plot 20, Teil 2)
+# Demographische Subgruppenanalysen für Stressbelastung:
+# - Nach Geschlecht (Plot 17, Teil 1)
+# - Nach Bildung (Plot 18, Teil 1)
+# - Nach Alter (Plot 19, Teil 1)
+# - Nach Beschäftigung (Plot 20, Teil 1)
 #
 # Verwendet Fisher's Z-Tests für Gruppenvergleiche
 #
@@ -20,29 +20,26 @@
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
 
-print_section("SUBGRUPPENANALYSEN: STRESSSYMPTOME")
-
-# ==============================================================================
-# HILFSFUNKTION: FISHER'S Z-TEST
-# ==============================================================================
-
-fisher_z_test <- function(r1, n1, r2, n2) {
-  z <- (atanh(r1) - atanh(r2)) / sqrt(1 / (n1 - 3) + 1 / (n2 - 3))
-  p <- 2 * (1 - pnorm(abs(z)))
-  list(z = z, p = p)
+# Verwende zentrale Konfiguration falls verfügbar (aus run_all.R)
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
 }
+
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n")
+cat("  Enthält: data, print_section(), fisher_z_test()\n\n")
+
+print_section("SUBGRUPPENANALYSEN: STRESSBELASTUNG")
 
 # ==============================================================================
 # DEFINITIONEN
 # ==============================================================================
 
 validitaetskriterien <- c("Zufriedenheit", "Neurotizismus", "Resilienz")
-skala <- "Stresssymptome_kurz"
+skala <- "Stressbelastung_kurz"
 
-cat("Analysiere Stresssymptome über demographische Subgruppen\n\n")
+cat("Analysiere Stressbelastung über demographische Subgruppen\n\n")
 
 # ==============================================================================
 # ANALYSE NACH GESCHLECHT
@@ -56,7 +53,7 @@ n_female <- sum(data_gender$Geschlecht == "2")
 
 gender_results <- list()
 
-cat("Stresssymptome:\n\n")
+cat("Stressbelastung:\n\n")
 for (krit in validitaetskriterien) {
   cor_male <- cor.test(
     data_gender[[skala]][data_gender$Geschlecht == "1"],
@@ -101,12 +98,7 @@ for (krit in validitaetskriterien) {
 
 cat("\n### Validität nach Bildungsniveau\n\n")
 
-data$Bildung_gruppiert <- cut(as.numeric(data$Bildung),
-  breaks = c(0, 3, 4, 7, 8),
-  labels = c("Niedrig", "Mittel", "Hoch", "Andere"),
-  include.lowest = TRUE
-)
-
+# Bildung_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_bildung <- subset(data, Bildung_gruppiert %in% c("Niedrig", "Mittel", "Hoch"))
 n_niedrig <- sum(data_bildung$Bildung_gruppiert == "Niedrig")
 n_mittel <- sum(data_bildung$Bildung_gruppiert == "Mittel")
@@ -114,7 +106,7 @@ n_hoch <- sum(data_bildung$Bildung_gruppiert == "Hoch")
 
 bildung_results <- list()
 
-cat("Stresssymptome:\n\n")
+cat("Stressbelastung:\n\n")
 for (krit in validitaetskriterien) {
   cor_niedrig <- cor.test(
     data_bildung[[skala]][data_bildung$Bildung_gruppiert == "Niedrig"],
@@ -180,12 +172,7 @@ for (krit in validitaetskriterien) {
 
 cat("\n### Validität nach Alter\n\n")
 
-data$Alter_gruppiert <- cut(data$Alter,
-  breaks = c(0, 30, 45, 100),
-  labels = c("Jung", "Mittel", "Alt"),
-  include.lowest = TRUE
-)
-
+# Alter_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_alter <- subset(data, !is.na(Alter_gruppiert))
 n_jung <- sum(data_alter$Alter_gruppiert == "Jung")
 n_mittel_alter <- sum(data_alter$Alter_gruppiert == "Mittel")
@@ -193,7 +180,7 @@ n_alt <- sum(data_alter$Alter_gruppiert == "Alt")
 
 alter_results <- list()
 
-cat("Stresssymptome:\n\n")
+cat("Stressbelastung:\n\n")
 for (krit in validitaetskriterien) {
   cor_jung <- cor.test(
     data_alter[[skala]][data_alter$Alter_gruppiert == "Jung"],
@@ -259,13 +246,7 @@ for (krit in validitaetskriterien) {
 
 cat("\n### Validität nach Beschäftigung\n\n")
 
-beschaeftigung_freq <- table(data$Beschäftigung)
-beschaeftigung_freq <- beschaeftigung_freq[beschaeftigung_freq >= 20]
-
-data$Beschäftigung_gruppiert <- ifelse(data$Beschäftigung %in% names(beschaeftigung_freq),
-  data$Beschäftigung, "Andere"
-)
-
+# Beschäftigung_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_beschaeftigung <- subset(data, Beschäftigung_gruppiert != "Andere" & !is.na(Beschäftigung_gruppiert))
 beschaeftigung_gruppen <- unique(data_beschaeftigung$Beschäftigung_gruppiert)
 beschaeftigung_gruppen <- beschaeftigung_gruppen[!is.na(beschaeftigung_gruppen)]
@@ -278,7 +259,7 @@ cat("\n")
 
 beschaeftigung_results <- list()
 
-cat("Stresssymptome:\n\n")
+cat("Stressbelastung:\n\n")
 for (krit in validitaetskriterien) {
   cat(paste0(krit, ":\n"))
   cors <- list()
@@ -327,6 +308,6 @@ for (krit in validitaetskriterien) {
   }
 }
 
-cat("\n✓ Subgruppenanalysen für Stresssymptome abgeschlossen\n")
+cat("\n✓ Subgruppenanalysen für Stressbelastung abgeschlossen\n")
 cat("  Plots werden in 08_create_subgroup_plots.R erstellt\n\n")
-cat("Führen Sie als nächstes aus: 07_validity_subgroups_coping.R\n\n")
+cat("Führen Sie als nächstes aus: 06_validity_subgroups_symptoms.R\n\n")

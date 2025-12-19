@@ -20,12 +20,24 @@
 # ==============================================================================
 
 # ==============================================================================
+# KONFIGURATION - FILEPATHS VON run_all.R
+# ==============================================================================
+
+# Diese Variablen sollten von run_all.R gesetzt sein
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+if (!exists("PLOTS_DIR")) {
+  PLOTS_DIR <- "plots"
+}
+
+# ==============================================================================
 # WORKSPACE LADEN
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n\n")
 
 # ==============================================================================
 # PAKETE LADEN
@@ -126,7 +138,7 @@ cat(
 )
 
 # VALIDITÄTS-PLOT: Stressbelastung Korrelationen (standardisiert)
-png("plots/13_validitaet_stress_korrelationen.png", width = 1800, height = 600, res = 150)
+png(file.path(PLOTS_DIR, "13_validitaet_stress_korrelationen.png"), width = 1800, height = 600, res = 150)
 par(mfrow = c(1, 3))
 
 # Standardisiere Variablen
@@ -273,7 +285,7 @@ cat(
 )
 
 # VALIDITÄTS-PLOT: Stresssymptome Korrelationen (standardisiert)
-png("plots/14_validitaet_symptome_korrelationen.png", width = 1800, height = 600, res = 150)
+png(file.path(PLOTS_DIR, "14_validitaet_symptome_korrelationen.png"), width = 1800, height = 600, res = 150)
 par(mfrow = c(1, 3))
 
 # Korrelationen neu berechnen für Stresssymptome
@@ -398,7 +410,7 @@ for (i in seq_along(coping_vars)) {
 }
 
 # VALIDITÄTS-PLOT: Coping-Strategien Korrelations-Heatmap
-png("plots/15_validitaet_coping_heatmap.png", width = 1400, height = 1000, res = 150)
+png(file.path(PLOTS_DIR, "15_validitaet_coping_heatmap.png"), width = 1400, height = 1000, res = 150)
 par(mar = c(8, 10, 4, 6))
 
 # Farbpalette erstellen
@@ -457,7 +469,7 @@ for (i in seq_along(ni07_items)) {
 }
 
 # VALIDITÄTS-PLOT: NI07 Single-Items Heatmap
-png("plots/16_validitaet_ni07_items_heatmap.png", width = 1400, height = 1000, res = 150)
+png(file.path(PLOTS_DIR, "16_validitaet_ni07_items_heatmap.png"), width = 1400, height = 1000, res = 150)
 par(mar = c(8, 10, 4, 6))
 
 # Farbpalette
@@ -516,7 +528,7 @@ cat("  6. Soziales Coping (5 Items)\n")
 cat("  7. Religiöses Coping (4 Items)\n\n")
 
 # CFA-Modell spezifizieren
-cfa_model <- '
+cfa_model <- "
   # Faktor 1: Stressbelastung (Kurzskala)
   Stress =~ NI06_01 + NI06_02 + NI06_03 + NI06_04 + NI06_05
 
@@ -537,7 +549,7 @@ cfa_model <- '
 
   # Faktor 7: Religiöses Coping
   Religioes =~ NI07_02 + SO23_06 + SO23_12 + SO23_16
-'
+"
 
 cat("### 7.1 CFA-Modell fitten\n\n")
 
@@ -556,23 +568,37 @@ fit_measures <- fitMeasures(fit_cfa, c(
   "rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "srmr"
 ))
 
-cat("Chi-Quadrat:       χ² =", round(fit_measures["chisq"], 2),
-    ", df =", fit_measures["df"],
-    ", p =", format.pval(fit_measures["pvalue"], digits = 3), "\n")
-cat("CFI:              ", round(fit_measures["cfi"], 3),
-    ifelse(fit_measures["cfi"] >= 0.95, "(ausgezeichnet)",
-           ifelse(fit_measures["cfi"] >= 0.90, "(akzeptabel)", "(problematisch)")), "\n")
-cat("TLI:              ", round(fit_measures["tli"], 3),
-    ifelse(fit_measures["tli"] >= 0.95, "(ausgezeichnet)",
-           ifelse(fit_measures["tli"] >= 0.90, "(akzeptabel)", "(problematisch)")), "\n")
+cat(
+  "Chi-Quadrat:       χ² =", round(fit_measures["chisq"], 2),
+  ", df =", fit_measures["df"],
+  ", p =", format.pval(fit_measures["pvalue"], digits = 3), "\n"
+)
+cat(
+  "CFI:              ", round(fit_measures["cfi"], 3),
+  ifelse(fit_measures["cfi"] >= 0.95, "(ausgezeichnet)",
+    ifelse(fit_measures["cfi"] >= 0.90, "(akzeptabel)", "(problematisch)")
+  ), "\n"
+)
+cat(
+  "TLI:              ", round(fit_measures["tli"], 3),
+  ifelse(fit_measures["tli"] >= 0.95, "(ausgezeichnet)",
+    ifelse(fit_measures["tli"] >= 0.90, "(akzeptabel)", "(problematisch)")
+  ), "\n"
+)
 cat("RMSEA:            ", round(fit_measures["rmsea"], 3),
-    " [", round(fit_measures["rmsea.ci.lower"], 3), ", ",
-    round(fit_measures["rmsea.ci.upper"], 3), "]",
-    ifelse(fit_measures["rmsea"] <= 0.05, "(ausgezeichnet)",
-           ifelse(fit_measures["rmsea"] <= 0.08, "(akzeptabel)", "(problematisch)")), "\n", sep = "")
-cat("SRMR:             ", round(fit_measures["srmr"], 3),
-    ifelse(fit_measures["srmr"] <= 0.05, "(ausgezeichnet)",
-           ifelse(fit_measures["srmr"] <= 0.08, "(akzeptabel)", "(problematisch)")), "\n\n")
+  " [", round(fit_measures["rmsea.ci.lower"], 3), ", ",
+  round(fit_measures["rmsea.ci.upper"], 3), "]",
+  ifelse(fit_measures["rmsea"] <= 0.05, "(ausgezeichnet)",
+    ifelse(fit_measures["rmsea"] <= 0.08, "(akzeptabel)", "(problematisch)")
+  ), "\n",
+  sep = ""
+)
+cat(
+  "SRMR:             ", round(fit_measures["srmr"], 3),
+  ifelse(fit_measures["srmr"] <= 0.05, "(ausgezeichnet)",
+    ifelse(fit_measures["srmr"] <= 0.08, "(akzeptabel)", "(problematisch)")
+  ), "\n\n"
+)
 
 cat("Interpretation der Fit-Indices:\n")
 cat("  - CFI/TLI ≥ 0.95: ausgezeichneter Fit, ≥ 0.90: akzeptabel\n")
@@ -587,8 +613,10 @@ overall_fit <- ifelse(
 
 cat("Fazit:\n")
 cat("  - Der Modellfit ist", overall_fit, "\n")
-cat("  - Die 7-Faktoren-Struktur wird",
-    ifelse(overall_fit == "akzeptabel bis gut", "bestätigt", "nicht vollständig bestätigt"), "\n\n")
+cat(
+  "  - Die 7-Faktoren-Struktur wird",
+  ifelse(overall_fit == "akzeptabel bis gut", "bestätigt", "nicht vollständig bestätigt"), "\n\n"
+)
 
 cat("### 7.3 Faktorladungen extrahieren\n\n")
 
@@ -618,8 +646,8 @@ cat("### 7.4 Faktor-Korrelationen\n\n")
 
 # Faktor-Korrelationen extrahieren
 factor_cors <- std_loadings[std_loadings$op == "~~" &
-                            std_loadings$lhs != std_loadings$rhs &
-                            std_loadings$lhs %in% c("Stress", "Symptome", "Aktiv", "Drogen", "Positiv", "Sozial", "Religioes"), ]
+  std_loadings$lhs != std_loadings$rhs &
+  std_loadings$lhs %in% c("Stress", "Symptome", "Aktiv", "Drogen", "Positiv", "Sozial", "Religioes"), ]
 
 if (nrow(factor_cors) > 0) {
   cat("Korrelationen zwischen den Faktoren:\n\n")
@@ -711,7 +739,7 @@ cat("### 7.6 Visualisierung\n\n")
 
 cat("Erstelle Plot 1: Verbesserte Faktorladungen-Heatmap...\n")
 
-png("plots/17_cfa_faktorladungen_heatmap.png", width = 2000, height = 1400, res = 150)
+png(file.path(PLOTS_DIR, "17_cfa_faktorladungen_heatmap.png"), width = 2000, height = 1400, res = 150)
 par(mar = c(10, 12, 4, 14), xpd = TRUE)
 
 # Erstelle Matrix: Items × Faktoren
@@ -754,9 +782,10 @@ col_palette <- colorRampPalette(c("white", "#C6DBEF", "#6BAED6", "#2171B5", "#08
 
 # Heatmap plotten
 image(1:n_factors, 1:n_items, t(loading_matrix),
-      col = col_palette, xlab = "", ylab = "", axes = FALSE,
-      main = "CFA Faktorladungen (7-Faktoren-Modell)",
-      zlim = c(0, 1))
+  col = col_palette, xlab = "", ylab = "", axes = FALSE,
+  main = "CFA Faktorladungen (7-Faktoren-Modell)",
+  zlim = c(0, 1)
+)
 
 # Achsen
 axis(1, at = 1:n_factors, labels = colnames(loading_matrix), las = 2, cex.axis = 1.1)
@@ -776,9 +805,9 @@ for (fac_name in names(items_per_factor)) {
   if (current_row + n_items_in_factor < n_items) {
     separator_y <- current_row + n_items_in_factor + 0.5
     lines(c(0.5, n_factors + 0.5), c(separator_y, separator_y),
-          col = "black", lwd = 2.5)
+      col = "black", lwd = 2.5
+    )
   }
-
 
 
   current_row <- current_row + n_items_in_factor
@@ -793,12 +822,15 @@ for (i in 1:n_items) {
 
       # Signifikanzsterne
       sig_symbol <- ifelse(pval_matrix[i, j] < 0.001, "***",
-                    ifelse(pval_matrix[i, j] < 0.01, "**",
-                    ifelse(pval_matrix[i, j] < 0.05, "*", "")))
+        ifelse(pval_matrix[i, j] < 0.01, "**",
+          ifelse(pval_matrix[i, j] < 0.05, "*", "")
+        )
+      )
 
       # Text
       text(j, i, sprintf("%.2f%s", loading_matrix[i, j], sig_symbol),
-           col = text_col, cex = 0.9, font = 2)
+        col = text_col, cex = 0.9, font = 2
+      )
 
       # Roter Rahmen für schwache Ladungen
       if (loading_matrix[i, j] < 0.40) {
@@ -809,10 +841,12 @@ for (i in 1:n_items) {
 }
 
 # Legende
-legend("topright", inset = c(-0.25, 0),
-       legend = c("≥ 0.70 (stark)", "0.40-0.70 (substanziell)", "< 0.40 (schwach)"),
-       fill = c("#08306B", "#6BAED6", "#C6DBEF"),
-       title = "Ladungsstärke", bty = "n", cex = 0.9)
+legend("topright",
+  inset = c(-0.25, 0),
+  legend = c("≥ 0.70 (stark)", "0.40-0.70 (substanziell)", "< 0.40 (schwach)"),
+  fill = c("#08306B", "#6BAED6", "#C6DBEF"),
+  title = "Ladungsstärke", bty = "n", cex = 0.9
+)
 
 dev.off()
 cat("✓ Plot 17 gespeichert: Faktorladungen-Heatmap\n\n")
@@ -823,7 +857,7 @@ cat("✓ Plot 17 gespeichert: Faktorladungen-Heatmap\n\n")
 
 cat("Erstelle Plot 2: CR & AVE Vergleich...\n")
 
-png("plots/18_cfa_reliabilität_vergleich.png", width = 1600, height = 1000, res = 150)
+png(file.path(PLOTS_DIR, "18_cfa_reliabilität_vergleich.png"), width = 1600, height = 1000, res = 150)
 par(mar = c(8, 5, 4, 2))
 
 # Daten vorbereiten (sortiert nach CR)
@@ -836,14 +870,16 @@ bar_width <- 0.35
 
 # Erstelle Plot
 barplot_data <- rbind(reliability_sorted$CR, reliability_sorted$AVE)
-bp <- barplot(barplot_data, beside = TRUE,
-              names.arg = reliability_sorted$Faktor,
-              col = c("#2171B5", "#FD8D3C"),
-              ylim = c(0, 1),
-              las = 2,
-              ylab = "Wert",
-              main = "Composite Reliability (CR) und Average Variance Extracted (AVE)",
-              border = NA)
+bp <- barplot(barplot_data,
+  beside = TRUE,
+  names.arg = reliability_sorted$Faktor,
+  col = c("#2171B5", "#FD8D3C"),
+  ylim = c(0, 1),
+  las = 2,
+  ylab = "Wert",
+  main = "Composite Reliability (CR) und Average Variance Extracted (AVE)",
+  border = NA
+)
 
 # Referenzlinien
 abline(h = 0.70, col = "darkgreen", lty = 2, lwd = 2)
@@ -852,21 +888,28 @@ abline(h = 0.50, col = "darkred", lty = 2, lwd = 2)
 # Werte auf Balken
 for (i in 1:n_fac) {
   text(bp[1, i], reliability_sorted$CR[i] + 0.03,
-       sprintf("%.2f", reliability_sorted$CR[i]), cex = 0.9)
+    sprintf("%.2f", reliability_sorted$CR[i]),
+    cex = 0.9
+  )
   text(bp[2, i], reliability_sorted$AVE[i] + 0.03,
-       sprintf("%.2f", reliability_sorted$AVE[i]), cex = 0.9)
+    sprintf("%.2f", reliability_sorted$AVE[i]),
+    cex = 0.9
+  )
 }
 
 # Legende
 legend("topright",
-       legend = c("CR (Composite Reliability)", "AVE (Average Variance Extracted)",
-                  "CR Schwelle (0.70)", "AVE Schwelle (0.50)"),
-       fill = c("#2171B5", "#FD8D3C", NA, NA),
-       border = c("black", "black", NA, NA),
-       lty = c(NA, NA, 2, 2),
-       lwd = c(NA, NA, 2, 2),
-       col = c(NA, NA, "darkgreen", "darkred"),
-       bty = "n", cex = 0.9)
+  legend = c(
+    "CR (Composite Reliability)", "AVE (Average Variance Extracted)",
+    "CR Schwelle (0.70)", "AVE Schwelle (0.50)"
+  ),
+  fill = c("#2171B5", "#FD8D3C", NA, NA),
+  border = c("black", "black", NA, NA),
+  lty = c(NA, NA, 2, 2),
+  lwd = c(NA, NA, 2, 2),
+  col = c(NA, NA, "darkgreen", "darkred"),
+  bty = "n", cex = 0.9
+)
 
 dev.off()
 cat("✓ Plot 18 gespeichert: CR & AVE Vergleich\n\n")
@@ -877,7 +920,7 @@ cat("✓ Plot 18 gespeichert: CR & AVE Vergleich\n\n")
 
 cat("Erstelle Plot 3: Faktor-Korrelations-Netzwerk...\n")
 
-png("plots/19_cfa_faktor_netzwerk.png", width = 1600, height = 1600, res = 150)
+png(file.path(PLOTS_DIR, "19_cfa_faktor_netzwerk.png"), width = 1600, height = 1600, res = 150)
 par(mar = c(2, 2, 4, 2))
 
 # Erstelle Korrelationsmatrix aus factor_cors
@@ -906,9 +949,11 @@ x <- cos(theta)
 y <- sin(theta)
 
 # Plot erstellen
-plot(x, y, type = "n", xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5),
-     axes = FALSE, xlab = "", ylab = "",
-     main = "Faktor-Korrelationen (7-Faktoren-Modell)")
+plot(x, y,
+  type = "n", xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5),
+  axes = FALSE, xlab = "", ylab = "",
+  main = "Faktor-Korrelationen (7-Faktoren-Modell)"
+)
 
 # Verbindungslinien zeichnen (nur für |r| > 0.20)
 for (i in 1:(n_factors - 1)) {
@@ -917,16 +962,17 @@ for (i in 1:(n_factors - 1)) {
     if (abs(cor_val) > 0.20) {
       # Linienfarbe und -dicke basierend auf Korrelation
       if (cor_val > 0) {
-        line_col <- rgb(0.18, 0.55, 0.20, alpha = abs(cor_val) * 0.8)  # Grün für positiv
+        line_col <- rgb(0.18, 0.55, 0.20, alpha = abs(cor_val) * 0.8) # Grün für positiv
       } else {
-        line_col <- rgb(0.83, 0.18, 0.18, alpha = abs(cor_val) * 0.8)  # Rot für negativ
+        line_col <- rgb(0.83, 0.18, 0.18, alpha = abs(cor_val) * 0.8) # Rot für negativ
       }
 
       line_width <- 1 + abs(cor_val) * 4
       line_type <- ifelse(abs(cor_val) > 0.50, 1, 2)
 
       lines(c(x[i], x[j]), c(y[i], y[j]),
-            col = line_col, lwd = line_width, lty = line_type)
+        col = line_col, lwd = line_width, lty = line_type
+      )
     }
   }
 }
@@ -937,13 +983,13 @@ node_size <- 0.15 + (reliability_results$CR - min(reliability_results$CR)) * 0.1
 # Farbpalette für Faktoren
 # Rottöne für Belastung und Symptome, Blautöne für Coping-Skalen
 factor_colors <- c(
-  "#8B0000",  # Stress (Belastung) - Dunkelrot
-  "#DC143C",  # Symptome - Crimson
-  "#08306B",  # Aktiv - Dunkelblau
-  "#2171B5",  # Drogen - Mittelblau
-  "#4292C6",  # Positiv - Helleres Blau
-  "#6BAED6",  # Sozial - Noch helleres Blau
-  "#9ECAE1"   # Religioes - Hellblau
+  "#8B0000", # Stress (Belastung) - Dunkelrot
+  "#DC143C", # Symptome - Crimson
+  "#08306B", # Aktiv - Dunkelblau
+  "#2171B5", # Drogen - Mittelblau
+  "#4292C6", # Positiv - Helleres Blau
+  "#6BAED6", # Sozial - Noch helleres Blau
+  "#9ECAE1" # Religioes - Hellblau
 )
 
 # Labels für die Faktoren (Belastung statt Stress, Symptome abgekürzt)
@@ -951,9 +997,11 @@ factor_labels <- c("Belastung", "Symptome", "Aktiv", "Drogen", "Positiv", "Sozia
 
 for (i in 1:n_factors) {
   # Kreis zeichnen
-  symbols(x[i], y[i], circles = node_size[i],
-          inches = FALSE, add = TRUE,
-          bg = factor_colors[i], fg = "black", lwd = 2)
+  symbols(x[i], y[i],
+    circles = node_size[i],
+    inches = FALSE, add = TRUE,
+    bg = factor_colors[i], fg = "black", lwd = 2
+  )
 
   # Faktorname (mit angepassten Labels)
   text(x[i], y[i], factor_labels[i], cex = 0.9, font = 2, col = "white")
@@ -961,20 +1009,26 @@ for (i in 1:n_factors) {
   # CR/AVE Werte außerhalb
   label_dist <- 1.3
   text(x[i] * label_dist, y[i] * label_dist,
-       sprintf("CR=%.2f\nAVE=%.2f",
-               reliability_results$CR[i],
-               reliability_results$AVE[i]),
-       cex = 0.7, col = "black")
+    sprintf(
+      "CR=%.2f\nAVE=%.2f",
+      reliability_results$CR[i],
+      reliability_results$AVE[i]
+    ),
+    cex = 0.7, col = "black"
+  )
 }
 
 # Legende
 legend("bottomright",
-       legend = c("Positive Korr. (r > 0)", "Negative Korr. (r < 0)",
-                  "Stark (|r| > 0.50)", "Moderat (|r| 0.20-0.50)"),
-       col = c(rgb(0.18, 0.55, 0.20, 0.8), rgb(0.83, 0.18, 0.18, 0.8), "black", "black"),
-       lty = c(1, 1, 1, 2),
-       lwd = c(3, 3, 3, 2),
-       bty = "n", cex = 0.9)
+  legend = c(
+    "Positive Korr. (r > 0)", "Negative Korr. (r < 0)",
+    "Stark (|r| > 0.50)", "Moderat (|r| 0.20-0.50)"
+  ),
+  col = c(rgb(0.18, 0.55, 0.20, 0.8), rgb(0.83, 0.18, 0.18, 0.8), "black", "black"),
+  lty = c(1, 1, 1, 2),
+  lwd = c(3, 3, 3, 2),
+  bty = "n", cex = 0.9
+)
 
 dev.off()
 cat("✓ Plot 19 gespeichert: Faktor-Korrelations-Netzwerk\n\n")
@@ -983,10 +1037,14 @@ cat("### 7.7 Fazit CFA\n\n")
 cat("Die konfirmatorische Faktorenanalyse zeigt:\n")
 cat("  - Modellfit:", overall_fit, "\n")
 cat("  - Faktorladungen:", ifelse(nrow(weak_loadings) == 0, "alle substanziell", "teilweise schwach"), "\n")
-cat("  - Faktoren-Diskriminanz:",
-    ifelse(nrow(high_cors) == 0, "gegeben", "teilweise problematisch"), "\n")
-cat("  - Reliabilität:",
-    ifelse(nrow(poor_cr) == 0, "gut", "teilweise verbesserungswürdig"), "\n\n")
+cat(
+  "  - Faktoren-Diskriminanz:",
+  ifelse(nrow(high_cors) == 0, "gegeben", "teilweise problematisch"), "\n"
+)
+cat(
+  "  - Reliabilität:",
+  ifelse(nrow(poor_cr) == 0, "gut", "teilweise verbesserungswürdig"), "\n\n"
+)
 
 cat("✓ CFA abgeschlossen\n\n")
 

@@ -23,23 +23,20 @@
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
+
+# Verwende zentrale Konfiguration falls verfügbar (aus run_all.R)
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n")
+cat("  Enthält: data, print_section(), fisher_z_test()\n\n")
 
 print_section("SUBGRUPPENANALYSEN: COPING-SKALEN (NEU)")
 
 cat("HINWEIS: Diese Analysen erweitern das Original-Skript!\n")
 cat("Alle 5 Coping-Skalen werden über demographische Gruppen analysiert.\n\n")
-
-# ==============================================================================
-# HILFSFUNKTION: FISHER'S Z-TEST
-# ==============================================================================
-
-fisher_z_test <- function(r1, n1, r2, n2) {
-  z <- (atanh(r1) - atanh(r2)) / sqrt(1 / (n1 - 3) + 1 / (n2 - 3))
-  p <- 2 * (1 - pnorm(abs(z)))
-  list(z = z, p = p)
-}
 
 # ==============================================================================
 # DEFINITIONEN
@@ -120,12 +117,7 @@ for (i in seq_along(coping_skalen)) {
 
 cat("\n### Validität nach Bildungsniveau\n\n")
 
-data$Bildung_gruppiert <- cut(as.numeric(data$Bildung),
-  breaks = c(0, 3, 4, 7, 8),
-  labels = c("Niedrig", "Mittel", "Hoch", "Andere"),
-  include.lowest = TRUE
-)
-
+# Bildung_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_bildung <- subset(data, Bildung_gruppiert %in% c("Niedrig", "Mittel", "Hoch"))
 n_niedrig <- sum(data_bildung$Bildung_gruppiert == "Niedrig")
 n_mittel <- sum(data_bildung$Bildung_gruppiert == "Mittel")
@@ -207,12 +199,7 @@ for (i in seq_along(coping_skalen)) {
 
 cat("\n### Validität nach Alter\n\n")
 
-data$Alter_gruppiert <- cut(data$Alter,
-  breaks = c(0, 30, 45, 100),
-  labels = c("Jung", "Mittel", "Alt"),
-  include.lowest = TRUE
-)
-
+# Alter_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_alter <- subset(data, !is.na(Alter_gruppiert))
 n_jung <- sum(data_alter$Alter_gruppiert == "Jung")
 n_mittel_alter <- sum(data_alter$Alter_gruppiert == "Mittel")
@@ -294,13 +281,7 @@ for (i in seq_along(coping_skalen)) {
 
 cat("\n### Validität nach Beschäftigung\n\n")
 
-beschaeftigung_freq <- table(data$Beschäftigung)
-beschaeftigung_freq <- beschaeftigung_freq[beschaeftigung_freq >= 20]
-
-data$Beschäftigung_gruppiert <- ifelse(data$Beschäftigung %in% names(beschaeftigung_freq),
-  data$Beschäftigung, "Andere"
-)
-
+# Beschäftigung_gruppiert wurde bereits in 01_setup_and_scales.R erstellt
 data_beschaeftigung <- subset(data, Beschäftigung_gruppiert != "Andere" & !is.na(Beschäftigung_gruppiert))
 beschaeftigung_gruppen <- unique(data_beschaeftigung$Beschäftigung_gruppiert)
 beschaeftigung_gruppen <- beschaeftigung_gruppen[!is.na(beschaeftigung_gruppen)]

@@ -15,6 +15,22 @@
 # ==============================================================================
 
 # ==============================================================================
+# KONFIGURATION - FILEPATHS VON run_all.R
+# ==============================================================================
+
+# Diese Variablen sollten von run_all.R gesetzt sein
+# Falls direkt ausgeführt, verwende Defaults
+if (!exists("CLEAN_DATA_FILE")) {
+  CLEAN_DATA_FILE <- "data/data.csv"
+}
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+if (!exists("PLOTS_DIR")) {
+  PLOTS_DIR <- "plots"
+}
+
+# ==============================================================================
 # PAKETE LADEN
 # ==============================================================================
 
@@ -46,6 +62,13 @@ print_section <- function(title, level = 1) {
   }
 }
 
+# Fisher's Z-Test für Korrelationsvergleiche
+fisher_z_test <- function(r1, n1, r2, n2) {
+  z <- (atanh(r1) - atanh(r2)) / sqrt(1 / (n1 - 3) + 1 / (n2 - 3))
+  p <- 2 * (1 - pnorm(abs(z)))
+  list(z = z, p = p)
+}
+
 # ==============================================================================
 # DATEN EINLESEN
 # ==============================================================================
@@ -53,7 +76,7 @@ print_section <- function(title, level = 1) {
 print_section("DATEN EINLESEN")
 
 # Daten einlesen
-data <- read.csv("data/data.csv", header = TRUE, sep = ";", dec = ",")
+data <- read.csv(CLEAN_DATA_FILE, header = TRUE, sep = ";", dec = ",")
 cat("✓ Daten geladen:", nrow(data), "Zeilen\n")
 
 # ==============================================================================
@@ -88,9 +111,34 @@ data <- subset(data, SO02_14 == 4)
 n_nach_ausschluss <- nrow(data)
 n_ausgeschlossen <- n_vor_ausschluss - n_nach_ausschluss
 
+# Bildung gruppieren: Niedrig, Mittel, Hoch
+# 1=Hauptschule (Niedrig)
+# 2=Realschule (Niedrig), 3=Fachhochschulreife (Mittel), 4=Hochschulreife (Mittel)
+# 5=Bachelor (Hoch), 6=Master (Hoch), 7=Staatsexamen (Hoch), 8=Andere
+data$Bildung_gruppiert <- case_when(
+  data$Bildung %in% c("1", "2") ~ "Niedrig",
+  data$Bildung %in% c("3", "4") ~ "Mittel",
+  data$Bildung %in% c("5", "6", "7") ~ "Hoch",
+  TRUE ~ NA_character_
+)
+
+# Alter gruppieren: Jung, Mittel, Alt
+# Jung: <30, Mittel: 30-45, Alt: >45
+data$Alter_gruppiert <- case_when(
+  data$Alter < 30 ~ "Jung",
+  data$Alter >= 30 & data$Alter <= 45 ~ "Mittel",
+  data$Alter > 45 ~ "Alt",
+  TRUE ~ NA_character_
+)
+
+# Beschäftigung gruppieren (bereits als Beschäftigung vorhanden)
+data$Beschäftigung_gruppiert <- data$Beschäftigung
+
 cat("✓ Datenbereinigung abgeschlossen\n")
 cat("  - Alter ≥18 Jahre\n")
-cat("  - Aufmerksamkeitstest bestanden (SO02_14 == 4)\n\n")
+cat("  - Aufmerksamkeitstest bestanden (SO02_14 == 4)\n")
+cat("  - Bildung gruppiert (Niedrig/Mittel/Hoch)\n")
+cat("  - Alter gruppiert (Jung/Mittel/Alt)\n\n")
 
 # ==============================================================================
 # STICHPROBENBESCHREIBUNG
@@ -162,17 +210,23 @@ item_gruppen <- list(
   "Big Five (Neurotizismus)" = c("BF01_01", "BF01_02"),
   "Resilienz" = c("RE01_01", "RE01_02", "RE01_03", "RE01_04", "RE01_05", "RE01_06"),
   "Stressbelastung (kurz)" = c("NI06_01", "NI06_02", "NI06_03", "NI06_04", "NI06_05"),
-  "Stressbelastung (lang)" = c("SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
-                               "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11"),
+  "Stressbelastung (lang)" = c(
+    "SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
+    "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11"
+  ),
   "Stresssymptome (kurz)" = c("NI13_01", "NI13_02", "NI13_03", "NI13_04", "NI13_05"),
-  "Stresssymptome (lang)" = c("SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
-                              "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
-                              "SO02_11", "SO02_12", "SO02_13"),
-  "Coping (Items)" = c("NI07_01", "NI07_02", "NI07_03", "NI07_04", "NI07_05",
-                       "SO23_01", "SO23_02", "SO23_04", "SO23_05", "SO23_06",
-                       "SO23_07", "SO23_09", "SO23_10", "SO23_11", "SO23_12",
-                       "SO23_13", "SO23_14", "SO23_15", "SO23_16", "SO23_17",
-                       "SO23_18", "SO23_20"),
+  "Stresssymptome (lang)" = c(
+    "SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
+    "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
+    "SO02_11", "SO02_12", "SO02_13"
+  ),
+  "Coping (Items)" = c(
+    "NI07_01", "NI07_02", "NI07_03", "NI07_04", "NI07_05",
+    "SO23_01", "SO23_02", "SO23_04", "SO23_05", "SO23_06",
+    "SO23_07", "SO23_09", "SO23_10", "SO23_11", "SO23_12",
+    "SO23_13", "SO23_14", "SO23_15", "SO23_16", "SO23_17",
+    "SO23_18", "SO23_20"
+  ),
   "Zufriedenheit" = c("L101_01")
 )
 
@@ -218,8 +272,8 @@ varianz_analyse <- data.frame(
 # Schwellenwerte definieren
 SD_SCHWELLE <- 0.5
 RANGE_SCHWELLE <- 3
-DECKE_SCHWELLE <- 15  # Prozent
-BODEN_SCHWELLE <- 15  # Prozent
+DECKE_SCHWELLE <- 15 # Prozent
+BODEN_SCHWELLE <- 15 # Prozent
 
 # Analysiere jedes Item
 for (skala_name in names(item_gruppen)) {
@@ -297,28 +351,40 @@ n_bodeneffekt <- nrow(items_bodeneffekt)
 # Kombiniere: Items mit IRGENDEINEM Problem
 items_problematisch <- varianz_analyse[
   !varianz_analyse$SD_Kriterium |
-  !varianz_analyse$Range_Kriterium |
-  varianz_analyse$Deckeneffekt |
-  varianz_analyse$Bodeneffekt,
+    !varianz_analyse$Range_Kriterium |
+    varianz_analyse$Deckeneffekt |
+    varianz_analyse$Bodeneffekt,
 ]
 n_problematisch <- nrow(items_problematisch)
 
 cat("ZUSAMMENFASSUNG DER PROBLEMATISCHEN ITEMS:\n")
 cat(paste(rep("=", 80), collapse = ""), "\n\n")
-cat(sprintf("Items mit SD < %.2f:                    %2d (%.1f%%)\n",
-            SD_SCHWELLE, n_geringe_sd, 100 * n_geringe_sd / n_items_gesamt))
-cat(sprintf("Items mit Range < %d:                    %2d (%.1f%%)\n",
-            RANGE_SCHWELLE, n_geringe_range, 100 * n_geringe_range / n_items_gesamt))
-cat(sprintf("Items mit Deckeneffekt (>%d%%):          %2d (%.1f%%)\n",
-            DECKE_SCHWELLE, n_deckeneffekt, 100 * n_deckeneffekt / n_items_gesamt))
-cat(sprintf("Items mit Bodeneffekt (>%d%%):           %2d (%.1f%%)\n",
-            BODEN_SCHWELLE, n_bodeneffekt, 100 * n_bodeneffekt / n_items_gesamt))
+cat(sprintf(
+  "Items mit SD < %.2f:                    %2d (%.1f%%)\n",
+  SD_SCHWELLE, n_geringe_sd, 100 * n_geringe_sd / n_items_gesamt
+))
+cat(sprintf(
+  "Items mit Range < %d:                    %2d (%.1f%%)\n",
+  RANGE_SCHWELLE, n_geringe_range, 100 * n_geringe_range / n_items_gesamt
+))
+cat(sprintf(
+  "Items mit Deckeneffekt (>%d%%):          %2d (%.1f%%)\n",
+  DECKE_SCHWELLE, n_deckeneffekt, 100 * n_deckeneffekt / n_items_gesamt
+))
+cat(sprintf(
+  "Items mit Bodeneffekt (>%d%%):           %2d (%.1f%%)\n",
+  BODEN_SCHWELLE, n_bodeneffekt, 100 * n_bodeneffekt / n_items_gesamt
+))
 cat("\n")
-cat(sprintf("Gesamt problematische Items:            %2d (%.1f%%)\n",
-            n_problematisch, 100 * n_problematisch / n_items_gesamt))
-cat(sprintf("Items ohne Probleme:                    %2d (%.1f%%)\n",
-            n_items_gesamt - n_problematisch,
-            100 * (n_items_gesamt - n_problematisch) / n_items_gesamt))
+cat(sprintf(
+  "Gesamt problematische Items:            %2d (%.1f%%)\n",
+  n_problematisch, 100 * n_problematisch / n_items_gesamt
+))
+cat(sprintf(
+  "Items ohne Probleme:                    %2d (%.1f%%)\n",
+  n_items_gesamt - n_problematisch,
+  100 * (n_items_gesamt - n_problematisch) / n_items_gesamt
+))
 
 # ------------------------------------------------------------------------------
 # SCHRITT 4: Detaillierte Ausgabe problematischer Items
@@ -333,9 +399,11 @@ if (n_problematisch > 0) {
     item_info <- items_problematisch[i, ]
 
     cat(sprintf("Item: %s (%s)\n", item_info$Item, item_info$Skala))
-    cat(sprintf("  M = %.2f, SD = %.2f, Range = %.1f [%.1f - %.1f]\n",
-                item_info$Mittelwert, item_info$SD, item_info$Range,
-                item_info$Min, item_info$Max))
+    cat(sprintf(
+      "  M = %.2f, SD = %.2f, Range = %.1f [%.1f - %.1f]\n",
+      item_info$Mittelwert, item_info$SD, item_info$Range,
+      item_info$Min, item_info$Max
+    ))
 
     # Identifiziere spezifische Probleme
     probleme <- c()
@@ -379,7 +447,7 @@ for (skala_name in names(item_gruppen)) {
   m_sd <- mean(items_skala$SD, na.rm = TRUE)
   m_range <- mean(items_skala$Range, na.rm = TRUE)
   n_probleme <- sum(!items_skala$SD_Kriterium | !items_skala$Range_Kriterium |
-                    items_skala$Deckeneffekt | items_skala$Bodeneffekt)
+    items_skala$Deckeneffekt | items_skala$Bodeneffekt)
 
   cat(sprintf("  Durchschnittliche SD:    %.2f\n", m_sd))
   cat(sprintf("  Durchschnittliche Range: %.2f\n", m_range))
@@ -388,7 +456,7 @@ for (skala_name in names(item_gruppen)) {
   if (n_probleme > 0) {
     cat("  Betroffene Items: ")
     problematische <- items_skala[!items_skala$SD_Kriterium | !items_skala$Range_Kriterium |
-                                  items_skala$Deckeneffekt | items_skala$Bodeneffekt, ]
+      items_skala$Deckeneffekt | items_skala$Bodeneffekt, ]
     cat(paste(problematische$Item, collapse = ", "))
     cat("\n")
   }
@@ -415,8 +483,10 @@ cat("d) SENSITIVITÄT: Reliabilitätsanalysen mit/ohne problematische Items\n\n"
 
 if (n_problematisch > 0) {
   cat("EMPFEHLUNG FÜR DIESE ANALYSE:\n")
-  cat(sprintf("- %d von %d Items (%.1f%%) zeigen Varianzprobleme\n",
-              n_problematisch, n_items_gesamt, 100 * n_problematisch / n_items_gesamt))
+  cat(sprintf(
+    "- %d von %d Items (%.1f%%) zeigen Varianzprobleme\n",
+    n_problematisch, n_items_gesamt, 100 * n_problematisch / n_items_gesamt
+  ))
   cat("- Prüfen Sie bei Reliabilitätsanalysen (03_reliability.R), ob diese Items\n")
   cat("  niedrige Trennschärfen aufweisen\n")
   cat("- Items mit geringer Varianz UND geringer Trennschärfe sollten entfernt werden\n")
@@ -611,8 +681,10 @@ z_schwellenwert <- 3.29
 
 cat("Methode: Z-Score-Transformation\n")
 cat("Schwellenwert: |z| >", z_schwellenwert, "\n")
-cat("Interpretation: Werte, die mehr als", z_schwellenwert,
-    "Standardabweichungen vom\n               Mittelwert entfernt liegen\n\n")
+cat(
+  "Interpretation: Werte, die mehr als", z_schwellenwert,
+  "Standardabweichungen vom\n               Mittelwert entfernt liegen\n\n"
+)
 
 # Berechne Z-Scores für alle Skalen
 z_scores <- as.data.frame(scale(skalen_data))
@@ -638,17 +710,21 @@ for (var in skalen_namen) {
   # Ausgabe
   if (n_ausreisser > 0) {
     max_z <- max(abs(z_scores[[var]]), na.rm = TRUE)
-    cat(sprintf("%-30s: %2d Ausreisser (max |z| = %.2f)\n",
-                var, n_ausreisser, max_z))
+    cat(sprintf(
+      "%-30s: %2d Ausreisser (max |z| = %.2f)\n",
+      var, n_ausreisser, max_z
+    ))
   } else {
     cat(sprintf("%-30s: %2d Ausreisser\n", var, n_ausreisser))
   }
 }
 
 n_personen_z_ausreisser <- sum(z_ausreisser_gesamt, na.rm = TRUE)
-cat("\nGesamtanzahl Personen mit mindestens einem Z-Score-Ausreisser:",
-    n_personen_z_ausreisser,
-    sprintf("(%.1f%%)\n", 100 * n_personen_z_ausreisser / nrow(data)))
+cat(
+  "\nGesamtanzahl Personen mit mindestens einem Z-Score-Ausreisser:",
+  n_personen_z_ausreisser,
+  sprintf("(%.1f%%)\n", 100 * n_personen_z_ausreisser / nrow(data))
+)
 
 # ------------------------------------------------------------------------------
 # SCHRITT 3: Univariate Ausreisser-Analyse mit IQR-Methode
@@ -691,17 +767,21 @@ for (var in skalen_namen) {
 
   # Ausgabe
   if (n_ausreisser > 0) {
-    cat(sprintf("%-30s: %2d Ausreisser [%.2f, %.2f]\n",
-                var, n_ausreisser, untere_grenze, obere_grenze))
+    cat(sprintf(
+      "%-30s: %2d Ausreisser [%.2f, %.2f]\n",
+      var, n_ausreisser, untere_grenze, obere_grenze
+    ))
   } else {
     cat(sprintf("%-30s: %2d Ausreisser\n", var, n_ausreisser))
   }
 }
 
 n_personen_iqr_ausreisser <- sum(iqr_ausreisser_gesamt, na.rm = TRUE)
-cat("\nGesamtanzahl Personen mit mindestens einem IQR-Ausreisser:",
-    n_personen_iqr_ausreisser,
-    sprintf("(%.1f%%)\n", 100 * n_personen_iqr_ausreisser / nrow(data)))
+cat(
+  "\nGesamtanzahl Personen mit mindestens einem IQR-Ausreisser:",
+  n_personen_iqr_ausreisser,
+  sprintf("(%.1f%%)\n", 100 * n_personen_iqr_ausreisser / nrow(data))
+)
 
 # ------------------------------------------------------------------------------
 # SCHRITT 4: Multivariate Ausreisser-Analyse (Mahalanobis-Distanz)
@@ -748,17 +828,21 @@ if (n_komplett > 0) {
   mahal_ausreisser <- mahal_dist > chi_schwellenwert
   n_mahal_ausreisser <- sum(mahal_ausreisser)
 
-  cat("Anzahl multivariater Ausreisser:", n_mahal_ausreisser,
-      sprintf("(%.1f%%)\n", 100 * n_mahal_ausreisser / n_komplett))
+  cat(
+    "Anzahl multivariater Ausreisser:", n_mahal_ausreisser,
+    sprintf("(%.1f%%)\n", 100 * n_mahal_ausreisser / n_komplett)
+  )
 
   if (n_mahal_ausreisser > 0) {
     cat("\nTop 5 höchste Mahalanobis-Distanzen:\n")
     top_mahal <- sort(mahal_dist, decreasing = TRUE)[1:min(5, length(mahal_dist))]
     for (i in 1:length(top_mahal)) {
-      cat(sprintf("  %d. D² = %.2f %s\n",
-                  i,
-                  top_mahal[i],
-                  ifelse(top_mahal[i] > chi_schwellenwert, "(Ausreisser)", "")))
+      cat(sprintf(
+        "  %d. D² = %.2f %s\n",
+        i,
+        top_mahal[i],
+        ifelse(top_mahal[i] > chi_schwellenwert, "(Ausreisser)", "")
+      ))
     }
   }
 
@@ -766,7 +850,6 @@ if (n_komplett > 0) {
   data$Mahalanobis_Distanz <- NA
   data$Mahalanobis_Distanz[complete.cases(skalen_data_mahal)] <- mahal_dist
   data$Mahalanobis_Ausreisser <- data$Mahalanobis_Distanz > chi_schwellenwert
-
 } else {
   cat("WARNUNG: Keine vollständigen Fälle für Mahalanobis-Distanz verfügbar.\n")
   data$Mahalanobis_Distanz <- NA
@@ -786,8 +869,8 @@ data$IQR_Ausreisser <- iqr_ausreisser_gesamt
 # Zähle, wie viele Methoden jeden Fall als Ausreisser identifizieren
 data$Anzahl_Ausreisser_Methoden <- (
   as.numeric(data$Z_Ausreisser) +
-  as.numeric(data$IQR_Ausreisser) +
-  as.numeric(data$Mahalanobis_Ausreisser)
+    as.numeric(data$IQR_Ausreisser) +
+    as.numeric(data$Mahalanobis_Ausreisser)
 )
 
 # Identifiziere "konsistente" Ausreisser (von mindestens 2 Methoden identifiziert)
@@ -795,34 +878,45 @@ data$Konsistenter_Ausreisser <- data$Anzahl_Ausreisser_Methoden >= 2
 
 cat("Übersicht der Ausreisser-Identifikation:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
-cat(sprintf("%-40s: %3d (%.1f%%)\n",
-            "Z-Score-Methode",
-            n_personen_z_ausreisser,
-            100 * n_personen_z_ausreisser / nrow(data)))
-cat(sprintf("%-40s: %3d (%.1f%%)\n",
-            "IQR-Methode",
-            n_personen_iqr_ausreisser,
-            100 * n_personen_iqr_ausreisser / nrow(data)))
-cat(sprintf("%-40s: %3d (%.1f%%)\n",
-            "Mahalanobis-Distanz",
-            sum(data$Mahalanobis_Ausreisser, na.rm = TRUE),
-            100 * sum(data$Mahalanobis_Ausreisser, na.rm = TRUE) / nrow(data)))
+cat(sprintf(
+  "%-40s: %3d (%.1f%%)\n",
+  "Z-Score-Methode",
+  n_personen_z_ausreisser,
+  100 * n_personen_z_ausreisser / nrow(data)
+))
+cat(sprintf(
+  "%-40s: %3d (%.1f%%)\n",
+  "IQR-Methode",
+  n_personen_iqr_ausreisser,
+  100 * n_personen_iqr_ausreisser / nrow(data)
+))
+cat(sprintf(
+  "%-40s: %3d (%.1f%%)\n",
+  "Mahalanobis-Distanz",
+  sum(data$Mahalanobis_Ausreisser, na.rm = TRUE),
+  100 * sum(data$Mahalanobis_Ausreisser, na.rm = TRUE) / nrow(data)
+))
 
 cat("\nKonsistenz der Ausreisser-Identifikation:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
 ausreisser_tabelle <- table(data$Anzahl_Ausreisser_Methoden)
 for (i in 0:3) {
   n <- ifelse(as.character(i) %in% names(ausreisser_tabelle),
-              ausreisser_tabelle[as.character(i)],
-              0)
-  cat(sprintf("Von %d Methode(n) als Ausreisser identifiziert: %3d (%.1f%%)\n",
-              i, n, 100 * n / nrow(data)))
+    ausreisser_tabelle[as.character(i)],
+    0
+  )
+  cat(sprintf(
+    "Von %d Methode(n) als Ausreisser identifiziert: %3d (%.1f%%)\n",
+    i, n, 100 * n / nrow(data)
+  ))
 }
 
 n_konsistent <- sum(data$Konsistenter_Ausreisser, na.rm = TRUE)
-cat(sprintf("\nKonsistente Ausreisser (≥2 Methoden): %d (%.1f%%)\n",
-            n_konsistent,
-            100 * n_konsistent / nrow(data)))
+cat(sprintf(
+  "\nKonsistente Ausreisser (≥2 Methoden): %d (%.1f%%)\n",
+  n_konsistent,
+  100 * n_konsistent / nrow(data)
+))
 
 # ------------------------------------------------------------------------------
 # SCHRITT 6: Detaillierte Ausreisser-Informationen ausgeben
@@ -834,8 +928,10 @@ print_section("2.5 Detaillierte Ausreisser-Liste", 2)
 ausreisser_faelle <- data[data$Anzahl_Ausreisser_Methoden > 0, ]
 
 if (nrow(ausreisser_faelle) > 0) {
-  cat("Anzahl Fälle mit mindestens einer Ausreisser-Identifikation:",
-      nrow(ausreisser_faelle), "\n\n")
+  cat(
+    "Anzahl Fälle mit mindestens einer Ausreisser-Identifikation:",
+    nrow(ausreisser_faelle), "\n\n"
+  )
 
   cat("Hinweis: Die vollständige Liste wird nicht ausgegeben,\n")
   cat("         aber die Ausreisser-Variablen sind im Dataframe gespeichert:\n")
@@ -909,10 +1005,11 @@ print_section("WORKSPACE SPEICHERN")
 save(
   data,
   print_section, # Hilfsfunktion wird auch gespeichert
-  file = "data/01_scales.RData"
+  fisher_z_test, # Fisher's Z-Test für Subgruppenanalysen
+  file = WORKSPACE_FILE
 )
 
-cat("✓ Workspace gespeichert als: data/01_scales.RData\n")
+cat("✓ Workspace gespeichert als:", WORKSPACE_FILE, "\n")
 cat("\nDieser Workspace wird von allen nachfolgenden Skripten geladen.\n")
 cat("Führen Sie als nächstes aus:\n")
 cat("  - 02_descriptive_plots.R\n")

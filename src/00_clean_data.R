@@ -16,8 +16,16 @@
 # ==============================================================================
 
 # Konfiguration
-input_file <- "data/data_stressskala_2025-11-20_12-13.csv"
-output_file <- "data/data.csv"
+# Diese Variablen werden von run_all.R gesetzt, falls nicht vorhanden verwende Defaults
+if (!exists("RAW_DATA_FILE")) {
+  RAW_DATA_FILE <- "data/data_stressskala_2025-12-18_10-13.csv"
+}
+if (!exists("CLEAN_DATA_FILE")) {
+  CLEAN_DATA_FILE <- "data/data.csv"
+}
+
+input_file <- RAW_DATA_FILE
+output_file <- CLEAN_DATA_FILE
 input_encoding <- "ISO-8859-1"
 output_encoding <- "UTF-8"
 

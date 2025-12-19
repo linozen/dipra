@@ -19,6 +19,21 @@
 # ==============================================================================
 
 # ==============================================================================
+# KONFIGURATION - FILEPATHS VON run_all.R
+# ==============================================================================
+
+# Diese Variablen sollten von run_all.R gesetzt sein
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+if (!exists("PLOTS_DIR")) {
+  PLOTS_DIR <- "plots"
+}
+if (!exists("RAW_DATA_FILE")) {
+  RAW_DATA_FILE <- "data/data_stressskala_2025-12-18_10-13.csv"
+}
+
+# ==============================================================================
 # PAKETE LADEN
 # ==============================================================================
 
@@ -35,8 +50,8 @@ cat("✓ Pakete geladen\n\n")
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n\n")
 
 # ##############################################################################
 # TEIL I: RELIABILITÄT
@@ -137,7 +152,7 @@ cat(
 )
 
 # RELIABILITÄTS-PLOT: Stressbelastung
-png("plots/05_reliabilitaet_stress_itemstatistik.png", width = 1600, height = 800, res = 150)
+png(file.path(PLOTS_DIR, "05_reliabilitaet_stress_itemstatistik.png"), width = 1600, height = 800, res = 150)
 par(mfrow = c(1, 2))
 
 # Item-Total-Korrelationen - Gesamtskala
@@ -174,7 +189,7 @@ legend("topright", legend = "Mindestkriterium (r = 0.3)", col = "red", lty = 2, 
 dev.off()
 
 # Verteilungsplot der Stressskalen
-png("plots/06_reliabilitaet_stress_verteilung.png", width = 1600, height = 600, res = 150)
+png(file.path(PLOTS_DIR, "06_reliabilitaet_stress_verteilung.png"), width = 1600, height = 600, res = 150)
 par(mfrow = c(1, 3))
 hist(data$Stressbelastung_kurz,
   breaks = 20, col = "steelblue",
@@ -281,7 +296,7 @@ cat(
 )
 
 # RELIABILITÄTS-PLOT: Stresssymptome
-png("plots/07_reliabilitaet_symptome_itemstatistik.png", width = 1600, height = 800, res = 150)
+png(file.path(PLOTS_DIR, "07_reliabilitaet_symptome_itemstatistik.png"), width = 1600, height = 800, res = 150)
 par(mfrow = c(1, 2))
 
 # Item-Total-Korrelationen - Gesamtskala
@@ -318,7 +333,7 @@ legend("topright", legend = "Mindestkriterium (r = 0.3)", col = "red", lty = 2, 
 dev.off()
 
 # Verteilungsplot der Symptomskalen
-png("plots/08_reliabilitaet_symptome_verteilung.png", width = 1600, height = 600, res = 150)
+png(file.path(PLOTS_DIR, "08_reliabilitaet_symptome_verteilung.png"), width = 1600, height = 600, res = 150)
 par(mfrow = c(1, 3))
 hist(data$Stresssymptome_kurz,
   breaks = 20, col = "steelblue",
@@ -427,7 +442,7 @@ for (skala_name in names(coping_skalen)) {
 }
 
 # RELIABILITÄTS-PLOT: Alle Skalen Cronbachs Alpha
-png("plots/09_reliabilitaet_alle_alphas.png", width = 1600, height = 900, res = 150)
+png(file.path(PLOTS_DIR, "09_reliabilitaet_alle_alphas.png"), width = 1600, height = 900, res = 150)
 par(mar = c(10, 4, 4, 8), xpd = TRUE) # Mehr Platz rechts für Legende
 
 # Kombiniere alle Alpha-Werte
@@ -459,7 +474,7 @@ dev.off()
 cat("✓ Reliabilitäts-Plot für alle Skalen gespeichert\n\n")
 
 # RELIABILITÄTS-PLOT: Itemstatistiken für alle Coping-Skalen
-png("plots/10_reliabilitaet_coping_itemstatistiken.png", width = 2000, height = 1200, res = 150)
+png(file.path(PLOTS_DIR, "10_reliabilitaet_coping_itemstatistiken.png"), width = 2000, height = 1200, res = 150)
 par(mfrow = c(2, 3), mar = c(8, 4, 4, 2))
 
 for (i in seq_along(coping_skalen)) {
@@ -499,7 +514,7 @@ dev.off()
 cat("✓ Itemstatistiken für Coping-Skalen gespeichert\n\n")
 
 # Verteilungen der Coping-Skalen
-png("plots/11_reliabilitaet_coping_verteilungen.png", width = 1600, height = 1000, res = 150)
+png(file.path(PLOTS_DIR, "11_reliabilitaet_coping_verteilungen.png"), width = 1600, height = 1000, res = 150)
 par(mfrow = c(2, 3))
 hist(data$Coping_aktiv,
   breaks = 15, col = "steelblue",
@@ -547,7 +562,8 @@ print_section("1. RETEST-DATEN LADEN", 2)
 
 # Lade Rohdaten (enthält sowohl A1 als auch B)
 cat("Lade Rohdaten inklusive Retest-Fälle...\n")
-data_raw <- read.csv("data/data_stressskala_2025-11-20_12-13.csv",
+
+data_raw <- read.csv(RAW_DATA_FILE,
   header = TRUE,
   sep = ";",
   dec = ",",
@@ -593,8 +609,8 @@ levenshtein_distance <- function(s1, s2) {
     for (j in 2:(m + 1)) {
       cost <- ifelse(substr(s1, i - 1, i - 1) == substr(s2, j - 1, j - 1), 0, 1)
       d[i, j] <- min(
-        d[i - 1, j] + 1,      # Löschung
-        d[i, j - 1] + 1,      # Einfügung
+        d[i - 1, j] + 1, # Löschung
+        d[i, j - 1] + 1, # Einfügung
         d[i - 1, j - 1] + cost # Ersetzung
       )
     }
@@ -624,7 +640,7 @@ retest_matches <- data.frame(
   stringsAsFactors = FALSE
 )
 
-matched_retest_idx <- c()  # Bereits gematchte Retest-Fälle
+matched_retest_idx <- c() # Bereits gematchte Retest-Fälle
 matched_original_idx <- c() # Bereits gematchte Original-Fälle
 
 for (i in 1:nrow(retest_tests)) {
@@ -662,7 +678,7 @@ unmatched_original_idx <- setdiff(1:nrow(original_tests), matched_original_idx)
 cat(sprintf("  Ungematchte Retest-Fälle: %d\n", length(unmatched_retest_idx)))
 cat(sprintf("  Ungematchte Original-Fälle: %d\n", length(unmatched_original_idx)))
 
-MAX_EDIT_DISTANCE <- 2  # Maximale Edit-Distanz für Fuzzy Match
+MAX_EDIT_DISTANCE <- 2 # Maximale Edit-Distanz für Fuzzy Match
 
 for (i in unmatched_retest_idx) {
   vpn_retest <- retest_tests$VPN_clean[i]
@@ -696,10 +712,12 @@ for (i in unmatched_retest_idx) {
     # Entferne gematchte Fälle aus unmatched Listen
     unmatched_original_idx <- setdiff(unmatched_original_idx, best_match_idx)
 
-    cat(sprintf("  Fuzzy Match: %s <-> %s (Distanz: %d)\n",
-                retest_tests$DE12_01[i],
-                original_tests$DE12_01[best_match_idx],
-                best_distance))
+    cat(sprintf(
+      "  Fuzzy Match: %s <-> %s (Distanz: %d)\n",
+      retest_tests$DE12_01[i],
+      original_tests$DE12_01[best_match_idx],
+      best_distance
+    ))
   }
 }
 
@@ -714,12 +732,14 @@ cat("Gematchte Retest-Paare:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
 for (i in 1:nrow(retest_matches)) {
   match_symbol <- ifelse(retest_matches$match_type[i] == "exact", "=", "~")
-  cat(sprintf("%2d. %s %s %s (%s, d=%d)\n", i,
+  cat(sprintf(
+    "%2d. %s %s %s (%s, d=%d)\n", i,
     retest_matches$VPN_original[i],
     match_symbol,
     retest_matches$VPN_retest[i],
     retest_matches$match_type[i],
-    retest_matches$edit_distance[i]))
+    retest_matches$edit_distance[i]
+  ))
 }
 cat("\n")
 
@@ -751,14 +771,18 @@ calculate_scales <- function(df) {
     na.rm = TRUE
   )
   df$Stressbelastung_lang <- rowMeans(
-    df[, c("SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
-           "SO01_06", "SO01_07", "SO01_09", "SO01_10", "SO01_11")],
+    df[, c(
+      "SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
+      "SO01_06", "SO01_07", "SO01_09", "SO01_10", "SO01_11"
+    )],
     na.rm = TRUE
   )
   df$Stressbelastung_gesamt <- rowMeans(
-    df[, c("NI06_01", "NI06_02", "NI06_03", "NI06_04", "NI06_05",
-           "SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
-           "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11")],
+    df[, c(
+      "NI06_01", "NI06_02", "NI06_03", "NI06_04", "NI06_05",
+      "SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
+      "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11"
+    )],
     na.rm = TRUE
   )
 
@@ -768,16 +792,20 @@ calculate_scales <- function(df) {
     na.rm = TRUE
   )
   df$Stresssymptome_lang <- rowMeans(
-    df[, c("SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
-           "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
-           "SO02_11", "SO02_12", "SO02_13")],
+    df[, c(
+      "SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
+      "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
+      "SO02_11", "SO02_12", "SO02_13"
+    )],
     na.rm = TRUE
   )
   df$Stresssymptome_gesamt <- rowMeans(
-    df[, c("NI13_01", "NI13_02", "NI13_03", "NI13_04", "NI13_05",
-           "SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
-           "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
-           "SO02_11", "SO02_12", "SO02_13", "SO02_14")],
+    df[, c(
+      "NI13_01", "NI13_02", "NI13_03", "NI13_04", "NI13_05",
+      "SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
+      "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
+      "SO02_11", "SO02_12", "SO02_13", "SO02_14"
+    )],
     na.rm = TRUE
   )
 
@@ -882,8 +910,10 @@ for (skala in skalen_liste) {
 
     # Interpretation
     interpretation <- ifelse(r_value > 0.80, "Exzellent",
-                      ifelse(r_value > 0.70, "Gut",
-                      ifelse(r_value > 0.60, "Akzeptabel", "Problematisch")))
+      ifelse(r_value > 0.70, "Gut",
+        ifelse(r_value > 0.60, "Akzeptabel", "Problematisch")
+      )
+    )
 
     # Speichere Ergebnisse
     retest_results <- rbind(retest_results, data.frame(
@@ -899,12 +929,16 @@ for (skala in skalen_liste) {
 
     # Ausgabe
     sig_symbol <- ifelse(p_value < 0.001, "***",
-                  ifelse(p_value < 0.01, "**",
-                  ifelse(p_value < 0.05, "*", "")))
+      ifelse(p_value < 0.01, "**",
+        ifelse(p_value < 0.05, "*", "")
+      )
+    )
 
-    cat(sprintf("%-30s: r = %.3f%s [%.3f, %.3f] (N = %d) - %s\n",
-                skala, r_value, sig_symbol, ci_lower, ci_upper,
-                n_pairs, interpretation))
+    cat(sprintf(
+      "%-30s: r = %.3f%s [%.3f, %.3f] (N = %d) - %s\n",
+      skala, r_value, sig_symbol, ci_lower, ci_upper,
+      n_pairs, interpretation
+    ))
   } else {
     cat(sprintf("%-30s: Nicht genug Daten (N = %d)\n", skala, n_pairs))
   }
@@ -924,28 +958,22 @@ cat("Retest-Reliabilitäten auf Item-Ebene (nach Skala geordnet)\n\n")
 # Definiere Item-Gruppen nach Skalen
 item_gruppen <- list(
   "Big Five (Neurotizismus)" = c("BF01_01", "BF01_02"),
-
   "Resilienz" = c("RE01_01", "RE01_02", "RE01_03", "RE01_04", "RE01_05", "RE01_06"),
-
   "Stressbelastung (kurz)" = c("NI06_01", "NI06_02", "NI06_03", "NI06_04", "NI06_05"),
-
-  "Stressbelastung (lang)" = c("SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
-                               "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11"),
-
+  "Stressbelastung (lang)" = c(
+    "SO01_01", "SO01_02", "SO01_03", "SO01_04", "SO01_05",
+    "SO01_06", "SO01_07", "SO01_08", "SO01_09", "SO01_10", "SO01_11"
+  ),
   "Stresssymptome (kurz)" = c("NI13_01", "NI13_02", "NI13_03", "NI13_04", "NI13_05"),
-
-  "Stresssymptome (lang)" = c("SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
-                              "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
-                              "SO02_11", "SO02_12", "SO02_13"),
-
+  "Stresssymptome (lang)" = c(
+    "SO02_01", "SO02_02", "SO02_03", "SO02_04", "SO02_05",
+    "SO02_06", "SO02_07", "SO02_08", "SO02_09", "SO02_10",
+    "SO02_11", "SO02_12", "SO02_13"
+  ),
   "Coping: Aktiv" = c("SO23_01", "SO23_20", "SO23_14", "NI07_05"),
-
   "Coping: Drogen" = c("NI07_01", "SO23_02", "SO23_07", "SO23_13", "SO23_17"),
-
   "Coping: Positive Neubewertung" = c("SO23_11", "SO23_10", "SO23_15", "NI07_04"),
-
   "Coping: Sozial" = c("NI07_03", "SO23_04", "SO23_05", "SO23_09", "SO23_18"),
-
   "Coping: Religiös" = c("NI07_02", "SO23_06", "SO23_12", "SO23_16")
 )
 
@@ -972,9 +1000,12 @@ for (gruppe_name in names(item_gruppen)) {
 
       if (length(test_values) >= 3) {
         # Berechne Korrelation
-        cor_result <- tryCatch({
-          cor.test(test_values, retest_values, method = "pearson")
-        }, error = function(e) NULL)
+        cor_result <- tryCatch(
+          {
+            cor.test(test_values, retest_values, method = "pearson")
+          },
+          error = function(e) NULL
+        )
 
         if (!is.null(cor_result)) {
           r_value <- cor_result$estimate
@@ -983,12 +1014,16 @@ for (gruppe_name in names(item_gruppen)) {
 
           # Interpretation
           interpretation <- ifelse(r_value > 0.80, "Exz",
-                            ifelse(r_value > 0.70, "Gut",
-                            ifelse(r_value > 0.60, "Akz", "Pro")))
+            ifelse(r_value > 0.70, "Gut",
+              ifelse(r_value > 0.60, "Akz", "Pro")
+            )
+          )
 
           sig_symbol <- ifelse(p_value < 0.001, "***",
-                        ifelse(p_value < 0.01, "**",
-                        ifelse(p_value < 0.05, "*", "ns")))
+            ifelse(p_value < 0.01, "**",
+              ifelse(p_value < 0.05, "*", "ns")
+            )
+          )
         } else {
           interpretation <- "Err"
           sig_symbol <- ""
@@ -1047,9 +1082,12 @@ for (gruppe_name in names(item_gruppen)) {
       retest_values <- retest_values[valid_pairs]
 
       if (length(test_values) >= 3) {
-        cor_result <- tryCatch({
-          cor.test(test_values, retest_values, method = "pearson")
-        }, error = function(e) NULL)
+        cor_result <- tryCatch(
+          {
+            cor.test(test_values, retest_values, method = "pearson")
+          },
+          error = function(e) NULL
+        )
 
         if (!is.null(cor_result)) {
           all_item_cors <- c(all_item_cors, cor_result$estimate)
@@ -1062,7 +1100,7 @@ for (gruppe_name in names(item_gruppen)) {
 }
 
 # Plot: Item-Level Retest-Reliabilitäten
-png("plots/12_retest_item_reliabilitaet.png", width = 2000, height = 1000, res = 150)
+png(file.path(PLOTS_DIR, "12_retest_item_reliabilitaet.png"), width = 2000, height = 1000, res = 150)
 par(mar = c(8, 4, 8, 2), xpd = TRUE)
 
 # Filtere Big Five und Resilienz Items aus
@@ -1080,15 +1118,15 @@ item_groups_sorted <- filtered_groups[sort_idx]
 # Farben basierend auf Gruppe (Skala) - wie im CFA-Netzwerk-Plot
 # Rottöne für Belastung und Symptome, Blautöne für Coping-Skalen
 gruppe_colors <- c(
-  "Stressbelastung (kurz)" = "#8B0000",  # Dunkelrot
-  "Stressbelastung (lang)" = "#B22222",  # Feuerrot
-  "Stresssymptome (kurz)" = "#DC143C",   # Crimson
-  "Stresssymptome (lang)" = "#FF6347",   # Tomatenrot
-  "Coping: Aktiv" = "#08306B",           # Dunkelblau
-  "Coping: Drogen" = "#2171B5",          # Mittelblau
-  "Coping: Positive Neubewertung" = "#4292C6",  # Helleres Blau
-  "Coping: Sozial" = "#6BAED6",          # Noch helleres Blau
-  "Coping: Religiös" = "#9ECAE1"         # Hellblau
+  "Stressbelastung (kurz)" = "#8B0000", # Dunkelrot
+  "Stressbelastung (lang)" = "#B22222", # Feuerrot
+  "Stresssymptome (kurz)" = "#DC143C", # Crimson
+  "Stresssymptome (lang)" = "#FF6347", # Tomatenrot
+  "Coping: Aktiv" = "#08306B", # Dunkelblau
+  "Coping: Drogen" = "#2171B5", # Mittelblau
+  "Coping: Positive Neubewertung" = "#4292C6", # Helleres Blau
+  "Coping: Sozial" = "#6BAED6", # Noch helleres Blau
+  "Coping: Religiös" = "#9ECAE1" # Hellblau
 )
 
 item_colors <- gruppe_colors[item_groups_sorted]
@@ -1109,13 +1147,18 @@ abline(h = 0.70, col = "grey50", lty = 2, lwd = 1.5)
 abline(h = 0.60, col = "grey50", lty = 2, lwd = 1.5)
 
 # Legende mit Skalen-Namen (oberhalb des Plots)
-legend("top", inset = c(0, -0.15),
-  legend = c("Stressbelastung (kurz)", "Stressbelastung (lang)",
-             "Stresssymptome (kurz)", "Stresssymptome (lang)",
-             "Coping: Aktiv", "Coping: Drogen",
-             "Coping: Positive Neubewertung", "Coping: Sozial", "Coping: Religiös"),
-  fill = c("#8B0000", "#B22222", "#DC143C", "#FF6347",
-           "#08306B", "#2171B5", "#4292C6", "#6BAED6", "#9ECAE1"),
+legend("top",
+  inset = c(0, -0.15),
+  legend = c(
+    "Stressbelastung (kurz)", "Stressbelastung (lang)",
+    "Stresssymptome (kurz)", "Stresssymptome (lang)",
+    "Coping: Aktiv", "Coping: Drogen",
+    "Coping: Positive Neubewertung", "Coping: Sozial", "Coping: Religiös"
+  ),
+  fill = c(
+    "#8B0000", "#B22222", "#DC143C", "#FF6347",
+    "#08306B", "#2171B5", "#4292C6", "#6BAED6", "#9ECAE1"
+  ),
   bty = "n",
   cex = 0.7,
   ncol = 3
@@ -1151,14 +1194,22 @@ cat(sprintf("Durchschnittliche Retest-Reliabilität: r = %.3f\n", mean_r))
 cat(sprintf("Median Retest-Reliabilität: r = %.3f\n\n", median_r))
 
 cat("Verteilung der Reliabilitäten:\n")
-cat(sprintf("  - Exzellent (r > .80):     %2d (%.1f%%)\n",
-            n_exzellent, 100 * n_exzellent / nrow(retest_results)))
-cat(sprintf("  - Gut (r > .70):           %2d (%.1f%%)\n",
-            n_gut, 100 * n_gut / nrow(retest_results)))
-cat(sprintf("  - Akzeptabel (r > .60):    %2d (%.1f%%)\n",
-            n_akzeptabel, 100 * n_akzeptabel / nrow(retest_results)))
-cat(sprintf("  - Problematisch (r < .60): %2d (%.1f%%)\n\n",
-            n_problematisch, 100 * n_problematisch / nrow(retest_results)))
+cat(sprintf(
+  "  - Exzellent (r > .80):     %2d (%.1f%%)\n",
+  n_exzellent, 100 * n_exzellent / nrow(retest_results)
+))
+cat(sprintf(
+  "  - Gut (r > .70):           %2d (%.1f%%)\n",
+  n_gut, 100 * n_gut / nrow(retest_results)
+))
+cat(sprintf(
+  "  - Akzeptabel (r > .60):    %2d (%.1f%%)\n",
+  n_akzeptabel, 100 * n_akzeptabel / nrow(retest_results)
+))
+cat(sprintf(
+  "  - Problematisch (r < .60): %2d (%.1f%%)\n\n",
+  n_problematisch, 100 * n_problematisch / nrow(retest_results)
+))
 
 if (mean_r > 0.70) {
   cat("INTERPRETATION: Die Skalen zeigen insgesamt gute bis exzellente Retest-Reliabilitäten.\n")

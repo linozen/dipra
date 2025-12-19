@@ -24,12 +24,21 @@
 # ==============================================================================
 
 # ==============================================================================
+# KONFIGURATION - FILEPATHS VON run_all.R
+# ==============================================================================
+
+# Diese Variablen sollten von run_all.R gesetzt sein
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+
+# ==============================================================================
 # WORKSPACE LADEN
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n\n")
 
 # ==============================================================================
 # HILFSFUNKTION: FISHER'S Z-TEST

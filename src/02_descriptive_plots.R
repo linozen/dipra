@@ -14,12 +14,24 @@
 # ==============================================================================
 
 # ==============================================================================
+# KONFIGURATION - FILEPATHS VON run_all.R
+# ==============================================================================
+
+# Diese Variablen sollten von run_all.R gesetzt sein
+if (!exists("WORKSPACE_FILE")) {
+  WORKSPACE_FILE <- "data/workspace.RData"
+}
+if (!exists("PLOTS_DIR")) {
+  PLOTS_DIR <- "plots"
+}
+
+# ==============================================================================
 # WORKSPACE LADEN
 # ==============================================================================
 
 cat("Lade Workspace von 01_setup_and_scales.R...\n")
-load("data/01_scales.RData")
-cat("✓ Workspace geladen\n\n")
+load(WORKSPACE_FILE)
+cat("✓ Workspace geladen:", WORKSPACE_FILE, "\n\n")
 
 # ==============================================================================
 # DESKRIPTIVE PLOTS
@@ -33,7 +45,7 @@ cat("Generiere deskriptive Plots...\n\n")
 # Plot 01: Altersverteilung
 # ------------------------------------------------------------------------------
 
-png("plots/01_altersverteilung.png", width = 1200, height = 900, res = 150)
+png(file.path(PLOTS_DIR, "01_altersverteilung.png"), width = 1200, height = 900, res = 150)
 hist(data$Alter,
   breaks = 15,
   main = "Altersverteilung der Stichprobe",
@@ -62,7 +74,7 @@ cat("✓ Plot 01: Altersverteilung\n")
 # Plot 02: Geschlechterverteilung
 # ------------------------------------------------------------------------------
 
-png("plots/02_geschlechterverteilung.png", width = 1200, height = 900, res = 150)
+png(file.path(PLOTS_DIR, "02_geschlechterverteilung.png"), width = 1200, height = 900, res = 150)
 geschlecht_tab <- table(data$Geschlecht)
 geschlecht_labels <- c("1" = "Männlich", "2" = "Weiblich", "3" = "Divers")
 geschlecht_colors <- c("1" = "pink", "2" = "lightblue", "3" = "lightgreen")
@@ -81,7 +93,7 @@ cat("✓ Plot 02: Geschlechterverteilung\n")
 # Plot 03: Beschäftigungsverteilung
 # ------------------------------------------------------------------------------
 
-png("plots/03_beschaeftigungsverteilung.png", width = 1200, height = 900, res = 150)
+png(file.path(PLOTS_DIR, "03_beschaeftigungsverteilung.png"), width = 1200, height = 900, res = 150)
 beschaeftigung_tab <- table(data$Beschäftigung)
 # Entferne leere/unbenannte Einträge
 beschaeftigung_tab <- beschaeftigung_tab[names(beschaeftigung_tab) != ""]
@@ -101,7 +113,7 @@ cat("✓ Plot 03: Beschäftigungsverteilung\n")
 # Plot 04: Bildungsverteilung
 # ------------------------------------------------------------------------------
 
-png("plots/04_bildungsverteilung.png", width = 1400, height = 900, res = 150)
+png(file.path(PLOTS_DIR, "04_bildungsverteilung.png"), width = 1400, height = 900, res = 150)
 bildung_tab <- table(data$Bildung)
 bildung_labels <- c(
   "1" = "Hauptschule",
