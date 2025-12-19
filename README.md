@@ -1,340 +1,433 @@
-# Stressskala Analysis Pipeline
+# Stressanalyse - Diagnostisches Praktikum
 
-This repository contains a modular R analysis pipeline for the psychometric validation of (short version of) stress, symptom, and coping scales within the context of the course "Diagnostisches Praktikum" at the University of Mannheim
+Psychometrische Analysen für Stressskalen und Coping-Strategien.
 
-## Directory Structure
+## Projektstruktur (Neu Organisiert)
 
 ```
 .
-├── data/                            # Data directory
-│   ├── data_stressskala_*.csv       # Raw input data (ISO-8859-1)
-│   ├── data.csv                     # Cleaned data (UTF-8)
-│   └── 01_scales.RData              # Shared workspace with all scales
-├── plots/                           # Generated plots (35 total)
-├── output/                          # Analysis output logs
-├── renv/                            # renv library directory
-├── renv.lock                        # Dependency lockfile
-├── .Rprofile                        # renv activation script
-├── 00_clean_data.R                  # Data cleaning and preparation
-├── 01_setup_and_scales.R            # Setup, filtering, scale construction
-├── 02_descriptive_plots.R           # Descriptive visualizations (plots 01-04)
-├── 03_reliability.R                 # Reliability analyses (plots 06-12)
-├── 04_validity_main.R               # Main validity analyses (plots 13-16)
-├── 05_validity_subgroups_stress.R   # Stress subgroup analyses
-├── 06_validity_subgroups_symptoms.R # Symptoms subgroup analyses
-├── 07_validity_subgroups_coping.R   # Coping subgroup analyses
-├── 08_create_subgroup_plots.R       # Subgroup visualizations (plots 17a-20e)
-└── run_all.R                        # Master script to run entire pipeline
+├── run_all.R                 # Master-Skript (führt alle Analysen aus)
+├── README.md                 # Diese Datei
+├── renv.lock                 # R-Paket-Abhängigkeiten
+│
+├── src/                      # Alle Analyseskripte
+│   ├── 00_clean_data.R       # Datenbereinigung
+│   ├── 01_setup_and_scales.R # Skalen konstruieren
+│   ├── 02_descriptive_plots.R
+│   ├── 03_reliability.R
+│   ├── 04_validity_main.R
+│   ├── 05-08_*.R             # Subgruppenanalysen
+│   ├── 09_justification.R
+│   ├── 10_final_comparison.R
+│   ├── 11_normalization_and_tables.R  # ⭐ NEU: Zusammengeführt
+│   └── 13_final_scale_metrics.R
+│
+├── data/                     # Daten & Workspaces
+│   ├── data_stressskala_*.csv  # Rohdaten (Input)
+│   ├── data.csv              # Bereinigte Daten
+│   ├── 01_scales.RData       # Workspace mit allen Skalen
+│   ├── 11_normierung.RData   # Normierungsanalysen
+│   └── codebook.xlsx         # Codebuch
+│
+├── output/                   # Analyseergebnisse (CSV)
+│   ├── normierung_*.csv      # Gruppenvergleiche
+│   └── normtabellen/         # ⭐ NEU: Normtabellen als CSV
+│       ├── normtabelle_stresssymptome.csv
+│       ├── normtabelle_coping_*.csv
+│       └── normtabelle_stressbelastung_*.csv
+│
+└── plots/                    # Visualisierungen (PNG)
+    ├── plot_01-04_*.png      # Deskriptive Statistiken
+    ├── plot_05-12_*.png      # Reliabilität
+    ├── plot_13-19_*.png      # Validität
+    └── plot_20-39_*.png      # Subgruppenanalysen
 ```
 
-## Setup
+## Wichtige Änderungen (2025-12-19)
 
-### Install Dependencies
+### ✅ Durchgeführte Verbesserungen
 
-This project uses `renv` for reproducible dependency management. To set up the environment:
+1. **Projektstruktur vereinfacht**
+   - Alle R-Skripte in `src/` Verzeichnis verschoben
+   - Bessere Trennung: Code (src/), Daten (data/), Output (output/, plots/)
 
-```r
-# Install renv if not already installed
-install.packages("renv")
+2. **Normierungsskripte zusammengeführt**
+   - `11_normalization_analysis.R` + `12_create_norm_tables.R` 
+     → `11_normalization_and_tables.R`
+   - README-Dokumentation als Kommentare ins Skript integriert
+   - Reduziert Komplexität von 14 auf 13 Skripte
 
-# Restore project dependencies from lockfile
-renv::restore()
-```
+3. **CSV statt PNG für Normtabellen**
+   - Einfachere Weiterverarbeitung (Excel, R, Word)
+   - Bessere Integration in Test-Manual
+   - Speicherort: `output/normtabellen/*.csv`
 
-This will install all required packages with the exact versions specified in `renv.lock`.
+4. **Zentrale Datenpfad-Konfiguration**
+   - Alle Pfade zu Rohdaten in `run_all.R` definiert
+   - Bei neuen Daten: Nur eine Stelle ändern
+   - Variablen: `RAW_DATA_FILE`, `CLEAN_DATA_FILE`, `WORKSPACE_FILE`
 
-## Quick Start
+5. **Dokumentation verbessert**
+   - README mit Projektstruktur und Verwendung
+   - Umfassende Inline-Dokumentation in `11_normalization_and_tables.R`
 
-### Primary CLI Entrypoint
+6. **⭐ NEU: Automatisches Analyse-Logging**
+   - Alle Konsolenausgaben werden in Log-Datei gespeichert
+   - Speicherort: `output/analysis_log_YYYYMMDD_HHMMSS.txt`
+   - Enthält vollständige Dokumentation aller Analyseschritte
+   - Gleichzeitige Ausgabe an Konsole und Datei (split = TRUE)
 
-To run the entire analysis pipeline from the command line with timestamped output:
+7. **⭐ NEU: Automatische Datenqualitätsfilterung**
+   - Konsistente Ausreisser werden automatisch entfernt (≥2 Methoden)
+   - Dokumentation problematischer Items mit niedriger Varianz
+   - Transparente Berichterstattung über alle Filterungsschritte
+   - Finale Stichprobengröße klar dokumentiert
 
-```bash
-Rscript run_all.R > output/analysis_output_$(date +%Y%m%d_%H%M%S).txt
-```
+## Schnellstart
 
-This will:
-- Execute all scripts in the correct sequence (00 → 08)
-- Save all console output to a timestamped file in `output/`
-- Generate all 35 plots in the `plots/` directory
-- Provide timing information for each step
-
-### Alternative (Interactive)
-
-From within R:
+### 1. Vollständige Analyse ausführen
 
 ```r
 source("run_all.R")
 ```
 
-## Script Descriptions
+Dies führt alle 13 Analyseschritte nacheinander aus (~5-10 Minuten).
 
-### 00_clean_data.R
-- Converts raw CSV from ISO-8859-1 to UTF-8 encoding
-- Cleans occupation field and categorizes into: Studenten, Angestellte, Andere
-- **Input**: `data/data_stressskala_2025-11-09_17-36.csv`
-- **Output**: `data/data.csv`
+**NEU:** Die gesamte Konsolenausgabe wird automatisch in einer Log-Datei gespeichert:
+- Speicherort: `output/analysis_log_YYYYMMDD_HHMMSS.txt`
+- Enthält: Alle Statistiken, Warnungen und Ergebnisse
+- Format: Zeitgestempelt und vollständig durchsuchbar
 
-### 01_setup_and_scales.R
-- Loads cleaned data
-- Applies filters: age ≥ 18, attention check (SO02_14 == 4)
-- Constructs all scales:
-  - Neurotizismus, Resilienz, Zufriedenheit (validity criteria)
-  - Stress scales (short, long, single-item versions)
-  - Symptom scales (short, long, single-item versions)
-  - Coping scales (active, drugs, positive, social, religious)
-- **Output**: `data/01_scales.RData` (workspace for all subsequent scripts)
-
-### 02_descriptive_plots.R
-- Generates descriptive statistics and visualizations
-- **Plots**: 01 (age), 02 (gender), 03 (occupation), 04 (education)
-
-### 03_reliability.R
-- Performs reliability analyses for all scales
-- Cronbach's Alpha + Confirmatory Factor Analysis (CFA)
-- **Plots**: 06-12 (factor loadings for stress, symptoms, 5 coping scales)
-
-### 04_validity_main.R
-- Tests convergent validity with Zufriedenheit, Neurotizismus, Resilienz
-- Analyzes stress, symptoms, and all coping scales
-- Performs 5-factor CFA to confirm coping scale structure
-- **Plots**: 13-18 (scatter plots, correlation heatmaps, CFA path diagram, factor loadings)
-
-### 05_validity_subgroups_stress.R
-- Subgroup validity analysis for stress scales
-- Tests across: Gender, Education, Age, Occupation
-- Uses Fisher's Z-test to compare correlation differences
-
-### 06_validity_subgroups_symptoms.R
-- Subgroup validity analysis for symptom scales
-- Tests across: Gender, Education, Age, Occupation
-- Uses Fisher's Z-test to compare correlation differences
-
-### 07_validity_subgroups_coping.R
-- Subgroup validity analysis for all 5 coping scales
-- Tests across: Gender, Education, Age, Occupation
-- Uses Fisher's Z-test to compare correlation differences
-
-### 08_create_subgroup_plots.R
-- Creates comprehensive scatter plot visualizations for all subgroup analyses
-- Uses regression lines with 95% confidence intervals for each demographic subgroup
-- Splits plots by scale type and validity criterion for clarity:
-  - **a plots**: Stressbelastung × 3 validity criteria
-  - **b plots**: Stresssymptome × 3 validity criteria
-  - **c plots**: 5 Coping scales × Zufriedenheit
-  - **d plots**: 5 Coping scales × Neurotizismus
-  - **e plots**: 5 Coping scales × Resilienz
-- **Plots**: 17a-e (gender), 18a-e (education), 19a-e (age), 20a-e (occupation)
-
-### run_all.R
-- Master orchestration script
-- Runs all scripts in correct sequence (00 → 08)
-- Tracks execution time and provides status updates
-- Can redirect output to timestamped log files
-
-## Key Features
-
-### Modular Design
-Each script is independent and can be run separately (after running prerequisites). All scripts 02-08 load the shared workspace from `data/01_scales.RData`.
-
-### Workspace Sharing
-Script 01 creates a shared workspace containing:
-- Cleaned and filtered data
-- All constructed scales
-- Helper function `print_section()`
-
-This avoids code duplication across scripts.
-
-### Comprehensive Subgroup Analysis
-All three scale types (stress, symptoms, coping) are analyzed across four demographic subgroups:
-1. **Gender**: Männlich vs Weiblich
-2. **Education**: Niedrig (≤ 3) vs Mittel (4) vs Hoch (5-7)
-3. **Age**: Jung (<30) vs Mittel (30-45) vs Alt (>45)
-4. **Occupation**: Multiple categories (with n ≥ 20)
-
-Fisher's Z-test is used to test whether correlations differ significantly between groups.
-
-### Clear Visualization Strategy
-Subgroup plots use scatter plots with colored regression lines:
-- Each demographic group gets a distinct color
-- 95% confidence intervals shown as shaded bands
-- Coping scales split by validity criterion to avoid crowding
-- Larger, clearer panels for better interpretation
-
-## Requirements
-
-### R Version
-- R >= 4.5.0
-
-### Package Management
-This project uses `renv` for dependency management. All required packages and their versions are specified in `renv.lock`. Simply run:
+### 2. Nur bestimmte Schritte ausführen
 
 ```r
-renv::restore()
+# Zuerst: Setup laden
+load("data/01_scales.RData")
+
+# Dann: Einzelne Analysen
+source("src/03_reliability.R")
+source("src/11_normalization_and_tables.R")
 ```
 
-### Core Packages
-The analysis pipeline requires:
-- **psych** (2.5.6): Reliability analysis, correlation matrices
-- **lavaan** (0.6-20): Confirmatory Factor Analysis (CFA)
-- **ggplot2** (3.5.2): Data visualization
-- **gridExtra** (2.3): Multi-panel plots
-- **lintr** (3.1.3): Code quality checks
-- **styler** (1.10.4): Code formatting
+### 3. Bei neuen Daten
 
-All dependencies are automatically installed via `renv::restore()`.
-
-## Sample Characteristics
-
-After filtering (age ≥ 18, attention check):
-- N = 160 participants
-- Age range: 18-63 years
-- Demographics captured: gender, education, occupation
-
-## Scales Analyzed
-
-### Stress
-- Short scale (5 items): NI06_01 to NI06_05
-- Long scale (10 items): NI06_01 to NI06_10
-- Single item: NI06_10
-
-### Symptoms
-- Short scale (5 items): NI03_01 to NI03_05
-- Long scale (10 items): NI03_01 to NI03_10
-- Single item: NI03_10
-
-### Coping (5 types)
-1. Active coping: SO23_01, SO23_20, SO23_14, NI07_05
-2. Drug use: SO23_02, SO23_09, SO23_12
-3. Positive thinking: SO23_03, SO23_05, SO23_13 (reversed)
-4. Social support: SO23_06, SO23_19, SO23_21
-5. Religious coping: SO23_07, SO23_22, SO23_18
-
-### Validity Criteria
-- Zufriedenheit (life satisfaction): NI01_01 to NI01_05
-- Neurotizismus (neuroticism): SO02_04, SO02_09 (reversed)
-- Resilienz (resilience): SO24_01 to SO24_06
-
-## Output
-
-### Plots (37 total)
-- **01-04**: Descriptive statistics (age, gender, occupation, education)
-- **06-12**: Factor loadings and reliability (stress, symptoms, 5 coping scales)
-- **13-16**: Main validity analyses (scatter plots, correlation heatmaps)
-- **17**: CFA path diagram (5-factor coping model)
-- **18**: CFA factor loadings heatmap (5-factor coping model)
-- **17a-e**: Gender subgroups
-  - 17a: Stressbelastung × 3 validity criteria
-  - 17b: Stresssymptome × 3 validity criteria
-  - 17c: 5 Coping scales × Zufriedenheit
-  - 17d: 5 Coping scales × Neurotizismus
-  - 17e: 5 Coping scales × Resilienz
-- **18a-e**: Education subgroups (same structure as gender)
-- **19a-e**: Age subgroups (same structure as gender)
-- **20a-e**: Occupation subgroups (same structure as gender)
-
-All subgroup plots feature:
-- Scatter plots with individual data points (semi-transparent)
-- Colored regression lines for each demographic group
-- 95% confidence intervals as shaded bands
-- Clear titles and axis labels
-
-### Console Output
-- Cronbach's Alpha values
-- CFA fit indices (CFI, TLI, RMSEA, SRMR)
-- Correlation coefficients with significance tests
-- Subgroup comparison results (Fisher's Z-test)
-- Execution timing for each step
-
-### Log Files
-When using the CLI entrypoint, all output is saved to `output/analysis_output_YYYYMMDD_HHMMSS.txt`
-
-## Notes
-
-- All scripts include section headers with `print_section()` for easy progress tracking
-- Reverse coding is applied where needed (e.g., SO23_13, SO02_09)
-- Missing data is handled via `rowMeans()` with `na.rm = TRUE`
-- Main plots are saved as PNG files (1200×900, 150 DPI)
-- Subgroup plots use larger dimensions (1800×600 for a/b, 1800×1200 for c/d/e)
-
-## Troubleshooting
-
-If you encounter encoding issues:
-- Ensure raw data file is in ISO-8859-1 encoding
-- Check that input file path in `00_clean_data.R` matches your data file
-
-If workspace loading fails:
-- Run `01_setup_and_scales.R` first to create `data/01_scales.RData`
-- Ensure `data/` directory exists
-
-If plots are not generated:
-- Check that `plots/` directory exists
-- Verify all required packages are installed
-- For subgroup plots, ensure `gridExtra` package is installed
-
-## Example Workflow
-
-```bash
-# Create output directory if it doesn't exist
-mkdir -p output
-
-# Run full analysis with timestamped output
-Rscript run_all.R > output/analysis_output_$(date +%Y%m%d_%H%M%S).txt
-
-# View plots
-open plots/
-
-# Review log file
-cat output/analysis_output_*.txt | tail -100
-```
-
-## Dependency Management with renv
-
-### For New Users
-When you first clone this repository:
+Ändern Sie in `run_all.R`:
 
 ```r
-# renv will be automatically activated by .Rprofile
-# Install all dependencies from lockfile
-renv::restore()
+RAW_DATA_FILE <- "data/data_stressskala_2025-XX-XX_XX-XX.csv"
 ```
 
-### For Developers
-If you add new packages to the analysis:
+Dann `source("run_all.R")` ausführen.
+
+## Analysepipeline
+
+| Schritt | Skript | Zweck | Output |
+|---------|--------|-------|--------|
+| 0 | `00_clean_data.R` | Daten bereinigen | `data/data.csv` |
+| 1 | `01_setup_and_scales.R` | Skalen + Qualitätsfilterung | `data/01_scales.RData` |
+| 2-4 | `02-04_*.R` | Deskriptiv, Reliabilität, Validität | Plots 01-19 |
+| 5-8 | `05-08_*.R` | Subgruppenanalysen | Plots 20-39, CSV |
+| 9-10 | `09-10_*.R` | Itemauswahl, Vergleiche | CSV-Reports |
+| 11 | `11_normalization_and_tables.R` | Normierung | CSV-Normtabellen |
+| 12 | `12_final_scale_metrics.R` | Finale Metriken | CSV-Reports |
+| - | `run_all.R` (automatisch) | Alle Schritte | `output/analysis_log_*.txt` |
+
+## Normtabellen verwenden
+
+Die Normtabellen liegen als CSV-Dateien vor:
 
 ```r
-# Install new package
-install.packages("newpackage")
+# In R öffnen
+norm <- read.csv("output/normtabellen/normtabelle_stresssymptome.csv", 
+                 comment.char = "#")
 
-# Update lockfile with new dependencies
-renv::snapshot()
+# In Excel öffnen (Doppelklick oder Import)
 ```
 
-### Common renv Commands
+### Struktur der Normtabellen
+
+```
+# Titel,Stresssymptome (Kurzskala),
+# Untertitel,Gemeinsame Norm für gesamte Stichprobe,
+# N,200,
+# Mittelwert,2.45,
+# SD,0.82,
+# Min,1.0,
+# Max,5.0,
+,
+Rohwert,Z_Wert,T_Wert
+1.2,-1.52,35
+1.3,-1.40,36
+...
+```
+
+- **Zeilen 1-7**: Metadaten (beginnen mit #)
+- **Zeile 8**: Leer
+- **Zeile 9+**: Spaltenüberschriften und Normwerte
+
+### Normwerte nachschlagen
+
+1. Rohwert berechnen (z.B. Mittelwert der 5 Items)
+2. Passende Tabelle wählen:
+   - Stressbelastung → nach Alter (jung/mittel/alt)
+   - Coping Aktiv → nach Geschlecht
+   - Andere → gemeinsame Norm
+3. Rohwert in Tabelle suchen
+4. Z-Wert und T-Wert ablesen
+
+**Beispiel:**
+- Stresssymptome Rohwert = 3.2
+- Tabelle: `normtabelle_stresssymptome.csv`
+- Ergebnis: Z = +0.91, T = 59
+- Interpretation: Überdurchschnittlich (knapp 1 SD über Mittelwert)
+
+## Empfehlungen für weitere Verbesserungen
+
+### 🎯 Hohe Priorität
+
+1. **Funktionsbibliothek erstellen**
+   ```r
+   # src/utils/functions.R
+   # Alle wiederverwendeten Funktionen (z.B. print_section, cohens_d)
+   source("src/utils/functions.R")  # In jedem Skript
+   ```
+
+2. **Konfigurationsdatei einführen**
+   ```r
+   # config.R
+   CONFIG <- list(
+     data = list(
+       raw = "data/data_stressskala_2025-12-18_10-13.csv",
+       clean = "data/data.csv"
+     ),
+     output = list(
+       plots = "plots",
+       tables = "output/normtabellen"
+     ),
+     analysis = list(
+       min_group_size = 20,
+       alpha_level = 0.05,
+       effect_size_threshold = 0.3
+     )
+   )
+   ```
+
+3. **Paket-Abhängigkeiten dokumentieren**
+   ```r
+   # src/00_packages.R
+   required_packages <- c("tidyverse", "lavaan", "psych", "gridExtra")
+   
+   for (pkg in required_packages) {
+     if (!require(pkg, character.only = TRUE)) {
+       renv::install(pkg)
+       library(pkg, character.only = TRUE)
+     }
+   }
+   ```
+
+4. **Logging verbessern**
+   - Zeitstempel für jeden Schritt
+   - Warnungen und Fehler in Log-Datei speichern
+   - Zusammenfassung am Ende
+
+### 💡 Mittlere Priorität
+
+5. **Unit-Tests hinzufügen**
+   ```r
+   # tests/test_functions.R
+   library(testthat)
+   
+   test_that("cohens_d berechnet korrekt", {
+     x <- c(1, 2, 3, 4, 5)
+     y <- c(2, 3, 4, 5, 6)
+     d <- cohens_d(x, y)
+     expect_equal(round(d, 2), -0.63)
+   })
+   ```
+
+6. **Reproduzierbarkeit sichern**
+   ```r
+   # Am Anfang jedes Skripts
+   set.seed(42)  # Für reproduzierbare Zufallszahlen
+   
+   # Session Info speichern
+   writeLines(capture.output(sessionInfo()), 
+              "output/session_info.txt")
+   ```
+
+7. **Datenvalidierung**
+   ```r
+   # src/utils/validate_data.R
+   validate_data <- function(data) {
+     # Prüfe:
+     # - Pflichtfelder vorhanden
+     # - Wertebereich korrekt (1-5 für Likert)
+     # - Keine ungültigen Werte
+     # - Mindeststichprobengröße
+   }
+   ```
+
+8. **Parallelisierung für schnellere Ausführung**
+   ```r
+   library(parallel)
+   cl <- makeCluster(detectCores() - 1)
+   # Parallele Ausführung von unabhängigen Analysen
+   # z.B. Subgruppenanalysen 05-07 gleichzeitig
+   stopCluster(cl)
+   ```
+
+### 🔧 Niedrige Priorität (Nice-to-have)
+
+9. **RMarkdown-Reports**
+   - Automatische PDF/HTML-Berichte
+   - Tabellen und Plots integriert
+   - Für Seminararbeit oder Präsentation
+
+10. **Interaktive Plots**
+    ```r
+    library(plotly)
+    library(shiny)
+    # Interaktive Normtabellen-Abfrage
+    ```
+
+11. **Code-Stil vereinheitlichen**
+    - styler-Paket verwenden
+    - lintr für Code-Qualität
+    - Konsistente Namenskonventionen
+
+12. **Git-Versionskontrolle**
+    ```bash
+    git init
+    git add .
+    git commit -m "Initial commit: Cleaned project structure"
+    ```
+
+## Code-Vereinfachungen
+
+### Wiederholter Code eliminieren
+
+**Vorher (in mehreren Skripten):**
 ```r
-# Check project status
-renv::status()
-
-# Update a specific package
-renv::update("ggplot2")
-
-# View installed packages
-renv::dependencies()
-
-# Deactivate renv (if needed)
-renv::deactivate()
+# Levene-Test Implementierung in 11_*.R
+# print_section Funktion in vielen Skripten
+# cohens_d Funktion mehrfach definiert
 ```
 
-### renv Files
-- **renv.lock**: Lockfile with exact package versions (commit this)
-- **renv/**: Library directory containing packages (don't commit)
-- **.Rprofile**: Automatically activates renv (commit this)
-- **renv/.gitignore**: Ensures library isn't committed
+**Nachher:**
+```r
+# src/utils/functions.R
+source("src/utils/functions.R")  # Einmal definieren
+```
 
-## Future Work
+### Datenlade-Logik vereinfachen
 
-- Add additional validation analyses as needed
-- Consider automation for different data collection timepoints
-- Export results to LaTeX tables for publication
-- Add sensitivity analyses for different cutoffs
-- Implement parallel processing for faster execution
+**Vorher:**
+```r
+# In jedem Skript:
+load("data/01_scales.RData")
+```
+
+**Besser:**
+```r
+# src/utils/load_data.R
+load_project_data <- function(step = 1) {
+  if (step == 1) {
+    load("data/01_scales.RData", envir = .GlobalEnv)
+  } else if (step == 11) {
+    load("data/11_normierung.RData", envir = .GlobalEnv)
+  }
+  cat("✓ Daten geladen\n")
+}
+```
+
+### Magic Numbers vermeiden
+
+**Vorher:**
+```r
+if (abs(d) >= 0.3) {  # Was bedeutet 0.3?
+  empfehlung <- "Getrennte Normen"
+}
+```
+
+**Besser:**
+```r
+EFFECT_SIZE_THRESHOLD_SMALL <- 0.3
+EFFECT_SIZE_THRESHOLD_MEDIUM <- 0.5
+
+if (abs(d) >= EFFECT_SIZE_THRESHOLD_SMALL) {
+  empfehlung <- "Getrennte Normen"
+}
+```
+
+## Datenqualität und Filterung
+
+### Automatische Qualitätsprüfungen (Schritt 1)
+
+Das Skript `01_setup_and_scales.R` führt umfassende Qualitätsprüfungen durch:
+
+1. **Varianzanalyse**
+   - Prüft alle Items auf ausreichende Streuung
+   - Identifiziert Items mit SD < 0.5, Range < 3, oder Decken-/Bodeneffekten
+   - Dokumentiert problematische Items (werden NICHT automatisch entfernt)
+
+2. **Ausreisser-Detektion (3 Methoden)**
+   - Z-Score-Methode: |z| > 3.29
+   - IQR-Methode: Werte außerhalb Q1-1.5×IQR bis Q3+1.5×IQR
+   - Mahalanobis-Distanz: Multivariate Ausreisser
+   
+3. **Automatische Filterung**
+   - ✅ **Entfernt**: Konsistente Ausreisser (≥2 Methoden stimmen überein)
+   - 📝 **Dokumentiert**: Items mit Varianzproblemen (für Itemauswahl in Schritt 9)
+   - 📊 **Berichtet**: Alle Filterungsschritte im Analysis-Log
+
+### Wo finde ich die Ergebnisse?
+
+**Im Analysis-Log** (`output/analysis_log_*.txt`):
+- Sektion "VARIANZANALYSE DER ITEMS": Detaillierte Item-Statistiken
+- Sektion "AUSREISSER-ANALYSE": 3 Detektionsmethoden mit Ergebnissen
+- Sektion "DATENFILTERUNG": Zusammenfassung der entfernten Fälle
+
+**Finale Stichprobengröße**: Nach allen Filtern dokumentiert
+
+## FAQ
+
+**Q: Wie aktualisiere ich die Daten?**  
+A: Neue CSV-Datei in `data/` legen, Pfad in `run_all.R` anpassen, `source("run_all.R")` ausführen.
+
+**Q: Wie füge ich eine neue Analyse hinzu?**  
+A: Neues Skript in `src/`, load("data/01_scales.RData") am Anfang, in `run_all.R` einbinden.
+
+**Q: Warum CSV statt PNG für Normtabellen?**  
+A: CSV-Dateien können direkt in Excel, Word-Tabellen oder andere Tools importiert werden. Einfacher für Test-Manuals.
+
+**Q: Kann ich einzelne Schritte überspringen?**  
+A: Ja, aber beachten Sie Abhängigkeiten. Alle Schritte 2-12 benötigen Schritt 1 (01_scales.RData).
+
+**Q: Wie installiere ich fehlende Pakete?**  
+A: `renv::restore()` installiert alle in renv.lock definierten Pakete.
+
+**Q: Wo finde ich das vollständige Analysis-Log?**  
+A: Nach jedem `run_all.R` Durchlauf in `output/analysis_log_YYYYMMDD_HHMMSS.txt`
+
+**Q: Werden Ausreisser automatisch entfernt?**  
+A: Ja, aber nur konsistente Ausreisser die von ≥2 unabhängigen Methoden identifiziert wurden. Dies wird transparent dokumentiert.
+
+**Q: Was passiert mit Items mit niedriger Varianz?**  
+A: Sie werden dokumentiert, aber NICHT automatisch entfernt. Die Itemauswahl für Kurzskalen erfolgt in Schritt 9 basierend auf psychometrischen Kriterien.
+
+## Dokumentation & Literatur
+
+- **Testtheorie**: Lienert & Raatz (1998) - Testaufbau und Testanalyse
+- **Effektgrößen**: Cohen (1988) - Statistical Power Analysis
+- **Normierung**: Lenhard & Lenhard (2014) - Berechnung der Normwerte
+
+## Kontakt & Support
+
+Bei Fragen zum Code oder den Analysen:
+- Überprüfen Sie die Inline-Kommentare in den Skripten
+- Konsultieren Sie die Output-CSV-Dateien
+- Lesen Sie `src/11_normalization_and_tables.R` für Details zur Normierung
+
+## Lizenz
+
+Akademisches Projekt - Diagnostisches Praktikum 2025
