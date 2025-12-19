@@ -11,7 +11,7 @@ wheels/
 
 # Raw data
 *.csv
-data/01_scales.RData
+data/workspace.RData
 
 # Mac OS X
 .DS_Store
