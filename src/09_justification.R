@@ -33,7 +33,7 @@ cat("Item-Total-Korrelationen (korrigiert):\n")
 stress_item_total <- cor(stress_data_all, use = "complete.obs")
 stress_total_all <- rowMeans(stress_data_all, na.rm = TRUE)
 
-for (i in 1:length(stress_items_all)) {
+for (i in seq_along(stress_items_all)) {
   # Korrigierte Item-Total-Korrelation (Item ausgeschlossen aus Total)
   other_items <- stress_items_all[-i]
   total_without_item <- rowMeans(data[other_items], na.rm = TRUE)
@@ -52,7 +52,7 @@ fit_stress_all <- cfa(model_stress_all, data = data)
 loadings_all <- standardizedSolution(fit_stress_all)
 loadings_all <- loadings_all[loadings_all$op == "=~", ]
 
-for (i in 1:length(stress_items_all)) {
+for (i in seq_along(stress_items_all)) {
   loading <- loadings_all$est.std[i]
   cat("  ", stress_items_all[i], ": λ =", round(loading, 3))
   if (i <= 5) cat(" *** (AUSGEWÄHLT KURZSKALA)")
@@ -92,7 +92,7 @@ sympt_items_all <- c(sympt_items_kurz, sympt_items_lang)
 sympt_data_all <- data[sympt_items_all]
 
 cat("Item-Total-Korrelationen (korrigiert):\n")
-for (i in 1:length(sympt_items_all)) {
+for (i in seq_along(sympt_items_all)) {
   # Korrigierte Item-Total-Korrelation
   other_items <- sympt_items_all[-i]
   total_without_item <- rowMeans(data[other_items], na.rm = TRUE)
@@ -110,7 +110,7 @@ fit_sympt_all <- cfa(model_sympt_all, data = data)
 loadings_sympt_all <- standardizedSolution(fit_sympt_all)
 loadings_sympt_all <- loadings_sympt_all[loadings_sympt_all$op == "=~", ]
 
-for (i in 1:length(sympt_items_all)) {
+for (i in seq_along(sympt_items_all)) {
   loading <- loadings_sympt_all$est.std[i]
   cat("  ", sympt_items_all[i], ": λ =", round(loading, 3))
   if (i <= 5) cat(" *** (AUSGEWÄHLT KURZSKALA)")

@@ -395,7 +395,7 @@ if (n_problematisch > 0) {
 
   cat("Die folgenden Items zeigen Auffälligkeiten bei der Varianzanalyse:\n\n")
 
-  for (i in 1:nrow(items_problematisch)) {
+  for (i in seq_len(nrow(items_problematisch))) {
     item_info <- items_problematisch[i, ]
 
     cat(sprintf("Item: %s (%s)\n", item_info$Item, item_info$Skala))
@@ -835,8 +835,8 @@ if (n_komplett > 0) {
 
   if (n_mahal_ausreisser > 0) {
     cat("\nTop 5 höchste Mahalanobis-Distanzen:\n")
-    top_mahal <- sort(mahal_dist, decreasing = TRUE)[1:min(5, length(mahal_dist))]
-    for (i in 1:length(top_mahal)) {
+    top_mahal <- sort(mahal_dist, decreasing = TRUE)[seq_len(min(5, length(mahal_dist)))]
+    for (i in seq_along(top_mahal)) {
       cat(sprintf(
         "  %d. D² = %.2f %s\n",
         i,

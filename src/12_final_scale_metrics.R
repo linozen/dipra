@@ -129,7 +129,7 @@ cat("ITEMSTATISTIKEN:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
 cat(sprintf("  %-10s | %8s | %8s | %12s\n", "Item", "M", "SD", "Trennschärfe"))
 cat(paste(rep("-", 80), collapse = ""), "\n")
-for (i in 1:length(stress_items)) {
+for (i in seq_along(stress_items)) {
   item <- stress_items[i]
   item_m <- mean(data[[item]], na.rm = TRUE)
   item_sd <- sd(data[[item]], na.rm = TRUE)
@@ -220,7 +220,7 @@ cat("ITEMSTATISTIKEN:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
 cat(sprintf("  %-10s | %8s | %8s | %12s\n", "Item", "M", "SD", "Trennschärfe"))
 cat(paste(rep("-", 80), collapse = ""), "\n")
-for (i in 1:length(symptom_items)) {
+for (i in seq_along(symptom_items)) {
   item <- symptom_items[i]
   item_m <- mean(data[[item]], na.rm = TRUE)
   item_sd <- sd(data[[item]], na.rm = TRUE)
@@ -282,7 +282,7 @@ coping_norms <- c(
   "Geschlechtsspezifisch (Plots 46-47)"
 )
 
-for (i in 1:length(coping_items)) {
+for (i in seq_along(coping_items)) {
   item <- coping_items[i]
   label <- coping_labels[i]
   norm <- coping_norms[i]

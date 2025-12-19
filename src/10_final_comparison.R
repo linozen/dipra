@@ -110,7 +110,6 @@ compare_validity <- function(short_scale, long_scale, criterion, scale_name, cri
   # Fisher's Z-Transformation
   z_short <- 0.5 * log((1 + r_short) / (1 - r_short))
   z_long <- 0.5 * log((1 + r_long) / (1 - r_long))
-  z_short_long <- 0.5 * log((1 + r_short_long) / (1 - r_short_long))
 
   # Teststatistik für abhängige Korrelationen
   denominator <- sqrt((1 - r_short^2)^2 + (1 - r_long^2)^2 - 2 * (r_short_long - r_short * r_long)^2) / sqrt(n - 3)

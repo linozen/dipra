@@ -929,7 +929,7 @@ rownames(cor_mat) <- factors
 colnames(cor_mat) <- factors
 diag(cor_mat) <- 1
 
-for (i in 1:nrow(factor_cors)) {
+for (i in seq_len(nrow(factor_cors))) {
   f1 <- as.character(factor_cors$lhs[i])
   f2 <- as.character(factor_cors$rhs[i])
   cor_val <- factor_cors$est.std[i]

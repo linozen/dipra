@@ -169,7 +169,7 @@ levene_test <- function(value, group) {
   group <- factor(group[complete_cases])
 
   group_medians <- tapply(value, group, median, na.rm = TRUE)
-  abs_dev <- abs(value - group_medians[group])
+  abs_dev <- abs(value - group_medians[group]) # nolint: object_usage_linter
   anova_result <- anova(lm(abs_dev ~ group))
 
   f_value <- anova_result$`F value`[1]

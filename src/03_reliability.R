@@ -643,7 +643,7 @@ retest_matches <- data.frame(
 matched_retest_idx <- c() # Bereits gematchte Retest-Fälle
 matched_original_idx <- c() # Bereits gematchte Original-Fälle
 
-for (i in 1:nrow(retest_tests)) {
+for (i in seq_len(nrow(retest_tests))) {
   vpn_retest <- retest_tests$VPN_clean[i]
 
   # Suche exakte Übereinstimmung in original_tests
@@ -672,8 +672,8 @@ cat(sprintf("✓ Exakte Übereinstimmungen: %d\n", n_exact_matches))
 # STUFE 2: Fuzzy Matching für ungematchte Fälle
 cat("\nSTUFE 2: Fuzzy Matching für ungematchte Fälle...\n")
 
-unmatched_retest_idx <- setdiff(1:nrow(retest_tests), matched_retest_idx)
-unmatched_original_idx <- setdiff(1:nrow(original_tests), matched_original_idx)
+unmatched_retest_idx <- setdiff(seq_len(nrow(retest_tests)), matched_retest_idx)
+unmatched_original_idx <- setdiff(seq_len(nrow(original_tests)), matched_original_idx)
 
 cat(sprintf("  Ungematchte Retest-Fälle: %d\n", length(unmatched_retest_idx)))
 cat(sprintf("  Ungematchte Original-Fälle: %d\n", length(unmatched_original_idx)))
@@ -730,7 +730,7 @@ cat(sprintf("✓ Ungematchte Retest-Fälle: %d\n\n", nrow(retest_tests) - n_matc
 
 cat("Gematchte Retest-Paare:\n")
 cat(paste(rep("-", 80), collapse = ""), "\n")
-for (i in 1:nrow(retest_matches)) {
+for (i in seq_len(nrow(retest_matches))) {
   match_symbol <- ifelse(retest_matches$match_type[i] == "exact", "=", "~")
   cat(sprintf(
     "%2d. %s %s %s (%s, d=%d)\n", i,
