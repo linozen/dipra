@@ -9,7 +9,7 @@
 # 3. Konvertiert nach UTF-8
 # 4. Bereinigt Beschäftigungsangaben in drei Kategorien:
 #    - Studenten: Alle Personen in Studium
-#    - Angestellte: Alle Erwerbstätigen (angestellt, selbstständig, beamte, etc.)
+#    - Erwerbstätige: Alle berufstätigen Personen (angestellt, selbstständig, beamte, etc.)
 #    - Andere: Arbeitslose, Rentner, Schüler, Auszubildende, etc.
 # 5. Speichert bereinigte Daten als data.csv (UTF-8)
 #
@@ -45,8 +45,8 @@ clean_occupation <- function(value) {
     return("Studenten")
   }
 
-  # ANGESTELLTE: Alle Erwerbstätigen
-  angestellte_keywords <- c(
+  # ERWERBSTÄTIGE: Alle berufstätigen Personen
+  erwerbstaetige_keywords <- c(
     "angestellt", "vollzeit", "teilzeit", "werkstudent", "minijob",
     "arbeiten", "kaufmann", "kauffrau", "mitarbeit", "assistent",
     "referent", "manager", "erzieher", "lehrer", "pfleger",
@@ -58,8 +58,8 @@ clean_occupation <- function(value) {
     "adult", "assistenz", "studienrätin", "psycholgin",
     "technischer", "selbst", "freelance", "privatier", "beamt"
   )
-  if (any(grepl(paste(angestellte_keywords, collapse = "|"), val_lower))) {
-    return("Angestellte")
+  if (any(grepl(paste(erwerbstaetige_keywords, collapse = "|"), val_lower))) {
+    return("Erwerbstätige")
   }
 
   # ANDERE: Arbeitslose, Rentner, Schüler, Auszubildende
@@ -182,7 +182,7 @@ main <- function() {
   occupation_counts <- table(data$DE07_01)
 
   cat("\n  Beschäftigungsverteilung:\n")
-  for (occ in c("Studenten", "Angestellte", "Andere", "")) {
+  for (occ in c("Studenten", "Erwerbstätige", "Andere", "")) {
     if (occ %in% names(occupation_counts)) {
       label <- ifelse(occ == "", "(leer)", occ)
       cat(sprintf("    - %s: %d\n", label, occupation_counts[occ]))
