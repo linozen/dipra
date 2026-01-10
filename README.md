@@ -4,6 +4,7 @@ Psychometrische Analysen für Stressskalen und Coping-Strategien.
 
 ## Projektstruktur (Neu Organisiert)
 
+```
 .
 ├── run_all.R                 # Master-Skript (führt alle Analysen aus)
 ├── README.md                 # Diese Datei
@@ -44,6 +45,7 @@ Psychometrische Analysen für Stressskalen und Coping-Strategien.
 └── report/                   # Diagnostisches Praktikum - Report
     ├── main.typ              # Hauptdokument (Typst)
     └── main.pdf              # Report als PDF
+```
 
 ## Schnellstart
 
