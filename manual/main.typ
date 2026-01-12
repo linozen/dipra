@@ -183,17 +183,17 @@ Die KSSB kann zur Erfassung von Stress allgemein und seiner Unterdimensionen in 
 Die Instruktion, die den Proband*innen zu Beginn der Erhebung präsentiert wurde, war: „Im Folgenden werden Ihnen Aussagen zu Situationen oder Symptomen präsentiert. Es gibt kein Richtig oder Falsch. Bitte antworten Sie wahrheitsgemäß und ehrlich, wie sehr die Aussage auf Sie zutrifft. Denken Sie dabei an die letzten drei Monate."
 
 === Stresssymptome
-Die Skala Stresssymptome erfasst mit 5 Items inhaltlich die Dimensionen körperliche Beschwerden (SYMP_PHYS_01), Schlaf (SYMP_SLEP_01), Kognition (SYMP_COGN_01), Stimmung (SYMP_MOOD_01) und soziale Symptome (SYMP_SOCI_01), welche typische mit Stress assoziierte Symptome darstellen. Die Antworten werden über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert eine hohe Ausprägung repräsentiert.
+Die Skala Stresssymptome erfasst mit 5 Items inhaltlich die Dimensionen körperliche Beschwerden (SYMP_PHYS), Schlaf (SYMP_SLEP), Kognition (SYMP_COGN), Stimmung (SYMP_MOOD) und soziale Symptome (SYMP_SOCI), welche typische mit Stress assoziierte Symptome darstellen. Die Antworten werden über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert eine hohe Ausprägung repräsentiert.
 
 _Instruktion:_ „Bitte kreuzen Sie an, welche Symptome Sie in den letzten drei Monaten bei sich beobachtet haben."
 
 _Items:_
 
-+ SYMP_PHYS_01: Ich leide unter körperlichen Beschwerden (z.B. Kopf-/Bauchschmerzen, Gewichtsveränderung).
-+ SYMP_SLEP_01: Ich schlafe schlecht oder habe belastende/schlechte Träume.
-+ SYMP_COGN_01: Ich kann mich schlecht konzentrieren.
-+ SYMP_MOOD_01: Ich bin oft traurig oder grüble (häufig) über mein Leben nach.
-+ SYMP_SOCI_01: Ich ziehe mich zurück oder habe auf nichts mehr Lust.
++ SYMP_PHYS: Ich leide unter körperlichen Beschwerden (z.B. Kopf-/Bauchschmerzen, Gewichtsveränderung).
++ SYMP_SLEP: Ich schlafe schlecht oder habe belastende/schlechte Träume.
++ SYMP_COGN: Ich kann mich schlecht konzentrieren.
++ SYMP_MOOD: Ich bin oft traurig oder grüble (häufig) über mein Leben nach.
++ SYMP_SOCI: Ich ziehe mich zurück oder habe auf nichts mehr Lust.
 
 _Antwortskala:_
 
@@ -205,17 +205,17 @@ _Antwortskala:_
 )
 
 === Stressbelastung
-Die Skala Stressbelastung erfasst mit 5 Items inhaltlich die Dimensionen Zukunftssorgen (STRS_FUTU_01), Finanzen (STRS_FINA_01), Beziehungen (STRS_RELA_01), Leistungsdruck (STRS_PERF_01) und Gesundheit (STRS_HEAL_01), welche die subjektive Belastung in verschiedenen Lebensbereichen abdeckt. Die Antworten werden ebenfalls über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert einer hohen Ausprägung entspricht.
+Die Skala Stressbelastung erfasst mit 5 Items inhaltlich die Dimensionen Zukunftssorgen (STRS_FUTU), Finanzen (STRS_FINA), Beziehungen (STRS_RELA), Leistungsdruck (STRS_PERF) und Gesundheit (STRS_HEAL), welche die subjektive Belastung in verschiedenen Lebensbereichen abdeckt. Die Antworten werden ebenfalls über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert einer hohen Ausprägung entspricht.
 
 _Instruktion:_ „Bitte kreuzen Sie an, wie sehr Sie sich durch die folgenden Situationen in den letzten drei Monaten belastet gefühlt haben."
 
 _Items:_
 
-+ STRS_FUTU_01: Ich mache mir Sorgen um meine Zukunft.
-+ STRS_FINA_01: Ich mache mir Sorgen um Geldprobleme (z.B. Schulden).
-+ STRS_RELA_01: Ich fühle mich belastet durch Probleme mit Familie, Freunden oder Partner/innen.
-+ STRS_PERF_01: Ich fühle mich unter Druck gesetzt durch Arbeit, Studium, Ausbildung oder Schule.
-+ STRS_HEAL_01: Ich mache mir Sorgen wegen meinem Körper oder meiner Gesundheit.
++ STRS_FUTU: Ich mache mir Sorgen um meine Zukunft.
++ STRS_FINA: Ich mache mir Sorgen um Geldprobleme (z.B. Schulden).
++ STRS_RELA: Ich fühle mich belastet durch Probleme mit Familie, Freunden oder Partner/innen.
++ STRS_PERF: Ich fühle mich unter Druck gesetzt durch Arbeit, Studium, Ausbildung oder Schule.
++ STRS_HEAL: Ich mache mir Sorgen wegen meinem Körper oder meiner Gesundheit.
 
 _Antwortskala:_
 
@@ -234,11 +234,11 @@ _Instruktion:_ "Bitte kreuzen Sie an, wie Sie mit Stress umgehen."
 
 _Items:_
 
-+ COPE_RELI_01 (_Religiöses Coping_): Bei Stress und Druck erinnere ich mich daran, dass es höhere Werte im Leben gibt.
-+ COPE_SOCI_01 (_Soziales Coping_): Egal wie schlimm es wird, ich habe Menschen, die für mich da sind.
-+ COPE_DRUG_01 (_Substanz-Coping_): Wenn mir alles zu viel wird, greife ich auch mal zu Alkohol, Zigaretten oder anderen Substanzen (z.B. Cannabis).
-+ COPE_REAP_01 (_Positive Neubewertung_): Ich sehe Stress und Druck als positive Herausforderung an.
-+ COPE_ACTI_01 (_Aktives Coping_): Ich versuche Stress schon im Vorfeld zu vermeiden.
++ COPE_RELI (_Religiöses Coping_): Bei Stress und Druck erinnere ich mich daran, dass es höhere Werte im Leben gibt.
++ COPE_SOCI (_Soziales Coping_): Egal wie schlimm es wird, ich habe Menschen, die für mich da sind.
++ COPE_DRUG (_Substanz-Coping_): Wenn mir alles zu viel wird, greife ich auch mal zu Alkohol, Zigaretten oder anderen Substanzen (z.B. Cannabis).
++ COPE_REAP (_Positive Neubewertung_): Ich sehe Stress und Druck als positive Herausforderung an.
++ COPE_ACTI (_Aktives Coping_): Ich versuche Stress schon im Vorfeld zu vermeiden.
 
 _Antwortskala:_
 
@@ -272,16 +272,16 @@ Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprob
     columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
     align: (center, left, center, center, center, center),
     [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
-    [SYMP_PHYS_01], [Körperliche Beschwerden], [3.66], [1.39], [.507], [.818],
-    [SYMP_SLEP_01], [Schlechter Schlaf/Träume], [3.78], [1.42], [.701], [.862],
-    [SYMP_COGN_01], [Konzentrationsprobleme], [3.24], [1.52], [.667], [.775],
-    [SYMP_MOOD_01], [Traurigkeit/Grübeln], [3.28], [1.58], [.602], [.842],
-    [SYMP_SOCI_01], [Rückzug/Lustlosigkeit], [3.28], [1.52], [.537], [.582],
+    [SYMP_PHYS], [Körperliche Beschwerden], [3.66], [1.39], [.507], [.818],
+    [SYMP_SLEP], [Schlechter Schlaf/Träume], [3.78], [1.42], [.701], [.862],
+    [SYMP_COGN], [Konzentrationsprobleme], [3.24], [1.52], [.667], [.775],
+    [SYMP_MOOD], [Traurigkeit/Grübeln], [3.28], [1.58], [.602], [.842],
+    [SYMP_SOCI], [Rückzug/Lustlosigkeit], [3.28], [1.52], [.537], [.582],
   ),
   caption: [Itemkennwerte der Skala Stresssymptome (_N_ = 180). Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.]
 )
 
-Alle Items wiesen zufriedenstellende bis gute Trennschärfen auf (_r_#sub[it] = .507 bis .701), wobei Item SYMPTOM_02 (Schlechter Schlaf/Träume) die höchste Trennschärfe zeigte. Die Retest-Reliabilitäten der Items waren überwiegend gut bis exzellent (_r_#sub[tt] = .582 bis .862), was auf eine hohe zeitliche Stabilität der Messung hinweist. Die Skala wird auf Basis einer gemeinsamen Norm für die Gesamtstichprobe ausgewertet, da keine signifikanten Gruppenunterschiede identifiziert wurden.
+Alle Items wiesen zufriedenstellende bis gute Trennschärfen auf (_r_#sub[it] = .507 bis .701), wobei Item SYMP_SLEP (Schlechter Schlaf/Träume) die höchste Trennschärfe zeigte. Die Retest-Reliabilitäten der Items waren überwiegend gut bis exzellent (_r_#sub[tt] = .582 bis .862), was auf eine hohe zeitliche Stabilität der Messung hinweist. Die Skala wird auf Basis einer gemeinsamen Norm für die Gesamtstichprobe ausgewertet, da keine signifikanten Gruppenunterschiede identifiziert wurden.
 
 === Stressbelastung
 Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in Tabelle 2 dargestellt.
@@ -291,16 +291,16 @@ Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichp
     columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
     align: (center, left, center, center, center, center),
     [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
-    [STRS_FUTU_01], [Sorgen um Zukunft], [4.24], [1.28], [.506], [.667],
-    [STRS_FINA_01], [Geldprobleme], [3.38], [1.49], [.539], [.774],
-    [STRS_RELA_01], [Probleme mit Bezugspersonen], [3.49], [1.48], [.434], [.661],
-    [STRS_PERF_01], [Leistungsdruck], [4.52], [1.36], [.488], [.659],
-    [STRS_HEAL_01], [Sorgen um Gesundheit], [3.88], [1.33], [.376], [.695],
+    [STRS_FUTU], [Sorgen um Zukunft], [4.24], [1.28], [.506], [.667],
+    [STRS_FINA], [Geldprobleme], [3.38], [1.49], [.539], [.774],
+    [STRS_RELA], [Probleme mit Bezugspersonen], [3.49], [1.48], [.434], [.661],
+    [STRS_PERF], [Leistungsdruck], [4.52], [1.36], [.488], [.659],
+    [STRS_HEAL], [Sorgen um Gesundheit], [3.88], [1.33], [.376], [.695],
   ),
   caption: [Itemkennwerte der Skala Stressbelastung (_N_ = 180). Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.]
 )
 
-Alle Items erreichten akzeptable Trennschärfen (_r_#sub[it] = .376 bis .539), wobei Item STRESS_02 (Geldprobleme) die höchste Trennschärfe aufwies. Die Retest-Reliabilitäten lagen durchweg im akzeptablen bis guten Bereich (_r_#sub[tt] = .659 bis .774) und belegen die zeitliche Stabilität der Messung. Für diese Skala wird eine altersspezifische Normierung empfohlen, da signifikante Altersunterschiede identifiziert wurden. Es werden separate Normtabellen für drei Altersgruppen bereitgestellt (jung: $<$30 Jahre, mittel: 30–45 Jahre, alt: $>$45 Jahre).
+Alle Items erreichten akzeptable Trennschärfen (_r_#sub[it] = .376 bis .539), wobei Item STRS_FINA (Geldprobleme) die höchste Trennschärfe aufwies. Die Retest-Reliabilitäten lagen durchweg im akzeptablen bis guten Bereich (_r_#sub[tt] = .659 bis .774) und belegen die zeitliche Stabilität der Messung. Für diese Skala wird eine altersspezifische Normierung empfohlen, da signifikante Altersunterschiede identifiziert wurden. Es werden separate Normtabellen für drei Altersgruppen bereitgestellt (jung: $<$30 Jahre, mittel: 30–45 Jahre, alt: $>$45 Jahre).
 
 === Stressbewältigung
 Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine spezifische Bewältigungsstrategie abbilden. Da es sich um Einzelitems handelt, kann keine interne Konsistenz berechnet werden.
@@ -310,16 +310,16 @@ Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine sp
     columns: (auto, 2fr, 1fr, 1fr, 1fr),
     align: (center, left, center, center, center),
     [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*_r_#sub[tt]*],
-    [COPE_DRUG_01], [Drogen/Substanzen], [1.91], [1.36], [.910],
-    [COPE_RELI_01], [Religion/Spiritualität], [3.44], [1.22], [.832],
-    [COPE_SOCI_01], [Soziale Unterstützung], [4.73], [1.19], [.868],
-    [COPE_REAP_01], [Positive Neubewertung], [3.10], [1.26], [.567],
-    [COPE_ACTI_01], [Aktive Bewältigung], [3.68], [1.15], [.797],
+    [COPE_DRUG], [Drogen/Substanzen], [1.91], [1.36], [.910],
+    [COPE_RELI], [Religion/Spiritualität], [3.44], [1.22], [.832],
+    [COPE_SOCI], [Soziale Unterstützung], [4.73], [1.19], [.868],
+    [COPE_REAP], [Positive Neubewertung], [3.10], [1.26], [.567],
+    [COPE_ACTI], [Aktive Bewältigung], [3.68], [1.15], [.797],
   ),
   caption: [Itemkennwerte der Stressbewältigungsitems (_N_ = 180). Retest-Reliabilitäten basieren auf _N_ = 21.]
 )
 
-Die Items zeigen eine breite Streuung in ihren Mittelwerten, was die unterschiedliche Häufigkeit der Nutzung verschiedener Bewältigungsstrategien widerspiegelt. Soziale Unterstützung (COPE_SOCI_01) wurde am häufigsten berichtet (_M_ = 4.73), während Substanzkonsum (COPE_DRUG_01) die geringste Zustimmung erhielt (_M_ = 1.91). Die Retest-Reliabilitäten der Einzelitems variierten zwischen _r_#sub[tt] = .567 (COPE_REAP_01) und _r_#sub[tt] = .910 (COPE_DRUG_01), wobei die meisten Items eine gute bis exzellente zeitliche Stabilität aufwiesen. Die Normierung erfolgt für vier Items (COPE_DRUG_01, COPE_RELI_01, COPE_SOCI_01 und COPE_REAP_01) auf Basis gemeinsamer Normen. Für Item COPE_ACTI_01 (Aktive Bewältigung) werden aufgrund signifikanter Geschlechtsunterschiede geschlechtsspezifische Normen bereitgestellt.
+Die Items zeigen eine breite Streuung in ihren Mittelwerten, was die unterschiedliche Häufigkeit der Nutzung verschiedener Bewältigungsstrategien widerspiegelt. Soziale Unterstützung (COPE_SOCI) wurde am häufigsten berichtet (_M_ = 4.73), während Substanzkonsum (COPE_DRUG) die geringste Zustimmung erhielt (_M_ = 1.91). Die Retest-Reliabilitäten der Einzelitems variierten zwischen _r_#sub[tt] = .567 (COPE_REAP) und _r_#sub[tt] = .910 (COPE_DRUG), wobei die meisten Items eine gute bis exzellente zeitliche Stabilität aufwiesen. Die Normierung erfolgt für vier Items (COPE_DRUG, COPE_RELI, COPE_SOCI und COPE_REAP) auf Basis gemeinsamer Normen. Für Item COPE_ACTI (Aktive Bewältigung) werden aufgrund signifikanter Geschlechtsunterschiede geschlechtsspezifische Normen bereitgestellt.
 
 == Validität
 Die Validität der KSSB wurde durch konvergente Validitätsanalysen überprüft, bei denen Korrelationen mit theoretisch verwandten Konstrukten berechnet wurden. Als Validierungskriterien dienten Lebenszufriedenheit @beierlein_kurzskala_2015, Neurotizismus (Big Five) und Resilienz. Zusätzlich wurde die faktorielle Struktur der KSSB mittels konfirmatorischer Faktorenanalyse (CFA) überprüft.
