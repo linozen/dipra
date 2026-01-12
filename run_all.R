@@ -50,17 +50,18 @@ DATA_DIR <- "data"
 RAW_DATA_FILE <- file.path(DATA_DIR, "data_stressskala_2025-12-18_10-13.csv")
 CLEAN_DATA_FILE <- file.path(DATA_DIR, "data.csv")
 WORKSPACE_FILE <- file.path(DATA_DIR, "workspace.RData")
-PLOTS_DIR <- "plots"
+PLOTS_DIR <- "manual/plots"
 
 # Output-Verzeichnis erstellen falls nicht vorhanden
-dir.create("output", showWarnings = FALSE)
+dir.create("manual/output", showWarnings = FALSE)
+dir.create("manual/plots", showWarnings = FALSE)
 
 # Zeitstempel für Log
 start_time <- Sys.time()
 timestamp <- format(start_time, "%Y%m%d_%H%M%S")
 
 # Log-Datei konfigurieren
-log_file <- file.path("output", paste0("analysis_log_", timestamp, ".txt"))
+log_file <- file.path("manual/output", paste0("analysis_log_", timestamp, ".txt"))
 
 # Output an Konsole UND Log-Datei umleiten
 sink(log_file, split = TRUE)

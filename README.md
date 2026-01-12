@@ -103,8 +103,8 @@ Dann `source("run_all.R")` ausführen.
        clean = "data/data.csv"
      ),
      output = list(
-       plots = "plots",
-       tables = "output/normtabellen"
+       plots = "manual/plots",
+       tables = "manual/normtabellen"
      ),
      analysis = list(
        min_group_size = 20,

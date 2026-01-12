@@ -23,7 +23,7 @@
 #    Analysierte Skalen:
 #    - Stressbelastung (kurz, 5 Items)
 #    - Stresssymptome (kurz, 5 Items)
-#    - Coping-Items (NI07_01 bis NI07_05, je 1 Item)
+#    - Coping-Items (COPE_DRUG_01 bis COPE_ACTI_01, je 1 Item)
 #
 #    Statistische Methoden:
 #    - Mittelwertsunterschiede: t-Tests (Geschlecht), ANOVA (andere)
@@ -326,8 +326,8 @@ cat("  ✓ Alter: Jung (<30), Mittel (30-45), Alt (>45)\n")
 cat("  ✓ Beschäftigung: Hauptgruppen mit n≥20\n\n")
 
 # Erstelle Ausgabeordner
-dir.create("output", showWarnings = FALSE)
-dir.create("output/normtabellen", showWarnings = FALSE)
+dir.create("manual", showWarnings = FALSE)
+dir.create("manual/output/normtabellen", showWarnings = FALSE)
 
 # ==============================================================================
 # TEIL 1: NORMIERUNGSANALYSE - GESCHLECHTSUNTERSCHIEDE
@@ -441,7 +441,7 @@ cat("Final output: Norm tables in output/normtabellen/\n\n")
 print_section("2.1 Stresssymptome - Gemeinsame Norm", 2)
 create_norm_table_csv(
   scores = data$Stresssymptome_kurz,
-  filename = "output/normtabellen/normtabelle_stresssymptome.csv",
+  filename = "manual/output/normtabellen/normtabelle_stresssymptome.csv",
   title = "Stresssymptome (Kurzskala)",
   subtitle = "Gemeinsame Norm für gesamte Stichprobe"
 )
@@ -450,8 +450,8 @@ create_norm_table_csv(
 print_section("2.2 Coping: Drogen - Gemeinsame Norm", 2)
 create_norm_table_csv(
   scores = data$NI07_01,
-  filename = "output/normtabellen/normtabelle_coping_drogen.csv",
   title = "Coping: Drogen (Item NI07_01)",
+  filename = "manual/output/normtabellen/normtabelle_coping_drogen.csv",
   subtitle = "Gemeinsame Norm"
 )
 
@@ -459,8 +459,8 @@ create_norm_table_csv(
 print_section("2.3 Coping: Religiös - Gemeinsame Norm", 2)
 create_norm_table_csv(
   scores = data$NI07_02,
-  filename = "output/normtabellen/normtabelle_coping_religioes.csv",
   title = "Coping: Religiös (Item NI07_02)",
+  filename = "manual/output/normtabellen/normtabelle_coping_religioes.csv",
   subtitle = "Gemeinsame Norm"
 )
 
@@ -468,8 +468,8 @@ create_norm_table_csv(
 print_section("2.4 Coping: Sozial - Gemeinsame Norm", 2)
 create_norm_table_csv(
   scores = data$NI07_03,
-  filename = "output/normtabellen/normtabelle_coping_sozial.csv",
   title = "Coping: Sozial (Item NI07_03)",
+  filename = "manual/output/normtabellen/normtabelle_coping_sozial.csv",
   subtitle = "Gemeinsame Norm"
 )
 
@@ -477,8 +477,8 @@ create_norm_table_csv(
 print_section("2.5 Coping: Positiv - Gemeinsame Norm", 2)
 create_norm_table_csv(
   scores = data$NI07_04,
-  filename = "output/normtabellen/normtabelle_coping_positiv.csv",
   title = "Coping: Positiv (Item NI07_04)",
+  filename = "manual/output/normtabellen/normtabelle_coping_positiv.csv",
   subtitle = "Gemeinsame Norm"
 )
 
@@ -489,16 +489,16 @@ cat("Erstelle separate Normtabellen für Männer und Frauen...\n\n")
 data_male <- subset(data, Geschlecht_clean == "Männlich")
 create_norm_table_csv(
   scores = data_male$NI07_05,
-  filename = "output/normtabellen/normtabelle_coping_aktiv_maennlich.csv",
   title = "Coping: Aktiv (Item NI07_05)",
+  filename = "manual/output/normtabellen/normtabelle_coping_aktiv_maennlich.csv",
   subtitle = "Norm für Männer"
 )
 
 data_female <- subset(data, Geschlecht_clean == "Weiblich")
 create_norm_table_csv(
   scores = data_female$NI07_05,
-  filename = "output/normtabellen/normtabelle_coping_aktiv_weiblich.csv",
   title = "Coping: Aktiv (Item NI07_05)",
+  filename = "manual/output/normtabellen/normtabelle_coping_aktiv_weiblich.csv",
   subtitle = "Norm für Frauen"
 )
 
@@ -509,7 +509,7 @@ cat("Erstelle altersspezifische Normtabellen...\n\n")
 data_jung <- subset(data, Alter_gruppiert == "Jung (<30)")
 create_norm_table_csv(
   scores = data_jung$Stressbelastung_kurz,
-  filename = "output/normtabellen/normtabelle_stressbelastung_jung.csv",
+  filename = "manual/output/normtabellen/normtabelle_stressbelastung_jung.csv",
   title = "Stressbelastung (Kurzskala)",
   subtitle = "Norm für junge Erwachsene (< 30 Jahre)"
 )
@@ -517,7 +517,7 @@ create_norm_table_csv(
 data_mittel <- subset(data, Alter_gruppiert == "Mittel (30-45)")
 create_norm_table_csv(
   scores = data_mittel$Stressbelastung_kurz,
-  filename = "output/normtabellen/normtabelle_stressbelastung_mittel.csv",
+  filename = "manual/output/normtabellen/normtabelle_stressbelastung_mittel.csv",
   title = "Stressbelastung (Kurzskala)",
   subtitle = "Norm für mittleres Alter (30-45 Jahre)"
 )
@@ -525,7 +525,7 @@ create_norm_table_csv(
 data_alt <- subset(data, Alter_gruppiert == "Alt (>45)")
 create_norm_table_csv(
   scores = data_alt$Stressbelastung_kurz,
-  filename = "output/normtabellen/normtabelle_stressbelastung_alt.csv",
+  filename = "manual/output/normtabellen/normtabelle_stressbelastung_alt.csv",
   title = "Stressbelastung (Kurzskala)",
   subtitle = "Norm für ältere Erwachsene (> 45 Jahre)"
 )
