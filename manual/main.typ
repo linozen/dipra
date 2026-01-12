@@ -250,7 +250,7 @@ _Antwortskala:_
 Für die Skalen Stressbewältigung und Stresssymptome werden die Antworten in Rohpunktwerte entsprechend der Antwort von 1 bis 6 umgewandelt und je Skala gemittelt. Der entsprechende Normwert kann anschließend anhand des Mittelwerts in der Normtabelle abgelesen werden. Die Stressbewältigungsskalen werden einzeln betrachtet und geben Aufschluss über die bevorzugte Art mit Stress umzugehen.
 
 == Stichproben
-An der Studie nahmen insgesamt 232 Personen teil. Nach Datenbereinigung und Ausschluss von Personen, die den Aufmerksamkeitstest nicht bestanden haben, umfasste die finale Stichprobe 180 Personen.
+An der Studie nahmen insgesamt 232 Personen teil. Nach Datenbereinigung und Ausschluss von Personen, die den Aufmerksamkeits nicht bestanden haben, umfasste die finale Stichprobe 180 Personen.
 
 === Demographische Merkmale
 Das durchschnittliche Alter der Stichprobe betrug _M_ = 27.62 Jahre (_SD_ = 9.90 Jahre). Die Altersverteilung ist in Abbildung 1 dargestellt. Die Stichprobe war überwiegend weiblich (77.8%), in Beschäftigung als Studenten (64.4%) und wies ein hohes Bildungsniveau auf (52.2% mit Bachelor, Master oder Staatsexamen).
