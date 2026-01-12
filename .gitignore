@@ -10,7 +10,7 @@ wheels/
 .venv
 
 # Raw data
-*.csv
+data/*.csv
 data/workspace.RData
 
 # Mac OS X
