@@ -3,14 +3,14 @@
 STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
 ================================================================================
 
-Start: 2026-01-12 17:19:31 
-Log-Datei: manual/output/analysis_log_20260112_171931.txt 
+Start: 2026-01-12 18:12:14 
+Log-Datei: manual/output/analysis_log_20260112_181214.txt 
 
 KONFIGURATION:
   Rohdaten:         data/data_stressskala_2025-12-18_10-13.csv
   Bereinigte Daten: data/data.csv
   Workspace:        data/workspace.RData
-  Log-Datei:        manual/output/analysis_log_20260112_171931.txt
+  Log-Datei:        manual/output/analysis_log_20260112_181214.txt
 
 --------------------------------------------------------------------------------
 SCHRITT 0: Datenbereinigung
@@ -3119,16 +3119,16 @@ Standardisierte Faktorladungen:
 
   Faktor     | Item       |   Ladung |     p-Wert
 -------------------------------------------------------------------------------- 
-  Stress     | STRS_FUTU_01 |    0.669 |        ***
-  Stress     | STRS_FINA_01 |    0.615 |        ***
-  Stress     | STRS_RELA_01 |    0.537 |        ***
-  Stress     | STRS_PERF_01 |    0.546 |        ***
-  Stress     | STRS_HEAL_01 |    0.517 |        ***
-  Symptome   | SYMP_PHYS_01 |    0.570 |        ***
-  Symptome   | SYMP_SLEP_01 |    0.845 |        ***
-  Symptome   | SYMP_COGN_01 |    0.783 |        ***
-  Symptome   | SYMP_MOOD_01 |    0.656 |        ***
-  Symptome   | SYMP_SOCI_01 |    0.558 |        ***
+  Stress     | STRS_FUTU  |    0.669 |        ***
+  Stress     | STRS_FINA  |    0.615 |        ***
+  Stress     | STRS_RELA  |    0.537 |        ***
+  Stress     | STRS_PERF  |    0.546 |        ***
+  Stress     | STRS_HEAL  |    0.517 |        ***
+  Symptome   | SYMP_PHYS  |    0.570 |        ***
+  Symptome   | SYMP_SLEP  |    0.845 |        ***
+  Symptome   | SYMP_COGN  |    0.783 |        ***
+  Symptome   | SYMP_MOOD  |    0.656 |        ***
+  Symptome   | SYMP_SOCI  |    0.558 |        ***
 
 ✓ Alle Faktorladungen sind substanziell (≥ 0.40)
 
@@ -3209,41 +3209,41 @@ Item-Level Retest-Reliabilitäten (N = 21 ):
 
 ### Stressbelastung (kurz)
 
-  STRS_FUTU_01: r = 0.667*** (N = 21) - Akzeptabel
-  STRS_FINA_01: r = 0.774*** (N = 21) - Gut
-  STRS_RELA_01: r = 0.661**  (N = 21) - Akzeptabel
-  STRS_PERF_01: r = 0.659**  (N = 21) - Akzeptabel
-  STRS_HEAL_01: r = 0.695*** (N = 21) - Akzeptabel
+  STRS_FUTU : r = 0.667*** (N = 21) - Akzeptabel
+  STRS_FINA : r = 0.774*** (N = 21) - Gut
+  STRS_RELA : r = 0.661**  (N = 21) - Akzeptabel
+  STRS_PERF : r = 0.659**  (N = 21) - Akzeptabel
+  STRS_HEAL : r = 0.695*** (N = 21) - Akzeptabel
   → Mittleres r: 0.691
 
 ### Stresssymptome (kurz)
 
-  SYMP_PHYS_01: r = 0.818*** (N = 21) - Exzellent
-  SYMP_SLEP_01: r = 0.862*** (N = 21) - Exzellent
-  SYMP_COGN_01: r = 0.775*** (N = 21) - Gut
-  SYMP_MOOD_01: r = 0.842*** (N = 21) - Exzellent
-  SYMP_SOCI_01: r = 0.582**  (N = 21) - Problematisch
+  SYMP_PHYS : r = 0.818*** (N = 21) - Exzellent
+  SYMP_SLEP : r = 0.862*** (N = 21) - Exzellent
+  SYMP_COGN : r = 0.775*** (N = 21) - Gut
+  SYMP_MOOD : r = 0.842*** (N = 21) - Exzellent
+  SYMP_SOCI : r = 0.582**  (N = 21) - Problematisch
   → Mittleres r: 0.776
 
 ### Coping: Drogen/Substanzen
 
-  COPE_DRUG_01: r = 0.910*** (N = 21) - Exzellent
+  COPE_DRUG : r = 0.910*** (N = 21) - Exzellent
 
 ### Coping: Religion/Spiritualität
 
-  COPE_RELI_01: r = 0.832*** (N = 21) - Exzellent
+  COPE_RELI : r = 0.832*** (N = 21) - Exzellent
 
 ### Coping: Soziale Unterstützung
 
-  COPE_SOCI_01: r = 0.868*** (N = 21) - Exzellent
+  COPE_SOCI : r = 0.868*** (N = 21) - Exzellent
 
 ### Coping: Positive Neubewertung
 
-  COPE_REAP_01: r = 0.567**  (N = 21) - Problematisch
+  COPE_REAP : r = 0.567**  (N = 21) - Problematisch
 
 ### Coping: Aktive Bewältigung
 
-  COPE_ACTI_01: r = 0.797*** (N = 21) - Gut
+  COPE_ACTI : r = 0.797*** (N = 21) - Gut
 
 Signifikanzniveaus: *** p<.001, ** p<.01, * p<.05, ns=nicht signifikant
 
@@ -3385,7 +3385,7 @@ Behalten:
 ANALYSE ABGESCHLOSSEN
 ================================================================================
 
-Ende: 2026-01-12 17:19:42 
+Ende: 2026-01-12 18:12:25 
 Dauer: 0.18 Minuten
 
 ZUSAMMENFASSUNG:

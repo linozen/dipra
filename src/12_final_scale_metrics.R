@@ -389,18 +389,18 @@ cat("Hinweis: Coping-Items werden NICHT inkludiert (Einzelitems).\n\n")
 cat("Erstelle hierarchische Item-Codes für CFA...\n")
 
 # Stressbelastung short scale
-data$STRS_FUTU_01 <- data$NI06_01 # Zukunftssorgen
-data$STRS_FINA_01 <- data$NI06_02 # Geldprobleme
-data$STRS_RELA_01 <- data$NI06_03 # Beziehungsprobleme
-data$STRS_PERF_01 <- data$NI06_04 # Leistungsdruck
-data$STRS_HEAL_01 <- data$NI06_05 # Gesundheitssorgen
+data$STRS_FUTU <- data$NI06_01 # Zukunftssorgen
+data$STRS_FINA <- data$NI06_02 # Geldprobleme
+data$STRS_RELA <- data$NI06_03 # Beziehungsprobleme
+data$STRS_PERF <- data$NI06_04 # Leistungsdruck
+data$STRS_HEAL <- data$NI06_05 # Gesundheitssorgen
 
 # Stresssymptome short scale
-data$SYMP_PHYS_01 <- data$NI13_01 # Körperliche Beschwerden
-data$SYMP_SLEP_01 <- data$NI13_02 # Schlaf/Träume
-data$SYMP_COGN_01 <- data$NI13_03 # Konzentration
-data$SYMP_MOOD_01 <- data$NI13_04 # Traurigkeit/Grübeln
-data$SYMP_SOCI_01 <- data$NI13_05 # Rückzug/Lustlosigkeit
+data$SYMP_PHYS <- data$NI13_01 # Körperliche Beschwerden
+data$SYMP_SLEP <- data$NI13_02 # Schlaf/Träume
+data$SYMP_COGN <- data$NI13_03 # Konzentration
+data$SYMP_MOOD <- data$NI13_04 # Traurigkeit/Grübeln
+data$SYMP_SOCI <- data$NI13_05 # Rückzug/Lustlosigkeit
 
 cat("✓ Item-Codes erstellt\n\n")
 
@@ -415,10 +415,10 @@ if (!require("lavaan", quietly = TRUE)) {
   # 2-Faktoren-Modell: Nur die beiden Kurzskalen
   cfa_model_short <- "
     # Faktor 1: Stressbelastung (Kurzskala)
-    Stress =~ STRS_FUTU_01 + STRS_FINA_01 + STRS_RELA_01 + STRS_PERF_01 + STRS_HEAL_01
+    Stress =~ STRS_FUTU + STRS_FINA + STRS_RELA + STRS_PERF + STRS_HEAL
 
     # Faktor 2: Stresssymptome (Kurzskala)
-    Symptome =~ SYMP_PHYS_01 + SYMP_SLEP_01 + SYMP_COGN_01 + SYMP_MOOD_01 + SYMP_SOCI_01
+    Symptome =~ SYMP_PHYS + SYMP_SLEP + SYMP_COGN + SYMP_MOOD + SYMP_SOCI
   "
 
   cat("Modell: 2-Faktoren-Struktur\n")
@@ -588,25 +588,17 @@ if (!require("lavaan", quietly = TRUE)) {
 
   # Matrix erstellen mit Original-Itemnamen und Anzeigenamen
   items_per_factor <- list(
-    Stress = c("STRS_FUTU_01", "STRS_FINA_01", "STRS_RELA_01", "STRS_PERF_01", "STRS_HEAL_01"),
-    Symptome = c("SYMP_PHYS_01", "SYMP_SLEP_01", "SYMP_COGN_01", "SYMP_MOOD_01", "SYMP_SOCI_01")
+    Stress = c("STRS_FUTU", "STRS_FINA", "STRS_RELA", "STRS_PERF", "STRS_HEAL"),
+    Symptome = c("SYMP_PHYS", "SYMP_SLEP", "SYMP_COGN", "SYMP_MOOD", "SYMP_SOCI")
   )
 
-  # Display-Namen für Items
-  item_display_names <- c(
-    STRS_FUTU_01 = "STRESS_01", STRS_FINA_01 = "STRESS_02", STRS_RELA_01 = "STRESS_03",
-    STRS_PERF_01 = "STRESS_04", STRS_HEAL_01 = "STRESS_05",
-    SYMP_PHYS_01 = "SYMPTOM_01", SYMP_SLEP_01 = "SYMPTOM_02", SYMP_COGN_01 = "SYMPTOM_03",
-    SYMP_MOOD_01 = "SYMPTOM_04", SYMP_SOCI_01 = "SYMPTOM_05"
-  )
-
+  # Use original item names directly without mapping
   all_items <- unlist(items_per_factor)
-  all_items_display <- item_display_names[all_items]
   n_items <- length(all_items)
   n_factors <- length(factors)
 
   loading_matrix <- matrix(NA, nrow = n_items, ncol = n_factors)
-  rownames(loading_matrix) <- all_items_display
+  rownames(loading_matrix) <- all_items
   colnames(loading_matrix) <- factors
   pval_matrix <- matrix(NA, nrow = n_items, ncol = n_factors)
 
@@ -893,40 +885,40 @@ if (is.null(data_raw)) {
     calculate_short_scales <- function(df) {
       # Create hierarchical codes from original column names
       # Stressbelastung short scale
-      df$STRS_FUTU_01 <- df$NI06_01 # Zukunftssorgen
-      df$STRS_FINA_01 <- df$NI06_02 # Geldprobleme
-      df$STRS_RELA_01 <- df$NI06_03 # Beziehungsprobleme
-      df$STRS_PERF_01 <- df$NI06_04 # Leistungsdruck
-      df$STRS_HEAL_01 <- df$NI06_05 # Gesundheitssorgen
+      df$STRS_FUTU <- df$NI06_01 # Zukunftssorgen
+      df$STRS_FINA <- df$NI06_02 # Geldprobleme
+      df$STRS_RELA <- df$NI06_03 # Beziehungsprobleme
+      df$STRS_PERF <- df$NI06_04 # Leistungsdruck
+      df$STRS_HEAL <- df$NI06_05 # Gesundheitssorgen
 
       # Stresssymptome short scale
-      df$SYMP_PHYS_01 <- df$NI13_01 # Körperliche Beschwerden
-      df$SYMP_SLEP_01 <- df$NI13_02 # Schlaf/Träume
-      df$SYMP_COGN_01 <- df$NI13_03 # Konzentration
-      df$SYMP_MOOD_01 <- df$NI13_04 # Traurigkeit/Grübeln
-      df$SYMP_SOCI_01 <- df$NI13_05 # Rückzug/Lustlosigkeit
+      df$SYMP_PHYS <- df$NI13_01 # Körperliche Beschwerden
+      df$SYMP_SLEP <- df$NI13_02 # Schlaf/Träume
+      df$SYMP_COGN <- df$NI13_03 # Konzentration
+      df$SYMP_MOOD <- df$NI13_04 # Traurigkeit/Grübeln
+      df$SYMP_SOCI <- df$NI13_05 # Rückzug/Lustlosigkeit
 
       # Coping short scale
-      df$COPE_DRUG_01 <- df$NI07_01 # Drogen/Substanzen
-      df$COPE_RELI_01 <- df$NI07_02 # Religiös
-      df$COPE_SOCI_01 <- df$NI07_03 # Sozial
-      df$COPE_REAP_01 <- df$SO23_10 # Positive Neubewertung
-      df$COPE_ACTI_01 <- df$SO23_01 # Aktiv
+      df$COPE_DRUG <- df$NI07_01 # Drogen/Substanzen
+      df$COPE_RELI <- df$NI07_02 # Religiös
+      df$COPE_SOCI <- df$NI07_03 # Sozial
+      df$COPE_REAP <- df$SO23_10 # Positive Neubewertung
+      df$COPE_ACTI <- df$SO23_01 # Aktiv
 
       # Stressbelastung (kurz)
       df$Stressbelastung_kurz <- rowMeans(
-        df[, c("STRS_FUTU_01", "STRS_FINA_01", "STRS_RELA_01", "STRS_PERF_01", "STRS_HEAL_01")],
+        df[, c("STRS_FUTU", "STRS_FINA", "STRS_RELA", "STRS_PERF", "STRS_HEAL")],
         na.rm = TRUE
       )
 
       # Stresssymptome (kurz)
       df$Stresssymptome_kurz <- rowMeans(
-        df[, c("SYMP_PHYS_01", "SYMP_SLEP_01", "SYMP_COGN_01", "SYMP_MOOD_01", "SYMP_SOCI_01")],
+        df[, c("SYMP_PHYS", "SYMP_SLEP", "SYMP_COGN", "SYMP_MOOD", "SYMP_SOCI")],
         na.rm = TRUE
       )
 
       # Coping Items (Einzelitems, keine Berechnung nötig)
-      # COPE_DRUG_01 bis COPE_ACTI_01 sind bereits vorhanden
+      # COPE_DRUG bis COPE_ACTI sind bereits vorhanden
 
       return(df)
     }
@@ -945,13 +937,13 @@ if (is.null(data_raw)) {
 
     # Definiere Items nach Skalen
     item_gruppen_kurz <- list(
-      "Stressbelastung (kurz)" = c("STRS_FUTU_01", "STRS_FINA_01", "STRS_RELA_01", "STRS_PERF_01", "STRS_HEAL_01"),
-      "Stresssymptome (kurz)" = c("SYMP_PHYS_01", "SYMP_SLEP_01", "SYMP_COGN_01", "SYMP_MOOD_01", "SYMP_SOCI_01"),
-      "Coping: Drogen/Substanzen" = "COPE_DRUG_01",
-      "Coping: Religion/Spiritualität" = "COPE_RELI_01",
-      "Coping: Soziale Unterstützung" = "COPE_SOCI_01",
-      "Coping: Positive Neubewertung" = "COPE_REAP_01",
-      "Coping: Aktive Bewältigung" = "COPE_ACTI_01"
+      "Stressbelastung (kurz)" = c("STRS_FUTU", "STRS_FINA", "STRS_RELA", "STRS_PERF", "STRS_HEAL"),
+      "Stresssymptome (kurz)" = c("SYMP_PHYS", "SYMP_SLEP", "SYMP_COGN", "SYMP_MOOD", "SYMP_SOCI"),
+      "Coping: Drogen/Substanzen" = "COPE_DRUG",
+      "Coping: Religion/Spiritualität" = "COPE_RELI",
+      "Coping: Soziale Unterstützung" = "COPE_SOCI",
+      "Coping: Positive Neubewertung" = "COPE_REAP",
+      "Coping: Aktive Bewältigung" = "COPE_ACTI"
     )
 
     # Dataframe für alle Item-Ergebnisse
