@@ -43,7 +43,7 @@ if (!exists("WORKSPACE_FILE")) {
 }
 
 if (!exists("PLOTS_DIR")) {
-  PLOTS_DIR <- "plots"
+  PLOTS_DIR <- "manual/plots"
   if (!dir.exists(PLOTS_DIR)) {
     dir.create(PLOTS_DIR, recursive = TRUE)
   }
@@ -273,7 +273,7 @@ cat("  Normtabellen:          1 Tabelle (Plot 41)\n\n")
 
 print_section("3. COPING-ITEMS (EINZELITEMS)", 1)
 
-coping_items <- c("NI07_01", "NI07_02", "NI07_03", "NI07_04", "NI07_05")
+coping_items <- c("NI07_01", "NI07_02", "NI07_03", "SO23_10", "SO23_01")
 coping_labels <- c(
   "Drogen/Substanzen",
   "Religion/Spiritualität",
@@ -320,11 +320,11 @@ for (i in seq_along(coping_items)) {
   cat(sprintf("  Schiefe:               %.2f\n", skew))
   cat(sprintf("  Kurtosis:              %.2f\n\n", kurt))
 
-  # Reliabilität (nicht anwendbar für Einzelitems)
+  # Reliabilität (nicht anwendbar für Einzelitems, aber Retest-Reliabilität verfügbar)
   cat("RELIABILITÄT:\n")
   cat(paste(rep("-", 80), collapse = ""), "\n")
-  cat("  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)\n")
-  cat("  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen\n\n")
+  cat("  Interne Konsistenz:    Nicht anwendbar (Einzelitem)\n")
+  cat("  Retest-Reliabilität:   Siehe Abschnitt 5 (N = 21, Zeitintervall ≈ 2 Wochen)\n\n")
 
   # Validität
   cat("VALIDITÄT (Korrelationen mit Außenkriterien):\n")
@@ -384,6 +384,25 @@ cat("  - Stressbelastung (5 Items)\n")
 cat("  - Stresssymptome (5 Items)\n\n")
 
 cat("Hinweis: Coping-Items werden NICHT inkludiert (Einzelitems).\n\n")
+
+# Create hierarchical codes from original column names for CFA
+cat("Erstelle hierarchische Item-Codes für CFA...\n")
+
+# Stressbelastung short scale
+data$STRS_FUTU_01 <- data$NI06_01 # Zukunftssorgen
+data$STRS_FINA_01 <- data$NI06_02 # Geldprobleme
+data$STRS_RELA_01 <- data$NI06_03 # Beziehungsprobleme
+data$STRS_PERF_01 <- data$NI06_04 # Leistungsdruck
+data$STRS_HEAL_01 <- data$NI06_05 # Gesundheitssorgen
+
+# Stresssymptome short scale
+data$SYMP_PHYS_01 <- data$NI13_01 # Körperliche Beschwerden
+data$SYMP_SLEP_01 <- data$NI13_02 # Schlaf/Träume
+data$SYMP_COGN_01 <- data$NI13_03 # Konzentration
+data$SYMP_MOOD_01 <- data$NI13_04 # Traurigkeit/Grübeln
+data$SYMP_SOCI_01 <- data$NI13_05 # Rückzug/Lustlosigkeit
+
+cat("✓ Item-Codes erstellt\n\n")
 
 # CFA benötigt lavaan
 if (!require("lavaan", quietly = TRUE)) {
@@ -891,8 +910,8 @@ if (is.null(data_raw)) {
       df$COPE_DRUG_01 <- df$NI07_01 # Drogen/Substanzen
       df$COPE_RELI_01 <- df$NI07_02 # Religiös
       df$COPE_SOCI_01 <- df$NI07_03 # Sozial
-      df$COPE_REAP_01 <- df$NI07_04 # Positive Neubewertung
-      df$COPE_ACTI_01 <- df$NI07_05 # Aktiv
+      df$COPE_REAP_01 <- df$SO23_10 # Positive Neubewertung
+      df$COPE_ACTI_01 <- df$SO23_01 # Aktiv
 
       # Stressbelastung (kurz)
       df$Stressbelastung_kurz <- rowMeans(
@@ -1138,3 +1157,210 @@ cat("  - Nutzen Sie diesen Bericht für Ihren Methodenteil\n")
 cat("  - Alle Kennwerte sind publikationsreif formatiert\n")
 cat("  - Ergänzen Sie ggf. Interpretationen und Schlussfolgerungen\n")
 cat("  - Alle Ergebnisse sind im Haupt-Analyse-Log enthalten\n\n")
+
+# ==============================================================================
+# KONVERGENTE VALIDITÄT: KORRELATIONSNETZWERK
+# ==============================================================================
+
+print_section("KORRELATIONSNETZWERK DER KONSTRUKTE", 1)
+
+cat("Erstelle Netzwerkgraph für konvergente Validität...\n\n")
+
+# Variablen für das Netzwerk auswählen
+network_vars <- c(
+  "Stressbelastung_kurz",
+  "Stresssymptome_kurz",
+  "NI07_01", # Drogen
+  "NI07_02", # Religiös
+  "NI07_03", # Sozial
+  "SO23_10", # Positiv
+  "SO23_01", # Aktiv
+  "Zufriedenheit",
+  "Neurotizismus",
+  "Resilienz"
+)
+
+# Schönere Labels für die Visualisierung
+network_labels <- c(
+  "Stress-\nbelastung",
+  "Stress-\nsymptome",
+  "Coping:\nDrogen",
+  "Coping:\nReligiös",
+  "Coping:\nSozial",
+  "Coping:\nPositiv",
+  "Coping:\nAktiv",
+  "Lebens-\nzufriedenheit",
+  "Neuro-\ntizismus",
+  "Resilienz"
+)
+
+# Korrelationsmatrix berechnen
+cor_matrix <- cor(data[, network_vars], use = "pairwise.complete.obs")
+rownames(cor_matrix) <- network_labels
+colnames(cor_matrix) <- network_labels
+
+# P-Werte berechnen
+n_vars <- length(network_vars)
+p_matrix <- matrix(NA, n_vars, n_vars)
+for (i in 1:n_vars) {
+  for (j in 1:n_vars) {
+    if (i != j) {
+      test <- cor.test(data[[network_vars[i]]], data[[network_vars[j]]])
+      p_matrix[i, j] <- test$p.value
+    }
+  }
+}
+
+# Nur signifikante Korrelationen behalten (p < .05)
+cor_matrix_sig <- cor_matrix
+cor_matrix_sig[p_matrix >= 0.05] <- 0
+diag(cor_matrix_sig) <- 0
+
+# Netzwerk erstellen mit igraph
+library(igraph)
+
+# Adjazenzmatrix aus Korrelationen erstellen (nur absolute Werte > 0.15)
+adj_matrix <- cor_matrix_sig
+adj_matrix[abs(adj_matrix) < 0.15] <- 0
+
+# Vorzeichen für Farben speichern
+adj_matrix_signs <- sign(adj_matrix)
+
+# Graph erstellen - verwende absolute Werte für Layout
+adj_matrix_abs <- abs(adj_matrix)
+g <- graph_from_adjacency_matrix(
+  adj_matrix_abs,
+  mode = "undirected",
+  weighted = TRUE,
+  diag = FALSE
+)
+
+# Kanten-Attribute setzen - hole ursprüngliche Vorzeichen zurück
+edge_list <- as_edgelist(g)
+original_weights <- numeric(ecount(g))
+for (i in 1:ecount(g)) {
+  v1 <- edge_list[i, 1]
+  v2 <- edge_list[i, 2]
+  # Hole den Wert aus der ursprünglichen Matrix mit Vorzeichen
+  idx1 <- which(network_labels == v1)
+  idx2 <- which(network_labels == v2)
+  original_weights[i] <- adj_matrix[idx1, idx2]
+}
+
+edge_weights <- abs(original_weights)
+edge_signs <- sign(original_weights)
+
+# Farbe basierend auf Vorzeichen
+# "#6BAED6", "#FC8D62",
+edge_colors <- ifelse(edge_signs > 0, "#6BAED6", "#FC8D62") # Blau für positiv, Rot für negativ
+
+# Linienbreite basierend auf Stärke
+edge_widths <- edge_weights * 8
+
+# Knoten-Attribute
+V(g)$label <- V(g)$name
+V(g)$size <- 23
+V(g)$color <- "#f0f0f0"
+V(g)$frame.color <- "#333333"
+V(g)$label.color <- "#000000"
+V(g)$label.cex <- 1
+V(g)$label.family <- "sans"
+
+# Plot erstellen
+png(
+  file.path(PLOTS_DIR, "51_korrelationsnetzwerk_validitaet.png"),
+  width = 16,
+  height = 14,
+  units = "in",
+  res = 300
+)
+
+par(mar = c(1, 1, 3, 8))
+
+# Layout berechnen mit mehr Abstand zwischen Knoten
+set.seed(42)
+layout <- layout_with_fr(g, niter = 1500)
+# Skaliere Layout für mehr Abstand (reduziert für kompaktere Darstellung)
+layout <- layout * 2.0
+
+plot(
+  g,
+  layout = layout,
+  edge.width = edge_widths,
+  edge.color = edge_colors,
+  edge.curved = 0, # Gerade Linien
+  edge.label = round(original_weights, 2), # Korrelationswerte auf Kanten
+  edge.label.cex = 0.95,
+  edge.label.color = "black",
+  edge.label.family = "sans",
+  vertex.size = V(g)$size,
+  vertex.color = V(g)$color,
+  vertex.frame.color = V(g)$frame.color,
+  vertex.label = V(g)$label,
+  vertex.label.color = V(g)$label.color,
+  vertex.label.cex = V(g)$label.cex,
+  vertex.label.family = V(g)$label.family,
+  vertex.label.dist = 0,
+  rescale = TRUE,
+  xlim = c(-1.2, 1.4),
+  ylim = c(-1.2, 1.2)
+)
+
+# Legende hinzufügen (außerhalb des Plot-Bereichs)
+legend(
+  x = 1.0,
+  y = -0.4,
+  legend = c(
+    "Positive Korrelation",
+    "Negative Korrelation",
+    "",
+    "Liniendicke = Stärke",
+    "Zahlen = Korrelation",
+    "p < .05, |r| ≥ .15"
+  ),
+  col = c("#6BAED6", "#FC8D62", NA, NA, NA, NA),
+  lty = c(1, 1, 0, 0, 0, 0),
+  lwd = c(3, 3, 0, 0, 0, 0),
+  bty = "n",
+  cex = 0.85,
+  xpd = TRUE
+)
+
+dev.off()
+
+cat("✓ Netzwerkgraph gespeichert: plots/51_korrelationsnetzwerk_validitaet.png\n\n")
+
+# Statistische Zusammenfassung
+cat("NETZWERK-STATISTIKEN:\n")
+cat(paste(rep("-", 80), collapse = ""), "\n")
+cat(sprintf("  Anzahl Knoten:              %d\n", vcount(g)))
+cat(sprintf("  Anzahl Kanten:              %d\n", ecount(g)))
+cat(sprintf("  Netzwerkdichte:             %.3f\n", edge_density(g)))
+cat(sprintf("  Durchschnittliche Korr.:    %.3f\n", mean(edge_weights)))
+cat(sprintf("  Median Korrelation:         %.3f\n", median(edge_weights)))
+cat(sprintf("  Stärkste Korrelation:       %.3f\n", max(edge_weights)))
+cat(sprintf("  Schwächste Korrelation:     %.3f\n\n", min(edge_weights)))
+
+# Top 10 stärkste Korrelationen
+edges_df <- data.frame(
+  from = ends(g, E(g))[, 1],
+  to = ends(g, E(g))[, 2],
+  r = original_weights,
+  abs_r = edge_weights
+) %>%
+  arrange(desc(abs_r))
+
+cat("TOP 10 STÄRKSTE KORRELATIONEN:\n")
+cat(paste(rep("-", 80), collapse = ""), "\n")
+for (i in 1:min(10, nrow(edges_df))) {
+  cat(sprintf(
+    "  %2d. %-20s <-> %-20s   r = %6.3f\n",
+    i,
+    edges_df$from[i],
+    edges_df$to[i],
+    edges_df$r[i]
+  ))
+}
+cat("\n")
+
+cat("✓ Korrelationsnetzwerk-Analyse abgeschlossen\n\n")

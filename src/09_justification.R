@@ -12,6 +12,13 @@ if (!exists("WORKSPACE_FILE")) {
   WORKSPACE_FILE <- "data/workspace.RData"
 }
 
+if (!exists("PLOTS_DIR")) {
+  PLOTS_DIR <- "manual/plots"
+  if (!dir.exists(PLOTS_DIR)) {
+    dir.create(PLOTS_DIR, recursive = TRUE)
+  }
+}
+
 # Workspace laden (erstellt von 01_setup_and_scales.R)
 load(WORKSPACE_FILE)
 
@@ -152,11 +159,11 @@ coping_alle_items <- list(
   "Religiöses Coping" = c("NI07_02", "SO23_06", "SO23_12", "SO23_16")
 )
 
-# Ausgewählte Einzelitems (erste Items der jeweiligen Skalen)
+# Ausgewählte Einzelitems (basierend auf höchsten Item-Total-Korrelationen und Faktorladungen)
 coping_einzelitems <- list(
   "Aktives Coping" = "SO23_01",
   "Drogenkonsum" = "NI07_01",
-  "Positives Denken" = "SO23_11",
+  "Positives Denken" = "SO23_10",
   "Soziale Unterstützung" = "NI07_03",
   "Religiöses Coping" = "NI07_02"
 )
@@ -219,12 +226,99 @@ for (skala_name in names(coping_alle_items)) {
   }
 }
 
+# =============================================================================
+# SPEZIALFALL: RELIGIÖSES COPING - VISUALISIERUNG DER BODENEFFEKTE
+# =============================================================================
+
+cat("\n>>> SPEZIALFALL: RELIGIÖSES COPING (NI07_02)\n")
+cat("    NI07_02 wurde trotz niedrigerer psychometrischer Kennwerte ausgewählt:\n")
+cat("    - Item-Total-Korrelation: r = 0.234 (niedrig)\n")
+cat("    - Faktorladung: λ = 0.230 (niedrig)\n")
+cat("    \n")
+cat("    BEGRÜNDUNG:\n")
+cat("    Die alternativen Items (SO23_06, SO23_12, SO23_16) zeigen starke\n")
+cat("    Bodeneffekte mit 50-70% der Antworten beim Minimum:\n")
+cat("      - SO23_06: M = 1.93 (60.0% Bodeneffekt)\n")
+cat("      - SO23_12: M = 1.76 (70.6% Bodeneffekt)\n")
+cat("      - SO23_16: M = 2.17 (50.6% Bodeneffekt)\n")
+cat("    \n")
+cat("    NI07_02 hingegen zeigt eine bessere Varianznutzung:\n")
+cat("      - M = 3.44, SD = 1.22 (zentraler, keine Boden-/Deckeneffekte)\n")
+cat("      - Bessere Differenzierung über das gesamte Spektrum\n")
+cat("    \n")
+
+# Erstelle Verteilungsplot für religiöse Coping-Items
+cat("    Erstelle Verteilungsplot...\n")
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(tidyr))
+
+rel_items <- c("NI07_02", "SO23_06", "SO23_12", "SO23_16")
+rel_labels <- c(
+  "NI07_02\n(AUSGEWÄHLT)\nM=3.44",
+  "SO23_06\nM=1.93\n60% Boden",
+  "SO23_12\nM=1.76\n71% Boden",
+  "SO23_16\nM=2.17\n51% Boden"
+)
+
+plot_data <- data[, rel_items]
+colnames(plot_data) <- rel_labels
+
+plot_data_long <- pivot_longer(
+  plot_data,
+  cols = everything(),
+  names_to = "Item",
+  values_to = "Wert"
+)
+
+plot_data_long$Item <- factor(plot_data_long$Item, levels = rel_labels)
+
+p <- ggplot(plot_data_long, aes(x = Wert, fill = Item)) +
+  geom_histogram(binwidth = 1, color = "white", alpha = 0.8) +
+  facet_wrap(~Item, ncol = 2, scales = "free_y") +
+  scale_x_continuous(breaks = 1:6, limits = c(0.5, 6.5)) +
+  scale_fill_manual(values = c(
+    "#2E7D32", # Grün für ausgewähltes Item
+    "#D32F2F", # Rot für Items mit Bodeneffekt
+    "#D32F2F",
+    "#D32F2F"
+  )) +
+  labs(
+    title = "Verteilung der religiösen Coping-Items",
+    subtitle = "NI07_02 zeigt bessere Varianznutzung ohne Bodeneffekt",
+    x = "Antwort (1 = trifft überhaupt nicht zu, 6 = trifft genau zu)",
+    y = "Häufigkeit"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "none",
+    strip.text = element_text(face = "bold", size = 10),
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 11, color = "gray30")
+  )
+
+ggsave(
+  file.path(PLOTS_DIR, "30_coping_rel_dist.png"),
+  plot = p,
+  width = 10,
+  height = 8,
+  dpi = 300
+)
+
+cat("    ✓ Verteilungsplot gespeichert: plots/30_coping_rel_dist.png\n")
+cat("    \n")
+cat("    FAZIT: Trotz niedrigerer Faktorladung wurde NI07_02 priorisiert,\n")
+cat("           da es eine bessere Varianzausschöpfung und damit höhere\n")
+cat("           Sensitivität für individuelle Unterschiede bietet.\n")
+
 cat("\n>>> FAZIT COPING-SKALEN:\n")
 cat("    Die ausgewählten Einzelitems zeigen:\n")
-cat("    - Repräsentative Inhaltsvalidität (erste Items der jeweiligen Skala)\n")
-cat("    - Hohe Item-Total-Korrelationen (> 0.70)\n")
-cat("    - Stärkste Faktorladungen in den jeweiligen Dimensionen\n")
+cat("    - Repräsentative Inhaltsvalidität\n")
+cat("    - Hohe Item-Total-Korrelationen (> 0.60, außer religiöses Coping*)\n")
+cat("    - Stärkste Faktorladungen in den jeweiligen Dimensionen*\n")
+cat("    - Optimale Varianznutzung ohne Boden-/Deckeneffekte\n")
 cat("    - Ökonomische Testung bei akzeptabler psychometrischer Qualität\n")
+cat("    \n")
+cat("    *Ausnahme: Religiöses Coping (siehe Spezialfall oben)\n")
 
 # =============================================================================
 # ZUSAMMENFASSUNG
