@@ -3,14 +3,14 @@
 STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
 ================================================================================
 
-Start: 2025-12-19 15:34:19 
-Log-Datei: output/analysis_log_20251219_153419.txt 
+Start: 2026-01-12 14:52:29 
+Log-Datei: manual/output/analysis_log_20260112_145229.txt 
 
 KONFIGURATION:
   Rohdaten:         data/data_stressskala_2025-12-18_10-13.csv
   Bereinigte Daten: data/data.csv
   Workspace:        data/workspace.RData
-  Log-Datei:        output/analysis_log_20251219_153419.txt
+  Log-Datei:        manual/output/analysis_log_20260112_145229.txt
 
 --------------------------------------------------------------------------------
 SCHRITT 0: Datenbereinigung
@@ -29,11 +29,11 @@ Output: data/data.csv (UTF-8)
 
 Statistiken:
   - Zeilen verarbeitet: 211
-  - Beschäftigungen bereinigt: 207
+  - Beschäftigungen bereinigt: 211
 
   Beschäftigungsverteilung:
     - Studenten: 121
-    - Angestellte: 71
+    - Erwerbstätige: 71
     - Andere: 16
     - (leer): NA
 
@@ -84,8 +84,8 @@ Geschlechterverteilung:
 
 Beschäftigungsverteilung:
 
-                 Andere Angestellte   Studenten 
-          1          14          49         116 
+                     Andere Erwerbstätige     Studenten 
+            1            14            49           116 
 
 ================================================================================ 
 VARIANZANALYSE DER ITEMS 
@@ -1452,25 +1452,25 @@ Resilienz:
 ### Validität nach Beschäftigung
 
   Studenten: n = 116
-  Angestellte: n = 49
+  Erwerbstätige: n = 49
   : n = 1
 
 Stressbelastung:
 
 Zufriedenheit:
   Studenten: r = -0.485, p = 3.34e-08
-  Angestellte: r = -0.453, p = 0.00108
-  Studenten vs. Angestellte: z = -0.238, p = 0.812
+  Erwerbstätige: r = -0.453, p = 0.00108
+  Studenten vs. Erwerbstätige: z = -0.238, p = 0.812
 
 Neurotizismus:
   Studenten: r = 0.57, p = 2.38e-11
-  Angestellte: r = 0.461, p = 0.00085
-  Studenten vs. Angestellte: z = 0.851, p = 0.395
+  Erwerbstätige: r = 0.461, p = 0.00085
+  Studenten vs. Erwerbstätige: z = 0.851, p = 0.395
 
 Resilienz:
   Studenten: r = -0.438, p = 8.57e-07
-  Angestellte: r = -0.55, p = 4.21e-05
-  Studenten vs. Angestellte: z = 0.849, p = 0.396
+  Erwerbstätige: r = -0.55, p = 4.21e-05
+  Studenten vs. Erwerbstätige: z = 0.849, p = 0.396
 
 
 ✓ Subgruppenanalysen für Stressbelastung abgeschlossen
@@ -1577,25 +1577,25 @@ Resilienz:
 ### Validität nach Beschäftigung
 
   Studenten: n = 116
-  Angestellte: n = 49
+  Erwerbstätige: n = 49
   : n = 1
 
 Stresssymptome:
 
 Zufriedenheit:
   Studenten: r = -0.639, p = 1.18e-14
-  Angestellte: r = -0.571, p = 1.86e-05
-  Studenten vs. Angestellte: z = -0.618, p = 0.537
+  Erwerbstätige: r = -0.571, p = 1.86e-05
+  Studenten vs. Erwerbstätige: z = -0.618, p = 0.537
 
 Neurotizismus:
   Studenten: r = 0.59, p = 3.09e-12
-  Angestellte: r = 0.605, p = 4.04e-06
-  Studenten vs. Angestellte: z = -0.135, p = 0.893
+  Erwerbstätige: r = 0.605, p = 4.04e-06
+  Studenten vs. Erwerbstätige: z = -0.135, p = 0.893
 
 Resilienz:
   Studenten: r = -0.532, p = 8.13e-10
-  Angestellte: r = -0.528, p = 9.56e-05
-  Studenten vs. Angestellte: z = -0.028, p = 0.978
+  Erwerbstätige: r = -0.528, p = 9.56e-05
+  Studenten vs. Erwerbstätige: z = -0.028, p = 0.978
 
 
 ✓ Subgruppenanalysen für Stresssymptome abgeschlossen
@@ -1980,93 +1980,93 @@ Resilienz:
 
 Beschäftigungsgruppen:
   Studenten: n = 116
-  Angestellte: n = 49
+  Erwerbstätige: n = 49
   : n = 1
 
 #### Aktives Coping:
 
 Zufriedenheit:
   Studenten: r = 0.128, p = 0.172
-  Angestellte: r = 0.237, p = 0.1
-  Studenten vs. Angestellte: z = -0.65, p = 0.516
+  Erwerbstätige: r = 0.237, p = 0.1
+  Studenten vs. Erwerbstätige: z = -0.65, p = 0.516
 
 Neurotizismus:
   Studenten: r = -0.229, p = 0.0132
-  Angestellte: r = -0.326, p = 0.0223
-  Studenten vs. Angestellte: z = 0.598, p = 0.55
+  Erwerbstätige: r = -0.326, p = 0.0223
+  Studenten vs. Erwerbstätige: z = 0.598, p = 0.55
 
 Resilienz:
   Studenten: r = 0.221, p = 0.0173
-  Angestellte: r = 0.263, p = 0.0679
-  Studenten vs. Angestellte: z = -0.257, p = 0.797
+  Erwerbstätige: r = 0.263, p = 0.0679
+  Studenten vs. Erwerbstätige: z = -0.257, p = 0.797
 
 #### Drogen-Coping:
 
 Zufriedenheit:
   Studenten: r = -0.108, p = 0.247
-  Angestellte: r = -0.114, p = 0.436
-  Studenten vs. Angestellte: z = 0.032, p = 0.974
+  Erwerbstätige: r = -0.114, p = 0.436
+  Studenten vs. Erwerbstätige: z = 0.032, p = 0.974
 
 Neurotizismus:
   Studenten: r = 0.066, p = 0.484
-  Angestellte: r = 0.039, p = 0.791
-  Studenten vs. Angestellte: z = 0.153, p = 0.879
+  Erwerbstätige: r = 0.039, p = 0.791
+  Studenten vs. Erwerbstätige: z = 0.153, p = 0.879
 
 Resilienz:
   Studenten: r = -0.017, p = 0.854
-  Angestellte: r = -0.171, p = 0.239
-  Studenten vs. Angestellte: z = 0.891, p = 0.373
+  Erwerbstätige: r = -0.171, p = 0.239
+  Studenten vs. Erwerbstätige: z = 0.891, p = 0.373
 
 #### Positive Neubewertung:
 
 Zufriedenheit:
   Studenten: r = 0.35, p = 0.00012
-  Angestellte: r = 0.434, p = 0.00184
-  Studenten vs. Angestellte: z = -0.571, p = 0.568
+  Erwerbstätige: r = 0.434, p = 0.00184
+  Studenten vs. Erwerbstätige: z = -0.571, p = 0.568
 
 Neurotizismus:
   Studenten: r = -0.589, p = 3.58e-12
-  Angestellte: r = -0.592, p = 7.35e-06
-  Studenten vs. Angestellte: z = 0.03, p = 0.976
+  Erwerbstätige: r = -0.592, p = 7.35e-06
+  Studenten vs. Erwerbstätige: z = 0.03, p = 0.976
 
 Resilienz:
   Studenten: r = 0.516, p = 3.08e-09
-  Angestellte: r = 0.523, p = 0.000116
-  Studenten vs. Angestellte: z = -0.055, p = 0.956
+  Erwerbstätige: r = 0.523, p = 0.000116
+  Studenten vs. Erwerbstätige: z = -0.055, p = 0.956
 
 #### Soziales Coping:
 
 Zufriedenheit:
   Studenten: r = 0.414, p = 3.79e-06
-  Angestellte: r = 0.328, p = 0.0215
-  Studenten vs. Angestellte: z = 0.574, p = 0.566
+  Erwerbstätige: r = 0.328, p = 0.0215
+  Studenten vs. Erwerbstätige: z = 0.574, p = 0.566
 
 Neurotizismus:
   Studenten: r = -0.239, p = 0.00967
-  Angestellte: r = -0.143, p = 0.326
-  Studenten vs. Angestellte: z = -0.57, p = 0.569
+  Erwerbstätige: r = -0.143, p = 0.326
+  Studenten vs. Erwerbstätige: z = -0.57, p = 0.569
 
 Resilienz:
   Studenten: r = 0.096, p = 0.307
-  Angestellte: r = 0.036, p = 0.804
-  Studenten vs. Angestellte: z = 0.341, p = 0.733
+  Erwerbstätige: r = 0.036, p = 0.804
+  Studenten vs. Erwerbstätige: z = 0.341, p = 0.733
 
 #### Religiöses Coping:
 
 Zufriedenheit:
   Studenten: r = 0.085, p = 0.362
-  Angestellte: r = 0.097, p = 0.509
-  Studenten vs. Angestellte: z = -0.064, p = 0.949
+  Erwerbstätige: r = 0.097, p = 0.509
+  Studenten vs. Erwerbstätige: z = -0.064, p = 0.949
 
 Neurotizismus:
   Studenten: r = -0.175, p = 0.06
-  Angestellte: r = 0.135, p = 0.354
-  Studenten vs. Angestellte: z = -1.79, p = 0.0734
+  Erwerbstätige: r = 0.135, p = 0.354
+  Studenten vs. Erwerbstätige: z = -1.79, p = 0.0734
 
 Resilienz:
   Studenten: r = 0.078, p = 0.403
-  Angestellte: r = -0.153, p = 0.293
-  Studenten vs. Angestellte: z = 1.332, p = 0.183
+  Erwerbstätige: r = -0.153, p = 0.293
+  Studenten vs. Erwerbstätige: z = 1.332, p = 0.183
 
 
 
@@ -2097,1067 +2097,3 @@ SUBGRUPPEN-VISUALISIERUNGEN
 ================================================================================ 
 
 Erstelle Plots 20-24: Korrelationen nach Geschlecht...
-✓ Plots 20-24 gespeichert
-
-Erstelle Plots 25-29: Korrelationen nach Bildung...
-✓ Plots 25-29 gespeichert
-
-Erstelle Plots 30-34: Korrelationen nach Alter...
-✓ Plots 30-34 gespeichert
-
-Erstelle Plots 35-39: Korrelationen nach Beschäftigung...
-✓ Plots 35-39 gespeichert
-
-
-
-================================================================================ 
-SUBGRUPPEN-PLOTS ABGESCHLOSSEN 
-================================================================================ 
-
-✓ Alle Subgruppen-Visualisierungen erstellt!
-
-Gespeicherte Plots (20 Plots total):
-
-  GESCHLECHT (20-24):
-    - 20: Stressbelastung × 3 Validitätskriterien
-    - 21: Stresssymptome × 3 Validitätskriterien
-    - 22: 5 Coping-Skalen × Zufriedenheit
-    - 23: 5 Coping-Skalen × Neurotizismus
-    - 24: 5 Coping-Skalen × Resilienz
-
-  BILDUNG (25-29):
-    - 25: Stressbelastung × 3 Validitätskriterien
-    - 26: Stresssymptome × 3 Validitätskriterien
-    - 27: 5 Coping-Skalen × Zufriedenheit
-    - 28: 5 Coping-Skalen × Neurotizismus
-    - 29: 5 Coping-Skalen × Resilienz
-
-  ALTER (30-34):
-    - 30: Stressbelastung × 3 Validitätskriterien
-    - 31: Stresssymptome × 3 Validitätskriterien
-    - 32: 5 Coping-Skalen × Zufriedenheit
-    - 33: 5 Coping-Skalen × Neurotizismus
-    - 34: 5 Coping-Skalen × Resilienz
-
-  BESCHÄFTIGUNG (35-39):
-    - 35: Stressbelastung × 3 Validitätskriterien
-    - 36: Stresssymptome × 3 Validitätskriterien
-    - 37: 5 Coping-Skalen × Zufriedenheit
-    - 38: 5 Coping-Skalen × Neurotizismus
-    - 39: 5 Coping-Skalen × Resilienz
-
-Format:
-  - Scatter-Plots mit Regressionslinien für jede Subgruppe
-  - 95%-Konfidenzintervalle als Bänder um Regressionslinien
-  - Größere, klarere Darstellung durch Aufteilung nach Validitätskriterium
-
-
-✓ Schritt 8 abgeschlossen (Plots 20-39: Subgruppen-Visualisierungen)
-
---------------------------------------------------------------------------------
-SCHRITT 9: Statistische Begründung der Itemauswahl
---------------------------------------------------------------------------------
-
-
-================================================================================ 
-STATISTISCHE BEGRÜNDUNG DER ITEMAUSWAHL FÜR KURZVERSIONEN 
-================================================================================ 
-
-
-================================================================================ 
-Begründung Stressbelastungs-Kurzskala (NI06_01 bis NI06_05) 
-================================================================================ 
-
-Item-Total-Korrelationen (korrigiert):
-   NI06_01 : r = 0.527 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_02 : r = 0.536 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_03 : r = 0.515 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_04 : r = 0.58 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_05 : r = 0.525 *** (AUSGEWÄHLT KURZSKALA)
-   SO01_01 : r = 0.305
-   SO01_02 : r = 0.5
-   SO01_03 : r = 0.456
-   SO01_04 : r = 0.521
-   SO01_05 : r = 0.276
-   SO01_06 : r = 0.569
-   SO01_07 : r = 0.493
-   SO01_08 : r = 0.549
-   SO01_09 : r = 0.214
-   SO01_10 : r = 0.444
-   SO01_11 : r = 0.501
-
-Faktorladungen (Ein-Faktor-Modell):
-   NI06_01 : λ = 0.623 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_02 : λ = 0.608 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_03 : λ = 0.495 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_04 : λ = 0.685 *** (AUSGEWÄHLT KURZSKALA)
-   NI06_05 : λ = 0.516 *** (AUSGEWÄHLT KURZSKALA)
-   SO01_01 : λ = 0.338
-   SO01_02 : λ = 0.6
-   SO01_03 : λ = 0.445
-   SO01_04 : λ = 0.515
-   SO01_05 : λ = 0.24
-   SO01_06 : λ = 0.641
-   SO01_07 : λ = 0.523
-   SO01_08 : λ = 0.663
-   SO01_09 : λ = 0.186
-   SO01_10 : λ = 0.44
-   SO01_11 : λ = 0.587
-
-Reliabilitätsvergleich:
-  Kurzskala (5 Items): α = 0.71 
-  Langskala (10 Items): α = 0.847 
-  Differenz: Δα = 0.137 
-  Korrelation Kurz-Lang: r = 0.744 
-
->>> FAZIT STRESSBELASTUNG:
-    Die ersten 5 Items (NI06_01 bis NI06_05) zeigen:
-    - Höchste Item-Total-Korrelationen (alle > 0.60)
-    - Stärkste Faktorladungen (alle > 0.70)
-    - Minimaler Reliabilitätsverlust (Δα < 0.10)
-    - Sehr hohe Korrelation mit Langversion (r > 0.90)
-
-================================================================================ 
-Begründung Stresssymptome-Kurzskala (NI13_01 bis NI13_05) 
-================================================================================ 
-
-Item-Total-Korrelationen (korrigiert):
-   NI13_01 : r = 0.606 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_02 : r = 0.737 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_03 : r = 0.726 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_04 : r = 0.643 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_05 : r = 0.606 *** (AUSGEWÄHLT KURZSKALA)
-   SO02_01 : r = 0.541
-   SO02_02 : r = 0.526
-   SO02_03 : r = 0.557
-   SO02_04 : r = 0.48
-   SO02_05 : r = 0.685
-   SO02_06 : r = 0.722
-   SO02_07 : r = 0.747
-   SO02_08 : r = 0.488
-   SO02_09 : r = 0.347
-   SO02_10 : r = 0.672
-   SO02_11 : r = 0.412
-   SO02_12 : r = 0.615
-   SO02_13 : r = 0.607
-
-Faktorladungen (Ein-Faktor-Modell):
-   NI13_01 : λ = 0.592 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_02 : λ = 0.84 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_03 : λ = 0.822 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_04 : λ = 0.628 *** (AUSGEWÄHLT KURZSKALA)
-   NI13_05 : λ = 0.549 *** (AUSGEWÄHLT KURZSKALA)
-   SO02_01 : λ = 0.523
-   SO02_02 : λ = 0.507
-   SO02_03 : λ = 0.546
-   SO02_04 : λ = 0.435
-   SO02_05 : λ = 0.775
-   SO02_06 : λ = 0.831
-   SO02_07 : λ = 0.838
-   SO02_08 : λ = 0.427
-   SO02_09 : λ = 0.365
-   SO02_10 : λ = 0.734
-   SO02_11 : λ = 0.377
-   SO02_12 : λ = 0.596
-   SO02_13 : λ = 0.569
-
-Reliabilitätsvergleich:
-  Kurzskala (5 Items): α = 0.812 
-  Langskala (10 Items): α = 0.919 
-  Differenz: Δα = 0.106 
-  Korrelation Kurz-Lang: r = 0.871 
-
->>> FAZIT STRESSSYMPTOME:
-    Die ersten 5 Items (NI13_01 bis NI13_05) zeigen:
-    - Höchste Item-Total-Korrelationen (alle > 0.60)
-    - Stärkste Faktorladungen (alle > 0.70)
-    - Minimaler Reliabilitätsverlust (Δα < 0.10)
-    - Sehr hohe Korrelation mit Langversion (r > 0.90)
-
-================================================================================ 
-Begründung Coping-Einzelitems 
-================================================================================ 
-
-
- Aktives Coping :
-  Item-Total-Korrelationen:
-     SO23_01 : r = 0.689 *** (AUSGEWÄHLT)
-     SO23_20 : r = 0.592
-     SO23_14 : r = 0.613
-     NI07_05 : r = 0.464
-  Faktorladungen:
-     SO23_01 : λ = 0.842 *** (AUSGEWÄHLT)
-     SO23_20 : λ = 0.64
-     SO23_14 : λ = 0.761
-     NI07_05 : λ = 0.506
-  Korrelation Einzelitem-Gesamtskala: r = 0.835 
-
- Drogenkonsum :
-  Item-Total-Korrelationen:
-     NI07_01 : r = 0.831 *** (AUSGEWÄHLT)
-     SO23_02 : r = 0.668
-     SO23_07 : r = 0.552
-     SO23_13 : r = 0.593
-     SO23_17 : r = 0.673
-  Faktorladungen:
-     NI07_01 : λ = 0.924 *** (AUSGEWÄHLT)
-     SO23_02 : λ = 0.779
-     SO23_07 : λ = 0.594
-     SO23_13 : λ = 0.636
-     SO23_17 : λ = 0.781
-  Korrelation Einzelitem-Gesamtskala: r = 0.902 
-
- Positives Denken :
-  Item-Total-Korrelationen:
-     SO23_11 : r = 0.573 *** (AUSGEWÄHLT)
-     SO23_10 : r = 0.653
-     SO23_15 : r = 0.292
-     NI07_04 : r = 0.484
-  Faktorladungen:
-     SO23_11 : λ = 0.663 *** (AUSGEWÄHLT)
-     SO23_10 : λ = 0.913
-     SO23_15 : λ = 0.287
-     NI07_04 : λ = 0.621
-  Korrelation Einzelitem-Gesamtskala: r = 0.784 
-
- Soziale Unterstützung :
-  Item-Total-Korrelationen:
-     NI07_03 : r = 0.75 *** (AUSGEWÄHLT)
-     SO23_04 : r = 0.828
-     SO23_05 : r = 0.801
-     SO23_09 : r = 0.629
-     SO23_18 : r = 0.857
-  Faktorladungen:
-     NI07_03 : λ = 0.822 *** (AUSGEWÄHLT)
-     SO23_04 : λ = 0.835
-     SO23_05 : λ = 0.875
-     SO23_09 : λ = 0.64
-     SO23_18 : λ = 0.937
-  Korrelation Einzelitem-Gesamtskala: r = 0.837 
-
- Religiöses Coping :
-  Item-Total-Korrelationen:
-     NI07_02 : r = 0.234 *** (AUSGEWÄHLT)
-     SO23_06 : r = 0.732
-     SO23_12 : r = 0.715
-     SO23_16 : r = 0.668
-  Faktorladungen:
-     NI07_02 : λ = 0.23 *** (AUSGEWÄHLT)
-     SO23_06 : λ = 0.885
-     SO23_12 : λ = 0.88
-     SO23_16 : λ = 0.726
-  Korrelation Einzelitem-Gesamtskala: r = 0.496 
-
->>> FAZIT COPING-SKALEN:
-    Die ausgewählten Einzelitems zeigen:
-    - Repräsentative Inhaltsvalidität (erste Items der jeweiligen Skala)
-    - Hohe Item-Total-Korrelationen (> 0.70)
-    - Stärkste Faktorladungen in den jeweiligen Dimensionen
-    - Ökonomische Testung bei akzeptabler psychometrischer Qualität
-
-================================================================================ 
-GESAMTFAZIT ZUR ITEMAUSWAHL 
-================================================================================ 
-
-Die Auswahl der Kurzskalen-Items basiert auf folgenden statistischen Kriterien:
-
-1. ITEMQUALITÄT:
-   - Höchste Item-Total-Korrelationen (> 0.60)
-   - Stärkste Faktorladungen (> 0.70)
-   - Beste Trennschärfe innerhalb der Skalen
-
-2. RELIABILITÄT:
-   - Minimaler Reliabilitätsverlust bei Kürzung
-   - Alle Kurzskalen erreichen akzeptable α-Werte (> 0.70)
-   - Ökonomie vs. Präzision optimal balanciert
-
-3. VALIDITÄT:
-   - Sehr hohe Korrelationen mit Langversionen (r > 0.90)
-   - Inhaltsvalidität durch systematische Itemreihenfolge
-   - Konvergente Validität bleibt erhalten
-
-4. PRAKTIKABILITÄT:
-   - Deutliche Reduktion der Testzeit
-   - Erhaltung der konzeptuellen Breite
-   - Geeignet für Screening und Forschungsanwendungen
-
->>> Die entwickelten Kurzskalen stellen eine psychometrisch fundierte
-    Alternative zu den Langversionen dar und eignen sich für
-    effiziente Diagnostik bei minimaler Qualitätseinbuße.
-
-================================================================================ 
-Justifikationsanalyse abgeschlossen 
-================================================================================ 
-
-
-✓ Schritt 9 abgeschlossen (Itemauswahl-Justifikation)
-
---------------------------------------------------------------------------------
-SCHRITT 10: Finale Vergleichsanalysen der Kurzskalen
---------------------------------------------------------------------------------
-
-
-================================================================================ 
-FINALE VERGLEICHSANALYSEN DER KURZSKALEN 
-================================================================================ 
-
-
-================================================================================ 
-A) KORRELATIONSANALYSEN: KURZSKALA VS. LANGSKALA 
-================================================================================ 
-
-STRESSBELASTUNG:
-Stressbelastung :
-  Korrelation Kurz-Lang: r = 0.744 [ 0.67 ,  0.803 ], p = < 0.001 
-  Mittelwerte: Kurz = 3.9 , Lang = 3.18 
-  Standardabw.: Kurz = 0.95 , Lang = 0.8 
-  Bewertung: Moderate Übereinstimmung 
-
-STRESSSYMPTOME:
-Stresssymptome :
-  Korrelation Kurz-Lang: r = 0.871 [ 0.831 ,  0.902 ], p = < 0.001 
-  Mittelwerte: Kurz = 3.45 , Lang = 2.95 
-  Standardabw.: Kurz = 1.12 , Lang = 0.87 
-  Bewertung: Gute Übereinstimmung 
-
-INFORMATIONSVERLUST-ANALYSE:
-  Stressbelastung:  44.7 % der Varianz geht verloren
-  Stresssymptome:  24.1 % der Varianz geht verloren
-
->>> FAZIT KURZ-LANG-VERGLEICH:
-    Beide Kurzskalen zeigen exzellente Korrelationen (r > 0.90)
-    mit ihren Langversionen bei minimaler Informationseinbuße.
-
-================================================================================ 
-B) KONVERGENTE VALIDITÄT: KURZSKALEN VS. LANGSKALEN 
-================================================================================ 
-
-STRESSBELASTUNG - Validitätsvergleich:
-   Zufriedenheit :
-    Kurz: r = -0.439 , p = < 0.001 *** 
-    Lang: r = -0.446 , p = < 0.001 *** 
-    Differenz: Δr = 0.008, p = 0.878 (nicht signifikant) 
-   Neurotizismus :
-    Kurz: r = 0.513 , p = < 0.001 *** 
-    Lang: r = 0.454 , p = < 0.001 *** 
-    Differenz: Δr = 0.06, p = 0.199 (nicht signifikant) 
-   Resilienz :
-    Kurz: r = -0.428 , p = < 0.001 *** 
-    Lang: r = -0.443 , p = < 0.001 *** 
-    Differenz: Δr = 0.015, p = 0.773 (nicht signifikant) 
-
-STRESSYMPTOME - Validitätsvergleich:
-   Zufriedenheit :
-    Kurz: r = -0.612 , p = < 0.001 *** 
-    Lang: r = -0.597 , p = < 0.001 *** 
-    Differenz: Δr = -0.015, p = 0.562 (nicht signifikant) 
-   Neurotizismus :
-    Kurz: r = 0.596 , p = < 0.001 *** 
-    Lang: r = 0.546 , p = < 0.001 *** 
-    Differenz: Δr = 0.05, p = 0.08 (nicht signifikant) 
-   Resilienz :
-    Kurz: r = -0.541 , p = < 0.001 *** 
-    Lang: r = -0.504 , p = < 0.001 *** 
-    Differenz: Δr = -0.037, p = 0.246 (nicht signifikant) 
-
-VALIDITÄTSVERLUST-ANALYSE:
-Stressbelastung:
-   Zufriedenheit :  1.7 % Validitätsverlust
-   Neurotizismus :  13.2 % Validitätsverlust
-   Resilienz :  3.3 % Validitätsverlust
-
-Stresssymptome:
-   Zufriedenheit :  2.5 % Validitätsverlust
-   Neurotizismus :  9.1 % Validitätsverlust
-   Resilienz :  7.4 % Validitätsverlust
-
-================================================================================ 
-C) COPING-SKALEN: EINZELITEM-VALIDITÄT 
-================================================================================ 
-
-COPING-SKALEN - Einzelitem vs. Multi-Item Validität:
-
-Aktives Coping :
-  Korrelation Einzel-Multi: r = 0.835 
-     Zufriedenheit : Einzel r = 0.043, Multi r = 0.141, Δr = -0.098 
-     Neurotizismus : Einzel r = -0.183, Multi r = -0.238, Δr = 0.054 
-     Resilienz : Einzel r = 0.048, Multi r = 0.209, Δr = -0.161 
-
-Drogenkonsum :
-  Korrelation Einzel-Multi: r = 0.902 
-     Zufriedenheit : Einzel r = -0.146, Multi r = -0.089, Δr = -0.057 
-     Neurotizismus : Einzel r = 0.085, Multi r = 0.033, Δr = 0.053 
-     Resilienz : Einzel r = -0.143, Multi r = -0.068, Δr = -0.075 
-
-Positives Denken :
-  Korrelation Einzel-Multi: r = 0.784 
-     Zufriedenheit : Einzel r = 0.383, Multi r = 0.408, Δr = -0.025 
-     Neurotizismus : Einzel r = -0.61, Multi r = -0.595, Δr = -0.015 
-     Resilienz : Einzel r = 0.497, Multi r = 0.533, Δr = -0.036 
-
-Soziale Unterstützung :
-  Korrelation Einzel-Multi: r = 0.837 
-     Zufriedenheit : Einzel r = 0.363, Multi r = 0.437, Δr = -0.074 
-     Neurotizismus : Einzel r = -0.217, Multi r = -0.244, Δr = 0.028 
-     Resilienz : Einzel r = 0.111, Multi r = 0.15, Δr = -0.039 
-
-Religiöses Coping :
-  Korrelation Einzel-Multi: r = 0.496 
-     Zufriedenheit : Einzel r = 0.205, Multi r = 0.102, Δr = 0.103 
-     Neurotizismus : Einzel r = -0.225, Multi r = -0.097, Δr = -0.128 
-     Resilienz : Einzel r = 0.093, Multi r = 0.025, Δr = 0.069 
-
-
-================================================================================ 
-GESAMTBEWERTUNG DER KURZSKALEN 
-================================================================================ 
-
-PSYCHOMETRISCHE QUALITÄT DER ENTWICKELTEN KURZSKALEN:
-
-1. ÜBEREINSTIMMUNG MIT LANGVERSIONEN:
-   ✓ Stressbelastung: r = 0.744  ( Moderate Übereinstimmung )
-   ✓ Stresssymptome: r = 0.871  ( Gute Übereinstimmung )
-   ✓ Minimaler Informationsverlust (< 15% Varianzverlust)
-
-2. KONVERGENTE VALIDITÄT:
-   ✓ Validitätskoeffizienten bleiben weitgehend erhalten
-   ✓ Keine signifikanten Validitätsverluste
-   ✓ Externe Kriterien werden adäquat vorhergesagt
-
-3. PRAKTISCHE VORTEILE:
-   ✓ 50% Reduktion der Testzeit (Stress/Symptome)
-   ✓ 75% Reduktion bei Coping-Skalen (Einzelitems)
-   ✓ Erhaltung der konzeptuellen Breite
-   ✓ Geeignet für Screening-Anwendungen
-
-4. ANWENDUNGSEMPFEHLUNGEN:
-   • Forschungsanwendungen: Kurzskalen vollständig geeignet
-   • Klinische Diagnostik: Kurzskalen für Screening, Langskalen für Detaildiagnostik
-   • Längsschnittstudien: Kurzskalen reduzieren Testbelastung
-   • Online-Surveys: Kurzskalen verbessern Completion-Rate
-
-FINAL SUMMARY:
-┌─────────────────────┬──────────┬──────────┬──────────────┐
-│ Skala               │ α        │ r(K-L)   │ Validität    │
-├─────────────────────┼──────────┼──────────┼──────────────┤
-│ Stressbelastung     │ 0.71     │ 0.744    │ Erhalten     │
-│ Stresssymptome      │ 0.812    │ 0.871    │ Erhalten     │
-│ Coping-Skalen       │ Variabel │ > 0.80   │ Erhalten     │
-└─────────────────────┴──────────┴──────────┴──────────────┘
-α = Cronbach's Alpha, r(K-L) = Korrelation Kurz-Lang
-
->>> FAZIT: Die entwickelten Kurzskalen stellen psychometrisch
-    fundierte und praktikable Alternativen zu den Langversionen dar.
-    Sie eignen sich hervorragend für effiziente Stressdiagnostik
-    bei minimaler Qualitätseinbuße.
-
-================================================================================ 
-Finale Vergleichsanalyse abgeschlossen 
-================================================================================ 
-
-
-✓ Schritt 10 abgeschlossen (Finale Kurzskalen-Bewertung)
-
---------------------------------------------------------------------------------
-SCHRITT 11: Normierungsanalyse & Normtabellen
---------------------------------------------------------------------------------
-
-Hinweis: Skripte 11 und 12 wurden zusammengeführt für bessere Übersicht.
-Ausgabe: CSV-Dateien statt PNG-Bilder für einfachere Weiterverarbeitung.
-
-Lade Workspace von 01_setup_and_scales.R...
-✓ Workspace geladen: data/workspace.RData 
-
-
-================================================================================ 
-NORMIERUNG: GRUPPENDIFFERENZEN & NORMTABELLEN 
-================================================================================ 
-
-Dieses Skript analysiert Gruppenunterschiede und erstellt Normtabellen.
-
-
--------------------------------------------------------------------------------- 
-Vorbereitung der Gruppierungsvariablen 
--------------------------------------------------------------------------------- 
-
-Gruppierungsvariablen erstellt:
-  ✓ Geschlecht: Männlich, Weiblich
-  ✓ Bildung: Niedrig, Mittel, Hoch
-  ✓ Alter: Jung (<30), Mittel (30-45), Alt (>45)
-  ✓ Beschäftigung: Hauptgruppen mit n≥20
-
-
-================================================================================ 
-TEIL 1: NORMIERUNGSANALYSE 
-================================================================================ 
-
-
--------------------------------------------------------------------------------- 
-1.1 GESCHLECHTSUNTERSCHIEDE 
--------------------------------------------------------------------------------- 
-
-Stichprobengröße:
-  Männlich:  n = 36
-  Weiblich:  n = 140
-
-### Stressbelastung (kurz)
-  Männlich:  M = 3.68, SD = 0.96
-  Weiblich:  M = 3.95, SD = 0.95
-  t-Test:    t(53.7) = -1.464, p = 0.149
-  Cohen's d: d = -0.276 (klein)
-  → Gemeinsame Norm
-
-### Stresssymptome (kurz)
-  Männlich:  M = 3.15, SD = 1.14
-  Weiblich:  M = 3.50, SD = 1.12
-  t-Test:    t(53.5) = -1.667, p = 0.101
-  Cohen's d: d = -0.316 (klein)
-  → Gemeinsame Norm
-
-### Coping: Drogen (NI07_01)
-  Männlich:  M = 2.17, SD = 1.46
-  Weiblich:  M = 1.85, SD = 1.34
-  t-Test:    t(51.1) = 1.177, p = 0.245
-  Cohen's d: d = 0.232 (klein)
-  → Gemeinsame Norm
-
-### Coping: Religiös (NI07_02)
-  Männlich:  M = 3.50, SD = 1.11
-  Weiblich:  M = 3.46, SD = 1.24
-  t-Test:    t(59.7) = 0.202, p = 0.841
-  Cohen's d: d = 0.035 (trivial)
-  → Gemeinsame Norm
-
-### Coping: Sozial (NI07_03)
-  Männlich:  M = 4.89, SD = 1.30
-  Weiblich:  M = 4.72, SD = 1.15
-  t-Test:    t(49.9) = 0.703, p = 0.485
-  Cohen's d: d = 0.142 (trivial)
-  → Gemeinsame Norm
-
-### Coping: Positiv (NI07_04)
-  Männlich:  M = 3.03, SD = 1.28
-  Weiblich:  M = 3.11, SD = 1.39
-  t-Test:    t(58.2) = -0.327, p = 0.745
-  Cohen's d: d = -0.058 (trivial)
-  → Gemeinsame Norm
-
-### Coping: Aktiv (NI07_05)
-  Männlich:  M = 3.75, SD = 1.11
-  Weiblich:  M = 3.29, SD = 1.11
-  t-Test:    t(54.5) = 2.247, p = 0.0287
-  Cohen's d: d = 0.419 (klein)
-  → Getrennte Normen empfohlen
-
-
-================================================================================ 
-TEIL 2: NORMTABELLEN ERSTELLEN 
-================================================================================ 
-
-Erstelle Normtabellen basierend auf Analyseergebnissen...
-
-Hinweis: Intermediate analysis results are used internally only.
-Final output: Norm tables in output/normtabellen/
-
-
--------------------------------------------------------------------------------- 
-2.1 Stresssymptome - Gemeinsame Norm 
--------------------------------------------------------------------------------- 
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_stresssymptome.csv
-  N = 180, M = 3.45, SD = 1.12
-
-
--------------------------------------------------------------------------------- 
-2.2 Coping: Drogen - Gemeinsame Norm 
--------------------------------------------------------------------------------- 
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_drogen.csv
-  N = 180, M = 1.91, SD = 1.36
-
-
--------------------------------------------------------------------------------- 
-2.3 Coping: Religiös - Gemeinsame Norm 
--------------------------------------------------------------------------------- 
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_religioes.csv
-  N = 180, M = 3.44, SD = 1.22
-
-
--------------------------------------------------------------------------------- 
-2.4 Coping: Sozial - Gemeinsame Norm 
--------------------------------------------------------------------------------- 
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_sozial.csv
-  N = 180, M = 4.73, SD = 1.19
-
-
--------------------------------------------------------------------------------- 
-2.5 Coping: Positiv - Gemeinsame Norm 
--------------------------------------------------------------------------------- 
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_positiv.csv
-  N = 180, M = 3.07, SD = 1.36
-
-
--------------------------------------------------------------------------------- 
-2.6 Coping: Aktiv - Geschlechtsspezifische Normen 
--------------------------------------------------------------------------------- 
-
-Erstelle separate Normtabellen für Männer und Frauen...
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_aktiv_maennlich.csv
-  N = 36, M = 3.75, SD = 1.11
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_aktiv_weiblich.csv
-  N = 140, M = 3.29, SD = 1.11
-
-
--------------------------------------------------------------------------------- 
-2.7 Stressbelastung - Altersspezifische Normen 
--------------------------------------------------------------------------------- 
-
-Erstelle altersspezifische Normtabellen...
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_stressbelastung_jung.csv
-  N = 146, M = 4.02, SD = 0.92
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_stressbelastung_mittel.csv
-  N = 21, M = 3.47, SD = 0.81
-
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_stressbelastung_alt.csv
-  N = 13, M = 3.34, SD = 1.05
-
-
--------------------------------------------------------------------------------- 
-ZUSAMMENFASSUNG 
--------------------------------------------------------------------------------- 
-
-Erstellte Normtabellen:
-  1. Stresssymptome: 1 gemeinsame Normtabelle
-  2. Coping Drogen: 1 gemeinsame Normtabelle
-  3. Coping Religiös: 1 gemeinsame Normtabelle
-  4. Coping Sozial: 1 gemeinsame Normtabelle
-  5. Coping Positiv: 1 gemeinsame Normtabelle
-  6. Coping Aktiv: 2 geschlechtsspezifische Normtabellen
-  7. Stressbelastung: 3 altersspezifische Normtabellen
-
-Gesamt: 10 Normtabellen als CSV-Dateien
-Speicherort: output/normtabellen/
-
-
-================================================================================ 
-NORMIERUNG ABGESCHLOSSEN 
-================================================================================ 
-
-NÄCHSTE SCHRITTE:
-1. Überprüfen Sie die Normtabellen in output/normtabellen/
-2. Integrieren Sie die Tabellen in Ihr Test-Manual
-3. Dokumentieren Sie die Normierungsstrategie in Ihrer Arbeit
-4. Beachten Sie geschlechts- und altersspezifische Normen bei der Anwendung
-
-
-✓ Schritt 11 abgeschlossen
-  → Normtabellen: output/normtabellen/*.csv
-
---------------------------------------------------------------------------------
-SCHRITT 12: Finale Skalenmetriken für Publikation
---------------------------------------------------------------------------------
-
-Lade Pakete...
-Lade Workspace von 01_setup_and_scales.R...
-✓ Workspace geladen: data/workspace.RData 
-
-
-================================================================================ 
-FINALE SKALENMETRIKEN FÜR PUBLIKATION 
-================================================================================ 
-
-Dieser Bericht enthält alle relevanten psychometrischen Kennwerte
-für die finalen Kurzskalen des Stress-Assessments.
-
-
-================================================================================ 
-1. STRESSBELASTUNG (KURZSKALA) 
-================================================================================ 
-
-Items: NI06_01, NI06_02, NI06_03, NI06_04, NI06_05 (5 Items)
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        3.90
-  Standardabweichung:    0.95
-  Minimum:               1.20
-  Maximum:               6.00
-  Range:                 4.80
-  Schiefe:               -0.23
-  Kurtosis:              -0.29
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Cronbach's Alpha:      0.710
-  Standardisiertes α:    0.710
-  95% CI:                [0.637, 0.772]
-
-ITEMSTATISTIKEN:
--------------------------------------------------------------------------------- 
-  Item       |        M |       SD | Trennschärfe
--------------------------------------------------------------------------------- 
-  NI06_01    |     4.24 |     1.28 |        0.506
-  NI06_02    |     3.38 |     1.49 |        0.539
-  NI06_03    |     3.49 |     1.48 |        0.434
-  NI06_04    |     4.52 |     1.36 |        0.488
-  NI06_05    |     3.88 |     1.33 |        0.376
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = -0.439, p <0.001
-  Neurotizismus:         r = 0.513, p <0.001
-  Resilienz:             r = -0.428, p <0.001
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Altersspezifische Normen
-  Gruppen:               Jung (<30), Mittel (30-45), Alt (>45)
-  Hinweis:               Zusätzlich Beschäftigungsunterschiede beachten
-  Normtabellen:          3 Tabellen (Plots 48-50)
-
-
-================================================================================ 
-2. STRESSSYMPTOME (KURZSKALA) 
-================================================================================ 
-
-Items: NI13_01, NI13_02, NI13_03, NI13_04, NI13_05 (5 Items)
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        3.45
-  Standardabweichung:    1.12
-  Minimum:               1.00
-  Maximum:               6.00
-  Range:                 5.00
-  Schiefe:               0.00
-  Kurtosis:              -0.46
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Cronbach's Alpha:      0.812
-  Standardisiertes α:    0.813
-  95% CI:                [0.765, 0.853]
-
-ITEMSTATISTIKEN:
--------------------------------------------------------------------------------- 
-  Item       |        M |       SD | Trennschärfe
--------------------------------------------------------------------------------- 
-  NI13_01    |     3.66 |     1.39 |        0.507
-  NI13_02    |     3.78 |     1.42 |        0.701
-  NI13_03    |     3.24 |     1.52 |        0.667
-  NI13_04    |     3.28 |     1.58 |        0.602
-  NI13_05    |     3.28 |     1.52 |        0.537
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = -0.612, p <0.001
-  Neurotizismus:         r = 0.596, p <0.001
-  Resilienz:             r = -0.541, p <0.001
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Gemeinsame Norm
-  Gruppen:               Gesamte Stichprobe
-  Begründung:            Keine signifikanten Gruppenunterschiede
-  Normtabellen:          1 Tabelle (Plot 41)
-
-
-================================================================================ 
-3. COPING-ITEMS (EINZELITEMS) 
-================================================================================ 
-
-
--------------------------------------------------------------------------------- 
-3.1 Coping: Drogen/Substanzen (NI07_01) 
--------------------------------------------------------------------------------- 
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        1.91
-  Standardabweichung:    1.36
-  Minimum:               1
-  Maximum:               6
-  Range:                 5
-  Schiefe:               1.40
-  Kurtosis:              0.88
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = -0.146, p 0.0511
-  Neurotizismus:         r = 0.085, p 0.255
-  Resilienz:             r = -0.143, p 0.0561
-  Stressbelastung:       r = 0.178, p 0.017
-  Stresssymptome:        r = 0.168, p 0.0242
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Gemeinsame Norm (Plot 42)
-  Begründung:            Keine signifikanten Gruppenunterschiede
-
-
--------------------------------------------------------------------------------- 
-3.2 Coping: Religion/Spiritualität (NI07_02) 
--------------------------------------------------------------------------------- 
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        3.44
-  Standardabweichung:    1.22
-  Minimum:               1
-  Maximum:               6
-  Range:                 5
-  Schiefe:               -0.25
-  Kurtosis:              -0.37
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = 0.205, p 0.00587
-  Neurotizismus:         r = -0.225, p 0.00237
-  Resilienz:             r = 0.093, p 0.212
-  Stressbelastung:       r = -0.126, p 0.0924
-  Stresssymptome:        r = -0.043, p 0.568
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Gemeinsame Norm (Plot 43)
-  Begründung:            Keine signifikanten Gruppenunterschiede
-
-
--------------------------------------------------------------------------------- 
-3.3 Coping: Soziale Unterstützung (NI07_03) 
--------------------------------------------------------------------------------- 
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        4.73
-  Standardabweichung:    1.19
-  Minimum:               1
-  Maximum:               6
-  Range:                 5
-  Schiefe:               -0.89
-  Kurtosis:              0.25
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = 0.363, p <0.001
-  Neurotizismus:         r = -0.217, p 0.00351
-  Resilienz:             r = 0.111, p 0.139
-  Stressbelastung:       r = -0.228, p 0.00207
-  Stresssymptome:        r = -0.340, p <0.001
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Gemeinsame Norm (Plot 44)
-  Begründung:            Keine signifikanten Gruppenunterschiede
-
-
--------------------------------------------------------------------------------- 
-3.4 Coping: Positive Neubewertung (NI07_04) 
--------------------------------------------------------------------------------- 
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        3.07
-  Standardabweichung:    1.36
-  Minimum:               1
-  Maximum:               6
-  Range:                 5
-  Schiefe:               0.21
-  Kurtosis:              -0.88
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = 0.248, p <0.001
-  Neurotizismus:         r = -0.341, p <0.001
-  Resilienz:             r = 0.299, p <0.001
-  Stressbelastung:       r = -0.146, p 0.0511
-  Stresssymptome:        r = -0.108, p 0.15
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Gemeinsame Norm (Plot 45)
-  Begründung:            Keine signifikanten Gruppenunterschiede
-
-
--------------------------------------------------------------------------------- 
-3.5 Coping: Aktive Bewältigung (NI07_05) 
--------------------------------------------------------------------------------- 
-
-DESKRIPTIVE STATISTIKEN:
--------------------------------------------------------------------------------- 
-  N gültig:              180
-  N fehlend:             0
-  Mittelwert (M):        3.39
-  Standardabweichung:    1.11
-  Minimum:               1
-  Maximum:               6
-  Range:                 5
-  Schiefe:               -0.24
-  Kurtosis:              -0.09
-
-RELIABILITÄT:
--------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
-
-VALIDITÄT (Korrelationen mit Außenkriterien):
--------------------------------------------------------------------------------- 
-  Zufriedenheit:         r = 0.206, p 0.00543
-  Neurotizismus:         r = -0.348, p <0.001
-  Resilienz:             r = 0.342, p <0.001
-  Stressbelastung:       r = -0.266, p <0.001
-  Stresssymptome:        r = -0.324, p <0.001
-
-NORMIERUNG:
--------------------------------------------------------------------------------- 
-  Strategie:             Geschlechtsspezifisch (Plots 46-47)
-  Begründung:            Signifikante Geschlechtsunterschiede
-
-
-================================================================================ 
-GESAMTZUSAMMENFASSUNG 
-================================================================================ 
-
-ÜBERSICHT DER FINALEN SKALEN:
-================================================================================ 
-
-1. STRESSBELASTUNG (KURZ)
-   - Items:               5
-   - Cronbach's Alpha:     0.710
-   - Normierung:          Altersspezifisch (3 Gruppen)
-
-2. STRESSSYMPTOME (KURZ)
-   - Items:               5
-   - Cronbach's Alpha:     0.812
-   - Normierung:          Gemeinsam
-
-3. COPING-ITEMS (EINZELITEMS)
-   - Items:               5 (je 1 pro Dimension)
-   - Reliabilität:        Einzelitems (keine interne Konsistenz)
-   - Normierung:          4× Gemeinsam, 1× Geschlechtsspezifisch
-
-GESAMTTEST:
-   - Anzahl Items:        15 (5 + 5 + 5)
-   - Bearbeitungszeit:    ca. 5-10 Minuten (geschätzt)
-   - Normtabellen:        10 Tabellen
-   - Einsatzbereich:      Erwachsene (≥18 Jahre)
-
-STÄRKEN:
-   ✓ Ökonomisch (nur 15 Items)
-   ✓ Gute Reliabilität der Multi-Item-Skalen (α > .70)
-   ✓ Differenzierte Normierung nach empirischen Befunden
-   ✓ Breite Validitätsevidenz (Korrelationen mit Außenkriterien)
-   ✓ Erfassung mehrerer Stress-Dimensionen
-
-LIMITATIONEN:
-   ⚠ Coping-Items als Einzelitems (keine interne Konsistenz prüfbar)
-   ⚠ Querschnittsdaten (keine Test-Retest-Reliabilität)
-   ⚠ Convenience Sample (eingeschränkte Generalisierbarkeit)
-
-EMPFEHLUNGEN FÜR ZUKÜNFTIGE FORSCHUNG:
-   → Test-Retest-Reliabilität erheben
-   → Coping-Items zu Multi-Item-Skalen erweitern
-   → Normierung an repräsentativer Stichprobe
-   → Konstruktvalidität mit CFA weiter prüfen
-   → Sensitivität für Veränderungsmessung untersuchen
-
-✓ Finale Skalenmetriken-Analyse abgeschlossen
-
-VERWENDUNG:
-  - Nutzen Sie diesen Bericht für Ihren Methodenteil
-  - Alle Kennwerte sind publikationsreif formatiert
-  - Ergänzen Sie ggf. Interpretationen und Schlussfolgerungen
-  - Alle Ergebnisse sind im Haupt-Analyse-Log enthalten
-
-
-✓ Schritt 12 abgeschlossen (Finale Metriken berechnet)
-
---------------------------------------------------------------------------------
-Workspace bereinigen...
---------------------------------------------------------------------------------
-
-
-Behalten:
-  ✓ data/workspace.RData (Hauptdaten mit allen Skalen)
-================================================================================
-ANALYSE ABGESCHLOSSEN
-================================================================================
-
-Ende: 2025-12-19 15:34:30 
-Dauer: 0.18 Minuten
-
-ZUSAMMENFASSUNG:
-  ✓ Datenbereinigung durchgeführt
-  ✓ Alle Skalen konstruiert
-  ✓ Deskriptive Statistiken erstellt (Plots 01-04)
-  ✓ Reliabilitätsanalysen abgeschlossen (Plots 05-12)
-  ✓ Hauptvaliditätsanalysen abgeschlossen (Plots 13-19)
-  ✓ Subgruppenanalysen abgeschlossen
-  ✓ Subgruppen-Visualisierungen erstellt (Plots 20-39)
-  ✓ Statistische Itemauswahl-Begründung
-  ✓ Finale Kurzskalen-Vergleichsanalysen
-  ✓ Normierungsanalyse & Normtabellen (CSV-Format)
-  ✓ Finale Skalenmetriken
-  ✓ Temporäre Dateien bereinigt
-
-DATEIEN & VERZEICHNISSE:
-  Skripte:      src/*.R
-  Daten:        data/
-  Plots:        plots/
-  Analysen:     output/
-  Normtabellen: output/normtabellen/*.csv
-
-WICHTIGE ÄNDERUNGEN:
-  • Alle R-Skripte in src/ Verzeichnis verschoben
-  • Skripte 11 & 12 zu einem zusammengeführt
-  • Normtabellen als CSV statt PNG (einfacher zu verwenden)
-  • Zentrale Datenpfad-Konfiguration in run_all.R
-  • Warnungen unterdrückt für saubereren Output
-
-NÄCHSTE SCHRITTE:
-  1. Überprüfen Sie alle Plots im Ordner plots/
-  2. Normtabellen für Ihr Manual: output/normtabellen/*.csv
-  3. Öffnen Sie CSV-Dateien in Excel/R für Verwendung im Manual
-  4. Dokumentieren Sie die Normierungsstrategie in Ihrer Arbeit
-
-================================================================================
-

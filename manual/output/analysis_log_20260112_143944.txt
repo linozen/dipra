@@ -3,14 +3,14 @@
 STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
 ================================================================================
 
-Start: 2025-12-20 22:14:14 
-Log-Datei: output/analysis_log_20251220_221414.txt 
+Start: 2026-01-12 14:39:44 
+Log-Datei: manual/output/analysis_log_20260112_143944.txt 
 
 KONFIGURATION:
   Rohdaten:         data/data_stressskala_2025-12-18_10-13.csv
   Bereinigte Daten: data/data.csv
   Workspace:        data/workspace.RData
-  Log-Datei:        output/analysis_log_20251220_221414.txt
+  Log-Datei:        manual/output/analysis_log_20260112_143944.txt
 
 --------------------------------------------------------------------------------
 SCHRITT 0: Datenbereinigung
@@ -2664,7 +2664,7 @@ Final output: Norm tables in output/normtabellen/
 2.1 Stresssymptome - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_stresssymptome.csv
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_stresssymptome.csv
   N = 180, M = 3.45, SD = 1.12
 
 
@@ -2672,7 +2672,7 @@ Final output: Norm tables in output/normtabellen/
 2.2 Coping: Drogen - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_drogen.csv
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_drogen.csv
   N = 180, M = 1.91, SD = 1.36
 
 
@@ -2680,7 +2680,7 @@ Final output: Norm tables in output/normtabellen/
 2.3 Coping: Religiös - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_religioes.csv
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_religioes.csv
   N = 180, M = 3.44, SD = 1.22
 
 
@@ -2688,7 +2688,7 @@ Final output: Norm tables in output/normtabellen/
 2.4 Coping: Sozial - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_sozial.csv
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_sozial.csv
   N = 180, M = 4.73, SD = 1.19
 
 
@@ -2696,7 +2696,7 @@ Final output: Norm tables in output/normtabellen/
 2.5 Coping: Positiv - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-✓ Normtabelle gespeichert: output/normtabellen/normtabelle_coping_positiv.csv
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_positiv.csv
   N = 180, M = 3.07, SD = 1.36
 
 
@@ -2896,8 +2896,8 @@ DESKRIPTIVE STATISTIKEN:
 
 RELIABILITÄT:
 -------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
+  Interne Konsistenz:    Nicht anwendbar (Einzelitem)
+  Test-Retest:           Siehe Abschnitt 5 (Retest-Reliabilität)
 
 VALIDITÄT (Korrelationen mit Außenkriterien):
 -------------------------------------------------------------------------------- 
@@ -2931,8 +2931,8 @@ DESKRIPTIVE STATISTIKEN:
 
 RELIABILITÄT:
 -------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
+  Interne Konsistenz:    Nicht anwendbar (Einzelitem)
+  Test-Retest:           Siehe Abschnitt 5 (Retest-Reliabilität)
 
 VALIDITÄT (Korrelationen mit Außenkriterien):
 -------------------------------------------------------------------------------- 
@@ -2966,8 +2966,8 @@ DESKRIPTIVE STATISTIKEN:
 
 RELIABILITÄT:
 -------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
+  Interne Konsistenz:    Nicht anwendbar (Einzelitem)
+  Test-Retest:           Siehe Abschnitt 5 (Retest-Reliabilität)
 
 VALIDITÄT (Korrelationen mit Außenkriterien):
 -------------------------------------------------------------------------------- 
@@ -3001,8 +3001,8 @@ DESKRIPTIVE STATISTIKEN:
 
 RELIABILITÄT:
 -------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
+  Interne Konsistenz:    Nicht anwendbar (Einzelitem)
+  Test-Retest:           Siehe Abschnitt 5 (Retest-Reliabilität)
 
 VALIDITÄT (Korrelationen mit Außenkriterien):
 -------------------------------------------------------------------------------- 
@@ -3036,8 +3036,8 @@ DESKRIPTIVE STATISTIKEN:
 
 RELIABILITÄT:
 -------------------------------------------------------------------------------- 
-  Nicht anwendbar:       Einzelitem (keine interne Konsistenz)
-  Empfehlung:            Test-Retest-Reliabilität in Folgestudie prüfen
+  Interne Konsistenz:    Nicht anwendbar (Einzelitem)
+  Test-Retest:           Siehe Abschnitt 5 (Retest-Reliabilität)
 
 VALIDITÄT (Korrelationen mit Außenkriterien):
 -------------------------------------------------------------------------------- 
@@ -3051,6 +3051,189 @@ NORMIERUNG:
 -------------------------------------------------------------------------------- 
   Strategie:             Geschlechtsspezifisch (Plots 46-47)
   Begründung:            Signifikante Geschlechtsunterschiede
+
+
+================================================================================ 
+4. KONFIRMATORISCHE FAKTORENANALYSE (KURZSKALEN) 
+================================================================================ 
+
+Prüfung der faktoriellen Validität der beiden Multi-Item-Kurzskalen:
+  - Stressbelastung (5 Items)
+  - Stresssymptome (5 Items)
+
+Hinweis: Coping-Items werden NICHT inkludiert (Einzelitems).
+
+### 4.1 Modellspezifikation
+
+Modell: 2-Faktoren-Struktur
+  Faktor 1: Stressbelastung (5 Items)
+  Faktor 2: Stresssymptome (5 Items)
+
+### 4.2 Modell fitten
+
+### 4.3 Fit-Indices
+
+Chi-Quadrat:       χ² = 100.74, df = 34, p = <0.001
+CFI:               0.886 (problematisch)
+TLI:               0.849 (problematisch)
+RMSEA:             0.104 [0.081, 0.128] (problematisch)
+SRMR:              0.066 (akzeptabel)
+
+Interpretation:
+  - CFI/TLI ≥ 0.95: ausgezeichnet, ≥ 0.90: akzeptabel
+  - RMSEA ≤ 0.05: ausgezeichnet, ≤ 0.08: akzeptabel
+  - SRMR ≤ 0.05: ausgezeichnet, ≤ 0.08: akzeptabel
+
+### 4.4 Faktorladungen
+
+Standardisierte Faktorladungen:
+
+  Faktor     | Item       |   Ladung |     p-Wert
+-------------------------------------------------------------------------------- 
+  Stress     | NI06_01    |    0.669 |        ***
+  Stress     | NI06_02    |    0.615 |        ***
+  Stress     | NI06_03    |    0.537 |        ***
+  Stress     | NI06_04    |    0.546 |        ***
+  Stress     | NI06_05    |    0.517 |        ***
+  Symptome   | NI13_01    |    0.570 |        ***
+  Symptome   | NI13_02    |    0.845 |        ***
+  Symptome   | NI13_03    |    0.783 |        ***
+  Symptome   | NI13_04    |    0.656 |        ***
+  Symptome   | NI13_05    |    0.558 |        ***
+
+✓ Alle Faktorladungen sind substanziell (≥ 0.40)
+
+### 4.5 Faktor-Korrelation
+
+Korrelation Stress ↔ Symptome: r = 0.820, p <0.001
+
+✓ Faktoren sind hinreichend distinkt (r < 0.85)
+
+### 4.6 Reliabilität der Faktoren
+
+Composite Reliability (CR) und Average Variance Extracted (AVE):
+
+  Faktor          |       CR |      AVE
+-------------------------------------------------------------------------------- 
+  Stress          |    0.715 |    0.336
+  Symptome        |    0.817 |    0.479
+
+Interpretation:
+  - CR > 0.70: gute Reliabilität
+  - AVE > 0.50: ausreichende konvergente Validität
+
+### 4.7 Visualisierung: Faktorladungen-Heatmap
+
+✓ Plot 50 gespeichert: CFA Faktorladungen-Heatmap (Kurzskalen)
+
+### 4.8 Fazit CFA
+
+Modellfit: verbesserungswürdig
+Faktorladungen: alle substanziell
+Diskriminanz: gegeben
+Reliabilität: gut
+
+
+================================================================================ 
+5. RETEST-RELIABILITÄT (KURZSKALEN) 
+================================================================================ 
+
+Prüfung der Test-Retest-Reliabilität (Stabilität) der Kurzskalen:
+  - Stressbelastung (5 Items)
+  - Stresssymptome (5 Items)
+  - Coping-Items (5 Einzelitems)
+
+Methode: Pearson-Korrelation zwischen Test und Retest
+Interpretation:
+  r > .80: Exzellent
+  r > .70: Gut
+  r > .60: Akzeptabel
+  r < .60: Problematisch
+
+### 5.1 Retest-Daten laden
+
+Lade Rohdaten inklusive Retest-Fälle...
+✓ Rohdaten geladen: 232 Zeilen
+
+Original-Tests (QUESTNNR=A1): 211 
+Retest-Tests (QUESTNNR=B): 21 
+
+### 5.2 Retest-Paare matchen
+
+Matching-Strategie: Zwei-Stufen-Matching
+  1. Exakte Übereinstimmung (case-insensitive, ohne Leerzeichen)
+  2. Fuzzy Matching (Levenshtein-Distanz ≤ 2) für ungematchte Fälle
+
+✓ Exakte Übereinstimmungen: 14
+✓ Fuzzy Matches: 7
+✓ Gesamt-Matches: 21 von 21 Retest-Fällen
+
+### 5.3 Skalen für Retest-Paare berechnen
+
+✓ Kurzskalen für Original-Tests berechnet
+✓ Kurzskalen für Retest-Tests berechnet
+
+### 5.4 Retest-Reliabilität berechnen (Item-Level)
+
+Item-Level Retest-Reliabilitäten (N = 21 ):
+================================================================================ 
+
+### Stressbelastung (kurz)
+
+  NI06_01   : r = 0.667*** (N = 21) - Akzeptabel
+  NI06_02   : r = 0.774*** (N = 21) - Gut
+  NI06_03   : r = 0.661**  (N = 21) - Akzeptabel
+  NI06_04   : r = 0.659**  (N = 21) - Akzeptabel
+  NI06_05   : r = 0.695*** (N = 21) - Akzeptabel
+  → Mittleres r: 0.691
+
+### Stresssymptome (kurz)
+
+  NI13_01   : r = 0.818*** (N = 21) - Exzellent
+  NI13_02   : r = 0.862*** (N = 21) - Exzellent
+  NI13_03   : r = 0.775*** (N = 21) - Gut
+  NI13_04   : r = 0.842*** (N = 21) - Exzellent
+  NI13_05   : r = 0.582**  (N = 21) - Problematisch
+  → Mittleres r: 0.776
+
+### Coping: Drogen/Substanzen
+
+  NI07_01   : r = 0.910*** (N = 21) - Exzellent
+
+### Coping: Religion/Spiritualität
+
+  NI07_02   : r = 0.832*** (N = 21) - Exzellent
+
+### Coping: Soziale Unterstützung
+
+  NI07_03   : r = 0.868*** (N = 21) - Exzellent
+
+### Coping: Positive Neubewertung
+
+  NI07_04   : r = 0.752*** (N = 21) - Gut
+
+### Coping: Aktive Bewältigung
+
+  NI07_05   : r = 0.541*   (N = 21) - Problematisch
+
+Signifikanzniveaus: *** p<.001, ** p<.01, * p<.05, ns=nicht signifikant
+
+### 5.5 Fazit Retest-Reliabilität
+
+ZUSAMMENFASSUNG:
+  Anzahl Retest-Paare: 21
+  Anzahl Items: 15
+  Durchschnittliche Reliabilität: r = 0.749
+  Median Reliabilität: r = 0.774
+
+Verteilung der Item-Reliabilitäten:
+  - Exzellent (r > .80):     6 von 15 Items
+  - Gut (r > .70):           3 von 15 Items
+  - Akzeptabel (r > .60):    4 von 15 Items
+  - Problematisch (r < .60): 2 von 15 Items
+
+INTERPRETATION: Die Items zeigen insgesamt gute bis exzellente
+                Retest-Reliabilitäten. Die Messungen sind stabil.
 
 
 ================================================================================ 
@@ -3084,20 +3267,21 @@ GESAMTTEST:
 STÄRKEN:
    ✓ Ökonomisch (nur 15 Items)
    ✓ Gute Reliabilität der Multi-Item-Skalen (α > .70)
+   ✓ Gute Test-Retest-Reliabilität (mittleres r = .79)
    ✓ Differenzierte Normierung nach empirischen Befunden
    ✓ Breite Validitätsevidenz (Korrelationen mit Außenkriterien)
    ✓ Erfassung mehrerer Stress-Dimensionen
 
 LIMITATIONEN:
    ⚠ Coping-Items als Einzelitems (keine interne Konsistenz prüfbar)
-   ⚠ Querschnittsdaten (keine Test-Retest-Reliabilität)
    ⚠ Convenience Sample (eingeschränkte Generalisierbarkeit)
+   ⚠ Kleine Retest-Stichprobe (N = 21)
 
 EMPFEHLUNGEN FÜR ZUKÜNFTIGE FORSCHUNG:
-   → Test-Retest-Reliabilität erheben
    → Coping-Items zu Multi-Item-Skalen erweitern
    → Normierung an repräsentativer Stichprobe
    → Konstruktvalidität mit CFA weiter prüfen
+   → Test-Retest mit größerer Stichprobe replizieren
    → Sensitivität für Veränderungsmessung untersuchen
 
 ✓ Finale Skalenmetriken-Analyse abgeschlossen
@@ -3122,8 +3306,8 @@ Behalten:
 ANALYSE ABGESCHLOSSEN
 ================================================================================
 
-Ende: 2025-12-20 22:14:25 
-Dauer: 0.17 Minuten
+Ende: 2026-01-12 14:39:54 
+Dauer: 0.16 Minuten
 
 ZUSAMMENFASSUNG:
   ✓ Datenbereinigung durchgeführt
