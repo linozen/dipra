@@ -101,7 +101,7 @@
 
   #text(size: 12pt)[
     Laura Weber\
-    Gianna Henn\
+    Gianna Hemm\
     Lisa Kipp\
     Linus Sehn \
     Maximilian Pöppe
@@ -322,7 +322,7 @@ Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine sp
 Die Items zeigen eine breite Streuung in ihren Mittelwerten, was die unterschiedliche Häufigkeit der Nutzung verschiedener Bewältigungsstrategien widerspiegelt. Soziale Unterstützung (COPE_SOCI_01) wurde am häufigsten berichtet (_M_ = 4.73), während Substanzkonsum (COPE_DRUG_01) die geringste Zustimmung erhielt (_M_ = 1.91). Die Retest-Reliabilitäten der Einzelitems variierten zwischen _r_#sub[tt] = .567 (COPE_REAP_01) und _r_#sub[tt] = .910 (COPE_DRUG_01), wobei die meisten Items eine gute bis exzellente zeitliche Stabilität aufwiesen. Die Normierung erfolgt für vier Items (COPE_DRUG_01, COPE_RELI_01, COPE_SOCI_01 und COPE_REAP_01) auf Basis gemeinsamer Normen. Für Item COPE_ACTI_01 (Aktive Bewältigung) werden aufgrund signifikanter Geschlechtsunterschiede geschlechtsspezifische Normen bereitgestellt.
 
 == Validität
-Die Validität der KSSB wurde durch konvergente Validitätsanalysen überprüft, bei denen Korrelationen mit theoretisch verwandten Konstrukten berechnet wurden. Als Validierungskriterien dienten Lebenszufriedenheit, Neurotizismus (Big Five) und Resilienz. Zusätzlich wurde die faktorielle Struktur der KSSB mittels konfirmatorischer Faktorenanalyse (CFA) überprüft.
+Die Validität der KSSB wurde durch konvergente Validitätsanalysen überprüft, bei denen Korrelationen mit theoretisch verwandten Konstrukten berechnet wurden. Als Validierungskriterien dienten Lebenszufriedenheit @beierlein_kurzskala_2015, Neurotizismus (Big Five) und Resilienz. Zusätzlich wurde die faktorielle Struktur der KSSB mittels konfirmatorischer Faktorenanalyse (CFA) überprüft.
 
 === Konvergente Validität
 Die Skala Stressbelastung zeigte substanzielle Korrelationen mit allen drei Validierungskriterien. Mit Lebenszufriedenheit korrelierte die Skala negativ (_r_ = –.44, _p_ < .001), was die Annahme bestätigt, dass höhere Stressbelastung mit geringerer Lebenszufriedenheit einhergeht. Erwartungsgemäß zeigte sich eine positive Korrelation mit Neurotizismus (_r_ = .51, _p_ < .001), da neurotische Personen stressauslösende Situationen häufiger als belastend erleben. Die negative Korrelation mit Resilienz (_r_ = –.43, _p_ < .001) unterstreicht, dass resiliente Personen Stressoren besser bewältigen und als weniger belastend wahrnehmen.
