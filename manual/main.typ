@@ -47,6 +47,9 @@
 // Link styling
 #show link: set text(fill: blue)
 
+// Bibliography configuration (APA 7 style)
+#set bibliography(style: "apa", title: none)
+
 // Table styling
 #set table(
   stroke: (x, y) => if y == 0 {
@@ -135,7 +138,7 @@
 #v(0.5em)
 
 #set par(justify: true)
-Angelehnt an das Stress- und Coping-Inventar (2., überarbeitete und neunormierte Version; Satow, L. (2024)) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter 5 Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unterdimensionen.
+Angelehnt an das Stress- und Coping-Inventar (2., überarbeitete und neunormierte Version; @satow_sci_2024) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter 5 Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unterdimensionen.
 
 #v(0.5em)
 
@@ -172,7 +175,7 @@ _Wird hinzugefügt_
 = Instrument
 
 == Item- und Skalenkonstruktion
-Zusammengenommen enthält die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben psychometrische Unterskalen mit insgesamt 15 Items. Die Skalen Stressbelastung und Stresssymptome umfassen je fünf Items, während jede der 5 Stressbewältigungsskalen von einem Item abgedeckt wird. Nachfolgend wird kurz auf die einzelnen Skalen eingegangen. Der vollständige Test findet sich ebenfalls im Anhang (Appendix A).
+Zusammengenommen enthält die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben psychometrische Unterskalen mit insgesamt 15 Items. Die Skalen Stressbelastung und Stresssymptome umfassen je fünf Items, während jede der 5 Stressbewältigungsskalen von einem Item abgedeckt wird. Die Itemauswahl orientiert sich an der Struktur des Stress- und Coping-Inventars von #cite(<satow_sci_2024>, form: "prose"). Nachfolgend wird kurz auf die einzelnen Skalen eingegangen. Der vollständige Test findet sich ebenfalls im Anhang (Appendix A).
 
 Die KSSB kann zur Erfassung von Stress allgemein und seiner Unterdimensionen in der Allgemeinbevölkerung ab 18 Jahren eingesetzt werden. Er lässt sich sowohl digital als auch als Paper-Pencil-Test durchführen und hat kein Zeitlimit. Bisherige Erhebungsdaten zeigen eine durchschnittliche Bearbeitungszeit von 6 Minuten.
 
@@ -353,6 +356,8 @@ Die Validität der Skalen wurde über verschiedene demographische Subgruppen (Ge
 
 #pagebreak()
 = Literaturverzeichnis
+
+#bibliography("zotero.bib")
 
 #pagebreak()
 = Anhang
