@@ -202,7 +202,7 @@ calculate_t_score <- function(raw_score, mean_val, sd_val) {
 }
 
 # Normtabelle erstellen und als CSV speichern
-create_norm_table_csv <- function(scores, filename, title, subtitle = NULL) {
+create_norm_table_csv <- function(scores, filename, title, subtitle = NULL, integer_only = FALSE) {
   # Entferne fehlende Werte
   scores <- scores[!is.na(scores)]
 
@@ -211,13 +211,19 @@ create_norm_table_csv <- function(scores, filename, title, subtitle = NULL) {
   sd_val <- sd(scores)
   n <- length(scores)
 
-  # Bestimme Wertebereich
-  min_score <- floor(min(scores) * 10) / 10
-  max_score <- ceiling(max(scores) * 10) / 10
-
-  # Erstelle Rohwert-Sequenz (in 0.1er Schritten)
-  raw_scores <- seq(min_score, max_score, by = 0.1)
-  raw_scores <- round(raw_scores, 1)
+  # Bestimme Wertebereich und Schrittweite
+  if (integer_only) {
+    # Für Single-Item-Skalen: Nur ganze Zahlen
+    min_score <- floor(min(scores))
+    max_score <- ceiling(max(scores))
+    raw_scores <- seq(min_score, max_score, by = 1)
+  } else {
+    # Für Multi-Item-Skalen: 0.1er Schritte
+    min_score <- floor(min(scores) * 10) / 10
+    max_score <- ceiling(max(scores) * 10) / 10
+    raw_scores <- seq(min_score, max_score, by = 0.1)
+    raw_scores <- round(raw_scores, 1)
+  }
   raw_scores <- unique(raw_scores)
 
   # Berechne Z-Werte und T-Werte
@@ -452,7 +458,8 @@ create_norm_table_csv(
   scores = data$NI07_01,
   title = "Coping: Drogen (Item NI07_01)",
   filename = "manual/output/normtabellen/normtabelle_coping_drogen.csv",
-  subtitle = "Gemeinsame Norm"
+  subtitle = "Gemeinsame Norm",
+  integer_only = TRUE
 )
 
 # 3. Coping Religiös - Gemeinsame Norm
@@ -461,7 +468,8 @@ create_norm_table_csv(
   scores = data$NI07_02,
   title = "Coping: Religiös (Item NI07_02)",
   filename = "manual/output/normtabellen/normtabelle_coping_religioes.csv",
-  subtitle = "Gemeinsame Norm"
+  subtitle = "Gemeinsame Norm",
+  integer_only = TRUE
 )
 
 # 4. Coping Sozial - Gemeinsame Norm
@@ -470,7 +478,8 @@ create_norm_table_csv(
   scores = data$NI07_03,
   title = "Coping: Sozial (Item NI07_03)",
   filename = "manual/output/normtabellen/normtabelle_coping_sozial.csv",
-  subtitle = "Gemeinsame Norm"
+  subtitle = "Gemeinsame Norm",
+  integer_only = TRUE
 )
 
 # 5. Coping Positiv - Gemeinsame Norm
@@ -479,7 +488,8 @@ create_norm_table_csv(
   scores = data$NI07_04,
   title = "Coping: Positiv (Item NI07_04)",
   filename = "manual/output/normtabellen/normtabelle_coping_positiv.csv",
-  subtitle = "Gemeinsame Norm"
+  subtitle = "Gemeinsame Norm",
+  integer_only = TRUE
 )
 
 # 6. Coping Aktiv - Geschlechtsspezifische Normen (basierend auf Analyse)
@@ -491,7 +501,8 @@ create_norm_table_csv(
   scores = data_male$NI07_05,
   title = "Coping: Aktiv (Item NI07_05)",
   filename = "manual/output/normtabellen/normtabelle_coping_aktiv_maennlich.csv",
-  subtitle = "Norm für Männer"
+  subtitle = "Norm für Männer",
+  integer_only = TRUE
 )
 
 data_female <- subset(data, Geschlecht_clean == "Weiblich")
@@ -499,7 +510,8 @@ create_norm_table_csv(
   scores = data_female$NI07_05,
   title = "Coping: Aktiv (Item NI07_05)",
   filename = "manual/output/normtabellen/normtabelle_coping_aktiv_weiblich.csv",
-  subtitle = "Norm für Frauen"
+  subtitle = "Norm für Frauen",
+  integer_only = TRUE
 )
 
 # 7. Stressbelastung - Altersspezifische Normen
