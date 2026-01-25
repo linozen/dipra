@@ -208,15 +208,15 @@ Neben sozialen Faktoren dienen psychologische Ressourcen wie persönlicher Optim
 
 Das Stress-Coping-Inventar von Satow (2012) bietet hierbei ein empirisch validiertes Instrument, um diese komplexen Wechselwirkungen zwischen Belastung, Bewältigung und Symptomatik präzise abzubilden.
 
+== Relevanz von Stress
 
-== Relevanz  Stress
 Die Auswirkungen von Stress lassen sich in kurz- und langfristige Outcomes unterteilen. Kurzfristig manifestiert sich Stress primär physiologisch durch die Aktivierung der Hypothalamus-Hypophysen-Nebennierenrinden-Achse (HPA-Achse). Dies führt  zu einem erhöhten Cortisolspiegel. Diese hormonelle Reaktion dient ursprünglich der Bereitstellung von Energie, beeinträchtigt jedoch bei Fehlregulation das emotionale Befinden und die kognitive Leistungsfähigkeit, insbesondere das Arbeitsgedächtnis und die Exekutivfunktionen (Sapolsky, 2004).
 Bleibt die Belastung konstant und fehlt ein effektives Coping, entwickelt sich chronischer Stress. Die langfristigen Folgen sind gravierend: Sie reichen von physischen Erkrankungen wie kardiovaskulären Erkrankungen und einer Schwächung des Immunsystems (Segerstrom & Miller, 2004), Diabetes (Eckert und Tarnowski (2022), bis hin zur Entwicklung psychischer Erkrankungen wie klinischer Depressionen und dem Burnout-Syndrom. 
 Diese Folgen verdeutlichen die Relevanz einer Kurzskala zu einer schnellen Erfassung von Stress- und Copingstrategien im klinischen und präventiven Bereich.
 
 == Skalen
 
-Aufgrund der Komplexität des Konstrukts wurden in der psychologischen Diagnostik zahlreiche Instrumente zur Erfassung von Stress und Coping entwickelt. Der Perceived Stress Questionnaire (PSQ) ermöglicht beispielsweise eine detaillierte Erfassung der subjektiven Belastung in Dimensionen wie Überlastung, Sorgen, Anspannung und Freudlosigkeit @maslach_job_2001(Fliege et al., 2009). Die Perceived Stress Scale (PSS-10) fokussiert hingegen primär darauf, wie unvorhersehbar und unkontrollierbar Personen ihr Leben im letzten Monat wahrgenommen haben (Cohen et al., 1983). Für spezifische Zielgruppen oder Fragestellungen bieten Instrumente wie der Everyday Stressors Index (ESI), der alltägliche Belastungen und Rollenkonflikte misst (Jäkel & Leyendecker, 2009), oder die Depressions-Angst-Stress-Skalen (DASS), die als klinisches Screeningverfahren dienen (Nilges & Essau, 2021), wertvolle Ergänzungen.
+Aufgrund der Komplexität des Konstrukts wurden in der psychologischen Diagnostik zahlreiche Instrumente zur Erfassung von Stress und Coping entwickelt. Der Perceived Stress Questionnaire (PSQ) ermöglicht beispielsweise eine detaillierte Erfassung der subjektiven Belastung in Dimensionen wie Überlastung, Sorgen, Anspannung und Freudlosigkeit (Fliege et al., 2009). Die Perceived Stress Scale (PSS-10) fokussiert hingegen primär darauf, wie unvorhersehbar und unkontrollierbar Personen ihr Leben im letzten Monat wahrgenommen haben (Cohen et al., 1983). Für spezifische Zielgruppen oder Fragestellungen bieten Instrumente wie der Everyday Stressors Index (ESI), der alltägliche Belastungen und Rollenkonflikte misst (Jäkel & Leyendecker, 2009), oder die Depressions-Angst-Stress-Skalen (DASS), die als klinisches Screeningverfahren dienen (Nilges & Essau, 2021), wertvolle Ergänzungen.
 
 Coping lässt sich mit der Coping-Stil Skala erfassen. Diese erfasst einen umweltbezogenen Coping-Stil mit Hilfe von Situationsvignetten und darauf bezogenen Antwortmöglichkeiten ((8) Martens et al., 2014). 
 
@@ -245,14 +245,14 @@ Zusammengenommen enthält die Kurzskala zur Erfassung von Stresssymptomen, Stres
 Die KSSB kann zur Erfassung von Stress allgemein, seiner Unterdimensionen und verschiedenen Bewältigungsstrategien in der Allgemeinbevölkerung ab 18 Jahren eingesetzt werden. Er lässt sich sowohl digital als auch als Paper-Pencil-Test durchführen und hat kein Zeitlimit.
 
 == Allgemeine Instruktion
+
 Zu Beginn wurde den Proband*innen folgende Instruktion präsentiert:"Im Folgenden werden Ihnen Aussagen zu Situationen oder Symptomen präsentiert. Es gibt kein Richtig oder Falsch. Bitte antworten Sie wahrheitsgemäß und ehrlich, wie sehr die Aussage auf Sie zutrifft. Denken Sie dabei an die letzten drei Monate."
 
 === Stresssymptome
+
 Die Skala Stresssymptome erfasst mit 5 Items inhaltlich die Dimensionen körperliche Beschwerden (SYMP_PHYS), Schlaf (SYMP_SLEP), Kognition (SYMP_COGN), Stimmung (SYMP_MOOD) und soziale Symptome (SYMP_SOCI), welche typische mit Stress assoziierte Symptome darstellen. Die Antworten werden über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert eine hohe Ausprägung repräsentiert.
 
-_Instruktion:_ "Bitte kreuzen Sie an, welche Symptome Sie in den letzten drei Monaten bei sich beobachtet haben."
-
-_Items:_
+_Instruktion & Items:_ "Bitte kreuzen Sie an, welche Symptome Sie in den letzten drei Monaten bei sich beobachtet haben."
 
 + SYMP_PHYS: Ich leide unter körperlichen Beschwerden (z.B. Kopf-/Bauchschmerzen, Gewichtsveränderung).
 + SYMP_SLEP: Ich schlafe schlecht oder habe belastende/schlechte Träume.
@@ -270,11 +270,10 @@ _Antwortskala:_
 )
 
 === Stressbelastung
+
 Die Skala Stressbelastung erfasst mit 5 Items inhaltlich die Aspekte Zukunftssorgen (STRS_FUTU), Finanzen (STRS_FINA), Beziehungen (STRS_RELA), Leistungsdruck (STRS_PERF) und Gesundheit (STRS_HEAL), welche die subjektive Belastung in verschiedenen Lebensbereichen abdecken. Die Antworten werden ebenfalls über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert einer hohen Ausprägung entspricht.
 
-_Instruktion:_ "Bitte kreuzen Sie an, wie sehr Sie sich durch die folgenden Situationen in den letzten drei Monaten belastet gefühlt haben."
-
-_Items:_
+_Instruktion & Items:_ "Bitte kreuzen Sie an, wie sehr Sie sich durch die folgenden Situationen in den letzten drei Monaten belastet gefühlt haben."
 
 + STRS_FUTU: Ich mache mir Sorgen um meine Zukunft.
 + STRS_FINA: Ich mache mir Sorgen um Geldprobleme (z.B. Schulden).
@@ -295,9 +294,7 @@ _Antwortskala:_
 
 Stressbewältigung beinhaltet 5 Skalen mit je einem Item zu einer Bewältigungsstrategie (auch Copingstrategie genannt). Die jeweilige Skala ist an dieser Stelle der Übersichtlichkeit halber _kursiv_ vor dem Item dokumentiert. Die Antworten werden je über eine 6-stufige verbale Likert-Skala erfasst, wobei ein hoher Wert eine hohe Ausprägung repräsentiert.
 
-_Instruktion:_ "Bitte kreuzen Sie an, wie Sie mit Stress umgehen."
-
-_Items:_
+_Instruktion & Items:_ "Bitte kreuzen Sie an, wie Sie mit Stress umgehen."
 
 + COPE_RELI (_Religiöses Coping_): Bei Stress und Druck erinnere ich mich daran, dass es höhere Werte im Leben gibt.
 + COPE_SOCI (_Soziales Coping_): Egal wie schlimm es wird, ich habe Menschen, die für mich da sind.
@@ -315,12 +312,15 @@ _Antwortskala:_
 )
 
 == Auswertung
+
 Für die Skalen Stressbewältigung und Stresssymptome werden die Antworten in Rohpunktwerte entsprechend der Antwort von 1 bis 6 umgewandelt und je Skala gemittelt. Der entsprechende Normwert kann anschließend anhand des Mittelwerts in der Normtabelle abgelesen werden. Die Stressbewältigungsskalen werden einzeln betrachtet und geben Aufschluss über die bevorzugte Art mit Stress umzugehen.
 
 == Stichproben
+
 An der Studie nahmen insgesamt 212 Personen teil. Nach Datenbereinigung und Ausschluss von Personen, die den Aufmerksamkeitstest nicht bestanden haben, umfasste die finale Stichprobe 180 Personen. 
 
 === Demographische Merkmale
+
 Das durchschnittliche Alter der Stichprobe betrug _M_ = 27.62 Jahre (_SD_ = 9.90 Jahre). Die Altersverteilung ist in Abbildung 1 dargestellt. Die Stichprobe war überwiegend weiblich (77.8%), in Beschäftigung als Studierende (64.4%) und wies ein hohes Bildungsniveau auf (52.2% mit Bachelor, Master oder Staatsexamen).
 
 #figure(image("plots/01_altersverteilung.png"),
@@ -335,6 +335,7 @@ Zur Qualitätssicherung der Daten wurde eine umfassende Ausreißeranalyse durchg
 Im Folgenden werden die psychometrischen Kennwerte der KSSB dargestellt. Für jede Skala werden zunächst deskriptive Statistiken auf Skalenebene berichtet, gefolgt von einer detaillierten Darstellung der Itemkennwerte. #underline[Dabei liegt der Fokus auf Mittelwerten, Standardabweichungen und part-whole-korrigierten Trennschärfen der einzelnen Items, die Aufschluss über die Itemqualität geben. Zusätzlich werden Reliabilitätskennwerte sowie Informationen zur Normierungsstrategie der jeweiligen Skalen berichtet. Die Retest-Reliabilitäten (_N_ = 21, Zeitintervall ≈ 2 Wochen) waren durchweg akzeptabel bis gut (Median _r_#sub[tt] = .77), was auf eine zeitliche Stabilität der Messungen hinweist.]
 
 === Stresssymptome
+
 Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.45 (_SD_ = 1.12) bei einer Spannweite von 1.00 bis 6.00. Die interne Konsistenz der Skala erwies sich mit Cronbachs α = .812 (95% CI [.765, .853]) als gut. Die Itemkennwerte sind in Tabelle 1 dargestellt.
 
 #figure(
@@ -354,6 +355,7 @@ Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprob
 Alle Items wiesen zufriedenstellende bis gute Trennschärfen auf (_r_#sub[it] = .507 bis .701), wobei Item SYMP_SLEP (Schlechter Schlaf/Träume) die höchste Trennschärfe zeigte. Die Retest-Reliabilitäten der Items waren überwiegend gut bis exzellent (_r_#sub[tt] = .582 bis .862), was auf eine hohe Reliabilität und zeitliche Stabilität der Messung hinweist. #underline[Die Skala wird auf Basis einer gemeinsamen Norm für die Gesamtstichprobe ausgewertet, da keine signifikanten Gruppenunterschiede identifiziert wurden.]
 
 === Stressbelastung
+
 Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in Tabelle 2 dargestellt.
 
 #figure(
@@ -373,6 +375,7 @@ Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichp
 Alle Items erreichten akzeptable Trennschärfen (_r_#sub[it] = .376 bis .539), wobei Item STRS_FINA (Geldprobleme) die höchste Trennschärfe aufwies. Die Retest-Reliabilitäten lagen durchweg im akzeptablen bis guten Bereich (_r_#sub[tt] = .659 bis .774) und belegen die Reliabilität und zeitliche Stabilität der Messung. #underline[Für diese Skala wird eine altersspezifische Normierung empfohlen, da signifikante Altersunterschiede identifiziert wurden. Es werden separate Normtabellen für drei Altersgruppen bereitgestellt (jung: $<$30 Jahre, mittel: 30–45 Jahre, alt: $>$45 Jahre).]
 
 === Stressbewältigung
+
 Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine spezifische Bewältigungsstrategie abbilden. Da jedes Item eine eigene Dimension misst, kann weder die interne Konsistenz noch die Trennschärfe   berechnet werden.
 
 #figure(
