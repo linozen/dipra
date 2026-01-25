@@ -1,0 +1,17 @@
+"Konstrukt1","Konstrukt2","r","p"
+"Stress-symptome","Lebens-zufriedenheit",-0.611810599654887,7.26761774573617e-20
+"Stress-symptome","Neurotizismus",0.595883537121446,1.1037462775357e-18
+"Stress-symptome","Resilienz",-0.54061353359986,4.74430395711496e-15
+"Stress-belastung","Lebens-zufriedenheit",-0.438548248752181,7.38887829361852e-10
+"Stress-belastung","Neurotizismus",0.513188703408539,1.75759302056792e-13
+"Stress-belastung","Resilienz",-0.427834105002213,2.0914246706616e-09
+"Coping:Drogen","Stress-symptome",0.128875336062803,0.0846724947669659
+"Coping:Drogen","Stress-belastung",0.101362292250172,0.175757613928704
+"Coping:Religiös","Stress-symptome",-0.059184612599545,0.429992125625022
+"Coping:Religiös","Stress-belastung",-0.0087878325853276,0.906795058299611
+"Coping:Sozial","Stress-symptome",-0.331692838313258,5.40137111980994e-06
+"Coping:Sozial","Stress-belastung",-0.227234899675734,0.00215735190018796
+"Coping:Positiv","Stress-symptome",-0.334133169543941,4.55988556453089e-06
+"Coping:Positiv","Stress-belastung",-0.337479682567413,3.60633786425662e-06
+"Coping:Aktiv","Stress-symptome",-0.241132793927826,0.00111078567018817
+"Coping:Aktiv","Stress-belastung",-0.219455471435177,0.00307677786494329
