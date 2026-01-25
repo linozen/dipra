@@ -163,10 +163,9 @@ Angelehnt an das Stress- und Coping-Inventar (2., überarbeitete und neunormiert
 
 #pagebreak()
 
-// Main content starts here
 = Einleitung
 
-Die Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB) wurde entwickelt, um möglichst kurz und effizient Stress in der Allgemeinbevölkerung zu erfassen. Laut einem Report der Techniker Krankenkasse fühlen sich 66% der Menschen in Deutschland manchmal oder häufig in ihrem Alltag oder Berufsleben gestresst mit einer kontinuierlichen Zunahme von knapp 10 Prozentpunkten in dem Zeitraum von 2013 bis 2021 @noauthor_tk-stressreport_2025. 
+Die Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB) wurde entwickelt, um möglichst kurz und effizient Stress in der Allgemeinbevölkerung zu erfassen.Laut einem Bericht der Techniker Krankenkasse ist der Anteil, derer Menschen in Deutschland, die sich in ihrem Alltag oder Berufsleben manchmal oder häufig gestresst fühlen, um knapp 10 Prozentpunkte zwischen 2013 und 2021 auf 66% gestiegen@noauthor_tk-stressreport_2025. 
 
 Zwar ermöglicht Stress persönliches Wachstum durch Anforderungen an unseren Alltag @gerrig_psychologie_2018, doch vor allem negativer Stress wird mit Gesundheitsbeeinträchtigungen in Verbindung gebracht@kiecolt-glaser_emotions_2002@natelson_stress_2004@pinel_biopsychologie_2017. Beispielsweise zeigte die Forschung, dass schon negative Alltagsprobleme mit erhöhten Entzündungsmarkern im Blut assoziiert sind, welche einen Risikofaktor für kardiovaskuläre Erkrankungen darstellen @jain_effects_2007. Insbesondere lang andauernde oder häufig wiederkehrende Belastungen, also chronischer Stress, wirken gesundheitsschädigend und verändern biologische Prozesse in unserem Körper @gerrig_psychologie_2018. Nach Wissen der Autoren dieser Arbeit existiert bisher keine Kurzskala, welche Stress inklusiver seiner Unterfacetten erfassen kann, sowie für Erhebungen in der Allgemeinbevölkerung geeignet ist. 
 
@@ -398,6 +397,7 @@ Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine sp
 Die Validität der KSSB wurde durch konvergente Validitätsanalysen überprüft, bei denen Korrelationen mit theoretisch verwandten Konstrukten berechnet wurden. Als Validierungskriterien dienten Lebenszufriedenheit @beierlein_kurzskala_2015, Neurotizismus @rammstedt_bfi-10_2014 und Resilienz @chmitorz_population-based_2018. Zusätzlich wurde die faktorielle Struktur der KSSB mittels einer konfirmatorischer Faktorenanalyse (CFA) überprüft.
 
 === Konvergente Validität
+
 Die Skala Stressbelastung zeigte substanzielle Korrelationen mit allen drei Validierungskriterien. Mit Lebenszufriedenheit korrelierte die Skala negativ (_r_ = –.44, _p_ < .001), was die Annahme bestätigt, dass höhere Stressbelastung mit geringerer Lebenszufriedenheit einhergeht. Erwartungsgemäß zeigte sich eine positive Korrelation mit Neurotizismus (_r_ = .51, _p_ < .001), da neurotische Personen stressauslösende Situationen häufiger als belastend erleben. Die negative Korrelation mit Resilienz (_r_ = –.43, _p_ < .001) unterstreicht, dass resiliente Personen Stressoren besser bewältigen und als weniger belastend wahrnehmen.
 
 Die Skala Stresssymptome korrelierte stark negativ mit Lebenszufriedenheit (_r_ = –.61, _p_ < .001), ebenso wie mit Neurotizismus (_r_ = .60, _p_ < .001) und mit Resilienz (_r_ = –.54, _p_ < .001). Diese Befunde bestätigen, dass Stresssymptome eng mit psychischem Wohlbefinden und Persönlichkeitsmerkmalen verknüpft sind.
@@ -417,6 +417,7 @@ Abbildung 3 zeigt ein Korrelationsnetzwerk, das die Zusammenhänge zwischen alle
 
 
 === Faktorielle Validität 
+
 Die faktorielle Validität der KSSB wurde mittels konfirmatorischer Faktorenanalyse (CFA) mit einer 2-Faktoren-Struktur (Stressbelastung und Stresssymptome, je 5 Items) überprüft. Die 5 Stressbewältigungsskalen konnten nicht per CFA analysiert werden, da sie aus jeweils nur einem Item bestehen. Die Modellfit-Indizes zeigten einen verbesserungswürdigen Fit (χ² = 100.74, _df_ = 34, _p_ < .001; CFI = .886; TLI = .849; RMSEA = .104 [.081, .128]; SRMR = .066). Alle Faktorladungen waren substanziell (.517–.845) und signifikant (_p_ < .001; siehe Abbildung 3). Die Korrelation zwischen den Faktoren betrug _r_ = .820 (_p_ < .001), was auf ausreichende Diskriminanz hinweist.
 
 Die Composite Reliability lag bei CR = .715 (Stressbelastung) und CR = .817 (Stresssymptome). Die Average Variance Extracted (AVE) betrug .336 bzw. .479, was unter dem idealen Schwellenwert von .50 liegt #underline[, jedoch durch die substanziellen Faktorladungen kompensiert wird]. 
