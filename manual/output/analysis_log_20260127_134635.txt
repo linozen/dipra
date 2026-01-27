@@ -3,14 +3,14 @@
 STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
 ================================================================================
 
-Start: 2026-01-27 12:04:43 
-Log-Datei: manual/output/analysis_log_20260127_120443.txt 
+Start: 2026-01-27 13:46:35 
+Log-Datei: manual/output/analysis_log_20260127_134635.txt 
 
 KONFIGURATION:
   Rohdaten:         data/data_stressskala_2025-12-18_10-13.csv
   Bereinigte Daten: data/data.csv
   Workspace:        data/workspace.RData
-  Log-Datei:        manual/output/analysis_log_20260127_120443.txt
+  Log-Datei:        manual/output/analysis_log_20260127_134635.txt
 
 --------------------------------------------------------------------------------
 SCHRITT 0: Datenbereinigung
@@ -3380,8 +3380,8 @@ Behalten:
 ANALYSE ABGESCHLOSSEN
 ================================================================================
 
-Ende: 2026-01-27 12:04:53 
-Dauer: 0.18 Minuten
+Ende: 2026-01-27 13:46:47 
+Dauer: 0.19 Minuten
 
 ZUSAMMENFASSUNG:
   ✓ Datenbereinigung durchgeführt
