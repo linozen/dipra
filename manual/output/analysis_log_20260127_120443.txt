@@ -3,14 +3,14 @@
 STRESSANALYSE - VOLLSTÄNDIGER ANALYSEDURCHLAUF
 ================================================================================
 
-Start: 2026-01-25 15:39:53 
-Log-Datei: manual/output/analysis_log_20260125_153953.txt 
+Start: 2026-01-27 12:04:43 
+Log-Datei: manual/output/analysis_log_20260127_120443.txt 
 
 KONFIGURATION:
   Rohdaten:         data/data_stressskala_2025-12-18_10-13.csv
   Bereinigte Daten: data/data.csv
   Workspace:        data/workspace.RData
-  Log-Datei:        manual/output/analysis_log_20260125_153953.txt
+  Log-Datei:        manual/output/analysis_log_20260127_120443.txt
 
 --------------------------------------------------------------------------------
 SCHRITT 0: Datenbereinigung
@@ -2661,19 +2661,19 @@ Stichprobengröße:
   Cohen's d: d = 0.142 (trivial)
   → Gemeinsame Norm
 
-### Coping: Positiv (NI07_04)
-  Männlich:  M = 3.03, SD = 1.28
-  Weiblich:  M = 3.11, SD = 1.39
-  t-Test:    t(58.2) = -0.327, p = 0.745
-  Cohen's d: d = -0.058 (trivial)
+### Coping: Positiv (SO23_11)
+  Männlich:  M = 3.53, SD = 1.50
+  Weiblich:  M = 3.34, SD = 1.31
+  t-Test:    t(49.6) = 0.701, p = 0.486
+  Cohen's d: d = 0.142 (trivial)
   → Gemeinsame Norm
 
-### Coping: Aktiv (NI07_05)
-  Männlich:  M = 3.75, SD = 1.11
-  Weiblich:  M = 3.29, SD = 1.11
-  t-Test:    t(54.5) = 2.247, p = 0.0287
-  Cohen's d: d = 0.419 (klein)
-  → Getrennte Normen empfohlen
+### Coping: Aktiv (SO23_01)
+  Männlich:  M = 3.81, SD = 1.33
+  Weiblich:  M = 3.63, SD = 1.11
+  t-Test:    t(48.3) = 0.737, p = 0.465
+  Cohen's d: d = 0.153 (trivial)
+  → Gemeinsame Norm
 
 
 ================================================================================ 
@@ -2723,20 +2723,15 @@ Final output: Norm tables in output/normtabellen/
 -------------------------------------------------------------------------------- 
 
 ✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_positiv.csv
-  N = 180, M = 3.07, SD = 1.36
+  N = 180, M = 3.35, SD = 1.36
 
 
 -------------------------------------------------------------------------------- 
-2.6 Coping: Aktiv - Geschlechtsspezifische Normen 
+2.6 Coping: Aktiv - Gemeinsame Norm 
 -------------------------------------------------------------------------------- 
 
-Erstelle separate Normtabellen für Männer und Frauen...
-
-✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_aktiv_maennlich.csv
-  N = 36, M = 3.75, SD = 1.11
-
-✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_aktiv_weiblich.csv
-  N = 140, M = 3.29, SD = 1.11
+✓ Normtabelle gespeichert: manual/output/normtabellen/normtabelle_coping_aktiv.csv
+  N = 180, M = 3.68, SD = 1.15
 
 
 -------------------------------------------------------------------------------- 
@@ -2765,10 +2760,10 @@ Erstellte Normtabellen:
   3. Coping Religiös: 1 gemeinsame Normtabelle
   4. Coping Sozial: 1 gemeinsame Normtabelle
   5. Coping Positiv: 1 gemeinsame Normtabelle
-  6. Coping Aktiv: 2 geschlechtsspezifische Normtabellen
+  6. Coping Aktiv: 1 gemeinsame Normtabelle
   7. Stressbelastung: 3 altersspezifische Normtabellen
 
-Gesamt: 10 Normtabellen als CSV-Dateien
+Gesamt: 9 Normtabellen als CSV-Dateien
 Speicherort: output/normtabellen/
 
 
@@ -3385,8 +3380,8 @@ Behalten:
 ANALYSE ABGESCHLOSSEN
 ================================================================================
 
-Ende: 2026-01-25 15:40:06 
-Dauer: 0.21 Minuten
+Ende: 2026-01-27 12:04:53 
+Dauer: 0.18 Minuten
 
 ZUSAMMENFASSUNG:
   ✓ Datenbereinigung durchgeführt

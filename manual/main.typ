@@ -396,7 +396,7 @@ Die Normierung der KSSB erfolgte differenziert nach Bedarf der einzelnen Skalen,
 
 Für die Skala Stressbelastung werden hingegen altersspezifische Normen empfohlen, da sich substanzielle Altersunterschiede zeigten: Jung (\<30 Jahre: n = 146, _M_ = 4.02, _SD_ = 0.92), Mittel (30-45 Jahre: n = 21, _M_ = 3.47, _SD_ = 0.81) und Alt (>45 Jahre: n = 13, _M_ = 3.34, _SD_ = 1.05).
 
-Die Bewältigungsitems werden überwiegend mit gemeinsamen Normen ausgewertet (Drogen: _M_ = 1.91, _SD_ = 1.36; Religiös: _M_ = 3.44, _SD_ = 1.22; Sozial: _M_ = 4.73, _SD_ = 1.19; Positiv: _M_ = 3.07, _SD_ = 1.36), während für aktive Bewältigung geschlechtsspezifische Normen bereitgestellt werden (Männlich: n = 36, _M_ = 3.75, _SD_ = 1.11; Weiblich: n = 140, _M_ = 3.29, _SD_ = 1.11). Die Normtabellen im Anhang B ermöglichen die Umrechnung von Rohwerten in Z-Werte (Normalverteilung mit _M_ = 0, _SD_ = 1) und T-Werte (_M_ = 50, _SD_ = 10) zur standardisierten Interpretation der Testergebnisse.
+Die Bewältigungsitems werden einheitlich mit gemeinsamen Normen ausgewertet (Drogen: _M_ = 1.91, _SD_ = 1.36; Religiös: _M_ = 3.44, _SD_ = 1.22; Sozial: _M_ = 4.73, _SD_ = 1.19; Positiv: _M_ = 3.07, _SD_ = 1.36; Aktiv: _M_ = 3.68, _SD_ = 1.15), da keine signifikanten Geschlechtsunterschiede identifiziert wurden. Die Normtabellen im Anhang B ermöglichen die Umrechnung von Rohwerten in Z-Werte (Normalverteilung mit _M_ = 0, _SD_ = 1) und T-Werte (_M_ = 50, _SD_ = 10) zur standardisierten Interpretation der Testergebnisse.
 
 #pagebreak()
 
@@ -773,13 +773,11 @@ Gemeinsame Norm (n = 180)
 
 === Coping: Aktiv
 
-Geschlechtsspezifische Normen werden empfohlen.
+Gemeinsame Norm (keine signifikanten Geschlechtsunterschiede).
 
-==== Männlich
+n = 180, _M_ = 3.68, _SD_ = 1.15
 
-n = 36, _M_ = 3.75, _SD_ = 1.11
-
-#let coping_aktiv_maennlich_data = csv("output/normtabellen/normtabelle_coping_aktiv_maennlich.csv")
+#let coping_aktiv_data = csv("output/normtabellen/normtabelle_coping_aktiv.csv")
 
 #align(center)[
 #set text(size: 9pt)
@@ -788,24 +786,7 @@ n = 36, _M_ = 3.75, _SD_ = 1.11
   align: (center, center, center),
   inset: 5pt,
   [*Rohwert*], [*Z-Wert*], [*T-Wert*],
-  ..coping_aktiv_maennlich_data.slice(9).flatten(),
-)
-]
-
-==== Weiblich
-
-n = 140, _M_ = 3.29, _SD_ = 1.11
-
-#let coping_aktiv_weiblich_data = csv("output/normtabellen/normtabelle_coping_aktiv_weiblich.csv")
-
-#align(center)[
-#set text(size: 9pt)
-#table(
-  columns: 3,
-  align: (center, center, center),
-  inset: 5pt,
-  [*Rohwert*], [*Z-Wert*], [*T-Wert*],
-  ..coping_aktiv_weiblich_data.slice(9).flatten(),
+  ..coping_aktiv_data.slice(9).flatten(),
 )
 ]
 
