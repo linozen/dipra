@@ -16,35 +16,42 @@ Psychometrische Analysen für Stressskalen und Bewältigungsstrategien.
 │   ├── 02_descriptive_plots.R
 │   ├── 03_reliability.R
 │   ├── 04_validity_main.R
-│   ├── 05-08_*.R             # Subgruppenanalysen
+│   ├── 05_validity_subgroups_stress.R
+│   ├── 06_validity_subgroups_symptoms.R
+│   ├── 07_validity_subgroups_coping.R
+│   ├── 08_create_subgroup_plots.R
 │   ├── 09_justification.R
 │   ├── 10_final_comparison.R
 │   ├── 11_normalization_and_tables.R
-│   └── 12_final_scale_metrics.R
+│   ├── 12_final_scale_metrics.R
+│   └── 13_nomological_network.R
 │
 ├── data/                     # Daten & Workspaces
 │   ├── data_stressskala_*.csv  # Rohdaten (Input)
 │   ├── data.csv              # Bereinigte Daten
-│   ├── 01_scales.RData       # Workspace mit allen Skalen
-│   ├── 11_normierung.RData   # Normierungsanalysen
+│   ├── workspace.RData       # Workspace mit allen Skalen
 │   └── codebook.xlsx         # Codebuch
 │
-├── output/                   # Analyseergebnisse (CSV)
-│   ├── normierung_*.csv      # Gruppenvergleiche
-│   └── normtabellen/         # Normtabellen als CSV
-│       ├── normtabelle_stresssymptome.csv
-│       ├── normtabelle_coping_*.csv
-│       └── normtabelle_stressbelastung_*.csv
+├── manual/                   # Diagnostisches Praktikum - Manual
+│   ├── main.typ              # Hauptdokument (Typst)
+│   ├── main.pdf              # Manual als PDF
+│   ├── zotero.bib            # Literaturverzeichnis
+│   │
+│   ├── plots/                # Visualisierungen (PNG, 51 Plots)
+│   │   ├── 01-04_*.png       # Deskriptive Statistiken
+│   │   ├── 05-12_*.png       # Reliabilität
+│   │   ├── 13-19_*.png       # Validität
+│   │   └── 20-*_*.png        # Subgruppenanalysen & weitere
+│   │
+│   └── output/               # Analyseergebnisse
+│       ├── analysis_log_*.txt  # Vollständige Konsolenausgabe
+│       ├── nomological_network_correlations.csv
+│       └── normtabellen/     # Normtabellen als CSV
+│           ├── normtabelle_stresssymptome.csv
+│           ├── normtabelle_coping_*.csv
+│           └── normtabelle_stressbelastung_*.csv
 │
-├── plots/                    # Visualisierungen (PNG)
-│   ├── plot_01-04_*.png      # Deskriptive Statistiken
-│   ├── plot_05-12_*.png      # Reliabilität
-│   ├── plot_13-19_*.png      # Validität
-│   └── plot_20-39_*.png      # Subgruppenanalysen
-│
-└── manual/                   # Diagnostisches Praktikum - Manual
-    ├── main.typ              # Hauptdokument (Typst)
-    └── main.pdf              # Manual als PDF
+└── plots/                    # Leeres Verzeichnis (historisch)
 ```
 
 ## Schnellstart
@@ -56,7 +63,7 @@ source("run_all.R")
 ```
 
 Dies führt alle Analyseschritte nacheinander aus. Die gesamte Konsolenausgabe wird automatisch in einer Log-Datei gespeichert:
-- Speicherort: `output/analysis_log_YYYYMMDD_HHMMSS.txt`
+- Speicherort: `manual/output/analysis_log_YYYYMMDD_HHMMSS.txt`
 - Enthält: Alle Statistiken, Warnungen und Ergebnisse
 - Format: Zeitgestempelt und vollständig durchsuchbar
 
@@ -64,11 +71,12 @@ Dies führt alle Analyseschritte nacheinander aus. Die gesamte Konsolenausgabe w
 
 ```r
 # Setup laden
-load("data/01_scales.RData")
+load("data/workspace.RData")
 
 # Einzelne Analysen
 source("src/03_reliability.R")
 source("src/11_normalization_and_tables.R")
+source("src/13_nomological_network.R")
 ```
 
 ### Bei neuen Daten
