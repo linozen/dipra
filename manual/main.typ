@@ -139,14 +139,14 @@
 #pagebreak()
 
 #align(center)[
-  #text(size: 12pt, weight: "bold")[Abstract]
+  #text(size: 12pt, weight: "bold")[Zusammenfassung]
 ]
 
 #v(0.5em)
 
 // APA7: Abstract block should not have first-line indent
 #par(first-line-indent: 0em, justify: true)[
-  Angelehnt an das Stress- und Coping-Inventar (2. überarbeitete und neunormierte Version; Satow, #cite(<satow_sci_2024>, form: "year")) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter fünf Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unteraspekte. Die KSSB eignet sich für die Anwendung in der Allgemeinbevölkerung (N = 180), allen voran studentische Stichproben (64.4%), wodurch Stress als breites Konstrukt in etwa 3 Minuten erhoben werden kann. Insgesamt weist die KSSB zufriedenstellende Kennwerte mit einer bestätigten Faktorenstruktur auf, auch im Vergleich mit etablierten Maßen.
+  Angelehnt an das Stress- und Coping-Inventar (2. überarbeitete und neunormierte Version; Satow, #cite(<satow_sci_2024>, form: "year")) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter fünf Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unteraspekte. Die KSSB eignet sich für die Anwendung in der Allgemeinbevölkerung (n = 180), allen voran studentische Stichproben (64.4%), wodurch Stress als breites Konstrukt in etwa 3 Minuten erhoben werden kann. Insgesamt weist die KSSB zufriedenstellende Kennwerte mit einer bestätigten Faktorenstruktur auf, auch im Vergleich mit etablierten Maßen.
 ]
 
 #v(1em)
@@ -254,6 +254,7 @@ Zusammengenommen enthält die Kurzskala zur Erfassung von Stresssymptomen, Stres
 Die KSSB kann zur Erfassung von Stress allgemein, seiner Unterdimensionen und verschiedenen Bewältigungsstrategien in der Allgemeinbevölkerung ab 18 Jahren eingesetzt werden. Er lässt sich sowohl digital als auch als Paper-Pencil-Test durchführen und hat kein Zeitlimit.
 
 Bisherige Erhebungszeiten zeigen eine Bearbeitungszeit von circa 3 Minuten, wodurch die KSSB auch ergänzend zu anderen Maßen eingesetzt werden kann. Ob die Skalen auch unabhängig voneinander eingesetzt werden können, wurde bisher nicht geprüft und wird deshalb nicht empfohlen. Ebenfalls sollte die KSSB nicht für die klinische oder Eignungsdiagnostik eingesetzt werden, da hierfür keine Validierung vorliegt.
+
 == Allgemeine Instruktion
 
 Zu Beginn wurde den Proband*innen folgende Instruktion präsentiert: "Im Folgenden werden Ihnen Aussagen zu Situationen oder Symptomen präsentiert. Es gibt kein Richtig oder Falsch. Bitte antworten Sie wahrheitsgemäß und ehrlich, wie sehr die Aussage auf Sie zutrifft. Denken Sie dabei an die letzten drei Monate."
@@ -343,13 +344,13 @@ Im Folgenden werden die psychometrischen Kennwerte der KSSB dargestellt. Für je
 
 === Stresssymptome
 
-Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.45 (_SD_ = 1.12) bei einer Spannweite von 1.00 bis 6.00. Die interne Konsistenz der Skala erwies sich mit Cronbachs α = .812 (95% CI [.765, .853]) als gut. Die Itemkennwerte sind in @tab_stresssymptome dargestellt.
+Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprobe (n = 180) einen Skalenmittelwert von _M_ = 3.45 (_SD_ = 1.12) bei einer Spannweite von 1.00 bis 6.00. Die interne Konsistenz der Skala erwies sich mit Cronbachs α = .812 (95% CI [.765, .853]) als gut. Die Itemkennwerte sind in @tab_stresssymptome dargestellt.
 
 Alle Items wiesen zufriedenstellende bis gute Trennschärfen auf (_r_#sub[it] = .507 bis .701), wobei Item SYMP_SLEP (Schlechter Schlaf/Träume) die höchste Trennschärfe zeigte. Die Retest-Reliabilitäten der Items waren überwiegend gut bis exzellent (_r_#sub[tt] = .582 bis .862), was auf eine hohe Reliabilität und zeitliche Stabilität der Messung hinweist. Die Skala wird auf Basis einer gemeinsamen Norm für die Gesamtstichprobe ausgewertet, da keine signifikanten Gruppenunterschiede identifiziert wurden.
 
 === Stressbelastung
 
-Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in @tab_stressbelastung dargestellt.
+Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (n = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in @tab_stressbelastung dargestellt.
 
 Alle Items erreichten akzeptable Trennschärfen (_r_#sub[it] = .376 bis .539), wobei Item STRS_FINA (Geldprobleme) die höchste Trennschärfe aufwies. Die Retest-Reliabilitäten lagen durchweg im akzeptablen bis guten Bereich (_r_#sub[tt] = .659 bis .774) und belegen die Reliabilität und zeitliche Stabilität der Messung. Für diese Skala wird eine altersspezifische Normierung empfohlen, da signifikante Altersunterschiede identifiziert wurden. Es werden separate Normtabellen für drei Altersgruppen bereitgestellt (jung: $<$30 Jahre, mittel: 30–45 Jahre, alt: $>$45 Jahre).
 
@@ -391,15 +392,15 @@ Wie bereits erwähnt haben wir bei unserer ersten Erhebung den SCI @satow_sci_20
 
 == Normierung
 
-Die Normierung der KSSB erfolgte differenziert nach Bedarf der einzelnen Skalen, basierend auf systematischen Analysen von Gruppenunterschieden. Für die Skala Stresssymptome wird eine gemeinsame Norm für die Gesamtstichprobe (_N_ = 180, _M_ = 3.45, _SD_ = 1.12) bereitgestellt, da keine signifikanten Unterschiede zwischen demographischen Subgruppen identifiziert wurden.
+Die Normierung der KSSB erfolgte differenziert nach Bedarf der einzelnen Skalen, basierend auf systematischen Analysen von Gruppenunterschieden. Für die Skala Stresssymptome wird eine gemeinsame Norm für die Gesamtstichprobe (n = 180, _M_ = 3.45, _SD_ = 1.12) bereitgestellt, da keine signifikanten Unterschiede zwischen demographischen Subgruppen identifiziert wurden.
 
-Für die Skala Stressbelastung werden hingegen altersspezifische Normen empfohlen, da sich substanzielle Altersunterschiede zeigten: Jung (\<30 Jahre: _N_ = 146, _M_ = 4.02, _SD_ = 0.92), Mittel (30-45 Jahre: _N_ = 21, _M_ = 3.47, _SD_ = 0.81) und Alt (>45 Jahre: _N_ = 13, _M_ = 3.34, _SD_ = 1.05).
+Für die Skala Stressbelastung werden hingegen altersspezifische Normen empfohlen, da sich substanzielle Altersunterschiede zeigten: Jung (\<30 Jahre: n = 146, _M_ = 4.02, _SD_ = 0.92), Mittel (30-45 Jahre: n = 21, _M_ = 3.47, _SD_ = 0.81) und Alt (>45 Jahre: n = 13, _M_ = 3.34, _SD_ = 1.05).
 
-Die Bewältigungsitems werden überwiegend mit gemeinsamen Normen ausgewertet (Drogen: _M_ = 1.91, _SD_ = 1.36; Religiös: _M_ = 3.44, _SD_ = 1.22; Sozial: _M_ = 4.73, _SD_ = 1.19; Positiv: _M_ = 3.07, _SD_ = 1.36), während für aktive Bewältigung geschlechtsspezifische Normen bereitgestellt werden (Männlich: _N_ = 36, _M_ = 3.75, _SD_ = 1.11; Weiblich: _N_ = 140, _M_ = 3.29, _SD_ = 1.11). Die Normtabellen im Anhang B ermöglichen die Umrechnung von Rohwerten in Z-Werte (Normalverteilung mit _M_ = 0, _SD_ = 1) und T-Werte (_M_ = 50, _SD_ = 10) zur standardisierten Interpretation der Testergebnisse.
+Die Bewältigungsitems werden überwiegend mit gemeinsamen Normen ausgewertet (Drogen: _M_ = 1.91, _SD_ = 1.36; Religiös: _M_ = 3.44, _SD_ = 1.22; Sozial: _M_ = 4.73, _SD_ = 1.19; Positiv: _M_ = 3.07, _SD_ = 1.36), während für aktive Bewältigung geschlechtsspezifische Normen bereitgestellt werden (Männlich: n = 36, _M_ = 3.75, _SD_ = 1.11; Weiblich: n = 140, _M_ = 3.29, _SD_ = 1.11). Die Normtabellen im Anhang B ermöglichen die Umrechnung von Rohwerten in Z-Werte (Normalverteilung mit _M_ = 0, _SD_ = 1) und T-Werte (_M_ = 50, _SD_ = 10) zur standardisierten Interpretation der Testergebnisse.
 
 #pagebreak()
 
-= Zusammenfassung
+= Fazit
 
 Das vorliegende Manual dokumentiert die Entwicklung, psychometrische Validierung und Durchführung der Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB). In Anlehnung an das Stress- und Coping-Inventar @satow_sci_2024 wurde ein ökonomisches Erhebungsinstrument mit 15 Items konzipiert, das sieben Unterskalen umfasst: Stresssymptome, Stressbelastung sowie fünf Bewältigungsstrategien.
 
@@ -431,13 +432,12 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
     [SYMP_MOOD], [Traurigkeit/Grübeln], [3.28], [1.58], [.602], [.842],
     [SYMP_SOCI], [Rückzug/Lustlosigkeit], [3.28], [1.52], [.537], [.582],
   ),
-  caption: [Itemkennwerte der Skala Stresssymptome (_N_ = 180)],
+  caption: [Itemkennwerte der Skala Stresssymptome (n = 180)],
   kind: table,
-  supplement: [Table]
 ) <tab_stresssymptome>
 
 #par(first-line-indent: 0em)[
-  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.
+  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf n = 21.
 ]
 
 #pagebreak()
@@ -454,13 +454,12 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
     [STRS_PERF], [Leistungsdruck], [4.52], [1.36], [.488], [.659],
     [STRS_HEAL], [Sorgen um Gesundheit], [3.88], [1.33], [.376], [.695],
   ),
-  caption: [Itemkennwerte der Skala Stressbelastung (_N_ = 180)],
+  caption: [Itemkennwerte der Skala Stressbelastung (n = 180)],
   kind: table,
-  supplement: [Table]
 ) <tab_stressbelastung>
 
 #par(first-line-indent: 0em)[
-  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.
+  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf n = 21.
 ]
 
 #pagebreak()
@@ -477,13 +476,12 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
     [COPE_REAP], [Positive Neubewertung], [3.10], [1.26], [.567],
     [COPE_ACTI], [Aktive Bewältigung], [3.68], [1.15], [.797],
   ),
-  caption: [Itemkennwerte der Stressbewältigungsitems (_N_ = 180)],
+  caption: [Itemkennwerte der Stressbewältigungsitems (n = 180)],
   kind: table,
-  supplement: [Table]
 ) <tab_coping>
 
 #par(first-line-indent: 0em)[
-  _Anmerkung._ Retest-Reliabilitäten basieren auf _N_ = 21.
+  _Anmerkung._ Retest-Reliabilitäten basieren auf n = 21.
 ]
 
 #pagebreak()
@@ -504,7 +502,6 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
   ],
   caption: [Theoretisch erwartetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien],
   kind: image,
-  supplement: [Figure]
 ) <nomological_network_theory>
 
 #pagebreak()
@@ -517,12 +514,11 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
     #v(1em)
 
     #par(first-line-indent: 0em)[
-      _Anmerkung._ Das Histogramm zeigt die Altersverteilung der Validierungsstichprobe (_N_ = 180) mit einem Durchschnittsalter von _M_ = 27.62 Jahren (_SD_ = 9.90).
+      _Anmerkung._ Das Histogramm zeigt die Altersverteilung der Validierungsstichprobe (n = 180) mit einem Durchschnittsalter von _M_ = 27.62 Jahren (_SD_ = 9.90).
     ]
   ],
   caption: [Altersverteilung der Stichprobe],
   kind: image,
-  supplement: [Figure]
 ) <age_distribution>
 
 #pagebreak()
@@ -540,7 +536,6 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
   ],
   caption: [Empirisch beobachtetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien],
   kind: image,
-  supplement: [Figure]
 ) <nomological_network_empirical>
 
 #pagebreak()
@@ -553,12 +548,11 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
     #v(1em)
 
     #par(first-line-indent: 0em)[
-      _Anmerkung._ Die Heatmap zeigt die standardisierten Faktorladungen der konfirmatorischen Faktorenanalyse (_N_ = 180). Dunklere Farben repräsentieren höhere Faktorladungen. SYMP = Stresssymptome; STRS = Stressbelastung.
+      _Anmerkung._ Die Heatmap zeigt die standardisierten Faktorladungen der konfirmatorischen Faktorenanalyse (n = 180). Dunklere Farben repräsentieren höhere Faktorladungen. SYMP = Stresssymptome; STRS = Stressbelastung.
     ]
   ],
   caption: [Standardisierte Faktorladungen der konfirmatorischen Faktorenanalyse (CFA) für die KSSB-Kurzskalen],
   kind: image,
-  supplement: [Figure]
 ) <cfa_heatmap>
 
 #pagebreak()
@@ -639,7 +633,7 @@ Die folgenden Normtabellen ermöglichen die Umrechnung von Rohwerten in standard
 
 === Stresssymptome
 
-Gemeinsame Norm für gesamte Stichprobe (_N_ = 180, _M_ = 3.45, _SD_ = 1.12)
+Gemeinsame Norm für gesamte Stichprobe (n = 180, _M_ = 3.45, _SD_ = 1.12)
 
 #let stresssymptome_data = csv("output/normtabellen/normtabelle_stresssymptome.csv")
 
@@ -660,7 +654,7 @@ Altersspezifische Normen werden empfohlen.
 
 ==== Jung (< 30 Jahre)
 
-_N_ = 146, _M_ = 4.02, _SD_ = 0.92
+n = 146, _M_ = 4.02, _SD_ = 0.92
 
 #let stressbelastung_jung_data = csv("output/normtabellen/normtabelle_stressbelastung_jung.csv")
 
@@ -677,7 +671,7 @@ _N_ = 146, _M_ = 4.02, _SD_ = 0.92
 
 ==== Mittel (30-45 Jahre)
 
-_N_ = 21, _M_ = 3.47, _SD_ = 0.81
+n = 21, _M_ = 3.47, _SD_ = 0.81
 
 #let stressbelastung_mittel_data = csv("output/normtabellen/normtabelle_stressbelastung_mittel.csv")
 
@@ -694,7 +688,7 @@ _N_ = 21, _M_ = 3.47, _SD_ = 0.81
 
 ==== Alt (> 45 Jahre)
 
-_N_ = 13, _M_ = 3.34, _SD_ = 1.05
+n = 13, _M_ = 3.34, _SD_ = 1.05
 
 #let stressbelastung_alt_data = csv("output/normtabellen/normtabelle_stressbelastung_alt.csv")
 
@@ -711,7 +705,7 @@ _N_ = 13, _M_ = 3.34, _SD_ = 1.05
 
 === Coping: Drogen
 
-Gemeinsame Norm (_N_ = 180)
+Gemeinsame Norm (n = 180)
 
 #let coping_drogen_data = csv("output/normtabellen/normtabelle_coping_drogen.csv")
 
@@ -728,7 +722,7 @@ Gemeinsame Norm (_N_ = 180)
 
 === Coping: Religiös
 
-Gemeinsame Norm (_N_ = 180)
+Gemeinsame Norm (n = 180)
 
 #let coping_religioes_data = csv("output/normtabellen/normtabelle_coping_religioes.csv")
 
@@ -745,7 +739,7 @@ Gemeinsame Norm (_N_ = 180)
 
 === Coping: Sozial
 
-Gemeinsame Norm (_N_ = 180)
+Gemeinsame Norm (n = 180)
 
 #let coping_sozial_data = csv("output/normtabellen/normtabelle_coping_sozial.csv")
 
@@ -762,7 +756,7 @@ Gemeinsame Norm (_N_ = 180)
 
 === Coping: Positiv
 
-Gemeinsame Norm (_N_ = 180)
+Gemeinsame Norm (n = 180)
 
 #let coping_positiv_data = csv("output/normtabellen/normtabelle_coping_positiv.csv")
 
@@ -783,7 +777,7 @@ Geschlechtsspezifische Normen werden empfohlen.
 
 ==== Männlich
 
-_N_ = 36, _M_ = 3.75, _SD_ = 1.11
+n = 36, _M_ = 3.75, _SD_ = 1.11
 
 #let coping_aktiv_maennlich_data = csv("output/normtabellen/normtabelle_coping_aktiv_maennlich.csv")
 
@@ -800,7 +794,7 @@ _N_ = 36, _M_ = 3.75, _SD_ = 1.11
 
 ==== Weiblich
 
-_N_ = 140, _M_ = 3.29, _SD_ = 1.11
+n = 140, _M_ = 3.29, _SD_ = 1.11
 
 #let coping_aktiv_weiblich_data = csv("output/normtabellen/normtabelle_coping_aktiv_weiblich.csv")
 
