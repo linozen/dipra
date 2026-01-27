@@ -272,8 +272,8 @@ skalen_namen <- c(
   "NI07_01", # Coping: Drogen
   "NI07_02", # Coping: Religiös
   "NI07_03", # Coping: Sozial
-  "NI07_04", # Coping: Positiv
-  "NI07_05" # Coping: Aktiv
+  "SO23_11", # Coping: Positiv
+  "SO23_01" # Coping: Aktiv
 )
 
 skalen_labels <- c(
@@ -282,8 +282,8 @@ skalen_labels <- c(
   "Coping: Drogen (NI07_01)",
   "Coping: Religiös (NI07_02)",
   "Coping: Sozial (NI07_03)",
-  "Coping: Positiv (NI07_04)",
-  "Coping: Aktiv (NI07_05)"
+  "Coping: Positiv (SO23_11)",
+  "Coping: Aktiv (SO23_01)"
 )
 
 # ==============================================================================
@@ -432,7 +432,6 @@ for (i in seq_along(skalen_namen)) {
 }
 
 
-
 # ==============================================================================
 # TEIL 2: NORMTABELLEN ERSTELLEN
 # ==============================================================================
@@ -485,32 +484,20 @@ create_norm_table_csv(
 # 5. Coping Positiv - Gemeinsame Norm
 print_section("2.5 Coping: Positiv - Gemeinsame Norm", 2)
 create_norm_table_csv(
-  scores = data$NI07_04,
-  title = "Coping: Positiv (Item NI07_04)",
+  scores = data$SO23_11,
+  title = "Coping: Positiv (Item SO23_11)",
   filename = "manual/output/normtabellen/normtabelle_coping_positiv.csv",
   subtitle = "Gemeinsame Norm",
   integer_only = TRUE
 )
 
-# 6. Coping Aktiv - Geschlechtsspezifische Normen (basierend auf Analyse)
-print_section("2.6 Coping: Aktiv - Geschlechtsspezifische Normen", 2)
-cat("Erstelle separate Normtabellen für Männer und Frauen...\n\n")
-
-data_male <- subset(data, Geschlecht_clean == "Männlich")
+# 6. Coping Aktiv - Gemeinsame Norm
+print_section("2.6 Coping: Aktiv - Gemeinsame Norm", 2)
 create_norm_table_csv(
-  scores = data_male$NI07_05,
-  title = "Coping: Aktiv (Item NI07_05)",
-  filename = "manual/output/normtabellen/normtabelle_coping_aktiv_maennlich.csv",
-  subtitle = "Norm für Männer",
-  integer_only = TRUE
-)
-
-data_female <- subset(data, Geschlecht_clean == "Weiblich")
-create_norm_table_csv(
-  scores = data_female$NI07_05,
-  title = "Coping: Aktiv (Item NI07_05)",
-  filename = "manual/output/normtabellen/normtabelle_coping_aktiv_weiblich.csv",
-  subtitle = "Norm für Frauen",
+  scores = data$SO23_01,
+  title = "Coping: Aktiv (Item SO23_01)",
+  filename = "manual/output/normtabellen/normtabelle_coping_aktiv.csv",
+  subtitle = "Gemeinsame Norm",
   integer_only = TRUE
 )
 
@@ -554,12 +541,11 @@ cat("  2. Coping Drogen: 1 gemeinsame Normtabelle\n")
 cat("  3. Coping Religiös: 1 gemeinsame Normtabelle\n")
 cat("  4. Coping Sozial: 1 gemeinsame Normtabelle\n")
 cat("  5. Coping Positiv: 1 gemeinsame Normtabelle\n")
-cat("  6. Coping Aktiv: 2 geschlechtsspezifische Normtabellen\n")
+cat("  6. Coping Aktiv: 1 gemeinsame Normtabelle\n")
 cat("  7. Stressbelastung: 3 altersspezifische Normtabellen\n\n")
 
-cat("Gesamt: 10 Normtabellen als CSV-Dateien\n")
+cat("Gesamt: 9 Normtabellen als CSV-Dateien\n")
 cat("Speicherort: output/normtabellen/\n\n")
-
 
 
 print_section("NORMIERUNG ABGESCHLOSSEN")
