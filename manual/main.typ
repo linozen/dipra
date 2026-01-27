@@ -7,7 +7,16 @@
     right: 2.5cm,
   ),
   numbering: "1",
-  number-align: center,
+  number-align: right,
+  header: context {
+    // APA7: Running head on all pages
+    if counter(page).get().first() > 1 [
+      #set text(size: 10pt)
+      #smallcaps[Kurzskala Stress (KSSB)]
+      #h(1fr)
+      #counter(page).display("1")
+    ]
+  }
 )
 
 // Font and text settings
@@ -25,19 +34,23 @@
   first-line-indent: 1.27cm, // APA7 requires 0.5 inch (1.27cm) paragraph indent
 )
 
-// Heading styles
-#set heading(numbering: "1.1")
+// Heading styles (APA7)
+#set heading(numbering: none)
+// Level 1: Centered, Bold, Title Case
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
-  set text(size: 16pt, weight: "bold")
-  block(above: 2em, below: 1.5em, it)
-}
-#show heading.where(level: 2): it => {
-  set text(size: 14pt, weight: "bold")
-  block(above: 1.8em, below: 1.2em, it)
-}
-#show heading.where(level: 3): it => {
   set text(size: 12pt, weight: "bold")
+  set align(center)
+  block(above: 2em, below: 1em, it)
+}
+// Level 2: Left-aligned, Bold, Title Case
+#show heading.where(level: 2): it => {
+  set text(size: 12pt, weight: "bold")
+  block(above: 1.5em, below: 1em, it)
+}
+// Level 3: Left-aligned, Bold Italic, Title Case
+#show heading.where(level: 3): it => {
+  set text(size: 12pt, weight: "bold", style: "italic")
   block(above: 1.5em, below: 1em, it)
 }
 
@@ -58,19 +71,29 @@
 )
 #show table: set text(size: 10pt)
 
-// Figure styling (APA7: one blank line before and after)
+// Figure and Table styling (APA7: caption above)
 #set figure(gap: 1em)
 #show figure: it => {
-  v(1.15em) // one blank line before (matching line spacing)
-  it
-  v(1.15em) // one blank line after
-}
-#show figure.caption: set text(size: 10pt)
-#show figure.caption: it => {
-  set par(justify: false, first-line-indent: 0em)
+  // APA7: Number and title above for both figures and tables
   set align(left)
-  it
+  v(1em)
+
+  // Caption above (number + title)
+  if it.caption != none {
+    block[
+      #text(weight: "bold")[#it.supplement #context it.counter.display(it.numbering)]
+      #linebreak()
+      #text(style: "italic")[#it.caption.body]
+    ]
+    v(1em)
+  }
+
+  // The figure/table content
+  it.body
+
+  v(1em)
 }
+#show figure.caption: none // Hide default caption since we're showing it manually above
 
 // Title page
 #align(center)[
@@ -116,17 +139,21 @@
 #pagebreak()
 
 #align(center)[
-  #text(size: 12pt, weight: "bold")[Zusammenfassung]
+  #text(size: 12pt, weight: "bold")[Abstract]
 ]
 
 #v(0.5em)
 
-#set par(justify: true)
-Angelehnt an das Stress- und Coping-Inventar (2. überarbeitete und neunormierte Version; Satow, #cite(<satow_sci_2024>, form: "year")) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter fünf Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unteraspekte. Die KSSB eignet sich für die Anwendung in der Allgemeinbevölkerung (N = 180), allen voran studentische Stichproben (64.4%), wodurch Stress als breites Konstrukt in etwa 3 Minuten erhoben werden kann. Insgesamt weist die KSSB zufriedenstellende Kennwerte mit einer bestätigten Faktorenstruktur auf, auch im Vergleich mit etablierten Maßen. 
+// APA7: Abstract block should not have first-line indent
+#par(first-line-indent: 0em, justify: true)[
+  Angelehnt an das Stress- und Coping-Inventar (2. überarbeitete und neunormierte Version; Satow, #cite(<satow_sci_2024>, form: "year")) erfasst die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben namensgebende Unterskalen, darunter fünf Stressbewältigungsskalen, mit insgesamt 15 Items. Inhaltlich untergliedern sich die Skalen Stresssymptome und Stressbelastung in weitere Unteraspekte. Die KSSB eignet sich für die Anwendung in der Allgemeinbevölkerung (N = 180), allen voran studentische Stichproben (64.4%), wodurch Stress als breites Konstrukt in etwa 3 Minuten erhoben werden kann. Insgesamt weist die KSSB zufriedenstellende Kennwerte mit einer bestätigten Faktorenstruktur auf, auch im Vergleich mit etablierten Maßen.
+]
 
-#v(0.5em)
+#v(1em)
 
-*Schlüsselwörter:* Stress, Kurzskala, Bewältigung, Coping
+#par(first-line-indent: 0em)[
+  _Schlüsselwörter:_ Stress, Kurzskala, Bewältigung, Coping
+]
 
 #pagebreak()
 
@@ -147,9 +174,9 @@ Angelehnt an das Stress- und Coping-Inventar (2. überarbeitete und neunormierte
 
 = Einleitung
 
-Die Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB) wurde entwickelt, um möglichst kurz und effizient Stress in der Allgemeinbevölkerung zu erfassen.Laut einem Bericht der Techniker Krankenkasse ist der Anteil, derer Menschen in Deutschland, die sich in ihrem Alltag oder Berufsleben manchmal oder häufig gestresst fühlen, um knapp 10 Prozentpunkte zwischen 2013 und 2021 auf 66% gestiegen @noauthor_tk-stressreport_2025. 
+Die Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB) wurde entwickelt, um möglichst kurz und effizient Stress in der Allgemeinbevölkerung zu erfassen.Laut einem Bericht der Techniker Krankenkasse ist der Anteil, derer Menschen in Deutschland, die sich in ihrem Alltag oder Berufsleben manchmal oder häufig gestresst fühlen, um knapp 10 Prozentpunkte zwischen 2013 und 2021 auf 66% gestiegen @noauthor_tk-stressreport_2025.
 
-Zwar ermöglicht Stress persönliches Wachstum durch Anforderungen an unseren Alltag @gerrig_psychologie_2018, doch vor allem negativer Stress wird mit Gesundheitsbeeinträchtigungen in Verbindung gebracht@kiecolt-glaser_emotions_2002@natelson_stress_2004@pinel_biopsychologie_2017. Beispielsweise zeigte die Forschung, dass schon negative Alltagsprobleme mit erhöhten Entzündungsmarkern im Blut assoziiert sind, welche einen Risikofaktor für kardiovaskuläre Erkrankungen darstellen @jain_effects_2007. Insbesondere lang andauernde oder häufig wiederkehrende Belastungen, also chronischer Stress, wirken gesundheitsschädigend und verändern biologische Prozesse in unserem Körper @gerrig_psychologie_2018. Nach Wissen der Autoren dieser Arbeit existiert bisher keine Kurzskala, welche Stress inklusiver seiner Unterfacetten erfassen kann, sowie für Erhebungen in der Allgemeinbevölkerung geeignet ist. 
+Zwar ermöglicht Stress persönliches Wachstum durch Anforderungen an unseren Alltag @gerrig_psychologie_2018, doch vor allem negativer Stress wird mit Gesundheitsbeeinträchtigungen in Verbindung gebracht@kiecolt-glaser_emotions_2002@natelson_stress_2004@pinel_biopsychologie_2017. Beispielsweise zeigte die Forschung, dass schon negative Alltagsprobleme mit erhöhten Entzündungsmarkern im Blut assoziiert sind, welche einen Risikofaktor für kardiovaskuläre Erkrankungen darstellen @jain_effects_2007. Insbesondere lang andauernde oder häufig wiederkehrende Belastungen, also chronischer Stress, wirken gesundheitsschädigend und verändern biologische Prozesse in unserem Körper @gerrig_psychologie_2018. Nach Wissen der Autoren dieser Arbeit existiert bisher keine Kurzskala, welche Stress inklusiver seiner Unterfacetten erfassen kann, sowie für Erhebungen in der Allgemeinbevölkerung geeignet ist.
 
 Angelehnt an das Stress- und Coping-Inventar (2., überarbeitete und neunormierte Version; Satow, #cite(<satow_sci_2024>, form: "year")) soll die KSSB mit insgesamt 15 Items sowohl Stresssymptome (5 Items) als auch Stressbelastungen (5 Items) und Stressbewältigungsstrategien (5 Items) in circa 3 Minuten erfassen. Validiert wurde diese an 180 Personen mit überwiegend Studierenden und Erwerbstätigen. Als Validierungskriterien dienten Lebenszufriedenheit, Neurotizismus und Resilienz. Insgesamt weist die KSSB zufriedenstellende bis gute Kennwerte auf, wobei sich die Reliabilitäten nach Cronbachs Alpha zwischen .71 und .812 bewegen während die Retest-Reliabilitäten der Skalen von 0,57  bis 0.91 gehen. Auch die Teststruktur weist einen akzeptablen Fit mittels konfirmatorischer Faktorenanalyse auf. Die KSSB eignet sich damit nicht nur als eigenständiges Instrument, sondern auch ergänzend zu anderen Erhebungsmaßen.
 
@@ -170,7 +197,7 @@ Die Intensität der Stressreaktion wird maßgeblich durch Persönlichkeitsmerkma
 
 Die Entstehung von Stress liegt der Wahrnehmung der Person zugrunde. Nimmt diese eine Diskrepanz zwischen situativen Anforderungen und den verfügbaren Bewältigungsressourcen wahr, ist Stress die Folge @lazarus_stress_1984. Diese Definition verdeutlicht den subjektiven Charakter von Stress und seine Abhängigkeit von individuellen Bewertungsprozessen. Entscheidende Mediatoren sind hier die kognitive Bewertung, sowie Stressbewältigungsstrategien, auch genannt Coping, auf welche später näher eingegangen wird.
 
-Allgemein werden zwei Formen von Stress unterschieden: Distress, welcher mit Belastung, Beanspruchung, Druck und negativer Beeinflussung verknüpft ist, sowie Eustress, der mit positiver Beeinflussung verknüpft ist. Auch hier spielt die kognitive Bewertung eine zentrale Rolle @serban_stress_1976. 
+Allgemein werden zwei Formen von Stress unterschieden: Distress, welcher mit Belastung, Beanspruchung, Druck und negativer Beeinflussung verknüpft ist, sowie Eustress, der mit positiver Beeinflussung verknüpft ist. Auch hier spielt die kognitive Bewertung eine zentrale Rolle @serban_stress_1976.
 
 == Stressmodelle
 
@@ -178,24 +205,21 @@ Verschiedene Stressmodelle sind heutzutage etabliert. Das ursprüngliche Stressm
 
 Nach dem transaktionalen Modell von Lazarus und Folkman (1984) wird die Entstehung von Stress maßgeblich durch kognitive Bewertungsprozesse gesteuert, die in zwei wesentlichen Stufen verlaufen. In der primären Bewertung (Primary Appraisal) schätzt das Individuum ein, ob eine Situation für das eigene Wohlbefinden irrelevant oder positiv-angenehm ist oder ob sie eine potenzielle Belastung darstellt. Letztere kann dabei als bereits eingetretener Schaden oder Verlust, als drohende Bedrohung oder als positive Herausforderung bewertet werden. In der darauffolgenden sekundären Bewertung (Secondary Appraisal) analysiert die Person ihre verfügbaren Bewältigungsressourcen und prüft, ob die Anforderungen der Umwelt mit den eigenen Fähigkeiten bewältigt werden können. Ein Stresszustand manifestiert sich erst dann, wenn eine Diskrepanz zwischen den Anforderungen und den Ressourcen wahrgenommen wird @faltermaier_gesundheitspsychologie_2005.
 
-== Coping 
+== Coping
 
-Der sich anschließende Prozess der Stressbewältigung - im folgenden Coping - umfasst sämtliche kognitiven und behavioralen Bemühungen, um die als belastend wahrgenommenen Anforderungen zu meistern oder zu reduzieren @lazarus_stress_1984. In der Forschung wird dabei häufig zwischen problemorientiertem Coping, welches direkt auf die Veränderung der Stressquelle abzielt, und emotionsorientiertem Coping, das die Regulation der emotionalen Belastung fokussiert, unterschieden. Ein wesentlicher Prädiktor für eine erfolgreiche psychische Anpassung ist die Coping-Flexibilität, also die Fähigkeit, Bewältigungsstrategien variabel und passgenau an unterschiedliche situative Anforderungen anzupassen @cheng_coping_2014. Während adaptive Strategien wie das „Positive Denken“ eine funktionale kognitive Umdeutung ermöglichen, bietet „aktive Stressbewältigung ein proaktives und handlungsorientiertes Vorgehen @satow_sci_2024. Im Gegensatz dazu führen maladaptive Muster und vermeidungsorientierte Strategien wie Substanzkonsum (z.B. Alkohol, Zigaretten, Cannabis, Medikamentenmissbrauch) zu einer Aufrechterhaltung und Verstärkung der psychischen Belastung @nolen-hoeksema_rethinking_2008. Dies führt kurzfristig zur Entspannung, verhindert langfristig jedoch die Auseinandersetzung mit der Problematik, sowie die effektive Problemlösung und verstärkt so die gesundheitliche Belastung. 
+Der sich anschließende Prozess der Stressbewältigung - im folgenden Coping - umfasst sämtliche kognitiven und behavioralen Bemühungen, um die als belastend wahrgenommenen Anforderungen zu meistern oder zu reduzieren @lazarus_stress_1984. In der Forschung wird dabei häufig zwischen problemorientiertem Coping, welches direkt auf die Veränderung der Stressquelle abzielt, und emotionsorientiertem Coping, das die Regulation der emotionalen Belastung fokussiert, unterschieden. Ein wesentlicher Prädiktor für eine erfolgreiche psychische Anpassung ist die Coping-Flexibilität, also die Fähigkeit, Bewältigungsstrategien variabel und passgenau an unterschiedliche situative Anforderungen anzupassen @cheng_coping_2014. Während adaptive Strategien wie das „Positive Denken“ eine funktionale kognitive Umdeutung ermöglichen, bietet „aktive Stressbewältigung ein proaktives und handlungsorientiertes Vorgehen @satow_sci_2024. Im Gegensatz dazu führen maladaptive Muster und vermeidungsorientierte Strategien wie Substanzkonsum (z.B. Alkohol, Zigaretten, Cannabis, Medikamentenmissbrauch) zu einer Aufrechterhaltung und Verstärkung der psychischen Belastung @nolen-hoeksema_rethinking_2008. Dies führt kurzfristig zur Entspannung, verhindert langfristig jedoch die Auseinandersetzung mit der Problematik, sowie die effektive Problemlösung und verstärkt so die gesundheitliche Belastung.
 
-Effektive Bewältigungsmechanismen können jedoch die schädlichen Auswirkungen von Stressoren signifikant abmildern. Ob ein Stressor tatsächlich zu negativen Outcomes führt, wird zudem durch verschiedene Moderatoren beeinflusst. Der Stress-Buffering-Effekt besagt, dass soziale Unterstützung den negativen Zusammenhang zwischen Stress und Outcomes abschwächt @cohen_stress_1985. So zeigen Personen mit einem stabilen sozialen Rückhalt unter Belastung geringere endokrine und psychische Stressreaktionen. Dennoch ist anzumerken, dass selbst hochgradig adaptive Strategien bei intensiven oder chronischen Belastungen an ihre Grenzen stoßen können, da sich physiologische und emotionale Schäden kumulieren können @chrousos_stress_2009@folkman_coping_2004. 
+Effektive Bewältigungsmechanismen können jedoch die schädlichen Auswirkungen von Stressoren signifikant abmildern. Ob ein Stressor tatsächlich zu negativen Outcomes führt, wird zudem durch verschiedene Moderatoren beeinflusst. Der Stress-Buffering-Effekt besagt, dass soziale Unterstützung den negativen Zusammenhang zwischen Stress und Outcomes abschwächt @cohen_stress_1985. So zeigen Personen mit einem stabilen sozialen Rückhalt unter Belastung geringere endokrine und psychische Stressreaktionen. Dennoch ist anzumerken, dass selbst hochgradig adaptive Strategien bei intensiven oder chronischen Belastungen an ihre Grenzen stoßen können, da sich physiologische und emotionale Schäden kumulieren können @chrousos_stress_2009@folkman_coping_2004.
 
 Neben sozialen Faktoren dienen psychologische Ressourcen wie persönlicher Optimismus @majeed_dispositional_2021 und eine hohe Selbstwirksamkeitserwartung @schonfeld_effects_2016  als Puffer. Diese Ressourcen bestimmen nach der Theory of Conservation of Resources (COR; Hobfoll, #cite(<hobfoll_conservation_1989>, form: "year")) nicht nur die Widerstandsfähigkeit gegenüber Verlusten, sondern beeinflussen auch maßgeblich, ob eine Person im Vorfeld adaptive Coping-Strategien wählt oder in maladaptive Muster verfällt.
 
-Abbildung 1 veranschaulicht die theoretisch postulierten Zusammenhänge zwischen Stress, Coping, Resilienz, Lebenszufriedenheit und Neurotizismus. 
-#figure(
-  image("plots/nomological_network_theory.png", width: 100%), caption: [Theoretisch erwartetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien]
-) <nomological_network_theory>
+@nomological_network_theory veranschaulicht die theoretisch postulierten Zusammenhänge zwischen Stress, Coping, Resilienz, Lebenszufriedenheit und Neurotizismus.
 
 == Relevanz von Stress
 
 Die Auswirkungen von Stress lassen sich in kurz- und langfristige Outcomes unterteilen. Kurzfristig manifestiert sich Stress primär physiologisch durch die Aktivierung der Hypothalamus-Hypophysen-Nebennierenrinden-Achse (HPA-Achse). Dies führt  zu einem erhöhten Cortisolspiegel. Diese hormonelle Reaktion dient ursprünglich der Bereitstellung von Energie, beeinträchtigt jedoch bei Fehlregulation das emotionale Befinden und die kognitive Leistungsfähigkeit, insbesondere das Arbeitsgedächtnis und die Exekutivfunktionen @sapolsky_why_2004.
 
-Bleibt die Belastung konstant und fehlt ein effektives Coping, entwickelt sich chronischer Stress. Die langfristigen Folgen sind gravierend: Sie reichen von physischen Erkrankungen wie kardiovaskulären Erkrankungen und einer Schwächung des Immunsystems @segerstrom_psychological_2004, Diabetes @eckert_stress-_2022, bis hin zur Entwicklung psychischer Erkrankungen wie klinischer Depressionen und dem Burnout-Syndrom @maslach_job_2001. 
+Bleibt die Belastung konstant und fehlt ein effektives Coping, entwickelt sich chronischer Stress. Die langfristigen Folgen sind gravierend: Sie reichen von physischen Erkrankungen wie kardiovaskulären Erkrankungen und einer Schwächung des Immunsystems @segerstrom_psychological_2004, Diabetes @eckert_stress-_2022, bis hin zur Entwicklung psychischer Erkrankungen wie klinischer Depressionen und dem Burnout-Syndrom @maslach_job_2001.
 Diese Folgen verdeutlichen die Relevanz einer Kurzskala zu einer schnellen Erfassung von Stress- und Copingstrategien im klinischen und präventiven Bereich.
 
 == Skalen
@@ -223,13 +247,13 @@ Alle Skalen wurden auf eine einheitliche 6-stufige Likert-Skala standardisiert. 
 
 Die Rekrutierung erfolgte über persönliche Kontakte, universitäre Verteiler und SurveyCircle @surveycircle_surveycircle_2016. Optional konnten Teilnehmende einen Retest absolvieren, der automatisiert zwei Wochen nach der ersten Teilnahme versendet wurde.
 
-Die Datenanalyse erfolgte mit Rstudio @rstudio_team_rstudio_2019 und sind vollständig reproduzierbar (siehe Appendix C). Verglichen wurden die psychometrischen Eigenschaften der neuen Items mit denen der SCI-Originalskalen. Die finale Itemauswahl für die KSSB basierte auf statistischer Performanz und inhaltlicher Breite. 
+Die Datenanalyse erfolgte mit Rstudio @rstudio_team_rstudio_2019 und sind vollständig reproduzierbar (siehe Appendix C). Verglichen wurden die psychometrischen Eigenschaften der neuen Items mit denen der SCI-Originalskalen. Die finale Itemauswahl für die KSSB basierte auf statistischer Performanz und inhaltlicher Breite.
 
 Zusammengenommen enthält die Kurzskala zur Erfassung von Stresssymptomen, Stressbelastung und Stressbewältigung (KSSB) sieben psychometrische Unterskalen mit insgesamt 15 Items. Die Skalen Stressbelastung und Stresssymptome umfassen je fünf Items, während jede der fünf Stressbewältigungsskalen von einem Item abgedeckt wird. Nachfolgend wird kurz auf die einzelnen Skalen eingegangen. Der vollständige Test findet sich im Anhang (Appendix A).
 
 Die KSSB kann zur Erfassung von Stress allgemein, seiner Unterdimensionen und verschiedenen Bewältigungsstrategien in der Allgemeinbevölkerung ab 18 Jahren eingesetzt werden. Er lässt sich sowohl digital als auch als Paper-Pencil-Test durchführen und hat kein Zeitlimit.
 
-Bisherige Erhebungszeiten zeigen eine Bearbeitungszeit von circa 3 Minuten, wodurch die KSSB auch ergänzend zu anderen Maßen eingesetzt werden kann. Ob die Skalen auch unabhängig voneinander eingesetzt werden können, wurde bisher nicht geprüft und wird deshalb nicht empfohlen. Ebenfalls sollte die KSSB nicht für die klinische oder Eignungsdiagnostik eingesetzt werden, da hierfür keine Validierung vorliegt. 
+Bisherige Erhebungszeiten zeigen eine Bearbeitungszeit von circa 3 Minuten, wodurch die KSSB auch ergänzend zu anderen Maßen eingesetzt werden kann. Ob die Skalen auch unabhängig voneinander eingesetzt werden können, wurde bisher nicht geprüft und wird deshalb nicht empfohlen. Ebenfalls sollte die KSSB nicht für die klinische oder Eignungsdiagnostik eingesetzt werden, da hierfür keine Validierung vorliegt.
 == Allgemeine Instruktion
 
 Zu Beginn wurde den Proband*innen folgende Instruktion präsentiert: "Im Folgenden werden Ihnen Aussagen zu Situationen oder Symptomen präsentiert. Es gibt kein Richtig oder Falsch. Bitte antworten Sie wahrheitsgemäß und ehrlich, wie sehr die Aussage auf Sie zutrifft. Denken Sie dabei an die letzten drei Monate."
@@ -307,12 +331,7 @@ Von den ursprünglich 211 Teilnehmenden wurden 31 Personen ausgeschlossen, die k
 
 === Demographische Merkmale
 
-Das durchschnittliche Alter der Stichprobe betrug _M_ = 27.62 Jahre (_SD_ = 9.90 Jahre). Die Altersverteilung ist in Abbildung 2 dargestellt. Die Stichprobe war überwiegend weiblich (77.8%), in Beschäftigung als Studierende (64.4%) und wies ein hohes Bildungsniveau auf (52.2% mit Bachelor, Master oder Staatsexamen).
-
-#figure(
-  image("plots/01_altersverteilung.png"),
-  caption: [_Altersverteilung der Stichprobe_]
-)
+Das durchschnittliche Alter der Stichprobe betrug _M_ = 27.62 Jahre (_SD_ = 9.90 Jahre). Die Altersverteilung ist in @age_distribution dargestellt. Die Stichprobe war überwiegend weiblich (77.8%), in Beschäftigung als Studierende (64.4%) und wies ein hohes Bildungsniveau auf (52.2% mit Bachelor, Master oder Staatsexamen).
 
 === Ausreißeranalyse
 
@@ -320,65 +339,23 @@ Zur Qualitätssicherung der Daten wurde eine umfassende Ausreißeranalyse durchg
 
 == Item- und Skalenkennwerte
 
-Im Folgenden werden die psychometrischen Kennwerte der KSSB dargestellt. Für jede Skala werden zunächst deskriptive Statistiken auf Skalenebene berichtet, gefolgt von einer detaillierten Darstellung der Itemkennwerte. Dabei liegt der Fokus auf Mittelwerten, Standardabweichungen und part-whole-korrigierten Trennschärfen der einzelnen Items, die Aufschluss über die Itemqualität geben. Zusätzlich werden Reliabilitätskennwerte sowie Informationen zur Normierungsstrategie der jeweiligen Skalen berichtet. 
+Im Folgenden werden die psychometrischen Kennwerte der KSSB dargestellt. Für jede Skala werden zunächst deskriptive Statistiken auf Skalenebene berichtet, gefolgt von einer detaillierten Darstellung der Itemkennwerte. Dabei liegt der Fokus auf Mittelwerten, Standardabweichungen und part-whole-korrigierten Trennschärfen der einzelnen Items, die Aufschluss über die Itemqualität geben. Zusätzlich werden Reliabilitätskennwerte sowie Informationen zur Normierungsstrategie der jeweiligen Skalen berichtet.
 
 === Stresssymptome
 
-Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.45 (_SD_ = 1.12) bei einer Spannweite von 1.00 bis 6.00. Die interne Konsistenz der Skala erwies sich mit Cronbachs α = .812 (95% CI [.765, .853]) als gut. Die Itemkennwerte sind in Tabelle 1 dargestellt.
-
-#figure(
-  table(
-    columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
-    align: (center, left, center, center, center, center),
-    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
-    [SYMP_PHYS], [Körperliche Beschwerden], [3.66], [1.39], [.507], [.818],
-    [SYMP_SLEP], [Schlechter Schlaf/Träume], [3.78], [1.42], [.701], [.862],
-    [SYMP_COGN], [Konzentrationsprobleme], [3.24], [1.52], [.667], [.775],
-    [SYMP_MOOD], [Traurigkeit/Grübeln], [3.28], [1.58], [.602], [.842],
-    [SYMP_SOCI], [Rückzug/Lustlosigkeit], [3.28], [1.52], [.537], [.582],
-  ),
-  caption: [Itemkennwerte der Skala Stresssymptome (_N_ = 180). Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.]
-)
+Die Skala Stresssymptome umfasst 5 Items und zeigte in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.45 (_SD_ = 1.12) bei einer Spannweite von 1.00 bis 6.00. Die interne Konsistenz der Skala erwies sich mit Cronbachs α = .812 (95% CI [.765, .853]) als gut. Die Itemkennwerte sind in @tab_stresssymptome dargestellt.
 
 Alle Items wiesen zufriedenstellende bis gute Trennschärfen auf (_r_#sub[it] = .507 bis .701), wobei Item SYMP_SLEP (Schlechter Schlaf/Träume) die höchste Trennschärfe zeigte. Die Retest-Reliabilitäten der Items waren überwiegend gut bis exzellent (_r_#sub[tt] = .582 bis .862), was auf eine hohe Reliabilität und zeitliche Stabilität der Messung hinweist. Die Skala wird auf Basis einer gemeinsamen Norm für die Gesamtstichprobe ausgewertet, da keine signifikanten Gruppenunterschiede identifiziert wurden.
 
 === Stressbelastung
 
-Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in Tabelle 2 dargestellt.
-
-#figure(
-  table(
-    columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
-    align: (center, left, center, center, center, center),
-    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
-    [STRS_FUTU], [Sorgen um Zukunft], [4.24], [1.28], [.506], [.667],
-    [STRS_FINA], [Geldprobleme], [3.38], [1.49], [.539], [.774],
-    [STRS_RELA], [Probleme mit Bezugspersonen], [3.49], [1.48], [.434], [.661],
-    [STRS_PERF], [Leistungsdruck], [4.52], [1.36], [.488], [.659],
-    [STRS_HEAL], [Sorgen um Gesundheit], [3.88], [1.33], [.376], [.695],
-  ),
-  caption: [Itemkennwerte der Skala Stressbelastung (_N_ = 180). Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.]
-)
+Die Skala Stressbelastung besteht aus 5 Items und wies in der Validierungsstichprobe (_N_ = 180) einen Skalenmittelwert von _M_ = 3.90 (_SD_ = 0.95) mit einer Spannweite von 1.20 bis 6.00 auf. Die interne Konsistenz betrug Cronbachs α = .710 (95% CI [.637, .772]) und ist damit als akzeptabel zu bewerten. Die Itemkennwerte sind in @tab_stressbelastung dargestellt.
 
 Alle Items erreichten akzeptable Trennschärfen (_r_#sub[it] = .376 bis .539), wobei Item STRS_FINA (Geldprobleme) die höchste Trennschärfe aufwies. Die Retest-Reliabilitäten lagen durchweg im akzeptablen bis guten Bereich (_r_#sub[tt] = .659 bis .774) und belegen die Reliabilität und zeitliche Stabilität der Messung. Für diese Skala wird eine altersspezifische Normierung empfohlen, da signifikante Altersunterschiede identifiziert wurden. Es werden separate Normtabellen für drei Altersgruppen bereitgestellt (jung: $<$30 Jahre, mittel: 30–45 Jahre, alt: $>$45 Jahre).
 
 === Stressbewältigung
 
-Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine spezifische Bewältigungsstrategie abbilden. Da jedes Item eine eigene Dimension misst, kann weder die interne Konsistenz noch die Trennschärfe   berechnet werden. Die Itemwerte werden in @coping_tabelle dargestellt.
-
-#figure(
-  table(
-    columns: (auto, 2fr, 1fr, 1fr, 1fr),
-    align: (center, left, center, center, center),
-    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*_r_#sub[tt]*],
-    [COPE_DRUG], [Drogen/Substanzen], [1.91], [1.36], [.910],
-    [COPE_RELI], [Religion/Spiritualität], [3.44], [1.22], [.832],
-    [COPE_SOCI], [Soziale Unterstützung], [4.73], [1.19], [.868],
-    [COPE_REAP], [Positive Neubewertung], [3.10], [1.26], [.567],
-    [COPE_ACTI], [Aktive Bewältigung], [3.68], [1.15], [.797],
-  ),
-  caption: [Itemkennwerte der Stressbewältigungsitems (_N_ = 180). Retest-Reliabilitäten basieren auf _N_ = 21.] 
-) <coping_tabelle>
+Die Stressbewältigung wird über fünf Einzelitems erfasst, die jeweils eine spezifische Bewältigungsstrategie abbilden. Da jedes Item eine eigene Dimension misst, kann weder die interne Konsistenz noch die Trennschärfe berechnet werden. Die Itemwerte werden in @tab_coping dargestellt.
 
  Die Retest-Reliabilitäten der Einzelitems variierten zwischen _r_#sub[tt] = .567 (COPE_REAP) und _r_#sub[tt] = .910 (COPE_DRUG), wobei die meisten Items eine gute bis exzellente Reliabilität aufwiesen. #underline[Die Normierung erfolgt für vier Items (COPE_DRUG, COPE_RELI, COPE_SOCI und COPE_REAP) auf Basis gemeinsamer Normen. Für Item COPE_ACTI (Aktive Bewältigung) werden aufgrund signifikanter Geschlechtsunterschiede geschlechtsspezifische Normen bereitgestellt.]
 
@@ -396,23 +373,13 @@ Die fünf Bewältigungsstrategien zeigten differenzielle Validitätsmuster, die 
 
 Diese Befunde decken sich mit theoretischen Erwartungen (dargestellt in @nomological_network_theory) sowie mit den Ergebnissen der Validierung des SCI #cite(<satow_sci_2024>). Die empirisch beobachteten Korrelationen sind in @nomological_network_empirical dargestellt.
 
-#figure(
-  image("plots/nomological_network_empirical.png", width: 100%), 
-  caption: [_Empirisch beobachtetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien_]
-) <nomological_network_empirical>
+=== Faktorielle Validität
 
-=== Faktorielle Validität 
-
-Die faktorielle Validität der KSSB wurde mittels konfirmatorischer Faktorenanalyse (CFA) mit einer 2-Faktoren-Struktur (Stressbelastung und Stresssymptome, je 5 Items) überprüft. Die 5 Stressbewältigungsskalen konnten nicht per CFA analysiert werden, da sie aus jeweils nur einem Item bestehen. Die Modellfit-Indizes zeigten einen verbesserungswürdigen Fit (χ² = 100.74, _df_ = 34, _p_ < .001; CFI = .886; TLI = .849; RMSEA = .104 [.081, .128]; SRMR = .066). Alle Faktorladungen waren substanziell (.517–.845) und signifikant (_p_ < .001; siehe Abbildung 3). Die Korrelation zwischen den Faktoren betrug _r_ = .820 (_p_ < .001), was auf ausreichende Diskriminanz hinweist.
+Die faktorielle Validität der KSSB wurde mittels konfirmatorischer Faktorenanalyse (CFA) mit einer 2-Faktoren-Struktur (Stressbelastung und Stresssymptome, je 5 Items) überprüft. Die 5 Stressbewältigungsskalen konnten nicht per CFA analysiert werden, da sie aus jeweils nur einem Item bestehen. Die Modellfit-Indizes zeigten einen verbesserungswürdigen Fit (χ² = 100.74, _df_ = 34, _p_ < .001; CFI = .886; TLI = .849; RMSEA = .104 [.081, .128]; SRMR = .066). Alle Faktorladungen waren substanziell (.517–.845) und signifikant (_p_ < .001; siehe @cfa_heatmap). Die Korrelation zwischen den Faktoren betrug _r_ = .820 (_p_ < .001), was auf ausreichende Diskriminanz hinweist.
 
 Die Composite Reliability lag bei CR = .715 (Stressbelastung) und CR = .817 (Stresssymptome). Die Average Variance Extracted (AVE) betrug .336 bzw. .479, was unter dem idealen Schwellenwert von .50 liegt.
 
-Die Composite Reliability (CR) ist etwas niedriger als im SCI @satow_sci_2024, wo CR = .82 (Stressbelastung)  und CR = .86 (Stresssymptome) ist. Dennoch ist diese CR gut bis sehr gut und damit ausreichend für eine Kurzskala. Der schlechtere Modellfit im Vergleich zum SCI ist vermultich der kleinen Stichprobe geschuldet. 
-
-#figure(
-  image("plots/50_final_cfa_kurzskalen_heatmap.png", width: 80%),
-  caption: [_Standardisierte Faktorladungen der konfirmatorischen Faktorenanalyse (CFA) für die KSSB-Kurzskalen (_N_ = 180). Dunklere Farben repräsentieren höhere Faktorladungen._]
-) <cfa_heatmap>
+Die Composite Reliability (CR) ist etwas niedriger als im SCI @satow_sci_2024, wo CR = .82 (Stressbelastung)  und CR = .86 (Stresssymptome) ist. Dennoch ist diese CR gut bis sehr gut und damit ausreichend für eine Kurzskala. Der schlechtere Modellfit im Vergleich zum SCI ist vermultich der kleinen Stichprobe geschuldet.
 
 === Subgruppenvalidität
 
@@ -424,9 +391,9 @@ Wie bereits erwähnt haben wir bei unserer ersten Erhebung den SCI @satow_sci_20
 
 == Normierung
 
-Die Normierung der KSSB erfolgte differenziert nach Bedarf der einzelnen Skalen, basierend auf systematischen Analysen von Gruppenunterschieden. Für die Skala Stresssymptome wird eine gemeinsame Norm für die Gesamtstichprobe (_N_ = 180, _M_ = 3.45, _SD_ = 1.12) bereitgestellt, da keine signifikanten Unterschiede zwischen demographischen Subgruppen identifiziert wurden. 
+Die Normierung der KSSB erfolgte differenziert nach Bedarf der einzelnen Skalen, basierend auf systematischen Analysen von Gruppenunterschieden. Für die Skala Stresssymptome wird eine gemeinsame Norm für die Gesamtstichprobe (_N_ = 180, _M_ = 3.45, _SD_ = 1.12) bereitgestellt, da keine signifikanten Unterschiede zwischen demographischen Subgruppen identifiziert wurden.
 
-Für die Skala Stressbelastung werden hingegen altersspezifische Normen empfohlen, da sich substanzielle Altersunterschiede zeigten: Jung (\<30 Jahre: _N_ = 146, _M_ = 4.02, _SD_ = 0.92), Mittel (30-45 Jahre: _N_ = 21, _M_ = 3.47, _SD_ = 0.81) und Alt (>45 Jahre: _N_ = 13, _M_ = 3.34, _SD_ = 1.05). 
+Für die Skala Stressbelastung werden hingegen altersspezifische Normen empfohlen, da sich substanzielle Altersunterschiede zeigten: Jung (\<30 Jahre: _N_ = 146, _M_ = 4.02, _SD_ = 0.92), Mittel (30-45 Jahre: _N_ = 21, _M_ = 3.47, _SD_ = 0.81) und Alt (>45 Jahre: _N_ = 13, _M_ = 3.34, _SD_ = 1.05).
 
 Die Bewältigungsitems werden überwiegend mit gemeinsamen Normen ausgewertet (Drogen: _M_ = 1.91, _SD_ = 1.36; Religiös: _M_ = 3.44, _SD_ = 1.22; Sozial: _M_ = 4.73, _SD_ = 1.19; Positiv: _M_ = 3.07, _SD_ = 1.36), während für aktive Bewältigung geschlechtsspezifische Normen bereitgestellt werden (Männlich: _N_ = 36, _M_ = 3.75, _SD_ = 1.11; Weiblich: _N_ = 140, _M_ = 3.29, _SD_ = 1.11). Die Normtabellen im Anhang B ermöglichen die Umrechnung von Rohwerten in Z-Werte (Normalverteilung mit _M_ = 0, _SD_ = 1) und T-Werte (_M_ = 50, _SD_ = 10) zur standardisierten Interpretation der Testergebnisse.
 
@@ -434,7 +401,7 @@ Die Bewältigungsitems werden überwiegend mit gemeinsamen Normen ausgewertet (D
 
 = Zusammenfassung
 
-Das vorliegende Manual dokumentiert die Entwicklung, psychometrische Validierung und Durchführung der Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB). In Anlehnung an das Stress- und Coping-Inventar @satow_sci_2024 wurde ein ökonomisches Erhebungsinstrument mit 15 Items konzipiert, das sieben Unterskalen umfasst: Stresssymptome, Stressbelastung sowie fünf Bewältigungsstrategien. 
+Das vorliegende Manual dokumentiert die Entwicklung, psychometrische Validierung und Durchführung der Kurzskala zur Erfassung von Stressbelastung, Stresssymptomen und Bewältigungsstrategien (KSSB). In Anlehnung an das Stress- und Coping-Inventar @satow_sci_2024 wurde ein ökonomisches Erhebungsinstrument mit 15 Items konzipiert, das sieben Unterskalen umfasst: Stresssymptome, Stressbelastung sowie fünf Bewältigungsstrategien.
 
 Die Validierung an einer überwiegend studentischen Stichprobe ergab zufriedenstellende bis gute psychometrische Eigenschaften. Die internen Konsistenzen der Skalen Stresssymptome (α = .81) und Stressbelastung (α = .71) liegen im akzeptablen bis guten Bereich. Die Retest-Reliabilitäten (Median r#sub[tt] = .77) belegen eine angemessene zeitliche Stabilität. Die konvergente Validität wurde durch erwartungskonforme Zusammenhänge mit Lebenszufriedenheit @beierlein_kurzskala_2015, Neurotizismus @rammstedt_bfi-10_2014 und Resilienz @chmitorz_population-based_2018 bestätigt. Die konfirmatorische Faktorenanalyse zeigte einen verbesserungswürdigen, aber akzeptablen Modellfit mit substanziellen Faktorladungen.
 
@@ -446,6 +413,153 @@ Mit einer durchschnittlichen Bearbeitungszeit von etwa 3 Minuten bietet die KSSB
 = Literaturverzeichnis
 
 #bibliography("zotero.bib")
+
+#pagebreak()
+
+// APA7: Tables section before figures, each on separate page
+= Tabellen
+
+// Table 1
+#figure(
+  table(
+    columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
+    align: (center, left, center, center, center, center),
+    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
+    [SYMP_PHYS], [Körperliche Beschwerden], [3.66], [1.39], [.507], [.818],
+    [SYMP_SLEP], [Schlechter Schlaf/Träume], [3.78], [1.42], [.701], [.862],
+    [SYMP_COGN], [Konzentrationsprobleme], [3.24], [1.52], [.667], [.775],
+    [SYMP_MOOD], [Traurigkeit/Grübeln], [3.28], [1.58], [.602], [.842],
+    [SYMP_SOCI], [Rückzug/Lustlosigkeit], [3.28], [1.52], [.537], [.582],
+  ),
+  caption: [Itemkennwerte der Skala Stresssymptome (_N_ = 180)],
+  kind: table,
+  supplement: [Table]
+) <tab_stresssymptome>
+
+#par(first-line-indent: 0em)[
+  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.
+]
+
+#pagebreak()
+
+// Table 2
+#figure(
+  table(
+    columns: (auto, 2fr, 1fr, 1fr, 1fr, 1fr),
+    align: (center, left, center, center, center, center),
+    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*Trennschärfe*], [*_r_#sub[tt]*],
+    [STRS_FUTU], [Sorgen um Zukunft], [4.24], [1.28], [.506], [.667],
+    [STRS_FINA], [Geldprobleme], [3.38], [1.49], [.539], [.774],
+    [STRS_RELA], [Probleme mit Bezugspersonen], [3.49], [1.48], [.434], [.661],
+    [STRS_PERF], [Leistungsdruck], [4.52], [1.36], [.488], [.659],
+    [STRS_HEAL], [Sorgen um Gesundheit], [3.88], [1.33], [.376], [.695],
+  ),
+  caption: [Itemkennwerte der Skala Stressbelastung (_N_ = 180)],
+  kind: table,
+  supplement: [Table]
+) <tab_stressbelastung>
+
+#par(first-line-indent: 0em)[
+  _Anmerkung._ Trennschärfen sind part-whole-korrigiert. Retest-Reliabilitäten basieren auf _N_ = 21.
+]
+
+#pagebreak()
+
+// Table 3
+#figure(
+  table(
+    columns: (auto, 2fr, 1fr, 1fr, 1fr),
+    align: (center, left, center, center, center),
+    [*Nr.*], [*Item*], [*_M_*], [*_SD_*], [*_r_#sub[tt]*],
+    [COPE_DRUG], [Drogen/Substanzen], [1.91], [1.36], [.910],
+    [COPE_RELI], [Religion/Spiritualität], [3.44], [1.22], [.832],
+    [COPE_SOCI], [Soziale Unterstützung], [4.73], [1.19], [.868],
+    [COPE_REAP], [Positive Neubewertung], [3.10], [1.26], [.567],
+    [COPE_ACTI], [Aktive Bewältigung], [3.68], [1.15], [.797],
+  ),
+  caption: [Itemkennwerte der Stressbewältigungsitems (_N_ = 180)],
+  kind: table,
+  supplement: [Table]
+) <tab_coping>
+
+#par(first-line-indent: 0em)[
+  _Anmerkung._ Retest-Reliabilitäten basieren auf _N_ = 21.
+]
+
+#pagebreak()
+
+// APA7: Figures section after tables, each on separate page
+= Abbildungen
+
+// Figure 1
+#figure(
+  [
+    #image("plots/nomological_network_theory.png", width: 100%)
+
+    #v(1em)
+
+    #par(first-line-indent: 0em)[
+      _Anmerkung._ Diese Abbildung zeigt die theoretisch postulierten Zusammenhänge zwischen den Stressskalen (Stresssymptome, Stressbelastung), Copingstrategien und den Validitätskriterien (Lebenszufriedenheit, Neurotizismus, Resilienz). Rote Linien zeigen negative Korrelationen, blaue Linien positive Korrelationen.
+    ]
+  ],
+  caption: [Theoretisch erwartetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien],
+  kind: image,
+  supplement: [Figure]
+) <nomological_network_theory>
+
+#pagebreak()
+
+// Figure 2
+#figure(
+  [
+    #image("plots/01_altersverteilung.png", width: 80%)
+
+    #v(1em)
+
+    #par(first-line-indent: 0em)[
+      _Anmerkung._ Das Histogramm zeigt die Altersverteilung der Validierungsstichprobe (_N_ = 180) mit einem Durchschnittsalter von _M_ = 27.62 Jahren (_SD_ = 9.90).
+    ]
+  ],
+  caption: [Altersverteilung der Stichprobe],
+  kind: image,
+  supplement: [Figure]
+) <age_distribution>
+
+#pagebreak()
+
+// Figure 3
+#figure(
+  [
+    #image("plots/nomological_network_empirical.png", width: 100%)
+
+    #v(1em)
+
+    #par(first-line-indent: 0em)[
+      _Anmerkung._ Diese Abbildung zeigt die empirisch beobachteten Korrelationen zwischen den KSSB-Skalen und den Validitätskriterien. Rote Linien zeigen negative Korrelationen, blaue Linien positive Korrelationen. Die Linienstärke repräsentiert die Korrelationsstärke.
+    ]
+  ],
+  caption: [Empirisch beobachtetes Korrelationsmuster der Stress- und Copingskalen und der Validitätskriterien],
+  kind: image,
+  supplement: [Figure]
+) <nomological_network_empirical>
+
+#pagebreak()
+
+// Figure 4
+#figure(
+  [
+    #image("plots/50_final_cfa_kurzskalen_heatmap.png", width: 80%)
+
+    #v(1em)
+
+    #par(first-line-indent: 0em)[
+      _Anmerkung._ Die Heatmap zeigt die standardisierten Faktorladungen der konfirmatorischen Faktorenanalyse (_N_ = 180). Dunklere Farben repräsentieren höhere Faktorladungen. SYMP = Stresssymptome; STRS = Stressbelastung.
+    ]
+  ],
+  caption: [Standardisierte Faktorladungen der konfirmatorischen Faktorenanalyse (CFA) für die KSSB-Kurzskalen],
+  kind: image,
+  supplement: [Figure]
+) <cfa_heatmap>
 
 #pagebreak()
 
@@ -712,4 +826,3 @@ Alle in diesem Manual berichteten Analysen sind vollständig reproduzierbar. Der
 ]
 
 Das Repository enthält alle notwendigen R-Skripte, Dokumentation und Anweisungen zur Reproduktion der Analysen. Die Rohdaten können aus Datenschutzgründen nicht öffentlich bereitgestellt werden, sind aber auf begründete Anfrage bei den Autor*Innen erhältlich. Anfragen können als GitHub Issue im Repository oder per E-Mail an dipra [at] sehn.tech gestellt werden.
-
